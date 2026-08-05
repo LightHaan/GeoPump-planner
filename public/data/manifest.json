@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0.0",
+  "dataset_version": "2026.08.05-phase2-web",
+  "generated_at": "2026-08-05T11:21:10.671112+00:00",
+  "parent_dataset_version": "2026.08.05-phase0",
+  "parent_manifest_sha256": "ffa3c13acf18e2a3933e982ccdad95f5a069d57c717f752bfa701070f97fafcf",
+  "country": "Australia",
+  "analysis_unit": "postcode",
+  "runtime_spatial_processing": false,
+  "postcode_count": 2641,
+  "temperature_unit": "degC",
+  "load_unit": "kWh_m2_year",
+  "depth_unit": "m",
+  "gradient_internal_unit": "degC_per_m",
+  "reference_depth_m": 20.0,
+  "surface_temperature_datasets": [
+    {
+      "id": "air_t",
+      "label": "Hourly near-surface air temperature grids for Australia (long-term climatology)",
+      "surface_field": "AirT",
+      "paired_delta_field": "deltaT20New",
+      "provider": "CSIRO",
+      "version": "4",
+      "temporal_coverage": "1990-2019 climatology",
+      "source_url": "https://data.csiro.au/collection/csiro:60405"
+    },
+    {
+      "id": "surface_t",
+      "label": "Australian mean land-surface temperature",
+      "surface_field": "surfaceT",
+      "paired_delta_field": "deltaT20",
+      "provider": "Geoscience Australia",
+      "temporal_coverage": "2003-2015 MODIS imagery",
+      "source_url": "https://ecat.ga.gov.au/geonetwork/srv/api/records/1b827cce-acca-4d06-87b2-e8512d86b956?language=eng",
+      "delta_t20_ebk_prediction_se_field": "delta_t20_ebk_prediction_se_c"
+    }
+  ],
+  "redistribution_permission_confirmed_by_project_owner": true,
+  "climate": {
+    "directory": "climate",
+    "filename_pattern": "{postcode}.json",
+    "postcode_count": 2634,
+    "missing_postcode_count": 7,
+    "records_per_available_postcode": 1752,
+    "represented_hours_per_available_postcode": 8760.0,
+    "time_basis": "UTC",
+    "record_type": "weighted_representative_hour",
+    "record_layout": [
+      "day_of_year",
+      "hour_utc",
+      "air_temp_c",
+      "weight_hours"
+    ],
+    "checksums_file": "climate-checksums.sha256"
+  },
+  "schemas": {
+    "postcode_index": "schemas/postcode-index.schema.json",
+    "postcode_attributes": "schemas/postcode-attributes.schema.json",
+    "climate": "schemas/climate.schema.json",
+    "manifest": "schemas/manifest.schema.json"
+  },
+  "files": {
+    "build-report.json": "4176f98047c5ebf632520f897cf3ab53f8b64908aa5d27a40ce55c3a62664313",
+    "climate-checksums.sha256": "3e126c444b0cb1915c99f5f264d9a05fdca7bfc18bdd1eadb41dfa07107d684f",
+    "data-dictionary.md": "52ac61493e45228bb22ed51744d5a7d8409877028a25e8026b0dc38abd956909",
+    "postcode-attributes.json": "1c18020bbefca2c3a368fe2c595ad2594715180683c838e6d57f37cffc8d865e",
+    "postcode-boundaries.geojson": "65c2f8019e08677d6872c96fdcf95f0e856e9ed14010784a3148aff68b1dab5a",
+    "postcode-index.json": "fb983213c18230d92c4474aa232f0d3d9968ae38b6019c3de10abf6c2a470f78",
+    "presets/paper-default.json": "96ae9613fcdbfdd4f243d32517c3581036a66284efa6d44287c174f744941e6d",
+    "schemas/climate.schema.json": "94934947eea9eeb16caf1db9f7a04d85ed36ac2663e3e67f3009466d58c79aab",
+    "schemas/manifest.schema.json": "bbf9fe42fb2d7ef37cbc1775f27be889cb19c10c5dc791937a0b32d8a4bede65",
+    "schemas/postcode-attributes.schema.json": "fba4ab95ccaf639be1ecaa81b20f06554ee715a73ce1c39eba04646c24102f9e",
+    "schemas/postcode-index.schema.json": "261e514c5f211c7dc6041f52432b288ef552d3b782b300214ce813f9ef20e0dc",
+    "source-notes.md": "95a5af177e15c10f66d07955a3f79c671507bb9e53608b3e6fb203cb0a14b7b1"
+  }
+}

@@ -1,0 +1,333 @@
+{
+  "$defs": {
+    "ClimateAvailability": {
+      "additionalProperties": false,
+      "properties": {
+        "record_count": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Record Count"
+        },
+        "represented_hours": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Represented Hours"
+        },
+        "record_type": {
+          "const": "weighted_representative_hour",
+          "title": "Record Type",
+          "type": "string"
+        },
+        "weight_hours": {
+          "exclusiveMinimum": 0,
+          "title": "Weight Hours",
+          "type": "number"
+        },
+        "stored_temperature_scale_divisor": {
+          "exclusiveMinimum": 0,
+          "title": "Stored Temperature Scale Divisor",
+          "type": "number"
+        }
+      },
+      "required": [
+        "record_count",
+        "represented_hours",
+        "record_type",
+        "weight_hours",
+        "stored_temperature_scale_divisor"
+      ],
+      "title": "ClimateAvailability",
+      "type": "object"
+    },
+    "GroundData": {
+      "additionalProperties": false,
+      "properties": {
+        "reference_depth_m": {
+          "minimum": 0,
+          "title": "Reference Depth M",
+          "type": "number"
+        },
+        "air_t": {
+          "$ref": "#/$defs/GroundTemperatureChain"
+        },
+        "surface_t": {
+          "$ref": "#/$defs/GroundTemperatureChain"
+        },
+        "nearest_borehole_km": {
+          "minimum": 0,
+          "title": "Nearest Borehole Km",
+          "type": "number"
+        },
+        "nearby_borehole_count": {
+          "minimum": 0,
+          "title": "Nearby Borehole Count",
+          "type": "integer"
+        },
+        "nearby_radius_km": {
+          "exclusiveMinimum": 0,
+          "title": "Nearby Radius Km",
+          "type": "number"
+        },
+        "uncertainty": {
+          "$ref": "#/$defs/GroundUncertainty"
+        }
+      },
+      "required": [
+        "reference_depth_m",
+        "air_t",
+        "surface_t",
+        "nearest_borehole_km",
+        "nearby_borehole_count",
+        "nearby_radius_km",
+        "uncertainty"
+      ],
+      "title": "GroundData",
+      "type": "object"
+    },
+    "GroundTemperatureChain": {
+      "additionalProperties": false,
+      "properties": {
+        "surface_temp_c": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Surface Temp C"
+        },
+        "delta_temp_at_reference_depth_c": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Delta Temp At Reference Depth C"
+        },
+        "gradient_c_per_m": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Gradient C Per M"
+        },
+        "ground_temp_at_reference_depth_c": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Ground Temp At Reference Depth C"
+        }
+      },
+      "required": [
+        "surface_temp_c",
+        "delta_temp_at_reference_depth_c",
+        "gradient_c_per_m",
+        "ground_temp_at_reference_depth_c"
+      ],
+      "title": "GroundTemperatureChain",
+      "type": "object"
+    },
+    "GroundUncertainty": {
+      "additionalProperties": false,
+      "properties": {
+        "delta_t20_ebk_prediction_se_c": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Delta T20 Ebk Prediction Se C"
+        },
+        "applies_to_dataset_id": {
+          "const": "surface_t",
+          "title": "Applies To Dataset Id",
+          "type": "string"
+        },
+        "scope": {
+          "const": "delta_t20_interpolation_only",
+          "title": "Scope",
+          "type": "string"
+        },
+        "is_total_ground_temperature_uncertainty": {
+          "const": false,
+          "title": "Is Total Ground Temperature Uncertainty",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "delta_t20_ebk_prediction_se_c",
+        "applies_to_dataset_id",
+        "scope",
+        "is_total_ground_temperature_uncertainty"
+      ],
+      "title": "GroundUncertainty",
+      "type": "object"
+    },
+    "LoadData": {
+      "additionalProperties": false,
+      "properties": {
+        "annual_heating_kwh_m2": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Annual Heating Kwh M2"
+        },
+        "annual_cooling_kwh_m2": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Annual Cooling Kwh M2"
+        },
+        "certificate_count": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Certificate Count"
+        }
+      },
+      "required": [
+        "annual_heating_kwh_m2",
+        "annual_cooling_kwh_m2",
+        "certificate_count"
+      ],
+      "title": "LoadData",
+      "type": "object"
+    },
+    "Location": {
+      "additionalProperties": false,
+      "properties": {
+        "lat": {
+          "title": "Lat",
+          "type": "number"
+        },
+        "lon": {
+          "title": "Lon",
+          "type": "number"
+        },
+        "postcode_name": {
+          "title": "Postcode Name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "lat",
+        "lon",
+        "postcode_name"
+      ],
+      "title": "Location",
+      "type": "object"
+    },
+    "PostcodeAttribute": {
+      "additionalProperties": false,
+      "properties": {
+        "location": {
+          "$ref": "#/$defs/Location"
+        },
+        "ground": {
+          "$ref": "#/$defs/GroundData"
+        },
+        "load": {
+          "$ref": "#/$defs/LoadData"
+        },
+        "climate": {
+          "$ref": "#/$defs/ClimateAvailability"
+        },
+        "quality": {
+          "$ref": "#/$defs/QualityData"
+        }
+      },
+      "required": [
+        "location",
+        "ground",
+        "load",
+        "climate",
+        "quality"
+      ],
+      "title": "PostcodeAttribute",
+      "type": "object"
+    },
+    "QualityData": {
+      "additionalProperties": false,
+      "properties": {
+        "ground_temperature_method": {
+          "title": "Ground Temperature Method",
+          "type": "string"
+        },
+        "load_method": {
+          "title": "Load Method",
+          "type": "string"
+        },
+        "warnings": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Warnings",
+          "type": "array"
+        }
+      },
+      "required": [
+        "ground_temperature_method",
+        "load_method",
+        "warnings"
+      ],
+      "title": "QualityData",
+      "type": "object"
+    }
+  },
+  "additionalProperties": {
+    "$ref": "#/$defs/PostcodeAttribute"
+  },
+  "title": "PostcodeAttributesFile",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

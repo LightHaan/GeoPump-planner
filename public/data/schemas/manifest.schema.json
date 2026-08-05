@@ -1,0 +1,224 @@
+{
+  "$defs": {
+    "ClimatePackage": {
+      "additionalProperties": false,
+      "properties": {
+        "directory": {
+          "const": "climate",
+          "title": "Directory",
+          "type": "string"
+        },
+        "filename_pattern": {
+          "const": "{postcode}.json",
+          "title": "Filename Pattern",
+          "type": "string"
+        },
+        "postcode_count": {
+          "minimum": 0,
+          "title": "Postcode Count",
+          "type": "integer"
+        },
+        "missing_postcode_count": {
+          "minimum": 0,
+          "title": "Missing Postcode Count",
+          "type": "integer"
+        },
+        "records_per_available_postcode": {
+          "minimum": 1,
+          "title": "Records Per Available Postcode",
+          "type": "integer"
+        },
+        "represented_hours_per_available_postcode": {
+          "exclusiveMinimum": 0,
+          "title": "Represented Hours Per Available Postcode",
+          "type": "number"
+        },
+        "time_basis": {
+          "const": "UTC",
+          "title": "Time Basis",
+          "type": "string"
+        },
+        "record_type": {
+          "const": "weighted_representative_hour",
+          "title": "Record Type",
+          "type": "string"
+        },
+        "record_layout": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Record Layout",
+          "type": "array"
+        },
+        "checksums_file": {
+          "const": "climate-checksums.sha256",
+          "title": "Checksums File",
+          "type": "string"
+        }
+      },
+      "required": [
+        "directory",
+        "filename_pattern",
+        "postcode_count",
+        "missing_postcode_count",
+        "records_per_available_postcode",
+        "represented_hours_per_available_postcode",
+        "time_basis",
+        "record_type",
+        "record_layout",
+        "checksums_file"
+      ],
+      "title": "ClimatePackage",
+      "type": "object"
+    },
+    "SchemaFiles": {
+      "additionalProperties": false,
+      "properties": {
+        "postcode_index": {
+          "title": "Postcode Index",
+          "type": "string"
+        },
+        "postcode_attributes": {
+          "title": "Postcode Attributes",
+          "type": "string"
+        },
+        "climate": {
+          "title": "Climate",
+          "type": "string"
+        },
+        "manifest": {
+          "title": "Manifest",
+          "type": "string"
+        }
+      },
+      "required": [
+        "postcode_index",
+        "postcode_attributes",
+        "climate",
+        "manifest"
+      ],
+      "title": "SchemaFiles",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "dataset_version": {
+      "title": "Dataset Version",
+      "type": "string"
+    },
+    "generated_at": {
+      "title": "Generated At",
+      "type": "string"
+    },
+    "parent_dataset_version": {
+      "title": "Parent Dataset Version",
+      "type": "string"
+    },
+    "parent_manifest_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Parent Manifest Sha256",
+      "type": "string"
+    },
+    "country": {
+      "const": "Australia",
+      "title": "Country",
+      "type": "string"
+    },
+    "analysis_unit": {
+      "const": "postcode",
+      "title": "Analysis Unit",
+      "type": "string"
+    },
+    "runtime_spatial_processing": {
+      "const": false,
+      "title": "Runtime Spatial Processing",
+      "type": "boolean"
+    },
+    "postcode_count": {
+      "minimum": 1,
+      "title": "Postcode Count",
+      "type": "integer"
+    },
+    "temperature_unit": {
+      "const": "degC",
+      "title": "Temperature Unit",
+      "type": "string"
+    },
+    "load_unit": {
+      "const": "kWh_m2_year",
+      "title": "Load Unit",
+      "type": "string"
+    },
+    "depth_unit": {
+      "const": "m",
+      "title": "Depth Unit",
+      "type": "string"
+    },
+    "gradient_internal_unit": {
+      "const": "degC_per_m",
+      "title": "Gradient Internal Unit",
+      "type": "string"
+    },
+    "reference_depth_m": {
+      "minimum": 0,
+      "title": "Reference Depth M",
+      "type": "number"
+    },
+    "surface_temperature_datasets": {
+      "items": {
+        "additionalProperties": true,
+        "type": "object"
+      },
+      "title": "Surface Temperature Datasets",
+      "type": "array"
+    },
+    "redistribution_permission_confirmed_by_project_owner": {
+      "title": "Redistribution Permission Confirmed By Project Owner",
+      "type": "boolean"
+    },
+    "climate": {
+      "$ref": "#/$defs/ClimatePackage"
+    },
+    "schemas": {
+      "$ref": "#/$defs/SchemaFiles"
+    },
+    "files": {
+      "additionalProperties": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      },
+      "title": "Files",
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "dataset_version",
+    "generated_at",
+    "parent_dataset_version",
+    "parent_manifest_sha256",
+    "country",
+    "analysis_unit",
+    "runtime_spatial_processing",
+    "postcode_count",
+    "temperature_unit",
+    "load_unit",
+    "depth_unit",
+    "gradient_internal_unit",
+    "reference_depth_m",
+    "surface_temperature_datasets",
+    "redistribution_permission_confirmed_by_project_owner",
+    "climate",
+    "schemas",
+    "files"
+  ],
+  "title": "WebManifest",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

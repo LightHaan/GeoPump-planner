@@ -1,0 +1,100 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "postcode": {
+      "pattern": "^\\d{4}$",
+      "title": "Postcode",
+      "type": "string"
+    },
+    "time_basis": {
+      "const": "UTC",
+      "title": "Time Basis",
+      "type": "string"
+    },
+    "record_type": {
+      "const": "weighted_representative_hour",
+      "title": "Record Type",
+      "type": "string"
+    },
+    "record_layout": {
+      "maxItems": 4,
+      "minItems": 4,
+      "prefixItems": [
+        {
+          "const": "day_of_year",
+          "type": "string"
+        },
+        {
+          "const": "hour_utc",
+          "type": "string"
+        },
+        {
+          "const": "air_temp_c",
+          "type": "string"
+        },
+        {
+          "const": "weight_hours",
+          "type": "string"
+        }
+      ],
+      "title": "Record Layout",
+      "type": "array"
+    },
+    "record_count": {
+      "minimum": 1,
+      "title": "Record Count",
+      "type": "integer"
+    },
+    "represented_hours": {
+      "exclusiveMinimum": 0,
+      "title": "Represented Hours",
+      "type": "number"
+    },
+    "records": {
+      "items": {
+        "maxItems": 4,
+        "minItems": 4,
+        "prefixItems": [
+          {
+            "maximum": 366,
+            "minimum": 1,
+            "type": "integer"
+          },
+          {
+            "exclusiveMaximum": 24,
+            "minimum": 0,
+            "type": "number"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "exclusiveMinimum": 0,
+            "type": "number"
+          }
+        ],
+        "type": "array"
+      },
+      "title": "Records",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "postcode",
+    "time_basis",
+    "record_type",
+    "record_layout",
+    "record_count",
+    "represented_hours",
+    "records"
+  ],
+  "title": "ClimateFile",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

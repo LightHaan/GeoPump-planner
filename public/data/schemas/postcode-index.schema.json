@@ -1,0 +1,67 @@
+{
+  "$defs": {
+    "PostcodeIndexEntry": {
+      "additionalProperties": false,
+      "properties": {
+        "postcode": {
+          "pattern": "^\\d{4}$",
+          "title": "Postcode",
+          "type": "string"
+        },
+        "locality_hint": {
+          "title": "Locality Hint",
+          "type": "string"
+        },
+        "state": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "State"
+        },
+        "lat": {
+          "title": "Lat",
+          "type": "number"
+        },
+        "lon": {
+          "title": "Lon",
+          "type": "number"
+        },
+        "has_ground_data": {
+          "title": "Has Ground Data",
+          "type": "boolean"
+        },
+        "has_load_data": {
+          "title": "Has Load Data",
+          "type": "boolean"
+        },
+        "has_climate_data": {
+          "title": "Has Climate Data",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "postcode",
+        "locality_hint",
+        "state",
+        "lat",
+        "lon",
+        "has_ground_data",
+        "has_load_data",
+        "has_climate_data"
+      ],
+      "title": "PostcodeIndexEntry",
+      "type": "object"
+    }
+  },
+  "items": {
+    "$ref": "#/$defs/PostcodeIndexEntry"
+  },
+  "title": "PostcodeIndexFile",
+  "type": "array",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

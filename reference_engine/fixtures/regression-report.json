@@ -1,0 +1,5684 @@
+{
+  "schema_version": "1.0.0",
+  "all_passed": true,
+  "case_count": 10,
+  "metric_count": 700,
+  "cases": {
+    "0810": {
+      "passed": true,
+      "metric_count": 70,
+      "metrics": {
+        "ashp_APF": {
+          "expected": 3.01707997172376,
+          "actual": 3.017079971723759,
+          "absolute_error": 8.881784197001252e-16,
+          "relative_error": 2.9438345288298037e-16,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_SPF_Autumn": {
+          "expected": 3.0113977374509697,
+          "actual": 3.0113977374509693,
+          "absolute_error": 4.440892098500626e-16,
+          "relative_error": 1.4746946387293454e-16,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_SPF_Spring": {
+          "expected": 2.980303815315791,
+          "actual": 2.9803038153157915,
+          "absolute_error": 4.440892098500626e-16,
+          "relative_error": 1.4900803319711457e-16,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_SPF_Summer": {
+          "expected": 3.0326856079502,
+          "actual": 3.032685607950198,
+          "absolute_error": 1.7763568394002505e-15,
+          "relative_error": 5.857372207470245e-16,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_SPF_Winter": {
+          "expected": 3.0900409958038977,
+          "actual": 3.090040995803897,
+          "absolute_error": 8.881784197001252e-16,
+          "relative_error": 2.874325683401035e-16,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_cool_all_Autumn": {
+          "expected": 8.292287843524694,
+          "actual": 8.292287843426267,
+          "absolute_error": 9.842615611432848e-11,
+          "relative_error": 1.1869601968917153e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_all_Spring": {
+          "expected": 9.660212613352375,
+          "actual": 9.66021261323771,
+          "absolute_error": 1.1466383398328617e-10,
+          "relative_error": 1.1869700861945572e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_all_Summer": {
+          "expected": 9.616337985675376,
+          "actual": 9.616337985561234,
+          "absolute_error": 1.141415850725025e-10,
+          "relative_error": 1.1869547975802152e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_all_Winter": {
+          "expected": 3.4582181779016485,
+          "actual": 3.4582181778606014,
+          "absolute_error": 4.104716566644129e-11,
+          "relative_error": 1.1869455180340176e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_all_annual": {
+          "expected": 31.02705662045409,
+          "actual": 31.02705662008582,
+          "absolute_error": 3.682707472307811e-10,
+          "relative_error": 1.186934203059418e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_Autumn": {
+          "expected": 3.5197742618937857,
+          "actual": 3.5197742618520076,
+          "absolute_error": 4.177813650585449e-11,
+          "relative_error": 1.1869549976019232e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_Spring": {
+          "expected": 4.483330125180077,
+          "actual": 4.483330125126861,
+          "absolute_error": 5.3215210016333003e-11,
+          "relative_error": 1.1869572065964153e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_Summer": {
+          "expected": 4.836561192881607,
+          "actual": 4.836561192824198,
+          "absolute_error": 5.7409188514156995e-11,
+          "relative_error": 1.1869836072507705e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_Winter": {
+          "expected": 0.9235185440778676,
+          "actual": 0.9235185440669056,
+          "absolute_error": 1.0962009078241408e-11,
+          "relative_error": 1.1869831037542364e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_annual": {
+          "expected": 13.763184124033339,
+          "actual": 13.763184123869976,
+          "absolute_error": 1.6336265673544403e-10,
+          "relative_error": 1.186953943674846e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_Autumn": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_Spring": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_annual": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_Autumn": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_Spring": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_annual": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_total_all_annual": {
+          "expected": 31.02705662045409,
+          "actual": 31.02705662008582,
+          "absolute_error": 3.682707472307811e-10,
+          "relative_error": 1.186934203059418e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_total_night_annual": {
+          "expected": 13.763184124033339,
+          "actual": 13.763184123869976,
+          "absolute_error": 1.6336265673544403e-10,
+          "relative_error": 1.186953943674846e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_APF": {
+          "expected": 3.0106653952943194,
+          "actual": 3.010665395764922,
+          "absolute_error": 4.706026679457409e-10,
+          "relative_error": 1.5631184677025037e-10,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_SPF_Autumn": {
+          "expected": 3.010665395294319,
+          "actual": 3.010665395764925,
+          "absolute_error": 4.706062206594197e-10,
+          "relative_error": 1.5631302681293607e-10,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_SPF_Spring": {
+          "expected": 3.0106653952943194,
+          "actual": 3.010665395764925,
+          "absolute_error": 4.706057765702099e-10,
+          "relative_error": 1.5631287930760036e-10,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_SPF_Summer": {
+          "expected": 3.010665395294319,
+          "actual": 3.010665395764923,
+          "absolute_error": 4.706040002133705e-10,
+          "relative_error": 1.5631228928625753e-10,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_SPF_Winter": {
+          "expected": 3.010665395294319,
+          "actual": 3.0106653957649248,
+          "absolute_error": 4.706057765702099e-10,
+          "relative_error": 1.5631287930760039e-10,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_cool_all_Autumn": {
+          "expected": 8.294304936481083,
+          "actual": 8.294304935086124,
+          "absolute_error": 1.3949588151263015e-09,
+          "relative_error": 1.6818272607639653e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_all_Spring": {
+          "expected": 9.562792515347358,
+          "actual": 9.562792513739064,
+          "absolute_error": 1.6082939424677534e-09,
+          "relative_error": 1.681824571521966e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_all_Summer": {
+          "expected": 9.686672539540567,
+          "actual": 9.686672537911438,
+          "absolute_error": 1.629128831837079e-09,
+          "relative_error": 1.6818250283438894e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_all_Winter": {
+          "expected": 3.5493934194257073,
+          "actual": 3.549393418828761,
+          "absolute_error": 5.969464922372936e-10,
+          "relative_error": 1.6818267847408126e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_all_annual": {
+          "expected": 31.093163410794713,
+          "actual": 31.093163405565416,
+          "absolute_error": 5.229296107245318e-09,
+          "relative_error": 1.6818154004329605e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_Autumn": {
+          "expected": 3.7021435603639654,
+          "actual": 3.7021435597413292,
+          "absolute_error": 6.226361648487e-10,
+          "relative_error": 1.6818260953324222e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_Spring": {
+          "expected": 4.6303999536890945,
+          "actual": 4.6303999529103415,
+          "absolute_error": 7.787530620362304e-10,
+          "relative_error": 1.6818267748464982e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_Summer": {
+          "expected": 5.035359526089074,
+          "actual": 5.035359525242212,
+          "absolute_error": 8.468621359725148e-10,
+          "relative_error": 1.6818305258736235e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_Winter": {
+          "expected": 0.9696286200057016,
+          "actual": 0.9696286198426272,
+          "absolute_error": 1.6307444283825134e-10,
+          "relative_error": 1.6818237361567611e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_annual": {
+          "expected": 14.337531660147837,
+          "actual": 14.337531657736516,
+          "absolute_error": 2.411320920714388e-09,
+          "relative_error": 1.681824304121205e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_Autumn": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_Spring": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_annual": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_Autumn": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_Spring": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_annual": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_total_all_annual": {
+          "expected": 31.093163410794713,
+          "actual": 31.093163405565416,
+          "absolute_error": 5.229296107245318e-09,
+          "relative_error": 1.6818154004329605e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_total_night_annual": {
+          "expected": 14.337531660147837,
+          "actual": 14.337531657736516,
+          "absolute_error": 2.411320920714388e-09,
+          "relative_error": 1.681824304121205e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_Autumn": {
+          "expected": 24.971376850282443,
+          "actual": 24.97137684998604,
+          "absolute_error": 2.964029022223258e-10,
+          "relative_error": 1.1869706023797935e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_Spring": {
+          "expected": 28.79036850833581,
+          "actual": 28.79036850799408,
+          "absolute_error": 3.417284233364626e-10,
+          "relative_error": 1.1869539746860842e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_Summer": {
+          "expected": 29.163329810342525,
+          "actual": 29.163329809996352,
+          "absolute_error": 3.46172868148642e-10,
+          "relative_error": 1.1870142072249746e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_Winter": {
+          "expected": 10.686035942150351,
+          "actual": 10.68603594202351,
+          "absolute_error": 1.2684076011737488e-10,
+          "relative_error": 1.1869767311661382e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_annual": {
+          "expected": 93.61111111111113,
+          "actual": 93.6111111100001,
+          "absolute_error": 1.111033043343923e-09,
+          "relative_error": 1.1868602243436565e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_Autumn": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_Spring": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_annual": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_Autumn": {
+          "expected": 24.971376850282443,
+          "actual": 24.97137684998604,
+          "absolute_error": 2.964029022223258e-10,
+          "relative_error": 1.1869706023797935e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_Spring": {
+          "expected": 28.79036850833581,
+          "actual": 28.79036850799408,
+          "absolute_error": 3.417284233364626e-10,
+          "relative_error": 1.1869539746860842e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_Summer": {
+          "expected": 29.163329810342525,
+          "actual": 29.163329809996352,
+          "absolute_error": 3.46172868148642e-10,
+          "relative_error": 1.1870142072249746e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_Winter": {
+          "expected": 10.686035942150351,
+          "actual": 10.68603594202351,
+          "absolute_error": 1.2684076011737488e-10,
+          "relative_error": 1.1869767311661382e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_annual": {
+          "expected": 93.61111111111113,
+          "actual": 93.6111111100001,
+          "absolute_error": 1.111033043343923e-09,
+          "relative_error": 1.1868602243436565e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "t20": {
+          "expected": 28.987114925,
+          "actual": 28.98711492,
+          "absolute_error": 5.000000413701855e-09,
+          "relative_error": 1.7249044710515823e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        }
+      },
+      "warnings": []
+    },
+    "0873": {
+      "passed": true,
+      "metric_count": 70,
+      "metrics": {
+        "ashp_APF": {
+          "expected": 2.6718862714519145,
+          "actual": 2.671886271465791,
+          "absolute_error": 1.3876455540184907e-11,
+          "relative_error": 5.19350531063e-12,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_SPF_Autumn": {
+          "expected": 2.8085167251762555,
+          "actual": 2.808516725190206,
+          "absolute_error": 1.3950618438229867e-11,
+          "relative_error": 4.967254890516759e-12,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_SPF_Spring": {
+          "expected": 2.916677228227476,
+          "actual": 2.916677228228556,
+          "absolute_error": 1.0800249583553523e-12,
+          "relative_error": 3.702929305659596e-13,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_SPF_Summer": {
+          "expected": 2.729380047301324,
+          "actual": 2.729380047301324,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_SPF_Winter": {
+          "expected": 2.5937380699009855,
+          "actual": 2.593738069901008,
+          "absolute_error": 2.2648549702353193e-14,
+          "relative_error": 8.732011132958306e-15,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_cool_all_Autumn": {
+          "expected": 0.7142535117306932,
+          "actual": 0.7142535119347654,
+          "absolute_error": 2.040722035800968e-10,
+          "relative_error": 2.85713966019731e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_all_Spring": {
+          "expected": 0.9582961739946864,
+          "actual": 0.9582961742684849,
+          "absolute_error": 2.737985393963527e-10,
+          "relative_error": 2.8571390226365537e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_all_Summer": {
+          "expected": 2.4872426425850156,
+          "actual": 2.4872426432956565,
+          "absolute_error": 7.10640879475477e-10,
+          "relative_error": 2.8571433575009034e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_all_Winter": {
+          "expected": 0.0005896083863385893,
+          "actual": 0.0005896083865070487,
+          "absolute_error": 1.6845943043297673e-13,
+          "relative_error": 2.8571410165837936e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_all_annual": {
+          "expected": 4.1603819366967345,
+          "actual": 4.16038193788541,
+          "absolute_error": 1.1886758244372686e-09,
+          "relative_error": 2.857131490627168e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_Autumn": {
+          "expected": 0.22623330841578634,
+          "actual": 0.2262333084804245,
+          "absolute_error": 6.463815593882316e-11,
+          "relative_error": 2.857145854934276e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_Spring": {
+          "expected": 0.2410518700012685,
+          "actual": 0.24105187007014042,
+          "absolute_error": 6.887193593207996e-11,
+          "relative_error": 2.8571417401457015e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_Summer": {
+          "expected": 0.8954386532160892,
+          "actual": 0.8954386534719289,
+          "absolute_error": 2.558396827723186e-10,
+          "relative_error": 2.857143611719639e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_Winter": {
+          "expected": 0.0001524261520249785,
+          "actual": 0.00015242615206852885,
+          "absolute_error": 4.355034128461499e-14,
+          "relative_error": 2.857143653241228e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_annual": {
+          "expected": 1.362876257785169,
+          "actual": 1.3628762581745635,
+          "absolute_error": 3.8939451663111413e-10,
+          "relative_error": 2.8571523966814503e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_Autumn": {
+          "expected": 0.994377754941886,
+          "actual": 0.9943777548950918,
+          "absolute_error": 4.679412413111095e-11,
+          "relative_error": 4.7058699672787554e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_Spring": {
+          "expected": 0.05571501550964257,
+          "actual": 0.05571501550702069,
+          "absolute_error": 2.621881878273058e-12,
+          "relative_error": 4.7058801909860193e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_Winter": {
+          "expected": 7.992848411319532,
+          "actual": 7.9928484109434,
+          "absolute_error": 3.7613201442354693e-10,
+          "relative_error": 4.7058569744781596e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_annual": {
+          "expected": 9.04294118177106,
+          "actual": 9.04294118134551,
+          "absolute_error": 4.255493735172422e-10,
+          "relative_error": 4.705873509108664e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_Autumn": {
+          "expected": 0.994377754941886,
+          "actual": 0.9943777548950918,
+          "absolute_error": 4.679412413111095e-11,
+          "relative_error": 4.7058699672787554e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_Spring": {
+          "expected": 0.05571501550964257,
+          "actual": 0.05571501550702069,
+          "absolute_error": 2.621881878273058e-12,
+          "relative_error": 4.7058801909860193e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_Winter": {
+          "expected": 7.992848411319532,
+          "actual": 7.9928484109434,
+          "absolute_error": 3.7613201442354693e-10,
+          "relative_error": 4.7058569744781596e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_annual": {
+          "expected": 9.04294118177106,
+          "actual": 9.04294118134551,
+          "absolute_error": 4.255493735172422e-10,
+          "relative_error": 4.705873509108664e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_total_all_annual": {
+          "expected": 13.203323118467793,
+          "actual": 13.203323119230928,
+          "absolute_error": 7.631353327042234e-10,
+          "relative_error": 5.779873186901019e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_total_night_annual": {
+          "expected": 10.405817439556229,
+          "actual": 10.405817439520073,
+          "absolute_error": 3.61559671091527e-11,
+          "relative_error": 3.4745917194079297e-12,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_APF": {
+          "expected": 4.146421505855349,
+          "actual": 4.146421506120211,
+          "absolute_error": 2.6486191018193495e-10,
+          "relative_error": 6.387722758236506e-11,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_SPF_Autumn": {
+          "expected": 3.9686377016751555,
+          "actual": 3.968637701623757,
+          "absolute_error": 5.13984410588364e-11,
+          "relative_error": 1.2951154759513875e-11,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_SPF_Spring": {
+          "expected": 3.265787765320184,
+          "actual": 3.265787764404405,
+          "absolute_error": 9.157790081815165e-10,
+          "relative_error": 2.804159590241259e-10,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_SPF_Summer": {
+          "expected": 3.2062260808024643,
+          "actual": 3.2062260798417515,
+          "absolute_error": 9.607128426125655e-10,
+          "relative_error": 2.9963976912448895e-10,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_SPF_Winter": {
+          "expected": 4.848772433630227,
+          "actual": 4.848772435529968,
+          "absolute_error": 1.8997408091081525e-09,
+          "relative_error": 3.917983025831212e-10,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_cool_all_Autumn": {
+          "expected": 0.6479964232501166,
+          "actual": 0.6479964236294244,
+          "absolute_error": 3.793078073854872e-10,
+          "relative_error": 5.85354785575846e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_all_Spring": {
+          "expected": 0.872779865029933,
+          "actual": 0.8727798655408187,
+          "absolute_error": 5.108856671043327e-10,
+          "relative_error": 5.85354552246472e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_all_Summer": {
+          "expected": 2.1173274343054063,
+          "actual": 2.1173274355447926,
+          "absolute_error": 1.2393863713100473e-09,
+          "relative_error": 5.853541361762172e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_all_Winter": {
+          "expected": 0.0006498689100934691,
+          "actual": 0.0006498689104738726,
+          "absolute_error": 3.8040349949891583e-13,
+          "relative_error": 5.853542054261425e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_all_annual": {
+          "expected": 3.638753591495549,
+          "actual": 3.6387535936255087,
+          "absolute_error": 2.129959764118894e-09,
+          "relative_error": 5.853542182952454e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_Autumn": {
+          "expected": 0.21099335748757939,
+          "actual": 0.21099335761108523,
+          "absolute_error": 1.2350584444043022e-10,
+          "relative_error": 5.853541832363167e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_Spring": {
+          "expected": 0.22623036277708775,
+          "actual": 0.22623036290951268,
+          "absolute_error": 1.3242493213105888e-10,
+          "relative_error": 5.853543728855775e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_Summer": {
+          "expected": 0.7967040075104197,
+          "actual": 0.7967040079767739,
+          "absolute_error": 4.663541774974078e-10,
+          "relative_error": 5.853543764072363e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_Winter": {
+          "expected": 0.0001684672333833321,
+          "actual": 0.00016846723348194515,
+          "absolute_error": 9.86130393922785e-14,
+          "relative_error": 5.853544182558834e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_annual": {
+          "expected": 1.2340961950084701,
+          "actual": 1.2340961957308543,
+          "absolute_error": 7.223841524961472e-10,
+          "relative_error": 5.85354817086353e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_Autumn": {
+          "expected": 0.5611639613280718,
+          "actual": 0.5611639610817326,
+          "absolute_error": 2.4633917128369376e-10,
+          "relative_error": 4.3897895848603354e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_Spring": {
+          "expected": 0.03283420364950208,
+          "actual": 0.03283420363508856,
+          "absolute_error": 1.4413525928347326e-11,
+          "relative_error": 4.389790013550672e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_Winter": {
+          "expected": 4.275253936619207,
+          "actual": 4.2752539347424605,
+          "absolute_error": 1.876746758000536e-09,
+          "relative_error": 4.3897901407106425e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_annual": {
+          "expected": 4.869252101596781,
+          "actual": 4.869252099459284,
+          "absolute_error": 2.137497290277679e-09,
+          "relative_error": 4.389785629659073e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_Autumn": {
+          "expected": 0.5611639613280718,
+          "actual": 0.5611639610817326,
+          "absolute_error": 2.4633917128369376e-10,
+          "relative_error": 4.3897895848603354e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_Spring": {
+          "expected": 0.03283420364950208,
+          "actual": 0.03283420363508856,
+          "absolute_error": 1.4413525928347326e-11,
+          "relative_error": 4.389790013550672e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_Winter": {
+          "expected": 4.275253936619207,
+          "actual": 4.2752539347424605,
+          "absolute_error": 1.876746758000536e-09,
+          "relative_error": 4.3897901407106425e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_annual": {
+          "expected": 4.869252101596781,
+          "actual": 4.869252099459284,
+          "absolute_error": 2.137497290277679e-09,
+          "relative_error": 4.389785629659073e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_total_all_annual": {
+          "expected": 8.50800569309233,
+          "actual": 8.5080056930848,
+          "absolute_error": 7.529976642217662e-12,
+          "relative_error": 8.850460276879302e-13,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_total_night_annual": {
+          "expected": 6.103348296605251,
+          "actual": 6.103348295190132,
+          "absolute_error": 1.415118688896655e-09,
+          "relative_error": 2.3185940243386724e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_Autumn": {
+          "expected": 2.077623032491237,
+          "actual": 2.0776230330848438,
+          "absolute_error": 5.936069413792211e-10,
+          "relative_error": 2.8571445931047403e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_Spring": {
+          "expected": 2.7983295660582264,
+          "actual": 2.798329566857749,
+          "absolute_error": 7.99522670291708e-10,
+          "relative_error": 2.857142632481023e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_Summer": {
+          "expected": 6.78863044146856,
+          "actual": 6.788630443408169,
+          "absolute_error": 1.9396093620116517e-09,
+          "relative_error": 2.8571438359105363e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_Winter": {
+          "expected": 0.0020836266486443525,
+          "actual": 0.002083626649239674,
+          "absolute_error": 5.953215351239827e-13,
+          "relative_error": 2.857141107843434e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_annual": {
+          "expected": 11.666666666666668,
+          "actual": 11.666666669999993,
+          "absolute_error": 3.333324727350373e-09,
+          "relative_error": 2.8571354805860336e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_Autumn": {
+          "expected": 2.721096457117792,
+          "actual": 2.7210964569897396,
+          "absolute_error": 1.2805223548184586e-10,
+          "relative_error": 4.705905780990941e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_Spring": {
+          "expected": 0.1592137795369055,
+          "actual": 0.15921377952941307,
+          "absolute_error": 7.492423348409716e-12,
+          "relative_error": 4.705888755484876e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_Winter": {
+          "expected": 20.730800874456413,
+          "actual": 20.730800873480852,
+          "absolute_error": 9.755609653439024e-10,
+          "relative_error": 4.7058527610766156e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_annual": {
+          "expected": 23.61111111111111,
+          "actual": 23.611111109999996,
+          "absolute_error": 1.1111147557585355e-09,
+          "relative_error": 4.705897789094974e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_Autumn": {
+          "expected": 4.798719489609029,
+          "actual": 4.798719490074584,
+          "absolute_error": 4.6555470589737524e-10,
+          "relative_error": 9.701644509654508e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_Spring": {
+          "expected": 2.957543345595132,
+          "actual": 2.957543346387162,
+          "absolute_error": 7.920299971431177e-10,
+          "relative_error": 2.677999625340204e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_Summer": {
+          "expected": 6.78863044146856,
+          "actual": 6.788630443408169,
+          "absolute_error": 1.9396093620116517e-09,
+          "relative_error": 2.8571438359105363e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_Winter": {
+          "expected": 20.732884501105058,
+          "actual": 20.73288450013009,
+          "absolute_error": 9.749676621595427e-10,
+          "relative_error": 4.702518176414754e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_annual": {
+          "expected": 35.27777777777778,
+          "actual": 35.27777777999999,
+          "absolute_error": 2.222208195234998e-09,
+          "relative_error": 6.299172836886608e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "t20": {
+          "expected": 27.036091521,
+          "actual": 27.03609153,
+          "absolute_error": 9.000000744663339e-09,
+          "relative_error": 3.328883813576634e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        }
+      },
+      "warnings": []
+    },
+    "2010": {
+      "passed": true,
+      "metric_count": 70,
+      "metrics": {
+        "ashp_APF": {
+          "expected": 3.0165108673518373,
+          "actual": 3.01651086705875,
+          "absolute_error": 2.930873321815852e-10,
+          "relative_error": 9.716103971436492e-11,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_SPF_Autumn": {
+          "expected": 3.1414004351852958,
+          "actual": 3.1414004348937867,
+          "absolute_error": 2.915090391297781e-10,
+          "relative_error": 9.279588678499162e-11,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_SPF_Spring": {
+          "expected": 2.853077368955518,
+          "actual": 2.8530773689555193,
+          "absolute_error": 1.3322676295501878e-15,
+          "relative_error": 4.669581147874434e-16,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_SPF_Summer": {
+          "expected": 3.429753108793504,
+          "actual": 3.4297531087935034,
+          "absolute_error": 4.440892098500626e-16,
+          "relative_error": 1.294813929059405e-16,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_SPF_Winter": {
+          "expected": 2.7419092789870705,
+          "actual": 2.7419092789870714,
+          "absolute_error": 8.881784197001252e-16,
+          "relative_error": 3.239269900382118e-16,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_cool_all_Autumn": {
+          "expected": 0.05238816035977624,
+          "actual": 0.05238816030738807,
+          "absolute_error": 5.2388170190820205e-11,
+          "relative_error": 1.0000001876577437e-09,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_all_Spring": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_all_Summer": {
+          "expected": 1.242038578126701,
+          "actual": 1.2420385768846622,
+          "absolute_error": 1.2420386941158768e-09,
+          "relative_error": 1.0000000933861299e-09,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_all_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_all_annual": {
+          "expected": 1.2944267384864772,
+          "actual": 1.2944267371920501,
+          "absolute_error": 1.294427010023469e-09,
+          "relative_error": 1.000000209773936e-09,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_Autumn": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_Spring": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_annual": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_Autumn": {
+          "expected": 0.07102399068792721,
+          "actual": 0.07102399074474638,
+          "absolute_error": 5.681917436550776e-11,
+          "relative_error": 7.999997439620918e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_Spring": {
+          "expected": 0.06025009630698892,
+          "actual": 0.060250096355188985,
+          "absolute_error": 4.820006199723892e-11,
+          "relative_error": 7.999997502352171e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_Winter": {
+          "expected": 1.8893875132451612,
+          "actual": 1.8893875147566708,
+          "absolute_error": 1.5115095841622406e-09,
+          "relative_error": 7.999997743004622e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_annual": {
+          "expected": 2.0206616002400772,
+          "actual": 2.0206616018566055,
+          "absolute_error": 1.6165282445967932e-09,
+          "relative_error": 7.999994874969325e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_Autumn": {
+          "expected": 0.07102399068792721,
+          "actual": 0.07102399074474638,
+          "absolute_error": 5.681917436550776e-11,
+          "relative_error": 7.999997439620918e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_Spring": {
+          "expected": 0.06025009630698892,
+          "actual": 0.060250096355188985,
+          "absolute_error": 4.820006199723892e-11,
+          "relative_error": 7.999997502352171e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_Winter": {
+          "expected": 1.8770699867536025,
+          "actual": 1.8770699882552584,
+          "absolute_error": 1.5016559107294825e-09,
+          "relative_error": 7.999999580871251e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_annual": {
+          "expected": 2.0083440737485185,
+          "actual": 2.008344075355193,
+          "absolute_error": 1.6066743491194302e-09,
+          "relative_error": 7.999995469504471e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_total_all_annual": {
+          "expected": 3.3150883387265546,
+          "actual": 3.315088339048652,
+          "absolute_error": 3.2209745981504057e-10,
+          "relative_error": 9.716104878784914e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_total_night_annual": {
+          "expected": 2.0083440737485185,
+          "actual": 2.008344075355193,
+          "absolute_error": 1.6066743491194302e-09,
+          "relative_error": 7.999995469504471e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_APF": {
+          "expected": 3.915563883625687,
+          "actual": 3.915563883609387,
+          "absolute_error": 1.6299850358336698e-11,
+          "relative_error": 4.162836016161115e-12,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_SPF_Autumn": {
+          "expected": 3.9195822221490033,
+          "actual": 3.919582222066273,
+          "absolute_error": 8.273026708138786e-11,
+          "relative_error": 2.11069094593528e-11,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_SPF_Spring": {
+          "expected": 3.859918967688555,
+          "actual": 3.859918968625161,
+          "absolute_error": 9.366059039450647e-10,
+          "relative_error": 2.4264911045682776e-10,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_SPF_Summer": {
+          "expected": 3.987417566682787,
+          "actual": 3.987417565527083,
+          "absolute_error": 1.1557039769627409e-09,
+          "relative_error": 2.898377101558978e-10,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_SPF_Winter": {
+          "expected": 3.8599189676885546,
+          "actual": 3.85991896862516,
+          "absolute_error": 9.366054598558549e-10,
+          "relative_error": 2.426489954053944e-10,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_cool_all_Autumn": {
+          "expected": 0.04628528785523385,
+          "actual": 0.04628528782236377,
+          "absolute_error": 3.2870081656533046e-11,
+          "relative_error": 7.101626279032887e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_all_Spring": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_all_Summer": {
+          "expected": 1.0683319725943325,
+          "actual": 1.0683319718356432,
+          "absolute_error": 7.586893335798095e-10,
+          "relative_error": 7.101625272315044e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_all_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_all_annual": {
+          "expected": 1.1146172604495665,
+          "actual": 1.1146172596580064,
+          "absolute_error": 7.915601507590964e-10,
+          "relative_error": 7.101631913001515e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_Autumn": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_Spring": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_annual": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_Autumn": {
+          "expected": 0.05262499467887015,
+          "actual": 0.05262499470820074,
+          "absolute_error": 2.933059350951339e-11,
+          "relative_error": 5.573510019049966e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_Spring": {
+          "expected": 0.04453414377084677,
+          "actual": 0.04453414379566792,
+          "absolute_error": 2.4821152078136066e-11,
+          "relative_error": 5.573510564355939e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_Winter": {
+          "expected": 1.3421341736796832,
+          "actual": 1.342134174427723,
+          "absolute_error": 7.480398522830001e-10,
+          "relative_error": 5.573510211964314e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_annual": {
+          "expected": 1.4392933121294003,
+          "actual": 1.4392933129315915,
+          "absolute_error": 8.02191202353697e-10,
+          "relative_error": 5.573507467820261e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_Autumn": {
+          "expected": 0.05262499467887015,
+          "actual": 0.05262499470820074,
+          "absolute_error": 2.933059350951339e-11,
+          "relative_error": 5.573510019049966e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_Spring": {
+          "expected": 0.04453414377084677,
+          "actual": 0.04453414379566792,
+          "absolute_error": 2.4821152078136066e-11,
+          "relative_error": 5.573510564355939e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_Winter": {
+          "expected": 1.3329691484010031,
+          "actual": 1.3329691491439348,
+          "absolute_error": 7.429317161466997e-10,
+          "relative_error": 5.573510212429914e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_annual": {
+          "expected": 1.4301282868507201,
+          "actual": 1.4301282876478032,
+          "absolute_error": 7.970830662173967e-10,
+          "relative_error": 5.57350745066829e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_total_all_annual": {
+          "expected": 2.5539105725789666,
+          "actual": 2.553910572589598,
+          "absolute_error": 1.0631495683810499e-11,
+          "relative_error": 4.162830052845077e-12,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_total_night_annual": {
+          "expected": 1.4301282868507201,
+          "actual": 1.4301282876478032,
+          "absolute_error": 7.970830662173967e-10,
+          "relative_error": 5.57350745066829e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_Autumn": {
+          "expected": 0.18455876987292893,
+          "actual": 0.18455876968837015,
+          "absolute_error": 1.8455878492140698e-10,
+          "relative_error": 1.000000081537594e-09,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_Spring": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_Summer": {
+          "expected": 4.259885674571516,
+          "actual": 4.259885670311629,
+          "absolute_error": 4.259886665636259e-09,
+          "relative_error": 1.0000002326505496e-09,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_annual": {
+          "expected": 4.4444444444444455,
+          "actual": 4.44444444,
+          "absolute_error": 4.444445700357846e-09,
+          "relative_error": 1.000000282580515e-09,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_Autumn": {
+          "expected": 0.20312821513548016,
+          "actual": 0.20312821529798272,
+          "absolute_error": 1.6250256695826693e-10,
+          "relative_error": 7.999999746459782e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_Spring": {
+          "expected": 0.17189818625086054,
+          "actual": 0.17189818638837912,
+          "absolute_error": 1.3751857985688787e-10,
+          "relative_error": 8.000001795027633e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_Winter": {
+          "expected": 5.180529154169214,
+          "actual": 5.180529158313638,
+          "absolute_error": 4.1444234710752426e-09,
+          "relative_error": 8.000000285182974e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_annual": {
+          "expected": 5.555555555555555,
+          "actual": 5.555555560000002,
+          "absolute_error": 4.444446588536266e-09,
+          "relative_error": 8.000003859365279e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_Autumn": {
+          "expected": 0.3876869850084091,
+          "actual": 0.3876869849863529,
+          "absolute_error": 2.205619020756444e-11,
+          "relative_error": 5.689174788028036e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_Spring": {
+          "expected": 0.17189818625086054,
+          "actual": 0.17189818638837912,
+          "absolute_error": 1.3751857985688787e-10,
+          "relative_error": 8.000001795027633e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_Summer": {
+          "expected": 4.259885674571516,
+          "actual": 4.259885670311629,
+          "absolute_error": 4.259886665636259e-09,
+          "relative_error": 1.0000002326505496e-09,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_Winter": {
+          "expected": 5.180529154169214,
+          "actual": 5.180529158313638,
+          "absolute_error": 4.1444234710752426e-09,
+          "relative_error": 8.000000285182974e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_annual": {
+          "expected": 10.0,
+          "actual": 10.000000000000002,
+          "absolute_error": 1.7763568394002505e-15,
+          "relative_error": 1.7763568394002506e-16,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "t20": {
+          "expected": 21.151596463,
+          "actual": 21.15159647,
+          "absolute_error": 7.000000579182597e-09,
+          "relative_error": 3.3094431389269063e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        }
+      },
+      "warnings": []
+    },
+    "2600": {
+      "passed": true,
+      "metric_count": 70,
+      "metrics": {
+        "ashp_APF": {
+          "expected": 2.5899128769627158,
+          "actual": 2.589912876922847,
+          "absolute_error": 3.986855290349922e-11,
+          "relative_error": 1.5393781488995302e-11,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_SPF_Autumn": {
+          "expected": 2.586990564202771,
+          "actual": 2.5869905641922837,
+          "absolute_error": 1.0487166690609229e-11,
+          "relative_error": 4.053809409173877e-12,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_SPF_Spring": {
+          "expected": 2.602266838065237,
+          "actual": 2.6022668380652383,
+          "absolute_error": 1.3322676295501878e-15,
+          "relative_error": 5.119642651791687e-16,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_SPF_Summer": {
+          "expected": 3.2663712538875243,
+          "actual": 3.2663712538874425,
+          "absolute_error": 8.171241461241152e-14,
+          "relative_error": 2.5016266756315644e-14,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_SPF_Winter": {
+          "expected": 2.4412867413805803,
+          "actual": 2.44128674138058,
+          "absolute_error": 4.440892098500626e-16,
+          "relative_error": 1.8190784487647863e-16,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_cool_all_Autumn": {
+          "expected": 0.06471858242132024,
+          "actual": 0.0647185823843382,
+          "absolute_error": 3.6982042428412853e-11,
+          "relative_error": 5.714284992779734e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_all_Spring": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_all_Summer": {
+          "expected": 1.7171895480978103,
+          "actual": 1.7171895471165592,
+          "absolute_error": 9.812510803897112e-10,
+          "relative_error": 5.714285190453649e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_all_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_all_annual": {
+          "expected": 1.7819081305191307,
+          "actual": 1.781908129500897,
+          "absolute_error": 1.0182337195629998e-09,
+          "relative_error": 5.714288532183495e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_Autumn": {
+          "expected": 0.0005589612084306033,
+          "actual": 0.0005589612081111967,
+          "absolute_error": 3.1940650211531585e-13,
+          "relative_error": 5.714287454975888e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_Spring": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_Summer": {
+          "expected": 0.12422444759733303,
+          "actual": 0.12422444752634765,
+          "absolute_error": 7.098538423733203e-11,
+          "relative_error": 5.714284555921504e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_annual": {
+          "expected": 0.12478340880576363,
+          "actual": 0.12478340873445885,
+          "absolute_error": 7.130478152372888e-11,
+          "relative_error": 5.714283830370514e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_Autumn": {
+          "expected": 2.4371991959490464,
+          "actual": 2.4371991956855656,
+          "absolute_error": 2.6348079273930125e-10,
+          "relative_error": 1.0810802546514944e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_Spring": {
+          "expected": 2.0008358453452453,
+          "actual": 2.0008358451289388,
+          "absolute_error": 2.1630652824455865e-10,
+          "relative_error": 1.0810808330317315e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_Summer": {
+          "expected": 0.0008639751444755473,
+          "actual": 0.0008639751443821444,
+          "absolute_error": 9.340293295745372e-14,
+          "relative_error": 1.0810835653628837e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_Winter": {
+          "expected": 7.936683243092208,
+          "actual": 7.93668324223419,
+          "absolute_error": 8.580176569239484e-10,
+          "relative_error": 1.0810783681845119e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_annual": {
+          "expected": 12.375582259530976,
+          "actual": 12.375582258193065,
+          "absolute_error": 1.3379111152289624e-09,
+          "relative_error": 1.0810894284982662e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_Autumn": {
+          "expected": 2.3874988126700796,
+          "actual": 2.387498812411972,
+          "absolute_error": 2.5810775738932534e-10,
+          "relative_error": 1.081080149734895e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_Spring": {
+          "expected": 1.9654551644018623,
+          "actual": 1.9654551641893805,
+          "absolute_error": 2.1248180992472498e-10,
+          "relative_error": 1.0810819487168946e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_Summer": {
+          "expected": 0.0008639751444755473,
+          "actual": 0.0008639751443821444,
+          "absolute_error": 9.340293295745372e-14,
+          "relative_error": 1.0810835653628837e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_Winter": {
+          "expected": 7.327690704965592,
+          "actual": 7.32769070417341,
+          "absolute_error": 7.921823197420963e-10,
+          "relative_error": 1.0810804544537829e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_annual": {
+          "expected": 11.68150865718201,
+          "actual": 11.681508655919128,
+          "absolute_error": 1.2628813550463747e-09,
+          "relative_error": 1.081094396373136e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_total_all_annual": {
+          "expected": 14.157490390050107,
+          "actual": 14.157490387693954,
+          "absolute_error": 2.3561526063531346e-09,
+          "relative_error": 1.6642445387136127e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_total_night_annual": {
+          "expected": 11.806292065987773,
+          "actual": 11.806292064653586,
+          "absolute_error": 1.3341860949367401e-09,
+          "relative_error": 1.1300636029328278e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_APF": {
+          "expected": 3.5206419447650874,
+          "actual": 3.5206419448386974,
+          "absolute_error": 7.361000697869713e-11,
+          "relative_error": 2.0908120772732744e-11,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_SPF_Autumn": {
+          "expected": 3.3805627790996313,
+          "actual": 3.380562779272839,
+          "absolute_error": 1.7320767042861007e-10,
+          "relative_error": 5.123634191900488e-11,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_SPF_Spring": {
+          "expected": 3.343565784955302,
+          "actual": 3.3435657851560956,
+          "absolute_error": 2.0079360396607626e-10,
+          "relative_error": 6.005373211724038e-11,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_SPF_Summer": {
+          "expected": 4.8883093686000905,
+          "actual": 4.888309368103779,
+          "absolute_error": 4.963114363931709e-10,
+          "relative_error": 1.0153028357436061e-10,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_SPF_Winter": {
+          "expected": 3.3435657849553024,
+          "actual": 3.3435657851560947,
+          "absolute_error": 2.007922716984467e-10,
+          "relative_error": 6.00533336601095e-11,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_cool_all_Autumn": {
+          "expected": 0.0458251150897684,
+          "actual": 0.0458251150682357,
+          "absolute_error": 2.1532699234771968e-11,
+          "relative_error": 4.698886013180942e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_all_Spring": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_all_Summer": {
+          "expected": 1.147250358167244,
+          "actual": 1.1472503576281643,
+          "absolute_error": 5.390796697923861e-10,
+          "relative_error": 4.698884301536214e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_all_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_all_annual": {
+          "expected": 1.1930754732570124,
+          "actual": 1.1930754726964001,
+          "absolute_error": 5.606122233103861e-10,
+          "relative_error": 4.698883145924994e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_Autumn": {
+          "expected": 0.00040663766857872846,
+          "actual": 0.000406637668387654,
+          "absolute_error": 1.9107447828820012e-13,
+          "relative_error": 4.698887807320942e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_Spring": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_Summer": {
+          "expected": 0.08615773555993117,
+          "actual": 0.08615773551944664,
+          "absolute_error": 4.0484532393136874e-11,
+          "relative_error": 4.698885379244433e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_annual": {
+          "expected": 0.0865643732285099,
+          "actual": 0.0865643731878343,
+          "absolute_error": 4.0675601775674863e-11,
+          "relative_error": 4.698884801984379e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_Autumn": {
+          "expected": 1.8687784902836384,
+          "actual": 1.868778489969382,
+          "absolute_error": 3.1425639868132293e-10,
+          "relative_error": 1.6816139543302742e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_Spring": {
+          "expected": 1.5572323392535738,
+          "actual": 1.5572323389917078,
+          "absolute_error": 2.618660843722864e-10,
+          "relative_error": 1.6816121639100196e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_Summer": {
+          "expected": 0.0007540371777023691,
+          "actual": 0.0007540371775755692,
+          "absolute_error": 1.2679993773717646e-13,
+          "relative_error": 1.6816138711296604e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_Winter": {
+          "expected": 5.794926978581177,
+          "actual": 5.7949269776066945,
+          "absolute_error": 9.744827167423864e-10,
+          "relative_error": 1.6816134531879426e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_annual": {
+          "expected": 9.22169184529609,
+          "actual": 9.221691843745363,
+          "absolute_error": 1.5507275463733095e-09,
+          "relative_error": 1.6816085078404814e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_Autumn": {
+          "expected": 1.8275112234089839,
+          "actual": 1.8275112231016666,
+          "absolute_error": 3.073172827328108e-10,
+          "relative_error": 1.681616390620849e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_Spring": {
+          "expected": 1.5276488434356732,
+          "actual": 1.527648843178782,
+          "absolute_error": 2.568911749989411e-10,
+          "relative_error": 1.6816114259687742e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_Summer": {
+          "expected": 0.0007540371777023691,
+          "actual": 0.0007540371775755692,
+          "absolute_error": 1.2679993773717646e-13,
+          "relative_error": 1.6816138711296604e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_Winter": {
+          "expected": 5.308149591142628,
+          "actual": 5.308149590250003,
+          "absolute_error": 8.926255290475638e-10,
+          "relative_error": 1.6816133639809836e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_annual": {
+          "expected": 8.664063695164987,
+          "actual": 8.664063693708028,
+          "absolute_error": 1.4569589978918884e-09,
+          "relative_error": 1.681611596074657e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_total_all_annual": {
+          "expected": 10.414767318553103,
+          "actual": 10.414767316441756,
+          "absolute_error": 2.111347541244868e-09,
+          "relative_error": 2.0272632855499953e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_total_night_annual": {
+          "expected": 8.750628068393498,
+          "actual": 8.750628066895862,
+          "absolute_error": 1.4976357931573148e-09,
+          "relative_error": 1.7114609162359947e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_Autumn": {
+          "expected": 0.22405386528250065,
+          "actual": 0.22405386515446987,
+          "absolute_error": 1.2803078042189497e-10,
+          "relative_error": 5.714285725910866e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_Spring": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_Summer": {
+          "expected": 5.6092794680508336,
+          "actual": 5.609279464845531,
+          "absolute_error": 3.205302689934797e-09,
+          "relative_error": 5.714285958101151e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_annual": {
+          "expected": 5.833333333333334,
+          "actual": 5.833333330000004,
+          "absolute_error": 3.333330056420891e-09,
+          "relative_error": 5.714280096721527e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_Autumn": {
+          "expected": 6.248383819772798,
+          "actual": 6.248383819097296,
+          "absolute_error": 6.755014325676711e-10,
+          "relative_error": 1.0810818478052995e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_Spring": {
+          "expected": 5.206708768754157,
+          "actual": 5.206708768191272,
+          "absolute_error": 5.628848498417938e-10,
+          "relative_error": 1.0810761170659424e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_Summer": {
+          "expected": 0.0025211729079499022,
+          "actual": 0.0025211729076773425,
+          "absolute_error": 2.7255975254547593e-13,
+          "relative_error": 1.0810831406526121e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_Winter": {
+          "expected": 19.375719571898433,
+          "actual": 19.375719569803763,
+          "absolute_error": 2.094669326879739e-09,
+          "relative_error": 1.0810795021609116e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_annual": {
+          "expected": 30.83333333333334,
+          "actual": 30.83333333000001,
+          "absolute_error": 3.333330056420891e-09,
+          "relative_error": 1.0810800182986672e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_Autumn": {
+          "expected": 6.472437685055298,
+          "actual": 6.472437684251766,
+          "absolute_error": 8.035323517674442e-10,
+          "relative_error": 1.2414678840752396e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_Spring": {
+          "expected": 5.206708768754157,
+          "actual": 5.206708768191272,
+          "absolute_error": 5.628848498417938e-10,
+          "relative_error": 1.0810761170659424e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_Summer": {
+          "expected": 5.6118006409587835,
+          "actual": 5.611800637753208,
+          "absolute_error": 3.205575360709645e-09,
+          "relative_error": 5.712204630565722e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_Winter": {
+          "expected": 19.375719571898433,
+          "actual": 19.375719569803763,
+          "absolute_error": 2.094669326879739e-09,
+          "relative_error": 1.0810795021609116e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_annual": {
+          "expected": 36.66666666666667,
+          "actual": 36.66666666000001,
+          "absolute_error": 6.666660112841782e-09,
+          "relative_error": 1.8181800307750314e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "t20": {
+          "expected": 16.696482988,
+          "actual": 16.69648299,
+          "absolute_error": 2.000000165480742e-09,
+          "relative_error": 1.1978571576530044e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        }
+      },
+      "warnings": []
+    },
+    "3000": {
+      "passed": true,
+      "metric_count": 70,
+      "metrics": {
+        "ashp_APF": {
+          "expected": 2.8437183371026102,
+          "actual": 2.84371833709351,
+          "absolute_error": 9.100276088247483e-12,
+          "relative_error": 3.200132716912996e-12,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_SPF_Autumn": {
+          "expected": 2.7897959576443006,
+          "actual": 2.789795957643967,
+          "absolute_error": 3.33510996597397e-13,
+          "relative_error": 1.195467344783929e-13,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_SPF_Spring": {
+          "expected": 2.768576794672607,
+          "actual": 2.7685767946726063,
+          "absolute_error": 8.881784197001252e-16,
+          "relative_error": 3.208068569415121e-16,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_SPF_Summer": {
+          "expected": 3.472903581521474,
+          "actual": 3.4729035815214724,
+          "absolute_error": 1.7763568394002505e-15,
+          "relative_error": 5.11490399230154e-16,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_SPF_Winter": {
+          "expected": 2.6836903561799446,
+          "actual": 2.683690356179945,
+          "absolute_error": 4.440892098500626e-16,
+          "relative_error": 1.6547706736264247e-16,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_cool_all_Autumn": {
+          "expected": 0.00520367771837214,
+          "actual": 0.0052036777174260165,
+          "absolute_error": 9.461233879681785e-13,
+          "relative_error": 1.8181821380440008e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_all_Spring": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_all_Summer": {
+          "expected": 1.7543181009827409,
+          "actual": 1.7543181006637742,
+          "absolute_error": 3.189666308855976e-10,
+          "relative_error": 1.81818012769131e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_all_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_all_annual": {
+          "expected": 1.759521778701113,
+          "actual": 1.7595217783812003,
+          "absolute_error": 3.199127629471832e-10,
+          "relative_error": 1.818180182932116e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_Autumn": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_Spring": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_Summer": {
+          "expected": 0.010099883176870373,
+          "actual": 0.010099883175034031,
+          "absolute_error": 1.8363418424760525e-12,
+          "relative_error": 1.8181812703353223e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_annual": {
+          "expected": 0.010099883176870373,
+          "actual": 0.010099883175034031,
+          "absolute_error": 1.8363418424760525e-12,
+          "relative_error": 1.8181812703353223e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_Autumn": {
+          "expected": 0.9774279715348086,
+          "actual": 0.9774279714370655,
+          "absolute_error": 9.774314690957908e-11,
+          "relative_error": 1.0000035783311753e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_Spring": {
+          "expected": 1.2445093016192583,
+          "actual": 1.2445093014948074,
+          "absolute_error": 1.2445089403456677e-10,
+          "relative_error": 9.999997097059941e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_Winter": {
+          "expected": 5.982021846960357,
+          "actual": 5.982021846362153,
+          "absolute_error": 5.982041528795889e-10,
+          "relative_error": 1.0000032901644353e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_annual": {
+          "expected": 8.203959120114423,
+          "actual": 8.203959119294023,
+          "absolute_error": 8.203997481359693e-10,
+          "relative_error": 1.0000046759430061e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_Autumn": {
+          "expected": 0.975641720621253,
+          "actual": 0.9756417205236887,
+          "absolute_error": 9.756428998031197e-11,
+          "relative_error": 1.0000012086218145e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_Spring": {
+          "expected": 1.2393931019079258,
+          "actual": 1.2393931017839863,
+          "absolute_error": 1.2393952530942443e-10,
+          "relative_error": 1.0000017356771755e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_Winter": {
+          "expected": 5.806849618781828,
+          "actual": 5.806849618201142,
+          "absolute_error": 5.806857217294237e-10,
+          "relative_error": 1.000001308542998e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_annual": {
+          "expected": 8.021884441311006,
+          "actual": 8.02188444050881,
+          "absolute_error": 8.021956432457955e-10,
+          "relative_error": 1.0000089743435568e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_total_all_annual": {
+          "expected": 9.963480898815536,
+          "actual": 9.963480897675245,
+          "absolute_error": 1.1402914168456846e-09,
+          "relative_error": 1.1444709217852197e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_total_night_annual": {
+          "expected": 8.031984324487876,
+          "actual": 8.031984323683844,
+          "absolute_error": 8.040323962177354e-10,
+          "relative_error": 1.0010383035315509e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_APF": {
+          "expected": 3.7445415015703696,
+          "actual": 3.744541501897906,
+          "absolute_error": 3.275362203680743e-10,
+          "relative_error": 8.747031385036421e-11,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_SPF_Autumn": {
+          "expected": 3.609929955767533,
+          "actual": 3.6099299563438114,
+          "absolute_error": 5.762785804108717e-10,
+          "relative_error": 1.5963705320380516e-10,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_SPF_Spring": {
+          "expected": 3.6057354563643162,
+          "actual": 3.605735456948108,
+          "absolute_error": 5.83791681663115e-10,
+          "relative_error": 1.619064095877282e-10,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_SPF_Summer": {
+          "expected": 4.35404261243825,
+          "actual": 4.35404261145397,
+          "absolute_error": 9.842802128900985e-10,
+          "relative_error": 2.2606122642858212e-10,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_SPF_Winter": {
+          "expected": 3.6057354563643154,
+          "actual": 3.6057354569481084,
+          "absolute_error": 5.837930139307446e-10,
+          "relative_error": 1.619067790734117e-10,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_cool_all_Autumn": {
+          "expected": 0.004256617752719121,
+          "actual": 0.0042566177529074455,
+          "absolute_error": 1.8832418263725614e-13,
+          "relative_error": 4.424268129712961e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_all_Spring": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_all_Summer": {
+          "expected": 1.3992921425771458,
+          "actual": 1.3992921426390543,
+          "absolute_error": 6.19084783437529e-11,
+          "relative_error": 4.424271133955843e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_all_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_all_annual": {
+          "expected": 1.4035487603298649,
+          "actual": 1.4035487603919623,
+          "absolute_error": 6.20974383025441e-11,
+          "relative_error": 4.4243164226050714e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_Autumn": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_Spring": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_Summer": {
+          "expected": 0.008229460988589964,
+          "actual": 0.008229460988954058,
+          "absolute_error": 3.6409417147886813e-13,
+          "relative_error": 4.424277264132848e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_annual": {
+          "expected": 0.008229460988589964,
+          "actual": 0.008229460988954058,
+          "absolute_error": 3.6409417147886813e-13,
+          "relative_error": 4.424277264132848e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_Autumn": {
+          "expected": 0.7551325771983004,
+          "actual": 0.7551325770005263,
+          "absolute_error": 1.9777413040600322e-10,
+          "relative_error": 2.619065001006665e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_Spring": {
+          "expected": 0.9555663788744581,
+          "actual": 0.9555663786241888,
+          "absolute_error": 2.5026924976856435e-10,
+          "relative_error": 2.619067134439696e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_Winter": {
+          "expected": 4.452321734477018,
+          "actual": 4.452321733310924,
+          "absolute_error": 1.166093888116393e-09,
+          "relative_error": 2.6190692354656744e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_annual": {
+          "expected": 6.163020690549776,
+          "actual": 6.163020688935644,
+          "absolute_error": 1.6141319392204423e-09,
+          "relative_error": 2.6190597440237585e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_Autumn": {
+          "expected": 0.7536924756786013,
+          "actual": 0.7536924754812043,
+          "absolute_error": 1.9739698764453806e-10,
+          "relative_error": 2.619065388264729e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_Spring": {
+          "expected": 0.9514585483100703,
+          "actual": 0.951458548060877,
+          "absolute_error": 2.4919322161309765e-10,
+          "relative_error": 2.6190654554073985e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_Winter": {
+          "expected": 4.314874668121471,
+          "actual": 4.3148746669913765,
+          "absolute_error": 1.1300942404091074e-09,
+          "relative_error": 2.6190662008292043e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_annual": {
+          "expected": 6.020025692110142,
+          "actual": 6.020025690533462,
+          "absolute_error": 1.5766801197969471e-09,
+          "relative_error": 2.6190587888409637e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_total_all_annual": {
+          "expected": 7.566569450879641,
+          "actual": 7.566569449327605,
+          "absolute_error": 1.5520358331855277e-09,
+          "relative_error": 2.0511750315132548e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_total_night_annual": {
+          "expected": 6.028255153098732,
+          "actual": 6.028255151522416,
+          "absolute_error": 1.57631596664487e-09,
+          "relative_error": 2.6148793085418576e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_Autumn": {
+          "expected": 0.01853349508020019,
+          "actual": 0.018533495076830463,
+          "absolute_error": 3.3697281076605634e-12,
+          "relative_error": 1.8181827513260198e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_Spring": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_Summer": {
+          "expected": 6.092577616030912,
+          "actual": 6.092577614923169,
+          "absolute_error": 1.1077432304773538e-09,
+          "relative_error": 1.8181848476786535e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_annual": {
+          "expected": 6.1111111111111125,
+          "actual": 6.11111111,
+          "absolute_error": 1.1111120912232764e-09,
+          "relative_error": 1.8181834220017245e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_Autumn": {
+          "expected": 2.722808307859676,
+          "actual": 2.722808307587395,
+          "absolute_error": 2.7228130861089994e-10,
+          "relative_error": 1.0000017548974379e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_Spring": {
+          "expected": 3.445519573217291,
+          "actual": 3.445519572872738,
+          "absolute_error": 3.44552830711109e-10,
+          "relative_error": 1.0000025348553718e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_Winter": {
+          "expected": 16.053894341145252,
+          "actual": 16.05389433953986,
+          "absolute_error": 1.6053931517490128e-09,
+          "relative_error": 1.0000023157212876e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_annual": {
+          "expected": 22.22222222222222,
+          "actual": 22.222222219999992,
+          "absolute_error": 2.222229511517071e-09,
+          "relative_error": 1.0000032801826819e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_Autumn": {
+          "expected": 2.741341802939876,
+          "actual": 2.741341802664225,
+          "absolute_error": 2.756510575352422e-10,
+          "relative_error": 1.0055333385994693e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_Spring": {
+          "expected": 3.445519573217291,
+          "actual": 3.445519572872738,
+          "absolute_error": 3.44552830711109e-10,
+          "relative_error": 1.0000025348553718e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_Summer": {
+          "expected": 6.092577616030912,
+          "actual": 6.092577614923169,
+          "absolute_error": 1.1077432304773538e-09,
+          "relative_error": 1.8181848476786535e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_Winter": {
+          "expected": 16.053894341145252,
+          "actual": 16.05389433953986,
+          "absolute_error": 1.6053931517490128e-09,
+          "relative_error": 1.0000023157212876e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_annual": {
+          "expected": 28.333333333333336,
+          "actual": 28.33333332999999,
+          "absolute_error": 3.3333442672756064e-09,
+          "relative_error": 1.1764744472737434e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "t20": {
+          "expected": 19.117950734999997,
+          "actual": 19.11795074,
+          "absolute_error": 5.000003966415534e-09,
+          "relative_error": 2.615345146413536e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        }
+      },
+      "warnings": []
+    },
+    "4000": {
+      "passed": true,
+      "metric_count": 70,
+      "metrics": {
+        "ashp_APF": {
+          "expected": 3.0462368774436923,
+          "actual": 3.0462368775052933,
+          "absolute_error": 6.160094656593174e-11,
+          "relative_error": 2.0221981757907592e-11,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_SPF_Autumn": {
+          "expected": 3.2316758972969377,
+          "actual": 3.2316758973019533,
+          "absolute_error": 5.015543536046607e-12,
+          "relative_error": 1.551994598295499e-12,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_SPF_Spring": {
+          "expected": 3.29009612643605,
+          "actual": 3.290096126446454,
+          "absolute_error": 1.0403677919157417e-11,
+          "relative_error": 3.1621197434213123e-12,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_SPF_Summer": {
+          "expected": 3.1287990582622984,
+          "actual": 3.1287990582622984,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_SPF_Winter": {
+          "expected": 2.765504709968366,
+          "actual": 2.765504709968366,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_cool_all_Autumn": {
+          "expected": 0.6698408104139579,
+          "actual": 0.6698408102078531,
+          "absolute_error": 2.0610479989358055e-10,
+          "relative_error": 3.0769221087949076e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_all_Spring": {
+          "expected": 0.5135202039017737,
+          "actual": 0.5135202037437674,
+          "absolute_error": 1.580062747308375e-10,
+          "relative_error": 3.0769242092188646e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_all_Summer": {
+          "expected": 2.2264505312391516,
+          "actual": 2.22645053055409,
+          "absolute_error": 6.850617850773233e-10,
+          "relative_error": 3.0769234504215364e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_all_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_all_annual": {
+          "expected": 3.4098115455548834,
+          "actual": 3.4098115445057133,
+          "absolute_error": 1.0491700841441798e-09,
+          "relative_error": 3.076915161226152e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_Autumn": {
+          "expected": 0.08528292376916846,
+          "actual": 0.08528292374292755,
+          "absolute_error": 2.624091222092062e-11,
+          "relative_error": 3.0769245543159077e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_Spring": {
+          "expected": 0.007559683106184749,
+          "actual": 0.007559683103858691,
+          "absolute_error": 2.326057749191257e-12,
+          "relative_error": 3.0769249405286e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_Summer": {
+          "expected": 0.260165157717441,
+          "actual": 0.2601651576373901,
+          "absolute_error": 8.005085483375751e-11,
+          "relative_error": 3.0769245019618957e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_annual": {
+          "expected": 0.35300776459279415,
+          "actual": 0.35300776448417637,
+          "absolute_error": 1.0861778143578249e-10,
+          "relative_error": 3.076923295471322e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_Autumn": {
+          "expected": 0.014940792335129975,
+          "actual": 0.014940792320189179,
+          "absolute_error": 1.4940796863593953e-11,
+          "relative_error": 1.0000003030939642e-09,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_Spring": {
+          "expected": 0.01998528224009437,
+          "actual": 0.01998528222010909,
+          "absolute_error": 1.998528079139028e-11,
+          "relative_error": 9.999999275114521e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_Winter": {
+          "expected": 1.5705577729840403,
+          "actual": 1.5705577714134826,
+          "absolute_error": 1.5705576839053492e-09,
+          "relative_error": 9.999999432821302e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_annual": {
+          "expected": 1.6054838475592648,
+          "actual": 1.6054838459537808,
+          "absolute_error": 1.605483967992427e-09,
+          "relative_error": 1.0000000750136244e-09,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_Autumn": {
+          "expected": 0.014940792335129975,
+          "actual": 0.014940792320189179,
+          "absolute_error": 1.4940796863593953e-11,
+          "relative_error": 1.0000003030939642e-09,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_Spring": {
+          "expected": 0.01998528224009437,
+          "actual": 0.01998528222010909,
+          "absolute_error": 1.998528079139028e-11,
+          "relative_error": 9.999999275114521e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_Winter": {
+          "expected": 1.5705577729840403,
+          "actual": 1.5705577714134826,
+          "absolute_error": 1.5705576839053492e-09,
+          "relative_error": 9.999999432821302e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_annual": {
+          "expected": 1.6054838475592648,
+          "actual": 1.6054838459537808,
+          "absolute_error": 1.605483967992427e-09,
+          "relative_error": 1.0000000750136244e-09,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_total_all_annual": {
+          "expected": 5.015295393114148,
+          "actual": 5.015295390459488,
+          "absolute_error": 2.6546604914301497e-09,
+          "relative_error": 5.293128885438971e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_total_night_annual": {
+          "expected": 1.9584916121520588,
+          "actual": 1.9584916104379573,
+          "absolute_error": 1.7141015273836047e-09,
+          "relative_error": 8.752151486112775e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_APF": {
+          "expected": 3.7099060379559066,
+          "actual": 3.7099060379719684,
+          "absolute_error": 1.6061818541857065e-11,
+          "relative_error": 4.3294407937907896e-12,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_SPF_Autumn": {
+          "expected": 3.5040537103690435,
+          "actual": 3.504053710605215,
+          "absolute_error": 2.3617152677957165e-10,
+          "relative_error": 6.739951675988959e-11,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_SPF_Spring": {
+          "expected": 3.5136216159857496,
+          "actual": 3.5136216162105494,
+          "absolute_error": 2.247997343829411e-10,
+          "relative_error": 6.397949436563713e-11,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_SPF_Summer": {
+          "expected": 3.490081350905902,
+          "actual": 3.490081351158872,
+          "absolute_error": 2.5297008932056997e-10,
+          "relative_error": 7.248257673274804e-11,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_SPF_Winter": {
+          "expected": 4.382782720043794,
+          "actual": 4.382782719698779,
+          "absolute_error": 3.4501468348935305e-10,
+          "relative_error": 7.872046266667437e-11,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_cool_all_Autumn": {
+          "expected": 0.6216671113834642,
+          "actual": 0.6216671111471217,
+          "absolute_error": 2.363425011253639e-10,
+          "relative_error": 3.801753330643549e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_all_Spring": {
+          "expected": 0.4863921626276958,
+          "actual": 0.4863921624427816,
+          "absolute_error": 1.849141950671651e-10,
+          "relative_error": 3.8017511233770827e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_all_Summer": {
+          "expected": 1.995975344127865,
+          "actual": 1.9959753433690453,
+          "absolute_error": 7.588196737629005e-10,
+          "relative_error": 3.801748733997836e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_all_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_all_annual": {
+          "expected": 3.104034618139025,
+          "actual": 3.104034616958948,
+          "absolute_error": 1.1800769250669418e-09,
+          "relative_error": 3.8017518173635525e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_Autumn": {
+          "expected": 0.08155568290190225,
+          "actual": 0.08155568287089678,
+          "absolute_error": 3.10054759644629e-11,
+          "relative_error": 3.801755421723005e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_Spring": {
+          "expected": 0.007528573265418913,
+          "actual": 0.007528573262556735,
+          "absolute_error": 2.8621775088888413e-12,
+          "relative_error": 3.8017528793081104e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_Summer": {
+          "expected": 0.24691403826492403,
+          "actual": 0.24691403817105345,
+          "absolute_error": 9.387057797738407e-11,
+          "relative_error": 3.801751355938156e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_annual": {
+          "expected": 0.33599829443224527,
+          "actual": 0.3359982943045069,
+          "absolute_error": 1.2773837543278432e-10,
+          "relative_error": 3.801756662147076e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_Autumn": {
+          "expected": 0.009884909057319376,
+          "actual": 0.00988490904821261,
+          "absolute_error": 9.106765688771112e-12,
+          "relative_error": 9.212796633700864e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_Spring": {
+          "expected": 0.013173392582293735,
+          "actual": 0.013173392570157356,
+          "absolute_error": 1.2136378707561235e-11,
+          "relative_error": 9.212796651846281e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_Winter": {
+          "expected": 0.9910107792022577,
+          "actual": 0.9910107782892599,
+          "absolute_error": 9.12997788482528e-10,
+          "relative_error": 9.212793721754183e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_annual": {
+          "expected": 1.0140690808418709,
+          "actual": 1.0140690799076304,
+          "absolute_error": 9.342404627687984e-10,
+          "relative_error": 9.212789152324815e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_Autumn": {
+          "expected": 0.009884909057319376,
+          "actual": 0.00988490904821261,
+          "absolute_error": 9.106765688771112e-12,
+          "relative_error": 9.212796633700864e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_Spring": {
+          "expected": 0.013173392582293735,
+          "actual": 0.013173392570157356,
+          "absolute_error": 1.2136378707561235e-11,
+          "relative_error": 9.212796651846281e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_Winter": {
+          "expected": 0.9910107792022577,
+          "actual": 0.9910107782892599,
+          "absolute_error": 9.12997788482528e-10,
+          "relative_error": 9.212793721754183e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_annual": {
+          "expected": 1.0140690808418709,
+          "actual": 1.0140690799076304,
+          "absolute_error": 9.342404627687984e-10,
+          "relative_error": 9.212789152324815e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_total_all_annual": {
+          "expected": 4.118103698980896,
+          "actual": 4.118103696866577,
+          "absolute_error": 2.114318498058765e-09,
+          "relative_error": 5.134204120653867e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_total_night_annual": {
+          "expected": 1.3500673752741161,
+          "actual": 1.3500673742121367,
+          "absolute_error": 1.061979393313095e-09,
+          "relative_error": 7.866121445216554e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_Autumn": {
+          "expected": 2.1696687919109703,
+          "actual": 2.1696687912433803,
+          "absolute_error": 6.675899832941923e-10,
+          "relative_error": 3.0769211677981584e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_Spring": {
+          "expected": 1.6975482160137116,
+          "actual": 1.6975482154913886,
+          "absolute_error": 5.223230736817186e-10,
+          "relative_error": 3.0769262914267623e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_Summer": {
+          "expected": 6.9661163254086516,
+          "actual": 6.966116323265231,
+          "absolute_error": 2.143420552158659e-09,
+          "relative_error": 3.076923284126927e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_annual": {
+          "expected": 10.833333333333334,
+          "actual": 10.833333329999999,
+          "absolute_error": 3.3333353854914094e-09,
+          "relative_error": 3.076924971222839e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_Autumn": {
+          "expected": 0.043323408605623746,
+          "actual": 0.04332340856230033,
+          "absolute_error": 4.332341430046682e-11,
+          "relative_error": 1.0000001314495619e-09,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_Spring": {
+          "expected": 0.057736117374030074,
+          "actual": 0.05773611731629395,
+          "absolute_error": 5.773612143933349e-11,
+          "relative_error": 1.0000000704117907e-09,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_Winter": {
+          "expected": 4.343384918464791,
+          "actual": 4.3433849141214065,
+          "absolute_error": 4.343384318872268e-09,
+          "relative_error": 9.999998619527086e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_annual": {
+          "expected": 4.444444444444445,
+          "actual": 4.444444439999999,
+          "absolute_error": 4.444445700357846e-09,
+          "relative_error": 1.0000002825805153e-09,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_Autumn": {
+          "expected": 2.212992200516594,
+          "actual": 2.2129921998056807,
+          "absolute_error": 7.109131061611151e-10,
+          "relative_error": 3.21245192818647e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_Spring": {
+          "expected": 1.7552843333877417,
+          "actual": 1.7552843328076826,
+          "absolute_error": 5.800591118543252e-10,
+          "relative_error": 3.30464472804128e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_Summer": {
+          "expected": 6.9661163254086516,
+          "actual": 6.966116323265231,
+          "absolute_error": 2.143420552158659e-09,
+          "relative_error": 3.076923284126927e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_Winter": {
+          "expected": 4.343384918464791,
+          "actual": 4.3433849141214065,
+          "absolute_error": 4.343384318872268e-09,
+          "relative_error": 9.999998619527086e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_annual": {
+          "expected": 15.277777777777779,
+          "actual": 15.277777769999997,
+          "absolute_error": 7.777781974027675e-09,
+          "relative_error": 5.090911837545387e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "t20": {
+          "expected": 24.593196352,
+          "actual": 24.59319635,
+          "absolute_error": 2.000000165480742e-09,
+          "relative_error": 8.132331140917742e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        }
+      },
+      "warnings": []
+    },
+    "6000": {
+      "passed": true,
+      "metric_count": 70,
+      "metrics": {
+        "ashp_APF": {
+          "expected": 2.9147444123969604,
+          "actual": 2.9147444124031185,
+          "absolute_error": 6.158185072990818e-12,
+          "relative_error": 2.112770178681496e-12,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_SPF_Autumn": {
+          "expected": 3.085952981219797,
+          "actual": 3.085952981223982,
+          "absolute_error": 4.18465262441714e-12,
+          "relative_error": 1.3560325286495633e-12,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_SPF_Spring": {
+          "expected": 2.836868253454674,
+          "actual": 2.83686825345585,
+          "absolute_error": 1.1759482276829658e-12,
+          "relative_error": 4.1452338375281353e-13,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_SPF_Summer": {
+          "expected": 3.119946238452986,
+          "actual": 3.119946238452986,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_SPF_Winter": {
+          "expected": 2.7829946267913317,
+          "actual": 2.7829946267913312,
+          "absolute_error": 4.440892098500626e-16,
+          "relative_error": 1.5957242805102992e-16,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_cool_all_Autumn": {
+          "expected": 0.5182898004808002,
+          "actual": 0.518289800739945,
+          "absolute_error": 2.591448167166277e-10,
+          "relative_error": 4.999998388473547e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_all_Spring": {
+          "expected": 0.014204561462734425,
+          "actual": 0.014204561469836707,
+          "absolute_error": 7.102282303939056e-12,
+          "relative_error": 5.00000110708933e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_all_Summer": {
+          "expected": 1.5966203723304817,
+          "actual": 1.5966203731287916,
+          "absolute_error": 7.983098626596075e-10,
+          "relative_error": 4.999997973809936e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_all_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_all_annual": {
+          "expected": 2.129114734274016,
+          "actual": 2.1291147353385713,
+          "absolute_error": 1.0645551107302254e-09,
+          "relative_error": 4.999989402136266e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_Autumn": {
+          "expected": 0.06204225982779389,
+          "actual": 0.06204225985881502,
+          "absolute_error": 3.102113010911012e-11,
+          "relative_error": 5.000000031464549e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_Spring": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_Summer": {
+          "expected": 0.1550473328379848,
+          "actual": 0.15504733291550848,
+          "absolute_error": 7.752368191837888e-11,
+          "relative_error": 5.00000099965515e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_annual": {
+          "expected": 0.21708959266577868,
+          "actual": 0.2170895927743235,
+          "absolute_error": 1.08544812027489e-10,
+          "relative_error": 5.000000722954955e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_Autumn": {
+          "expected": 0.16104140476371265,
+          "actual": 0.16104140483151957,
+          "absolute_error": 6.780692674013267e-11,
+          "relative_error": 4.2105275248698997e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_Spring": {
+          "expected": 0.6293625963651076,
+          "actual": 0.6293625966301023,
+          "absolute_error": 2.649946928556801e-10,
+          "relative_error": 4.2105249721886976e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_Winter": {
+          "expected": 2.989137319986737,
+          "actual": 2.9891373212453214,
+          "absolute_error": 1.2585843478518655e-09,
+          "relative_error": 4.2105270287731373e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_annual": {
+          "expected": 3.7795413211155573,
+          "actual": 3.779541322706944,
+          "absolute_error": 1.5913865780703418e-09,
+          "relative_error": 4.2105283230522617e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_Autumn": {
+          "expected": 0.16104140476371265,
+          "actual": 0.16104140483151957,
+          "absolute_error": 6.780692674013267e-11,
+          "relative_error": 4.2105275248698997e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_Spring": {
+          "expected": 0.6293625963651076,
+          "actual": 0.6293625966301023,
+          "absolute_error": 2.649946928556801e-10,
+          "relative_error": 4.2105249721886976e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_Winter": {
+          "expected": 2.989137319986737,
+          "actual": 2.9891373212453214,
+          "absolute_error": 1.2585843478518655e-09,
+          "relative_error": 4.2105270287731373e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_annual": {
+          "expected": 3.7795413211155573,
+          "actual": 3.779541322706944,
+          "absolute_error": 1.5913865780703418e-09,
+          "relative_error": 4.2105283230522617e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_total_all_annual": {
+          "expected": 5.9086560553895735,
+          "actual": 5.908656058045515,
+          "absolute_error": 2.6559412447113573e-09,
+          "relative_error": 4.4950005886511937e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_total_night_annual": {
+          "expected": 3.996630913781336,
+          "actual": 3.996630915481267,
+          "absolute_error": 1.699930862741894e-09,
+          "relative_error": 4.253409682840933e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_APF": {
+          "expected": 3.9203775823383435,
+          "actual": 3.920377582429039,
+          "absolute_error": 9.069545114925859e-11,
+          "relative_error": 2.3134366331919102e-11,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_SPF_Autumn": {
+          "expected": 3.908315741514172,
+          "actual": 3.908315741139458,
+          "absolute_error": 3.747140375764957e-10,
+          "relative_error": 9.587609148265049e-11,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_SPF_Spring": {
+          "expected": 3.931484735040841,
+          "actual": 3.9314847355633034,
+          "absolute_error": 5.224625176936115e-10,
+          "relative_error": 1.3289191053877615e-10,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_SPF_Summer": {
+          "expected": 3.9015997701390397,
+          "actual": 3.9015997695067584,
+          "absolute_error": 6.322813383974335e-10,
+          "relative_error": 1.6205694475292148e-10,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_SPF_Winter": {
+          "expected": 3.932330665731438,
+          "actual": 3.93233066628691,
+          "absolute_error": 5.554721127509765e-10,
+          "relative_error": 1.4125773236510242e-10,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_cool_all_Autumn": {
+          "expected": 0.4191671412266197,
+          "actual": 0.4191671415041322,
+          "absolute_error": 2.7751251296948e-10,
+          "relative_error": 6.620569354682428e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_all_Spring": {
+          "expected": 0.012783094847111801,
+          "actual": 0.012783094855574934,
+          "absolute_error": 8.463132972202914e-12,
+          "relative_error": 6.62056651649977e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_all_Summer": {
+          "expected": 1.2767505685782765,
+          "actual": 1.276750569423558,
+          "absolute_error": 8.452814004300535e-10,
+          "relative_error": 6.620568036020655e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_all_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_all_annual": {
+          "expected": 1.708700804652008,
+          "actual": 1.7087008057832656,
+          "absolute_error": 1.1312575320943097e-09,
+          "relative_error": 6.620571190780824e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_Autumn": {
+          "expected": 0.05197438960738792,
+          "actual": 0.0519743896417979,
+          "absolute_error": 3.440998180836985e-11,
+          "relative_error": 6.620564872103592e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_Spring": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_Summer": {
+          "expected": 0.13015552790012225,
+          "actual": 0.13015552798629257,
+          "absolute_error": 8.617032087876453e-11,
+          "relative_error": 6.620565585573073e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_annual": {
+          "expected": 0.18212991750751015,
+          "actual": 0.1821299176280905,
+          "absolute_error": 1.205803512593917e-10,
+          "relative_error": 6.620568048872012e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_Autumn": {
+          "expected": 0.11722354384319889,
+          "actual": 0.11722354387599741,
+          "absolute_error": 3.2798527782595954e-11,
+          "relative_error": 2.797947127965017e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_Spring": {
+          "expected": 0.4516000484309182,
+          "actual": 0.4516000485572737,
+          "absolute_error": 1.2635548163331123e-10,
+          "relative_error": 2.797951020429086e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_Winter": {
+          "expected": 2.115476496612777,
+          "actual": 2.1154764972046762,
+          "absolute_error": 5.918994183673476e-10,
+          "relative_error": 2.7979484495104305e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_annual": {
+          "expected": 2.684300088886894,
+          "actual": 2.684300089637945,
+          "absolute_error": 7.510507771257835e-10,
+          "relative_error": 2.7979389496545586e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_Autumn": {
+          "expected": 0.11722354384319889,
+          "actual": 0.11722354387599741,
+          "absolute_error": 3.2798527782595954e-11,
+          "relative_error": 2.797947127965017e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_Spring": {
+          "expected": 0.4516000484309182,
+          "actual": 0.4516000485572737,
+          "absolute_error": 1.2635548163331123e-10,
+          "relative_error": 2.797951020429086e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_Winter": {
+          "expected": 2.115476496612777,
+          "actual": 2.1154764972046762,
+          "absolute_error": 5.918994183673476e-10,
+          "relative_error": 2.7979484495104305e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_annual": {
+          "expected": 2.684300088886894,
+          "actual": 2.684300089637945,
+          "absolute_error": 7.510507771257835e-10,
+          "relative_error": 2.7979389496545586e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_total_all_annual": {
+          "expected": 4.393000893538902,
+          "actual": 4.393000895421208,
+          "absolute_error": 1.882305866729439e-09,
+          "relative_error": 4.2847837101464733e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_total_night_annual": {
+          "expected": 2.8664300063944044,
+          "actual": 2.866430007266036,
+          "absolute_error": 8.716316557411119e-10,
+          "relative_error": 3.0408265814852774e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_Autumn": {
+          "expected": 1.6354224218596178,
+          "actual": 1.6354224226773293,
+          "absolute_error": 8.177114541041419e-10,
+          "relative_error": 5.000001486920625e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_Spring": {
+          "expected": 0.04987451991715695,
+          "actual": 0.049874519942094214,
+          "absolute_error": 2.493726752872405e-11,
+          "relative_error": 5.000001517838285e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_Summer": {
+          "expected": 4.981369724889892,
+          "actual": 4.981369727380576,
+          "absolute_error": 2.490684103406693e-09,
+          "relative_error": 4.999998476245902e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_annual": {
+          "expected": 6.666666666666667,
+          "actual": 6.666666669999998,
+          "absolute_error": 3.333330944599311e-09,
+          "relative_error": 4.999996416898966e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_Autumn": {
+          "expected": 0.46096173620032455,
+          "actual": 0.46096173639441373,
+          "absolute_error": 1.9408918916496987e-10,
+          "relative_error": 4.210527120208144e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_Spring": {
+          "expected": 1.775840719090702,
+          "actual": 1.7758407198384245,
+          "absolute_error": 7.477225505425622e-10,
+          "relative_error": 4.210527118250924e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_Winter": {
+          "expected": 8.31875310026453,
+          "actual": 8.318753103767163,
+          "absolute_error": 3.5026328504272897e-09,
+          "relative_error": 4.2105262750446443e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_annual": {
+          "expected": 10.555555555555557,
+          "actual": 10.55555556,
+          "absolute_error": 4.444443035822587e-09,
+          "relative_error": 4.2105249813056083e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_Autumn": {
+          "expected": 2.0963841580599425,
+          "actual": 2.096384159071743,
+          "absolute_error": 1.0118004212245069e-09,
+          "relative_error": 4.82640749470678e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_Spring": {
+          "expected": 1.8257152390078588,
+          "actual": 1.8257152397805188,
+          "absolute_error": 7.726599360324826e-10,
+          "relative_error": 4.232094466453411e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_Summer": {
+          "expected": 4.981369724889892,
+          "actual": 4.981369727380576,
+          "absolute_error": 2.490684103406693e-09,
+          "relative_error": 4.999998476245902e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_Winter": {
+          "expected": 8.31875310026453,
+          "actual": 8.318753103767163,
+          "absolute_error": 3.5026328504272897e-09,
+          "relative_error": 4.2105262750446443e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_annual": {
+          "expected": 17.222222222222225,
+          "actual": 17.22222223,
+          "absolute_error": 7.777774868600318e-09,
+          "relative_error": 4.5161273430582485e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "t20": {
+          "expected": 21.682823886,
+          "actual": 21.68282389,
+          "absolute_error": 4.000000330961484e-09,
+          "relative_error": 1.844778314850481e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        }
+      },
+      "warnings": []
+    },
+    "6743": {
+      "passed": true,
+      "metric_count": 70,
+      "metrics": {
+        "ashp_APF": {
+          "expected": 2.8282265335073564,
+          "actual": 2.828226533507356,
+          "absolute_error": 4.440892098500626e-16,
+          "relative_error": 1.5702038170872266e-16,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_SPF_Autumn": {
+          "expected": 2.8898957469829107,
+          "actual": 2.8898957469829107,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_SPF_Spring": {
+          "expected": 2.7183222845928756,
+          "actual": 2.718322284592875,
+          "absolute_error": 4.440892098500626e-16,
+          "relative_error": 1.6336885893446372e-16,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_SPF_Summer": {
+          "expected": 2.860418448142027,
+          "actual": 2.8604184481420267,
+          "absolute_error": 4.440892098500626e-16,
+          "relative_error": 1.552532323158938e-16,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_SPF_Winter": {
+          "expected": 3.0536943120755082,
+          "actual": 3.053694312075508,
+          "absolute_error": 4.440892098500626e-16,
+          "relative_error": 1.4542687134529452e-16,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_cool_all_Autumn": {
+          "expected": 6.607465032272571,
+          "actual": 6.60746503192481,
+          "absolute_error": 3.4776093116306583e-10,
+          "relative_error": 5.263152047941402e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_all_Spring": {
+          "expected": 11.45613090814701,
+          "actual": 11.456130907544058,
+          "absolute_error": 6.029523547113058e-10,
+          "relative_error": 5.26314127819993e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_all_Summer": {
+          "expected": 9.352427618438936,
+          "actual": 9.352427617946702,
+          "absolute_error": 4.922338092683276e-10,
+          "relative_error": 5.263166199734663e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_all_Winter": {
+          "expected": 2.441713593378268,
+          "actual": 2.4417135932497573,
+          "absolute_error": 1.2851053554641112e-10,
+          "relative_error": 5.263128972002344e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_all_annual": {
+          "expected": 29.857737152236783,
+          "actual": 29.85773715066533,
+          "absolute_error": 1.5714540779754316e-09,
+          "relative_error": 5.263138562587643e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_Autumn": {
+          "expected": 2.2653222130349246,
+          "actual": 2.2653222129156974,
+          "absolute_error": 1.192272947037054e-10,
+          "relative_error": 5.263149498895029e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_Spring": {
+          "expected": 4.8728464735578925,
+          "actual": 4.872846473301427,
+          "absolute_error": 2.5646507140208996e-10,
+          "relative_error": 5.263146967460948e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_Summer": {
+          "expected": 4.309593447082492,
+          "actual": 4.309593446855672,
+          "absolute_error": 2.2682034028775888e-10,
+          "relative_error": 5.263149368331058e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_Winter": {
+          "expected": 0.5588918671353635,
+          "actual": 0.5588918671059482,
+          "absolute_error": 2.941535903744352e-11,
+          "relative_error": 5.263157466973683e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_annual": {
+          "expected": 12.006654000810673,
+          "actual": 12.006654000178745,
+          "absolute_error": 6.319282874756027e-10,
+          "relative_error": 5.263150644908529e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_Autumn": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_Spring": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_annual": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_Autumn": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_Spring": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_annual": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_total_all_annual": {
+          "expected": 29.857737152236783,
+          "actual": 29.85773715066533,
+          "absolute_error": 1.5714540779754316e-09,
+          "relative_error": 5.263138562587643e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_total_night_annual": {
+          "expected": 12.006654000810673,
+          "actual": 12.006654000178745,
+          "absolute_error": 6.319282874756027e-10,
+          "relative_error": 5.263150644908529e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_APF": {
+          "expected": 2.7719905984596664,
+          "actual": 2.771990598858618,
+          "absolute_error": 3.989515384716924e-10,
+          "relative_error": 1.4392239955408973e-10,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_SPF_Autumn": {
+          "expected": 2.771990598459666,
+          "actual": 2.7719905988586144,
+          "absolute_error": 3.9894842984722345e-10,
+          "relative_error": 1.4392127811288765e-10,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_SPF_Spring": {
+          "expected": 2.7719905984596656,
+          "actual": 2.771990598858614,
+          "absolute_error": 3.9894842984722345e-10,
+          "relative_error": 1.4392127811288767e-10,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_SPF_Summer": {
+          "expected": 2.7719905984596656,
+          "actual": 2.7719905988586127,
+          "absolute_error": 3.989470975795939e-10,
+          "relative_error": 1.4392079749522961e-10,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_SPF_Winter": {
+          "expected": 2.771990598459666,
+          "actual": 2.771990598858615,
+          "absolute_error": 3.989488739364333e-10,
+          "relative_error": 1.4392143831877366e-10,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_cool_all_Autumn": {
+          "expected": 6.888510049678166,
+          "actual": 6.8885100483242105,
+          "absolute_error": 1.3539551702024255e-09,
+          "relative_error": 1.9655268852597273e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_all_Spring": {
+          "expected": 11.23432956812114,
+          "actual": 11.234329565912999,
+          "absolute_error": 2.2081412254237875e-09,
+          "relative_error": 1.9655300407864775e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_all_Summer": {
+          "expected": 9.65077461285805,
+          "actual": 9.650774610961166,
+          "absolute_error": 1.896884427310397e-09,
+          "relative_error": 1.9655255701268934e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_all_Winter": {
+          "expected": 2.6898528862110638,
+          "actual": 2.689852885682366,
+          "absolute_error": 5.286979742891162e-10,
+          "relative_error": 1.9655274717787338e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_all_annual": {
+          "expected": 30.463467116868415,
+          "actual": 30.463467110880696,
+          "absolute_error": 5.987718765254613e-09,
+          "relative_error": 1.9655408040994312e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_Autumn": {
+          "expected": 2.4870620659977702,
+          "actual": 2.4870620655089324,
+          "absolute_error": 4.888378590806042e-10,
+          "relative_error": 1.9655233609318475e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_Spring": {
+          "expected": 5.07463304212121,
+          "actual": 5.074633041123778,
+          "absolute_error": 9.97432358929018e-10,
+          "relative_error": 1.965526079718443e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_Summer": {
+          "expected": 4.672804012225846,
+          "actual": 4.672804011307395,
+          "absolute_error": 9.184510929571843e-10,
+          "relative_error": 1.9655245342072218e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_Winter": {
+          "expected": 0.627788931864204,
+          "actual": 0.6277889317408103,
+          "absolute_error": 1.233937396705187e-10,
+          "relative_error": 1.965529072073698e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_annual": {
+          "expected": 12.862288052209031,
+          "actual": 12.862288049680902,
+          "absolute_error": 2.5281288174028305e-09,
+          "relative_error": 1.965535841788769e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_Autumn": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_Spring": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_annual": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_Autumn": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_Spring": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_annual": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_total_all_annual": {
+          "expected": 30.463467116868415,
+          "actual": 30.463467110880696,
+          "absolute_error": 5.987718765254613e-09,
+          "relative_error": 1.9655408040994312e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_total_night_annual": {
+          "expected": 12.862288052209031,
+          "actual": 12.862288049680902,
+          "absolute_error": 2.5281288174028305e-09,
+          "relative_error": 1.965535841788769e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_Autumn": {
+          "expected": 19.094885095102804,
+          "actual": 19.094885094097812,
+          "absolute_error": 1.0049916454590857e-09,
+          "relative_error": 5.263145813413835e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_Spring": {
+          "expected": 31.141455942829236,
+          "actual": 31.14145594119021,
+          "absolute_error": 1.639026692146217e-09,
+          "relative_error": 5.2631665492943224e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_Summer": {
+          "expected": 26.751856494695737,
+          "actual": 26.751856493287736,
+          "absolute_error": 1.4080008270411781e-09,
+          "relative_error": 5.26318921948595e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_Winter": {
+          "expected": 7.456246911816667,
+          "actual": 7.456246911424234,
+          "absolute_error": 3.9243275296030333e-10,
+          "relative_error": 5.263140526346781e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_annual": {
+          "expected": 84.44444444444444,
+          "actual": 84.44444444000007,
+          "absolute_error": 4.444373757905851e-09,
+          "relative_error": 5.2630741869937706e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_Autumn": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_Spring": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_annual": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_Autumn": {
+          "expected": 19.094885095102804,
+          "actual": 19.094885094097812,
+          "absolute_error": 1.0049916454590857e-09,
+          "relative_error": 5.263145813413835e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_Spring": {
+          "expected": 31.141455942829236,
+          "actual": 31.14145594119021,
+          "absolute_error": 1.639026692146217e-09,
+          "relative_error": 5.2631665492943224e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_Summer": {
+          "expected": 26.751856494695737,
+          "actual": 26.751856493287736,
+          "absolute_error": 1.4080008270411781e-09,
+          "relative_error": 5.26318921948595e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_Winter": {
+          "expected": 7.456246911816667,
+          "actual": 7.456246911424234,
+          "absolute_error": 3.9243275296030333e-10,
+          "relative_error": 5.263140526346781e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_annual": {
+          "expected": 84.44444444444444,
+          "actual": 84.44444444000007,
+          "absolute_error": 4.444373757905851e-09,
+          "relative_error": 5.2630741869937706e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "t20": {
+          "expected": 31.741279445,
+          "actual": 31.74127944,
+          "absolute_error": 5.000000413701855e-09,
+          "relative_error": 1.5752359391705217e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        }
+      },
+      "warnings": [
+        "Annual heating degree-hours are zero, so the model-allocated heating load is 0 kWh despite a 0.555556 kWh certificate-load input."
+      ]
+    },
+    "7000": {
+      "passed": true,
+      "metric_count": 70,
+      "metrics": {
+        "ashp_APF": {
+          "expected": 2.5949319848163097,
+          "actual": 2.59493198481631,
+          "absolute_error": 4.440892098500626e-16,
+          "relative_error": 1.711371290070629e-16,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_SPF_Autumn": {
+          "expected": 2.6654736333160254,
+          "actual": 2.6654736333160245,
+          "absolute_error": 8.881784197001252e-16,
+          "relative_error": 3.3321598405577644e-16,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_SPF_Spring": {
+          "expected": 2.6488188546963003,
+          "actual": 2.6488188546963,
+          "absolute_error": 4.440892098500626e-16,
+          "relative_error": 1.6765556053888009e-16,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_SPF_Summer": {
+          "expected": 2.832943720153855,
+          "actual": 2.832943720153854,
+          "absolute_error": 8.881784197001252e-16,
+          "relative_error": 3.1351784837147733e-16,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_SPF_Winter": {
+          "expected": 2.542799189825638,
+          "actual": 2.5427991898256384,
+          "absolute_error": 4.440892098500626e-16,
+          "relative_error": 1.746458043666886e-16,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_cool_all_Autumn": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_all_Spring": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_all_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_all_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_all_annual": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_Autumn": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_Spring": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_annual": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_Autumn": {
+          "expected": 2.791939165905347,
+          "actual": 2.791939165819441,
+          "absolute_error": 8.590594902102566e-11,
+          "relative_error": 3.076927680591808e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_Spring": {
+          "expected": 3.0110946273532644,
+          "actual": 3.011094627260616,
+          "absolute_error": 9.264855549417916e-11,
+          "relative_error": 3.076906140794942e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_Summer": {
+          "expected": 0.2197039658053246,
+          "actual": 0.21970396579856452,
+          "absolute_error": 6.760092485791347e-12,
+          "relative_error": 3.0769096320188105e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_Winter": {
+          "expected": 7.893276734729184,
+          "actual": 7.8932767344863155,
+          "absolute_error": 2.4286883615332044e-10,
+          "relative_error": 3.076907655913488e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_annual": {
+          "expected": 13.91601449379312,
+          "actual": 13.916014493364932,
+          "absolute_error": 4.28189039780591e-10,
+          "relative_error": 3.076951665806138e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_Autumn": {
+          "expected": 2.7388125566792283,
+          "actual": 2.7388125565949566,
+          "absolute_error": 8.427170072877743e-11,
+          "relative_error": 3.076942981120098e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_Spring": {
+          "expected": 2.915069160449873,
+          "actual": 2.9150691603601793,
+          "absolute_error": 8.969358589183685e-11,
+          "relative_error": 3.0768939244650624e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_Summer": {
+          "expected": 0.2197039658053246,
+          "actual": 0.21970396579856452,
+          "absolute_error": 6.760092485791347e-12,
+          "relative_error": 3.0769096320188105e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_Winter": {
+          "expected": 7.221628758889697,
+          "actual": 7.221628758667492,
+          "absolute_error": 2.2220447704057733e-10,
+          "relative_error": 3.0769302114436106e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_annual": {
+          "expected": 13.095214441824123,
+          "actual": 13.09521444142119,
+          "absolute_error": 4.029327982379982e-10,
+          "relative_error": 3.0769469261312144e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_total_all_annual": {
+          "expected": 13.91601449379312,
+          "actual": 13.916014493364932,
+          "absolute_error": 4.28189039780591e-10,
+          "relative_error": 3.076951665806138e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_total_night_annual": {
+          "expected": 13.095214441824123,
+          "actual": 13.09521444142119,
+          "absolute_error": 4.029327982379982e-10,
+          "relative_error": 3.0769469261312144e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_APF": {
+          "expected": 3.05656821180275,
+          "actual": 3.0565682123900566,
+          "absolute_error": 5.873066477590783e-10,
+          "relative_error": 1.9214576841152434e-10,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_SPF_Autumn": {
+          "expected": 3.0565682118027504,
+          "actual": 3.056568212390057,
+          "absolute_error": 5.873066477590783e-10,
+          "relative_error": 1.921457684115243e-10,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_SPF_Spring": {
+          "expected": 3.05656821180275,
+          "actual": 3.0565682123900575,
+          "absolute_error": 5.87307535937498e-10,
+          "relative_error": 1.9214605899179546e-10,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_SPF_Summer": {
+          "expected": 3.05656821180275,
+          "actual": 3.056568212390056,
+          "absolute_error": 5.873062036698684e-10,
+          "relative_error": 1.9214562312138877e-10,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_SPF_Winter": {
+          "expected": 3.05656821180275,
+          "actual": 3.0565682123900566,
+          "absolute_error": 5.873066477590783e-10,
+          "relative_error": 1.9214576841152434e-10,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_cool_all_Autumn": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_all_Spring": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_all_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_all_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_all_annual": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_Autumn": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_Spring": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_annual": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_Autumn": {
+          "expected": 2.434704451811947,
+          "actual": 2.434704451269214,
+          "absolute_error": 5.427329696772176e-10,
+          "relative_error": 2.22915339590112e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_Spring": {
+          "expected": 2.609411493389817,
+          "actual": 2.6094114928081398,
+          "absolute_error": 5.816773729350189e-10,
+          "relative_error": 2.2291515707987368e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_Summer": {
+          "expected": 0.203629995174882,
+          "actual": 0.20362999512948982,
+          "absolute_error": 4.539219000676553e-11,
+          "relative_error": 2.2291504730323106e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_Winter": {
+          "expected": 6.5665204554035235,
+          "actual": 6.566520453939749,
+          "absolute_error": 1.4637748790846672e-09,
+          "relative_error": 2.229148434130197e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_annual": {
+          "expected": 11.81426639578017,
+          "actual": 11.814266393146593,
+          "absolute_error": 2.633576912103308e-09,
+          "relative_error": 2.2291497617185707e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_Autumn": {
+          "expected": 2.3859119152231028,
+          "actual": 2.3859119146912464,
+          "absolute_error": 5.318563367495699e-10,
+          "relative_error": 2.2291532782753083e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_Spring": {
+          "expected": 2.521558936306852,
+          "actual": 2.521558935744758,
+          "absolute_error": 5.620939269590508e-10,
+          "relative_error": 2.2291524455990303e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_Summer": {
+          "expected": 0.203629995174882,
+          "actual": 0.20362999512948982,
+          "absolute_error": 4.539219000676553e-11,
+          "relative_error": 2.2291504730323106e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_Winter": {
+          "expected": 5.9674299654593215,
+          "actual": 5.967429964129091,
+          "absolute_error": 1.3302301482553958e-09,
+          "relative_error": 2.2291508337006618e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_annual": {
+          "expected": 11.078530812164159,
+          "actual": 11.07853080969458,
+          "absolute_error": 2.469578319619359e-09,
+          "relative_error": 2.2291568814411537e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_total_all_annual": {
+          "expected": 11.81426639578017,
+          "actual": 11.814266393146593,
+          "absolute_error": 2.633576912103308e-09,
+          "relative_error": 2.2291497617185707e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_total_night_annual": {
+          "expected": 11.078530812164159,
+          "actual": 11.07853080969458,
+          "absolute_error": 2.469578319619359e-09,
+          "relative_error": 2.2291568814411537e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_Autumn": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_Spring": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_annual": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_Autumn": {
+          "expected": 7.441840232543038,
+          "actual": 7.441840232314056,
+          "absolute_error": 2.2898216656130899e-10,
+          "relative_error": 3.07695622864858e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_Spring": {
+          "expected": 7.975844222208057,
+          "actual": 7.975844221962647,
+          "absolute_error": 2.454099146120825e-10,
+          "relative_error": 3.076914590793531e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_Summer": {
+          "expected": 0.6224089702210917,
+          "actual": 0.6224089702019405,
+          "absolute_error": 1.9151125130179025e-11,
+          "relative_error": 3.076935912953854e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_Winter": {
+          "expected": 20.071017686138926,
+          "actual": 20.071017685521362,
+          "absolute_error": 6.175646660722123e-10,
+          "relative_error": 3.076897622877904e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_annual": {
+          "expected": 36.111111111111114,
+          "actual": 36.11111111,
+          "absolute_error": 1.1111112030448567e-09,
+          "relative_error": 3.076923331508834e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_Autumn": {
+          "expected": 7.441840232543038,
+          "actual": 7.441840232314056,
+          "absolute_error": 2.2898216656130899e-10,
+          "relative_error": 3.07695622864858e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_Spring": {
+          "expected": 7.975844222208057,
+          "actual": 7.975844221962647,
+          "absolute_error": 2.454099146120825e-10,
+          "relative_error": 3.076914590793531e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_Summer": {
+          "expected": 0.6224089702210917,
+          "actual": 0.6224089702019405,
+          "absolute_error": 1.9151125130179025e-11,
+          "relative_error": 3.076935912953854e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_Winter": {
+          "expected": 20.071017686138926,
+          "actual": 20.071017685521362,
+          "absolute_error": 6.175646660722123e-10,
+          "relative_error": 3.076897622877904e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_annual": {
+          "expected": 36.111111111111114,
+          "actual": 36.11111111,
+          "absolute_error": 1.1111112030448567e-09,
+          "relative_error": 3.076923331508834e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "t20": {
+          "expected": 13.569437263000001,
+          "actual": 13.56943727,
+          "absolute_error": 6.999998802825758e-09,
+          "relative_error": 5.15865077317006e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        }
+      },
+      "warnings": [
+        "Annual cooling degree-hours are zero, so the model-allocated cooling load is 0 kWh despite a 2.22222 kWh certificate-load input."
+      ]
+    },
+    "7306": {
+      "passed": true,
+      "metric_count": 70,
+      "metrics": {
+        "ashp_APF": {
+          "expected": 2.5015971311555543,
+          "actual": 2.5015971311555516,
+          "absolute_error": 2.6645352591003757e-15,
+          "relative_error": 1.0651336403913911e-15,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_SPF_Autumn": {
+          "expected": 2.5758167010939683,
+          "actual": 2.5758167010939688,
+          "absolute_error": 4.440892098500626e-16,
+          "relative_error": 1.7240714747344198e-16,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_SPF_Spring": {
+          "expected": 2.5192551008476447,
+          "actual": 2.5192551008476447,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_SPF_Summer": {
+          "expected": 2.718333068572411,
+          "actual": 2.7183330685724103,
+          "absolute_error": 8.881784197001252e-16,
+          "relative_error": 3.2673642165806065e-16,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_SPF_Winter": {
+          "expected": 2.425306519595627,
+          "actual": 2.425306519595627,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "ashp_cool_all_Autumn": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_all_Spring": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_all_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_all_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_all_annual": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_Autumn": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_Spring": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_cool_night_annual": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_Autumn": {
+          "expected": 3.638582277260071,
+          "actual": 3.638582277068566,
+          "absolute_error": 1.9150503405285235e-10,
+          "relative_error": 5.263177233882964e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_Spring": {
+          "expected": 4.516902399413988,
+          "actual": 4.5169023991762565,
+          "absolute_error": 2.377316121737749e-10,
+          "relative_error": 5.263155834507685e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_Summer": {
+          "expected": 1.0771747451640903,
+          "actual": 1.077174745107397,
+          "absolute_error": 5.6693316707878694e-11,
+          "relative_error": 5.263149452992641e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_Winter": {
+          "expected": 7.645446847303061,
+          "actual": 7.645446846900671,
+          "absolute_error": 4.0239012122356144e-10,
+          "relative_error": 5.263134114463237e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_all_annual": {
+          "expected": 16.87810626914121,
+          "actual": 16.878106268252903,
+          "absolute_error": 8.88306317392562e-10,
+          "relative_error": 5.263068635944551e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_Autumn": {
+          "expected": 3.274342296361147,
+          "actual": 3.274342296188813,
+          "absolute_error": 1.72334146952835e-10,
+          "relative_error": 5.263168335954184e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_Spring": {
+          "expected": 3.7491866227414965,
+          "actual": 3.7491866225441703,
+          "absolute_error": 1.9732615541556697e-10,
+          "relative_error": 5.263172396344391e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_Summer": {
+          "expected": 1.0260314141685405,
+          "actual": 1.0260314141145388,
+          "absolute_error": 5.4001692006977464e-11,
+          "relative_error": 5.2631616596981605e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_Winter": {
+          "expected": 6.360569688454245,
+          "actual": 6.360569688119481,
+          "absolute_error": 3.347633281691742e-10,
+          "relative_error": 5.263102906911612e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_heat_night_annual": {
+          "expected": 14.41013002172543,
+          "actual": 14.410130020966994,
+          "absolute_error": 7.584350925071703e-10,
+          "relative_error": 5.2632078361799366e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_total_all_annual": {
+          "expected": 16.87810626914121,
+          "actual": 16.878106268252903,
+          "absolute_error": 8.88306317392562e-10,
+          "relative_error": 5.263068635944551e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "ashp_total_night_annual": {
+          "expected": 14.41013002172543,
+          "actual": 14.410130020966994,
+          "absolute_error": 7.584350925071703e-10,
+          "relative_error": 5.2632078361799366e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_APF": {
+          "expected": 2.737315292378242,
+          "actual": 2.737315292243666,
+          "absolute_error": 1.3457590597454328e-10,
+          "relative_error": 4.9163465512816635e-11,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_SPF_Autumn": {
+          "expected": 2.737315292378242,
+          "actual": 2.7373152922436628,
+          "absolute_error": 1.3457901459901223e-10,
+          "relative_error": 4.916460116002454e-11,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_SPF_Spring": {
+          "expected": 2.7373152923782413,
+          "actual": 2.737315292243662,
+          "absolute_error": 1.3457945868822208e-10,
+          "relative_error": 4.9164763395339966e-11,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_SPF_Summer": {
+          "expected": 2.7373152923782413,
+          "actual": 2.7373152922436628,
+          "absolute_error": 1.3457857050980238e-10,
+          "relative_error": 4.9164438924709134e-11,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_SPF_Winter": {
+          "expected": 2.7373152923782413,
+          "actual": 2.7373152922436637,
+          "absolute_error": 1.3457768233138268e-10,
+          "relative_error": 4.916411445407831e-11,
+          "relative_tolerance": 1e-06,
+          "passed": true
+        },
+        "gshp_cool_all_Autumn": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_all_Spring": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_all_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_all_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_all_annual": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_Autumn": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_Spring": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_cool_night_annual": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_Autumn": {
+          "expected": 3.4239099252348564,
+          "actual": 3.423909925222986,
+          "absolute_error": 1.1870504579292174e-11,
+          "relative_error": 3.4669441774166822e-12,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_Spring": {
+          "expected": 4.157076622279827,
+          "actual": 4.157076622265414,
+          "absolute_error": 1.4412471216473932e-11,
+          "relative_error": 3.4669727132837484e-12,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_Summer": {
+          "expected": 1.0697049545456598,
+          "actual": 1.0697049545419508,
+          "absolute_error": 3.709033080667723e-12,
+          "relative_error": 3.467342153466117e-12,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_Winter": {
+          "expected": 6.773992070119098,
+          "actual": 6.773992070095611,
+          "absolute_error": 2.3486990130550112e-11,
+          "relative_error": 3.467230236975635e-12,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_all_annual": {
+          "expected": 15.42468357217944,
+          "actual": 15.424683572125943,
+          "absolute_error": 5.349676257537794e-11,
+          "relative_error": 3.4682567279283956e-12,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_Autumn": {
+          "expected": 3.0639896766403165,
+          "actual": 3.063989676629694,
+          "absolute_error": 1.0622613899613498e-11,
+          "relative_error": 3.466922222551761e-12,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_Spring": {
+          "expected": 3.4102577301956125,
+          "actual": 3.4102577301837895,
+          "absolute_error": 1.1822987033838217e-11,
+          "relative_error": 3.4668895928754483e-12,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_Summer": {
+          "expected": 1.0172685880451198,
+          "actual": 1.0172685880415928,
+          "absolute_error": 3.5269565046291973e-12,
+          "relative_error": 3.4670848447281095e-12,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_Winter": {
+          "expected": 5.583996434171629,
+          "actual": 5.58399643415227,
+          "absolute_error": 1.935962501420363e-11,
+          "relative_error": 3.4669837709299285e-12,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_heat_night_annual": {
+          "expected": 13.075512429052678,
+          "actual": 13.075512429007334,
+          "absolute_error": 4.5343284682530793e-11,
+          "relative_error": 3.4678017346212657e-12,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_total_all_annual": {
+          "expected": 15.42468357217944,
+          "actual": 15.424683572125943,
+          "absolute_error": 5.349676257537794e-11,
+          "relative_error": 3.4682567279283956e-12,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "gshp_total_night_annual": {
+          "expected": 13.075512429052678,
+          "actual": 13.075512429007334,
+          "absolute_error": 4.5343284682530793e-11,
+          "relative_error": 3.4678017346212657e-12,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_Autumn": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_Spring": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_Summer": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_Winter": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_cool_annual": {
+          "expected": 0.0,
+          "actual": 0.0,
+          "absolute_error": 0.0,
+          "relative_error": 0.0,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_Autumn": {
+          "expected": 9.372320998071014,
+          "actual": 9.372320997577734,
+          "absolute_error": 4.932800834467344e-10,
+          "relative_error": 5.263158224609037e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_Spring": {
+          "expected": 11.379229409754656,
+          "actual": 11.379229409155748,
+          "absolute_error": 5.989075901879914e-10,
+          "relative_error": 5.263164741846121e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_Summer": {
+          "expected": 2.9281197304106064,
+          "actual": 2.928119730256494,
+          "absolute_error": 1.5411227849426723e-10,
+          "relative_error": 5.2631822699632666e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_Winter": {
+          "expected": 18.542552083985946,
+          "actual": 18.542552083010026,
+          "absolute_error": 9.759197894254612e-10,
+          "relative_error": 5.2631362986344407e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_heat_annual": {
+          "expected": 42.22222222222223,
+          "actual": 42.22222221999992,
+          "absolute_error": 2.2223076712180045e-09,
+          "relative_error": 5.263360273937378e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_Autumn": {
+          "expected": 9.372320998071014,
+          "actual": 9.372320997577734,
+          "absolute_error": 4.932800834467344e-10,
+          "relative_error": 5.263158224609037e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_Spring": {
+          "expected": 11.379229409754656,
+          "actual": 11.379229409155748,
+          "absolute_error": 5.989075901879914e-10,
+          "relative_error": 5.263164741846121e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_Summer": {
+          "expected": 2.9281197304106064,
+          "actual": 2.928119730256494,
+          "absolute_error": 1.5411227849426723e-10,
+          "relative_error": 5.2631822699632666e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_Winter": {
+          "expected": 18.542552083985946,
+          "actual": 18.542552083010026,
+          "absolute_error": 9.759197894254612e-10,
+          "relative_error": 5.2631362986344407e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "load_total_annual": {
+          "expected": 42.22222222222223,
+          "actual": 42.22222221999992,
+          "absolute_error": 2.2223076712180045e-09,
+          "relative_error": 5.263360273937378e-11,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        },
+        "t20": {
+          "expected": 9.320542902,
+          "actual": 9.3205429,
+          "absolute_error": 2.000000165480742e-09,
+          "relative_error": 2.145797928843375e-10,
+          "relative_tolerance": 1e-05,
+          "passed": true
+        }
+      },
+      "warnings": [
+        "Annual cooling degree-hours are zero, so the model-allocated cooling load is 0 kWh despite a 0.833333 kWh certificate-load input."
+      ]
+    }
+  }
+}

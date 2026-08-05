@@ -1,0 +1,146 @@
+{
+  "schema_version": "1.0.0",
+  "preset_id": "paper_default",
+  "preset_label": "Paper default",
+  "ground": {
+    "mode": "surface_gradient",
+    "surface_dataset_id": "surface_t",
+    "reference_depth_m": 20.0,
+    "target_depth_m": 20.0,
+    "minimum_depth_m": 0.0,
+    "shallow_warning_depth_m": 20.0,
+    "allow_extrapolation_below_borehole": true
+  },
+  "load": {
+    "heating_balance_temperature_c": 12.0,
+    "cooling_balance_temperature_c": 24.0,
+    "conditioned_floor_area_m2": 1.0,
+    "building_count": 1.0,
+    "load_scaling_factor": 1.0,
+    "occupancy_use_factor": 1.0,
+    "zero_degree_hour_policy": "discard_with_warning"
+  },
+  "time": {
+    "base_year": 2023,
+    "days_per_year": 365.0,
+    "stored_air_temperature_scale_divisor": 100.0,
+    "representative_record_weight_hours": 5.0,
+    "expected_annual_weight_hours": 8760.0,
+    "season_months": {
+      "Summer": [12, 1, 2],
+      "Autumn": [3, 4, 5],
+      "Winter": [6, 7, 8],
+      "Spring": [9, 10, 11]
+    }
+  },
+  "analysis_period": {
+    "enabled": true,
+    "label": "Night window (paper default)",
+    "mode": "solar_geometry",
+    "hours_before_sunset": 2.0,
+    "hours_after_sunrise": 2.0,
+    "solar_declination_amplitude_deg": 23.45,
+    "day_phase_offset": 284.0,
+    "longitude_degrees_per_hour": 15.0,
+    "hours_per_day": 24.0,
+    "solar_noon_hour_utc_at_zero_longitude": 12.0,
+    "minimum_cosine_hour_angle": -1.0,
+    "maximum_cosine_hour_angle": 1.0,
+    "fixed_start_local_hour": 18.0,
+    "fixed_end_local_hour": 8.0,
+    "fixed_utc_offset_hours": 0.0
+  },
+  "cop": {
+    "gshp": {
+      "model_id": "scaled_carnot",
+      "heating_supply_temperature_c": 40.0,
+      "cooling_supply_temperature_c": 7.0,
+      "approach_temperature_k": 5.0,
+      "empirical_carnot_efficiency": 0.35,
+      "kelvin_offset": 273.15,
+      "constant_heating_cop": 3.5,
+      "constant_cooling_cop": 3.5,
+      "linear_heating_intercept": 2.0,
+      "linear_heating_slope_per_c": 0.05,
+      "linear_cooling_intercept": 5.0,
+      "linear_cooling_slope_per_c": -0.05,
+      "minimum_cop": 0.1,
+      "maximum_cop": 20.0,
+      "invalid_cop_policy": "stop"
+    },
+    "ashp": {
+      "model_id": "scaled_carnot",
+      "heating_supply_temperature_c": 40.0,
+      "cooling_supply_temperature_c": 7.0,
+      "approach_temperature_k": 5.0,
+      "empirical_carnot_efficiency": 0.35,
+      "kelvin_offset": 273.15,
+      "constant_heating_cop": 3.0,
+      "constant_cooling_cop": 3.0,
+      "linear_heating_intercept": 2.0,
+      "linear_heating_slope_per_c": 0.05,
+      "linear_cooling_intercept": 5.0,
+      "linear_cooling_slope_per_c": -0.05,
+      "minimum_cop": 0.1,
+      "maximum_cop": 20.0,
+      "invalid_cop_policy": "stop"
+    }
+  },
+  "electricity": {
+    "gshp": {
+      "pump_fraction_of_compressor": 0.0,
+      "fan_fraction_of_compressor": 0.0,
+      "misc_fraction_of_compressor": 0.0,
+      "fixed_auxiliary_kwh_per_year": 0.0
+    },
+    "ashp": {
+      "pump_fraction_of_compressor": 0.0,
+      "fan_fraction_of_compressor": 0.0,
+      "misc_fraction_of_compressor": 0.0,
+      "fixed_auxiliary_kwh_per_year": 0.0
+    }
+  },
+  "tariff": {
+    "mode": "single",
+    "currency": "AUD",
+    "single_price_per_kwh": null,
+    "selected_period_price_per_kwh": null,
+    "other_period_price_per_kwh": null,
+    "fixed_daily_charge": 0.0,
+    "annual_fixed_charge": 0.0
+  },
+  "economics": {
+    "gshp_installed_cost": null,
+    "ashp_installed_cost": null,
+    "gshp_annual_maintenance_cost": 0.0,
+    "ashp_annual_maintenance_cost": 0.0,
+    "analysis_period_years": 20,
+    "discount_rate_fraction": 0.05,
+    "electricity_price_escalation_fraction": 0.0,
+    "gshp_residual_value": 0.0,
+    "ashp_residual_value": 0.0,
+    "gshp_replacements": [],
+    "ashp_replacements": []
+  },
+  "decision": {
+    "minimum_technical_saving_fraction": 0.0,
+    "maximum_acceptable_payback_years": 20.0,
+    "npv_threshold": 0.0,
+    "delta_t20_ebk_prediction_se_good_max_c": 0.25,
+    "delta_t20_ebk_prediction_se_moderate_max_c": 0.5,
+    "nearest_borehole_good_max_km": 25.0,
+    "nearest_borehole_moderate_max_km": 100.0,
+    "minimum_certificate_count": 10
+  },
+  "numerical": {
+    "absolute_tolerance": 1e-12,
+    "relative_tolerance": 1e-9,
+    "cop_regression_relative_tolerance": 1e-6,
+    "electricity_regression_relative_tolerance": 1e-5,
+    "cost_regression_relative_tolerance": 1e-5
+  },
+  "monte_carlo": {
+    "default_simulations": 10000,
+    "random_seed": 20260805
+  }
+}

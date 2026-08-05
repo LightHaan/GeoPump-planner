@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0.0",
+  "cases": [
+    {
+      "postcode": "0810",
+      "label": "Darwin cooling-dominated",
+      "reason": "Cooling-only demand and slightly negative GSHP electricity saving."
+    },
+    {
+      "postcode": "0873",
+      "label": "Alice Springs mixed demand",
+      "reason": "Mixed heating/cooling demand and a comparatively large positive saving."
+    },
+    {
+      "postcode": "2010",
+      "label": "Sydney inner city",
+      "reason": "Temperate urban postcode with both heating and cooling."
+    },
+    {
+      "postcode": "2600",
+      "label": "Canberra",
+      "reason": "Heating-dominated cool-climate capital postcode."
+    },
+    {
+      "postcode": "3000",
+      "label": "Melbourne",
+      "reason": "Heating-dominated southern capital postcode."
+    },
+    {
+      "postcode": "4000",
+      "label": "Brisbane",
+      "reason": "Warm-climate capital with cooling greater than heating."
+    },
+    {
+      "postcode": "6000",
+      "label": "Perth",
+      "reason": "Mediterranean-climate capital with mixed demand."
+    },
+    {
+      "postcode": "6743",
+      "label": "Warm remote postcode",
+      "reason": "High reconstructed ground temperature and negative GSHP saving."
+    },
+    {
+      "postcode": "7000",
+      "label": "Hobart",
+      "reason": "Cold southern capital with strongly heating-dominated demand."
+    },
+    {
+      "postcode": "7306",
+      "label": "Low ground temperature",
+      "reason": "Lowest reconstructed 20 m temperature among the selected regression cases."
+    }
+  ]
+}

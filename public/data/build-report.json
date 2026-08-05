@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0.0",
+  "passed": true,
+  "postcode_count": 2641,
+  "available_climate_postcode_count": 2634,
+  "missing_climate_postcode_count": 7,
+  "missing_climate_postcodes": [
+    "2293",
+    "2299",
+    "2898",
+    "2899",
+    "6003",
+    "6798",
+    "6799"
+  ],
+  "climate_row_count": 4614768,
+  "records_per_available_postcode": 1752,
+  "represented_hours_per_available_postcode": 8760.0,
+  "climate_file_count": 2634,
+  "climate_uncompressed_bytes": 128187588,
+  "schema_validation_passed_during_build": true
+}
