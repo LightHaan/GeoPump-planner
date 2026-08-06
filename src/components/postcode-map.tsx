@@ -6,6 +6,7 @@ import {
   postcodeBoundaryUrl,
   type PostcodeAttributeIndex,
   type PostcodeIndexEntry,
+  type SurfaceDatasetId,
 } from "../data/postcode";
 import { TEMPERATURE_DATASET_LABELS } from "../data/temperature-datasets";
 import {
@@ -23,7 +24,33 @@ interface PostcodeMapProps {
   attributeIndex: PostcodeAttributeIndex;
   postcodeIndex: readonly PostcodeIndexEntry[];
   selectedPostcode: string | null;
+  surfaceDatasetId: SurfaceDatasetId;
   onSelectPostcode: (postcode: string) => void;
+}
+
+const SURFACE_DATASET_METRICS = new Set<MapMetricId>([
+  "ground_surface_20",
+  "surface_temperature",
+  "surface_gradient",
+  "surface_delta_t20",
+  "delta_t20_se",
+]);
+
+const AIR_DATASET_METRICS = new Set<MapMetricId>([
+  "ground_air_20",
+  "air_temperature",
+  "air_gradient",
+  "air_delta_t20",
+]);
+
+function defaultGroundMetric(datasetId: SurfaceDatasetId): MapMetricId {
+  return datasetId === "air_t" ? "ground_air_20" : "ground_surface_20";
+}
+
+function metricMatchesDataset(metricId: MapMetricId, datasetId: SurfaceDatasetId): boolean {
+  if (SURFACE_DATASET_METRICS.has(metricId)) return datasetId === "surface_t";
+  if (AIR_DATASET_METRICS.has(metricId)) return datasetId === "air_t";
+  return true;
 }
 
 type PostcodePath = L.Path & { feature?: GeoJSON.Feature };
@@ -70,6 +97,7 @@ export function PostcodeMap({
   attributeIndex,
   postcodeIndex,
   selectedPostcode,
+  surfaceDatasetId,
   onSelectPostcode,
 }: PostcodeMapProps) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -79,15 +107,20 @@ export function PostcodeMap({
   const pathsRef = useRef(new Map<string, PostcodePath>());
   const onSelectRef = useRef(onSelectPostcode);
   const previousSelectionRef = useRef<string | null>(null);
-  const metricIdRef = useRef<MapMetricId>("ground_surface_20");
+  const metricIdRef = useRef<MapMetricId>(defaultGroundMetric(surfaceDatasetId));
   const scaleRef = useRef<MetricScale | null>(null);
   const selectedPostcodeRef = useRef<string | null>(selectedPostcode);
-  const [metricId, setMetricId] = useState<MapMetricId>("ground_surface_20");
+  const [metricId, setMetricId] = useState<MapMetricId>(() => defaultGroundMetric(surfaceDatasetId));
   const [hoveredPostcode, setHoveredPostcode] = useState<string | null>(null);
   const [mapReady, setMapReady] = useState(false);
   const [mapError, setMapError] = useState<string | null>(null);
 
   onSelectRef.current = onSelectPostcode;
+
+  const availableMetrics = useMemo(
+    () => MAP_METRICS.filter((item) => metricMatchesDataset(item.id, surfaceDatasetId)),
+    [surfaceDatasetId],
+  );
 
   const scale = useMemo(
     () => createMetricScale(attributeIndex, metricId),
@@ -101,10 +134,16 @@ export function PostcodeMap({
   selectedPostcodeRef.current = selectedPostcode;
 
   useEffect(() => {
+    if (!metricMatchesDataset(metricId, surfaceDatasetId)) {
+      setMetricId(defaultGroundMetric(surfaceDatasetId));
+    }
+  }, [metricId, surfaceDatasetId]);
+
+  useEffect(() => {
     if (containerRef.current === null || Object.keys(attributeIndex).length === 0) return;
     const controller = new AbortController();
     let active = true;
-    const initialMetricId: MapMetricId = "ground_surface_20";
+    const initialMetricId = metricIdRef.current;
     const initialScale = createMetricScale(attributeIndex, initialMetricId);
     const renderer = L.canvas({ padding: 0.5 });
     const map = L.map(containerRef.current, {
@@ -226,7 +265,7 @@ export function PostcodeMap({
         <label className="map-metric-select">
           <span>Map metric</span>
           <select value={metricId} onChange={(event) => setMetricId(event.target.value as MapMetricId)}>
-            {MAP_METRICS.map((item) => <option key={item.id} value={item.id}>{item.label}</option>)}
+            {availableMetrics.map((item) => <option key={item.id} value={item.id}>{item.label}</option>)}
           </select>
         </label>
       </div>
@@ -254,20 +293,20 @@ export function PostcodeMap({
 
       {selectedPostcode !== null && selectedAttributes !== null && (
         <details className="postcode-data-drawer">
-          <summary>All mapped data for postcode {selectedPostcode}</summary>
+          <summary>Mapped data for postcode {selectedPostcode}</summary>
           <div className="postcode-data-grid">
-            <div><span>Surface temperature — {TEMPERATURE_DATASET_LABELS.surface_t}</span><strong>{number(selectedAttributes.ground.surface_t.surface_temp_c, 2)} °C</strong></div>
-            <div><span>Surface temperature — {TEMPERATURE_DATASET_LABELS.air_t}</span><strong>{number(selectedAttributes.ground.air_t.surface_temp_c, 2)} °C</strong></div>
-            <div><span>Ground at 20 m — {TEMPERATURE_DATASET_LABELS.surface_t}</span><strong>{number(selectedAttributes.ground.surface_t.ground_temp_at_reference_depth_c, 2)} °C</strong></div>
-            <div><span>Ground at 20 m — {TEMPERATURE_DATASET_LABELS.air_t}</span><strong>{number(selectedAttributes.ground.air_t.ground_temp_at_reference_depth_c, 2)} °C</strong></div>
-            <div><span>Gradient — {TEMPERATURE_DATASET_LABELS.surface_t}</span><strong>{number(selectedAttributes.ground.surface_t.gradient_c_per_m, 4)} °C/m</strong></div>
-            <div><span>Gradient — {TEMPERATURE_DATASET_LABELS.air_t}</span><strong>{number(selectedAttributes.ground.air_t.gradient_c_per_m, 4)} °C/m</strong></div>
+            <div><span>Temperature dataset</span><strong>{TEMPERATURE_DATASET_LABELS[surfaceDatasetId]}</strong></div>
+            <div><span>{surfaceDatasetId === "air_t" ? "Near-surface air temperature" : "Land-surface temperature"}</span><strong>{number(selectedAttributes.ground[surfaceDatasetId].surface_temp_c, 2)} °C</strong></div>
+            <div><span>Ground at 20 m</span><strong>{number(selectedAttributes.ground[surfaceDatasetId].ground_temp_at_reference_depth_c, 2)} °C</strong></div>
+            <div><span>Gradient</span><strong>{number(selectedAttributes.ground[surfaceDatasetId].gradient_c_per_m, 4)} °C/m</strong></div>
             <div><span>Heating load</span><strong>{number(selectedAttributes.load.annual_heating_kwh_m2, 1)} kWh/m²/year</strong></div>
             <div><span>Cooling load</span><strong>{number(selectedAttributes.load.annual_cooling_kwh_m2, 1)} kWh/m²/year</strong></div>
             <div><span>Certificate records</span><strong>{number(selectedAttributes.load.certificate_count, 0)}</strong></div>
             <div><span>Nearest borehole</span><strong>{number(selectedAttributes.ground.nearest_borehole_km, 1)} km</strong></div>
             <div><span>Nearby boreholes</span><strong>{number(selectedAttributes.ground.nearby_borehole_count, 0)}</strong></div>
-            <div><span>ΔT20 prediction SE</span><strong>{number(selectedAttributes.ground.uncertainty.delta_t20_ebk_prediction_se_c, 3)} °C</strong></div>
+            {surfaceDatasetId === "surface_t" && (
+              <div><span>ΔT20 prediction SE</span><strong>{number(selectedAttributes.ground.uncertainty.delta_t20_ebk_prediction_se_c, 3)} °C</strong></div>
+            )}
             <div><span>Climate records</span><strong>{number(selectedAttributes.climate.record_count, 0)}</strong></div>
             <div><span>Represented hours</span><strong>{number(selectedAttributes.climate.represented_hours, 0)} h</strong></div>
           </div>

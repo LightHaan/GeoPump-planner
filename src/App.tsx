@@ -428,6 +428,7 @@ export default function App() {
                 attributeIndex={attributeIndex}
                 postcodeIndex={postcodeIndex}
                 selectedPostcode={selectedPostcode}
+                surfaceDatasetId={parameters.ground.surface_dataset_id}
                 onSelectPostcode={choosePostcode}
               />
             </div>

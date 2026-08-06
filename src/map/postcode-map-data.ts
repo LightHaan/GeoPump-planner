@@ -64,14 +64,14 @@ export const MAP_METRICS: readonly MapMetricDefinition[] = [
   },
   {
     id: "surface_temperature",
-    label: `Surface temperature — ${TEMPERATURE_DATASET_LABELS.surface_t}`,
+    label: `Land-surface temperature — ${TEMPERATURE_DATASET_LABELS.surface_t}`,
     property: "map_surface_temperature",
     unit: "°C",
     value: (item) => nullable(item.ground.surface_t.surface_temp_c),
   },
   {
     id: "air_temperature",
-    label: `Surface temperature — ${TEMPERATURE_DATASET_LABELS.air_t}`,
+    label: `Near-surface air temperature — ${TEMPERATURE_DATASET_LABELS.air_t}`,
     property: "map_air_temperature",
     unit: "°C",
     value: (item) => nullable(item.ground.air_t.surface_temp_c),
