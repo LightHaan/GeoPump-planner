@@ -1,6 +1,6 @@
 {
   "name": "geopump-planner",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -15,6 +15,7 @@
   "devDependencies": {
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.3",
+    "@types/leaflet": "^1.9.22",
     "@types/node": "^26.1.2",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
@@ -25,6 +26,7 @@
     "vitest": "^4.1.10"
   },
   "dependencies": {
+    "leaflet": "^1.9.4",
     "react": "^19.2.8",
     "react-dom": "^19.2.8"
   }

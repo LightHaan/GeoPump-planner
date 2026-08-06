@@ -1,5 +1,21 @@
 # User guide: demand detection and certificate-load allocation
 
+## App pages
+
+- **Planner** contains the postcode search, essential inputs, interactive map and
+  headline result only. Change the map metric to inspect local ground, load,
+  borehole and evidence data; click a boundary to select that postcode.
+- **Results** contains the full GSHP/ASHP comparison, monthly charts, exports and
+  a collapsible data-evidence section.
+- **Customise** contains all editable inputs, formula parameters, COP settings,
+  time periods, tariffs and investment assumptions, plus scenario import/export.
+- **Guide** provides the short in-app instructions and model cautions.
+
+The map shows 13 selectable metrics. Expanding **All mapped data for postcode**
+shows both Surface T and Air T chains, ground temperature at 20 m, gradients,
+annual heating/cooling loads, certificate count, borehole evidence, climate
+records and the Surface T ΔT20 prediction standard error.
+
 ## How the model interprets certificate load
 
 Annual postcode heating and cooling loads are certificate-based statistical
@@ -85,7 +101,7 @@ snapshot and calculated outcome. Import validates the schema and parameters,
 then recalculates using the current published climate and frozen dataset version.
 CSV export provides annual summary, economics and monthly load/electricity rows.
 
-The data-quality section shows the active dataset version, climate coverage,
+The collapsible data-evidence section on the Results page shows the active dataset version, climate coverage,
 invalid or unrepresented records, borehole evidence, certificate count and all
 manual overrides. ΔT20 EBK prediction standard error is shown only for the
 Surface T chain and is explicitly described as partial interpolation uncertainty.

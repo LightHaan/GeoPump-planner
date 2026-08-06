@@ -1,0 +1,276 @@
+import { useEffect, useMemo, useRef, useState } from "react";
+import * as L from "leaflet";
+import "leaflet/dist/leaflet.css";
+
+import {
+  postcodeBoundaryUrl,
+  type PostcodeAttributeIndex,
+  type PostcodeIndexEntry,
+} from "../data/postcode";
+import {
+  createMetricScale,
+  formatMetricValue,
+  MAP_METRICS,
+  mapMetric,
+  prepareBoundaryCollection,
+  type BoundaryFeatureCollection,
+  type MapMetricId,
+  type MetricScale,
+} from "../map/postcode-map-data";
+
+interface PostcodeMapProps {
+  attributeIndex: PostcodeAttributeIndex;
+  postcodeIndex: readonly PostcodeIndexEntry[];
+  selectedPostcode: string | null;
+  onSelectPostcode: (postcode: string) => void;
+}
+
+type PostcodePath = L.Path & { feature?: GeoJSON.Feature };
+
+function number(value: number | null | undefined, digits = 1): string {
+  if (value === null || value === undefined || !Number.isFinite(value)) return "No data";
+  return value.toLocaleString(undefined, { maximumFractionDigits: digits });
+}
+
+function featurePostcode(feature: GeoJSON.Feature | undefined): string | null {
+  const raw = feature?.properties?.POA_CODE21 ?? feature?.properties?.postcode;
+  return typeof raw === "string" || typeof raw === "number"
+    ? String(raw).padStart(4, "0")
+    : null;
+}
+
+function colourForValue(value: unknown, scale: MetricScale): string {
+  if (typeof value !== "number" || !Number.isFinite(value)) return "#e2e5e1";
+  for (const [stop, colour] of scale.stops) {
+    if (value <= stop) return colour;
+  }
+  return scale.stops.at(-1)?.[1] ?? "#ad4f43";
+}
+
+function pathStyle(
+  feature: GeoJSON.Feature | undefined,
+  metricId: MapMetricId,
+  scale: MetricScale,
+  selected: boolean,
+  renderer: L.Renderer,
+): L.PathOptions {
+  const property = mapMetric(metricId).property;
+  return {
+    renderer,
+    fillColor: colourForValue(feature?.properties?.[property], scale),
+    fillOpacity: 0.84,
+    color: selected ? "#153b36" : "#ffffff",
+    opacity: selected ? 1 : 0.78,
+    weight: selected ? 3 : 0.55,
+  };
+}
+
+export function PostcodeMap({
+  attributeIndex,
+  postcodeIndex,
+  selectedPostcode,
+  onSelectPostcode,
+}: PostcodeMapProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const mapRef = useRef<L.Map | null>(null);
+  const layerGroupRef = useRef<L.GeoJSON | null>(null);
+  const rendererRef = useRef<L.Renderer | null>(null);
+  const pathsRef = useRef(new Map<string, PostcodePath>());
+  const onSelectRef = useRef(onSelectPostcode);
+  const previousSelectionRef = useRef<string | null>(null);
+  const metricIdRef = useRef<MapMetricId>("ground_surface_20");
+  const scaleRef = useRef<MetricScale | null>(null);
+  const selectedPostcodeRef = useRef<string | null>(selectedPostcode);
+  const [metricId, setMetricId] = useState<MapMetricId>("ground_surface_20");
+  const [hoveredPostcode, setHoveredPostcode] = useState<string | null>(null);
+  const [mapReady, setMapReady] = useState(false);
+  const [mapError, setMapError] = useState<string | null>(null);
+
+  onSelectRef.current = onSelectPostcode;
+
+  const scale = useMemo(
+    () => createMetricScale(attributeIndex, metricId),
+    [attributeIndex, metricId],
+  );
+  const metric = mapMetric(metricId);
+  const hoveredAttributes = hoveredPostcode === null ? null : attributeIndex[hoveredPostcode] ?? null;
+  const selectedAttributes = selectedPostcode === null ? null : attributeIndex[selectedPostcode] ?? null;
+  metricIdRef.current = metricId;
+  scaleRef.current = scale;
+  selectedPostcodeRef.current = selectedPostcode;
+
+  useEffect(() => {
+    if (containerRef.current === null || Object.keys(attributeIndex).length === 0) return;
+    const controller = new AbortController();
+    let active = true;
+    const initialMetricId: MapMetricId = "ground_surface_20";
+    const initialScale = createMetricScale(attributeIndex, initialMetricId);
+    const renderer = L.canvas({ padding: 0.5 });
+    const map = L.map(containerRef.current, {
+      center: [-27, 134.5],
+      zoom: 3,
+      minZoom: 2,
+      maxZoom: 12,
+      attributionControl: false,
+      zoomControl: true,
+      preferCanvas: true,
+      renderer,
+    });
+    map.fitBounds(L.latLngBounds([[-44, 112], [-10, 154]]), { padding: [14, 14] });
+    mapRef.current = map;
+    rendererRef.current = renderer;
+
+    const initialise = async () => {
+      try {
+        const response = await fetch(postcodeBoundaryUrl(), { signal: controller.signal });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const raw = await response.json() as BoundaryFeatureCollection;
+        const prepared = prepareBoundaryCollection(raw, attributeIndex);
+        if (!active) return;
+        pathsRef.current.clear();
+        const group = L.geoJSON(prepared as unknown as GeoJSON.GeoJsonObject, {
+          style: (feature) => pathStyle(feature, initialMetricId, initialScale, false, renderer),
+          onEachFeature: (feature, layer) => {
+            if (!(layer instanceof L.Path)) return;
+            const path = layer as PostcodePath;
+            const postcode = featurePostcode(feature);
+            if (postcode === null) return;
+            pathsRef.current.set(postcode, path);
+            path.on({
+              click: () => onSelectRef.current(postcode),
+              mouseover: () => {
+                setHoveredPostcode(postcode);
+                path.setStyle({ color: "#153b36", weight: 1.8, opacity: 1 });
+              },
+              mouseout: () => {
+                setHoveredPostcode(null);
+                const currentScale = scaleRef.current ?? initialScale;
+                path.setStyle(pathStyle(
+                  path.feature,
+                  metricIdRef.current,
+                  currentScale,
+                  postcode === selectedPostcodeRef.current,
+                  renderer,
+                ));
+              },
+            });
+          },
+        }).addTo(map);
+        layerGroupRef.current = group;
+        if (containerRef.current !== null) {
+          containerRef.current.dataset.rawFeatureCount = String(prepared.features.length);
+          containerRef.current.dataset.renderedFeatureCount = String(pathsRef.current.size);
+        }
+        map.invalidateSize();
+        setMapReady(true);
+        setMapError(null);
+      } catch (error) {
+        if (!active || (error instanceof DOMException && error.name === "AbortError")) return;
+        setMapError(error instanceof Error ? error.message : "The postcode map could not be loaded.");
+      }
+    };
+    void initialise();
+
+    return () => {
+      active = false;
+      controller.abort();
+      map.remove();
+      mapRef.current = null;
+      layerGroupRef.current = null;
+      rendererRef.current = null;
+      pathsRef.current.clear();
+      setMapReady(false);
+    };
+  }, [attributeIndex]);
+
+  useEffect(() => {
+    const renderer = rendererRef.current;
+    if (!mapReady || renderer === null) return;
+    for (const [postcode, path] of pathsRef.current) {
+      path.setStyle(pathStyle(path.feature, metricId, scale, postcode === selectedPostcode, renderer));
+    }
+  }, [mapReady, metricId, scale, selectedPostcode]);
+
+  useEffect(() => {
+    const map = mapRef.current;
+    const renderer = rendererRef.current;
+    if (!mapReady || map === null || renderer === null) return;
+    if (selectedPostcode !== null) {
+      const path = pathsRef.current.get(selectedPostcode);
+      path?.setStyle(pathStyle(path.feature, metricId, scale, true, renderer));
+      path?.bringToFront();
+    }
+    if (
+      previousSelectionRef.current !== null &&
+      selectedPostcode !== null &&
+      previousSelectionRef.current !== selectedPostcode
+    ) {
+      const entry = postcodeIndex.find((item) => item.postcode === selectedPostcode);
+      if (entry !== undefined) {
+        map.flyTo([entry.lat, entry.lon], Math.max(map.getZoom(), 5), { duration: 0.65 });
+      }
+    }
+    previousSelectionRef.current = selectedPostcode;
+  }, [mapReady, metricId, postcodeIndex, scale, selectedPostcode]);
+
+  const hoveredValue = hoveredAttributes === null ? null : metric.value(hoveredAttributes);
+
+  return (
+    <section className="postcode-map-card" aria-labelledby="postcode-map-title">
+      <div className="map-toolbar">
+        <div>
+          <h2 id="postcode-map-title">Postcode map</h2>
+          <p>Choose a metric, then click any postcode.</p>
+        </div>
+        <label className="map-metric-select">
+          <span>Map metric</span>
+          <select value={metricId} onChange={(event) => setMetricId(event.target.value as MapMetricId)}>
+            {MAP_METRICS.map((item) => <option key={item.id} value={item.id}>{item.label}</option>)}
+          </select>
+        </label>
+      </div>
+
+      <div className="map-frame">
+        <div ref={containerRef} className="postcode-map" aria-label="Interactive Australian postcode map" />
+        {!mapReady && mapError === null && <div className="map-loading">Loading postcode boundaries…</div>}
+        {mapError !== null && <div className="map-loading map-error" role="alert">Map unavailable: {mapError}</div>}
+        <div className="map-legend" aria-label={`${metric.label} legend`}>
+          <span>{number(scale.lower, metric.id.includes("gradient") ? 3 : 1)}</span>
+          <i />
+          <span>{number(scale.middle, metric.id.includes("gradient") ? 3 : 1)}</span>
+          <i />
+          <span>{number(scale.upper, metric.id.includes("gradient") ? 3 : 1)} {metric.unit}</span>
+        </div>
+        {hoveredPostcode !== null && (
+          <div className="map-hover-card" aria-live="polite">
+            <strong>{hoveredPostcode}</strong>
+            <span>{formatMetricValue(hoveredValue, metric)}</span>
+            <small>Click to use this postcode</small>
+          </div>
+        )}
+      </div>
+
+      {selectedPostcode !== null && selectedAttributes !== null && (
+        <details className="postcode-data-drawer">
+          <summary>All mapped data for postcode {selectedPostcode}</summary>
+          <div className="postcode-data-grid">
+            <div><span>Surface T</span><strong>{number(selectedAttributes.ground.surface_t.surface_temp_c, 2)} °C</strong></div>
+            <div><span>Air T</span><strong>{number(selectedAttributes.ground.air_t.surface_temp_c, 2)} °C</strong></div>
+            <div><span>Ground at 20 m · Surface T</span><strong>{number(selectedAttributes.ground.surface_t.ground_temp_at_reference_depth_c, 2)} °C</strong></div>
+            <div><span>Ground at 20 m · Air T</span><strong>{number(selectedAttributes.ground.air_t.ground_temp_at_reference_depth_c, 2)} °C</strong></div>
+            <div><span>Gradient · Surface T</span><strong>{number(selectedAttributes.ground.surface_t.gradient_c_per_m, 4)} °C/m</strong></div>
+            <div><span>Gradient · Air T</span><strong>{number(selectedAttributes.ground.air_t.gradient_c_per_m, 4)} °C/m</strong></div>
+            <div><span>Heating load</span><strong>{number(selectedAttributes.load.annual_heating_kwh_m2, 1)} kWh/m²/year</strong></div>
+            <div><span>Cooling load</span><strong>{number(selectedAttributes.load.annual_cooling_kwh_m2, 1)} kWh/m²/year</strong></div>
+            <div><span>Certificate records</span><strong>{number(selectedAttributes.load.certificate_count, 0)}</strong></div>
+            <div><span>Nearest borehole</span><strong>{number(selectedAttributes.ground.nearest_borehole_km, 1)} km</strong></div>
+            <div><span>Nearby boreholes</span><strong>{number(selectedAttributes.ground.nearby_borehole_count, 0)}</strong></div>
+            <div><span>ΔT20 prediction SE</span><strong>{number(selectedAttributes.ground.uncertainty.delta_t20_ebk_prediction_se_c, 3)} °C</strong></div>
+            <div><span>Climate records</span><strong>{number(selectedAttributes.climate.record_count, 0)}</strong></div>
+            <div><span>Represented hours</span><strong>{number(selectedAttributes.climate.represented_hours, 0)} h</strong></div>
+          </div>
+        </details>
+      )}
+    </section>
+  );
+}

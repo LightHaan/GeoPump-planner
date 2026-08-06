@@ -7,6 +7,10 @@ account, backend, database, ArcGIS runtime or external upload of postcode inputs
 or results. It includes:
 
 - search and availability indicators for 2,641 postcodes;
+- four hash-routed pages: concise Planner, detailed Results, full Customise and
+  a separate Guide;
+- a Leaflet postcode map with click selection, zoom controls, robust colour
+  scales, 13 selectable metrics and an all-data drawer for the selected postcode;
 - independently loaded climate JSON for the selected postcode;
 - Surface T/Air T switching and three ground-temperature input methods;
 - editable depth, temperature, gradient, annual loads, balance temperatures,
@@ -53,15 +57,16 @@ the production build. The verified static site is published from the
 GitHub Actions template that can run the tests, build `dist` and deploy on pushes
 to `main`; activating it requires a GitHub credential with `workflow` permission.
 
-## Optional online-map extension
+## Postcode map
 
-Map integration does not require calculation-engine changes. The repository
-already contains standard GeoJSON postcode boundaries, postcode coordinates and
-`src/integrations/map-adapter.ts`. A future free map can use MapLibre GL JS or
-Leaflet. ArcGIS can publish a FeatureLayer, while QGIS can continue desktop
-preprocessing and export GeoJSON, GeoPackage or vector tiles. These choices affect
-data preparation/display only, not degree-hours, ground temperature, COP,
-electricity or economics.
+The implemented map uses Leaflet Canvas with no basemap API key. It loads the
+prepared postcode GeoJSON, joins each feature to `postcode-attributes.json` and
+colours the boundaries using robust 5th-to-95th percentile scales. Selecting a
+postcode through the map uses the same calculation path as the text search.
 
-Additional COP formulas and a map are optional future extensions and do not
-block the current release.
+ArcGIS can later publish a FeatureLayer, while QGIS can continue desktop
+preprocessing and export GeoJSON, GeoPackage or vector tiles. Replacing the map
+data source does not affect degree-hours, ground temperature, COP, electricity
+or economics.
+
+Additional COP formulas remain an optional future extension.

@@ -11,9 +11,11 @@ import {
   parseScenarioImport,
   type PostcodeModelInputs,
 } from "./app/model";
+import { DataQualityPanel } from "./components/data-quality-panel";
+import { PostcodeMap } from "./components/postcode-map";
+import { QuickResults } from "./components/quick-results";
 import { ResultsPanel } from "./components/results-panel";
 import { SettingsPanel } from "./components/settings-panel";
-import { DataQualityPanel } from "./components/data-quality-panel";
 import {
   loadPostcodeCatalog,
   loadPostcodeClimate,
@@ -28,6 +30,8 @@ import { setParameterValue } from "./parameters/definitions";
 import type { ScenarioParameters } from "./parameters/types";
 import { validateScenarioParameters } from "./parameters/validation";
 
+type PageId = "planner" | "results" | "customise" | "guide";
+
 const EMPTY_INPUTS: PostcodeModelInputs = {
   surfaceTemperatureC: null,
   gradientCPerM: null,
@@ -37,6 +41,11 @@ const EMPTY_INPUTS: PostcodeModelInputs = {
   annualHeatingKwhM2: null,
   annualCoolingKwhM2: null,
 };
+
+function pageFromHash(): PageId {
+  const hash = window.location.hash.replace(/^#/, "");
+  return hash === "results" || hash === "customise" || hash === "guide" ? hash : "planner";
+}
 
 function downloadBlob(filename: string, blob: Blob): void {
   const url = URL.createObjectURL(blob);
@@ -51,16 +60,27 @@ function downloadBlob(filename: string, blob: Blob): void {
 }
 
 function downloadJson(filename: string, value: unknown): void {
-  const blob = new Blob([JSON.stringify(value, null, 2)], { type: "application/json" });
-  downloadBlob(filename, blob);
+  downloadBlob(
+    filename,
+    new Blob([JSON.stringify(value, null, 2)], { type: "application/json" }),
+  );
 }
 
 function downloadText(filename: string, value: string, type: string): void {
-  const blob = new Blob([value], { type });
-  downloadBlob(filename, blob);
+  downloadBlob(filename, new Blob([value], { type }));
+}
+
+function PageHeading({ title, children }: { title: string; children: string }) {
+  return (
+    <header className="page-heading">
+      <h1>{title}</h1>
+      <p>{children}</p>
+    </header>
+  );
 }
 
 export default function App() {
+  const [page, setPage] = useState<PageId>(() => pageFromHash());
   const [parameters, setParameters] = useState<ScenarioParameters>(() => clonePaperDefaults());
   const [inputs, setInputs] = useState<PostcodeModelInputs>(EMPTY_INPUTS);
   const [postcodeIndex, setPostcodeIndex] = useState<PostcodeIndexEntry[]>([]);
@@ -74,6 +94,15 @@ export default function App() {
   const [dataError, setDataError] = useState<string | null>(null);
   const [actionMessage, setActionMessage] = useState<string | null>(null);
   const importInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const onHashChange = () => {
+      setPage(pageFromHash());
+      window.scrollTo({ top: 0, behavior: "instant" });
+    };
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
+  }, []);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -130,7 +159,6 @@ export default function App() {
       })
       .finally(() => setClimateLoading(false));
     return () => controller.abort();
-    // A base-year edit changes month assignment, so reload the static tuples.
   }, [selectedPostcode, selectedAttributes, selectedEntry, parameters.time.base_year]);
 
   const validationIssues = useMemo(
@@ -224,15 +252,11 @@ export default function App() {
     if (selectedAttributes !== null) {
       setInputs(inputsFromAttributes(selectedAttributes, defaults.ground.surface_dataset_id));
     }
-    setActionMessage("Paper defaults and frozen postcode inputs restored.");
+    setActionMessage("Paper defaults and postcode data restored.");
   };
 
   const exportScenario = () => {
-    if (
-      calculation.outcome === null ||
-      selectedPostcode === null ||
-      selectedAttributes === null
-    ) return;
+    if (calculation.outcome === null || selectedPostcode === null || selectedAttributes === null) return;
     downloadJson(
       `gshp-scenario-${selectedPostcode}.json`,
       createScenarioExport(
@@ -268,7 +292,7 @@ export default function App() {
       setSelectedPostcode(imported.postcode);
       setPostcodeQuery(imported.postcode);
       setDataError(null);
-      setActionMessage(`Scenario for postcode ${imported.postcode} imported. Calculations use the current frozen dataset version.`);
+      setActionMessage(`Scenario for postcode ${imported.postcode} imported.`);
     } catch (error) {
       setActionMessage(null);
       setDataError(error instanceof Error ? error.message : "Could not import the scenario.");
@@ -286,79 +310,177 @@ export default function App() {
     .filter((entry) => entry.postcode.includes(postcodeQuery.trim()))
     .slice(0, 8);
 
+  const renderPostcodeSearch = () => (
+    <div className="quick-card">
+      <form onSubmit={(event) => { event.preventDefault(); choosePostcode(postcodeQuery); }}>
+        <label htmlFor="postcode-search">Australian postcode</label>
+        <div className="postcode-search-row">
+          <input
+            id="postcode-search"
+            inputMode="numeric"
+            maxLength={4}
+            value={postcodeQuery}
+            placeholder="3000"
+            list="postcode-options"
+            onChange={(event) => setPostcodeQuery(event.target.value.replace(/\D/g, ""))}
+          />
+          <button type="submit" disabled={catalogLoading}>Select</button>
+        </div>
+        <datalist id="postcode-options">
+          {postcodeIndex.map((entry) => <option key={entry.postcode} value={entry.postcode} />)}
+        </datalist>
+      </form>
+      {postcodeQuery.length > 0 && postcodeQuery !== selectedPostcode && suggestions.length > 0 && (
+        <div className="postcode-suggestions" aria-label="Postcode suggestions">
+          {suggestions.map((entry) => (
+            <button key={entry.postcode} type="button" onClick={() => choosePostcode(entry.postcode)}>
+              {entry.postcode}
+            </button>
+          ))}
+        </div>
+      )}
+      <div className="quick-fields">
+        <label>
+          <span>Target depth</span>
+          <span className="compact-input-with-unit">
+            <input
+              aria-label="Target depth"
+              type="number"
+              value={parameters.ground.target_depth_m}
+              onChange={(event) => onParameterChange("ground.target_depth_m", Number(event.target.value))}
+            />
+            <small>m</small>
+          </span>
+        </label>
+        <label>
+          <span>Temperature dataset</span>
+          <select
+            aria-label="Temperature dataset"
+            value={parameters.ground.surface_dataset_id}
+            onChange={(event) => onParameterChange("ground.surface_dataset_id", event.target.value)}
+          >
+            <option value="surface_t">Surface T</option>
+            <option value="air_t">Air T</option>
+          </select>
+        </label>
+        <label>
+          <span>Electricity price</span>
+          <span className="compact-input-with-unit">
+            <input
+              aria-label="Electricity price"
+              type="number"
+              min="0"
+              step="0.01"
+              value={parameters.tariff.single_price_per_kwh ?? ""}
+              placeholder="Optional"
+              onChange={(event) => onParameterChange(
+                "tariff.single_price_per_kwh",
+                event.target.value === "" ? null : Number(event.target.value),
+              )}
+            />
+            <small>{parameters.tariff.currency}/kWh</small>
+          </span>
+        </label>
+      </div>
+      {selectedEntry !== null && selectedAttributes !== null && (
+        <div className="selected-postcode-summary">
+          <div><span>Selected</span><strong>{selectedEntry.postcode}</strong></div>
+          <div><span>Ground at depth</span><strong>{groundPreview === null ? "—" : `${groundPreview.toFixed(2)} °C`}</strong></div>
+          <div><span>Certificates</span><strong>{selectedAttributes.load.certificate_count ?? "—"}</strong></div>
+        </div>
+      )}
+      {dataError !== null && <p className="inline-error" role="alert">{dataError}</p>}
+    </div>
+  );
+
   return (
     <div className="app-shell">
       <header className="site-header">
-        <a className="brand" href="#top" aria-label="Return to the top of the page">
+        <a className="brand" href="#planner" aria-label="GeoPump Planner home">
           <span className="brand-mark">G</span>
-          <span><strong>GroundMatch</strong><small>Postcode GSHP screening</small></span>
+          <span><strong>GeoPump Planner</strong></span>
         </a>
-        <nav aria-label="Page navigation">
-          <a href="#ground-settings">Settings</a>
-          <a href="#results">Results</a>
-          <a href="#data-quality">Data quality</a>
-          <a href="#method">Method</a>
+        <nav className="page-nav" aria-label="Main navigation">
+          <a className={page === "planner" ? "active" : ""} href="#planner" aria-current={page === "planner" ? "page" : undefined}>Planner</a>
+          <a className={page === "results" ? "active" : ""} href="#results" aria-current={page === "results" ? "page" : undefined}>Results</a>
+          <a className={page === "customise" ? "active" : ""} href="#customise" aria-current={page === "customise" ? "page" : undefined}>Customise</a>
+          <a className={page === "guide" ? "active" : ""} href="#guide" aria-current={page === "guide" ? "page" : undefined}>Guide</a>
         </nav>
-        <span className="header-tag">Open source · Local calculation</span>
       </header>
 
-      <main id="top">
-        <section className="hero">
-          <div className="hero-copy">
-            <p className="eyebrow">Geological supply × climate demand</p>
-            <h1>One postcode.<br /><em>Match ground heat to demand.</em></h1>
-            <p className="hero-lead">Select an area, adjust ground temperature, demand thresholds, COP and electricity prices, then compare ground- and air-source heat pumps. Every registered formula parameter is editable.</p>
-          </div>
-          <div className="postcode-card">
-            <form onSubmit={(event) => { event.preventDefault(); choosePostcode(postcodeQuery); }}>
-              <label htmlFor="postcode-search">Select an Australian postcode</label>
-              <div className="postcode-search-row">
-                <input
-                  id="postcode-search"
-                  inputMode="numeric"
-                  maxLength={4}
-                  value={postcodeQuery}
-                  placeholder="For example, 3000"
-                  list="postcode-options"
-                  onChange={(event) => setPostcodeQuery(event.target.value.replace(/\D/g, ""))}
-                />
-                <button type="submit" disabled={catalogLoading}>Load</button>
+      <main>
+        {page === "planner" && (
+          <div className="planner-page">
+            <section className="home-intro">
+              <div>
+                <h1>Plan by postcode.</h1>
+                <p>Compare ground- and air-source heat pumps using local ground and climate data.</p>
               </div>
-              <datalist id="postcode-options">
-                {postcodeIndex.map((entry) => <option key={entry.postcode} value={entry.postcode} />)}
-              </datalist>
-            </form>
-            {postcodeQuery.length > 0 && postcodeQuery !== selectedPostcode && suggestions.length > 0 && (
-              <div className="postcode-suggestions" aria-label="Postcode suggestions">
-                {suggestions.map((entry) => (
-                  <button key={entry.postcode} type="button" onClick={() => choosePostcode(entry.postcode)}>
-                    {entry.postcode}
-                  </button>
-                ))}
+              <div className="home-help">
+                <span>First visit? <a href="#guide">Read the guide</a>.</span>
+                <span>Need different assumptions? <a href="#customise">Customise the model</a>.</span>
               </div>
-            )}
-            {selectedEntry !== null && selectedAttributes !== null && (
-              <div className="postcode-summary">
-                <div><span>Current area</span><strong>{selectedEntry.postcode}</strong></div>
-                <div><span>Location</span><strong>{selectedEntry.lat.toFixed(2)}, {selectedEntry.lon.toFixed(2)}</strong></div>
-                <div><span>Certificate records</span><strong>{selectedAttributes.load.certificate_count ?? "None"}</strong></div>
-                <div><span>Nearest borehole</span><strong>{selectedAttributes.ground.nearest_borehole_km === null ? "No data" : `${selectedAttributes.ground.nearest_borehole_km.toFixed(1)} km`}</strong></div>
-              </div>
-            )}
-            <div className="availability-row">
-              <span className={selectedEntry?.has_ground_data ? "available" : "missing"}>Ground {selectedEntry?.has_ground_data ? "✓" : "—"}</span>
-              <span className={selectedEntry?.has_load_data ? "available" : "missing"}>Load {selectedEntry?.has_load_data ? "✓" : "—"}</span>
-              <span className={selectedEntry?.has_climate_data ? "available" : "missing"}>Climate {selectedEntry?.has_climate_data ? "✓" : "—"}</span>
+            </section>
+            <div className="planner-workspace">
+              {renderPostcodeSearch()}
+              <PostcodeMap
+                attributeIndex={attributeIndex}
+                postcodeIndex={postcodeIndex}
+                selectedPostcode={selectedPostcode}
+                onSelectPostcode={choosePostcode}
+              />
             </div>
-            {dataError !== null && <p className="inline-error" role="alert">{dataError}</p>}
+            <QuickResults
+              outcome={calculation.outcome}
+              loading={catalogLoading || climateLoading}
+              error={calculation.error}
+              currency={parameters.tariff.currency}
+            />
           </div>
-        </section>
+        )}
 
-        <div className="action-bar">
-          <div><strong>{selectedPostcode ?? "Not selected"}</strong><span>{climateLoading ? "Loading" : calculation.outcome === null ? "Waiting for input" : "Results updated"}</span></div>
-          <div className="action-buttons">
-            <button className="button-secondary" type="button" onClick={reset}>Restore paper defaults</button>
-            <button className="button-secondary" type="button" onClick={() => importInputRef.current?.click()}>Import scenario JSON</button>
+        {page === "results" && (
+          <div className="results-page">
+            <div className="content-page-header">
+              <PageHeading title="Detailed results">Review the full technical, electricity and cost comparison.</PageHeading>
+              <div className="page-actions">
+                <button type="button" className="button-secondary" onClick={exportCsv} disabled={calculation.outcome === null}>Export CSV</button>
+                <button type="button" className="button-primary" onClick={exportScenario} disabled={calculation.outcome === null}>Export scenario</button>
+              </div>
+            </div>
+            {actionMessage !== null && <p className="action-message" role="status">{actionMessage}</p>}
+            <ResultsPanel
+              outcome={calculation.outcome}
+              calculationError={calculation.error}
+              loading={catalogLoading || climateLoading}
+              currency={parameters.tariff.currency}
+            />
+            {selectedAttributes !== null && climate !== null && manifest !== null && (
+              <details className="data-evidence-drawer">
+                <summary>Data evidence and quality</summary>
+                <DataQualityPanel
+                  attributes={selectedAttributes}
+                  climate={climate}
+                  datasetId={parameters.ground.surface_dataset_id}
+                  expectedAnnualHours={parameters.time.expected_annual_weight_hours}
+                  manifest={manifest}
+                  overrides={overrides}
+                />
+              </details>
+            )}
+          </div>
+        )}
+
+        {page === "customise" && (
+          <div className="customise-page">
+            <div className="content-page-header">
+              <PageHeading title="Customise the model">Adjust inputs, formula parameters, COP settings, time periods, tariffs and investment assumptions.</PageHeading>
+              <div className="page-actions">
+                <button type="button" className="button-secondary" onClick={reset}>Restore defaults</button>
+                <button type="button" className="button-secondary" onClick={() => importInputRef.current?.click()}>Import scenario</button>
+                <button type="button" className="button-primary" onClick={exportScenario} disabled={calculation.outcome === null}>Export scenario</button>
+              </div>
+            </div>
             <input
               ref={importInputRef}
               className="visually-hidden"
@@ -371,56 +493,56 @@ export default function App() {
                 event.target.value = "";
               }}
             />
-            <button className="button-secondary" type="button" onClick={exportCsv} disabled={calculation.outcome === null}>Export results CSV</button>
-            <button className="button-primary" type="button" onClick={exportScenario} disabled={calculation.outcome === null}>Export scenario JSON</button>
+            {actionMessage !== null && <p className="action-message" role="status">{actionMessage}</p>}
+            <SettingsPanel
+              parameters={parameters}
+              inputs={inputs}
+              onParameterChange={onParameterChange}
+              onInputChange={onInputChange}
+              validationIssues={validationIssues}
+              calculatedGroundTemperatureC={groundPreview}
+            />
           </div>
-        </div>
-        {actionMessage !== null && <p className="action-message" role="status">{actionMessage}</p>}
-
-        <SettingsPanel
-          parameters={parameters}
-          inputs={inputs}
-          onParameterChange={onParameterChange}
-          onInputChange={onInputChange}
-          validationIssues={validationIssues}
-          calculatedGroundTemperatureC={groundPreview}
-        />
-
-        <div id="results">
-          <ResultsPanel
-            outcome={calculation.outcome}
-            calculationError={calculation.error}
-            loading={catalogLoading || climateLoading}
-            currency={parameters.tariff.currency}
-          />
-        </div>
-
-        {selectedAttributes !== null && climate !== null && manifest !== null && (
-          <DataQualityPanel
-            attributes={selectedAttributes}
-            climate={climate}
-            datasetId={parameters.ground.surface_dataset_id}
-            expectedAnnualHours={parameters.time.expected_annual_weight_hours}
-            manifest={manifest}
-            overrides={overrides}
-          />
         )}
 
-        <section className="method-section" id="method">
-          <p className="eyebrow">Transparent method</p>
-          <h2>Spatial processing is completed before publication; the browser runs traceable formulas only.</h2>
-          <div className="method-steps">
-            <article><span>1</span><h3>Climate identifies demand</h3><p>Hourly air temperatures and editable 12/24°C thresholds produce weighted degree-hours.</p></article>
-            <article><span>2</span><h3>Certificate loads are allocated</h3><p>Annual loads follow the degree-hour distribution; zero annual degree-hours produce zero allocated load.</p></article>
-            <article><span>3</span><h3>Ground temperature informs COP</h3><p>GSHP uses ground temperature and ASHP uses hourly air temperature with selectable COP formulas.</p></article>
-            <article><span>4</span><h3>Electricity and economics are compared</h3><p>The model calculates electricity, period tariffs, lifecycle cost and evidence quality.</p></article>
+        {page === "guide" && (
+          <div className="guide-page">
+            <PageHeading title="How to use GeoPump Planner">A short guide to the map, calculation and editable assumptions.</PageHeading>
+            <section className="guide-steps">
+              <article><span>1</span><h2>Select a postcode</h2><p>Type a postcode or click it on the map. Change the map metric to inspect local ground, load and evidence data.</p></article>
+              <article><span>2</span><h2>Set the essentials</h2><p>Choose a depth and temperature dataset. Add an electricity price if you want annual cost estimates.</p></article>
+              <article><span>3</span><h2>Read the result</h2><p>The home page shows the headline comparison. The Results page contains monthly values, decision evidence and downloads.</p></article>
+              <article><span>4</span><h2>Customise if needed</h2><p>The Customise page exposes every registered model parameter, constant, time window, tariff and COP setting.</p></article>
+            </section>
+
+            <section className="guide-section">
+              <h2>What the calculation does</h2>
+              <div className="guide-grid">
+                <article><h3>Demand from temperature</h3><p>Hourly air temperature is converted to heating and cooling degree-hours using editable thresholds. The defaults are 12 °C and 24 °C.</p></article>
+                <article><h3>Load follows demand</h3><p>Certificate annual loads are allocated across hours in proportion to degree-hours. If annual degree-hours are zero, allocated demand and load are zero.</p></article>
+                <article><h3>Ground meets climate</h3><p>Ground temperature and hourly air temperature feed the selected COP formulas for GSHP and ASHP electricity estimates.</p></article>
+                <article><h3>Costs use your assumptions</h3><p>Electricity prices, conditioned area, building count, installed costs and lifecycle parameters are editable rather than fixed.</p></article>
+              </div>
+            </section>
+
+            <section className="guide-section guide-notes">
+              <h2>Important notes</h2>
+              <ul>
+                <li>Spatial processing is completed before publication; the browser runs the calculation formulas using preprocessed postcode data.</li>
+                <li><code>Dwelling_Count</code> is the number of certificate records, not the postcode dwelling population.</li>
+                <li>The ΔT20 EBK prediction standard error applies to the Surface T chain only and is not total ground-temperature uncertainty.</li>
+                <li>The default selected time period is two hours before sunset to two hours after sunrise, but any start and end time can be entered.</li>
+                <li>This is a postcode screening tool, not a borehole design, thermal-response test or engineering quotation.</li>
+              </ul>
+              <a className="text-link" href="https://github.com/LightHaan/GeoPump-planner#readme" target="_blank" rel="noreferrer">Read the project documentation →</a>
+            </section>
           </div>
-        </section>
+        )}
       </main>
 
       <footer>
-        <span>GroundMatch · open-source postcode screening framework</span>
-        <span>No ArcGIS runtime · No accounts · No data uploads</span>
+        <span>GeoPump Planner</span>
+        <a href="https://github.com/LightHaan/GeoPump-planner" target="_blank" rel="noreferrer">GitHub</a>
       </footer>
     </div>
   );

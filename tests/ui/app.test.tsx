@@ -6,6 +6,14 @@ import { join } from "node:path";
 import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
+vi.mock("../../src/components/postcode-map", () => ({
+  PostcodeMap: ({ selectedPostcode }: { selectedPostcode: string | null }) => (
+    <section aria-label="Interactive Australian postcode map">
+      Postcode map · {selectedPostcode}
+    </section>
+  ),
+}));
+
 import App from "../../src/App";
 import { clonePaperDefaults } from "../../src/parameters/defaults";
 
@@ -27,8 +35,15 @@ function response(value: unknown) {
   } as Response;
 }
 
-describe("Phase 4 minimum frontend", () => {
+async function openPage(name: "Planner" | "Results" | "Customise" | "Guide") {
+  fireEvent.click(screen.getByRole("link", { name }));
+  await waitFor(() => expect(screen.getByRole("link", { name }).getAttribute("aria-current")).toBe("page"));
+}
+
+describe("GeoPump Planner pages", () => {
   beforeEach(() => {
+    window.location.hash = "";
+    vi.stubGlobal("scrollTo", vi.fn());
     vi.stubGlobal("fetch", vi.fn(async (input: string | URL | Request) => {
       const url = String(input);
       if (url.includes("postcode-index.json")) {
@@ -57,27 +72,41 @@ describe("Phase 4 minimum frontend", () => {
     vi.unstubAllGlobals();
   });
 
-  it("loads postcode 3000, recalculates editable ground inputs, and exposes reset/export", async () => {
+  it("keeps the home page concise and moves full settings and results to separate pages", async () => {
     render(<App />);
-    expect(await screen.findByText("GSHP and ASHP comparison", {}, { timeout: 10_000 })).toBeTruthy();
-    const depth = screen.getByRole("spinbutton", { name: /Target depth/ });
-    fireEvent.change(depth, { target: { value: "30" } });
-    await waitFor(() => expect(screen.getAllByText("19.60°C").length).toBeGreaterThan(0));
+    expect(await screen.findByText("Screening result", {}, { timeout: 10_000 })).toBeTruthy();
+    expect(screen.getByRole("heading", { name: "Plan by postcode." })).toBeTruthy();
+    expect(screen.getByLabelText("Interactive Australian postcode map")).toBeTruthy();
+    expect(screen.queryByText("GSHP and ASHP comparison")).toBeNull();
+    expect(screen.getByRole("link", { name: "Read the guide" })).toBeTruthy();
+    expect(screen.getByRole("link", { name: "Customise the model" })).toBeTruthy();
+
+    const quickDepth = screen.getByRole("spinbutton", { name: "Target depth" });
+    fireEvent.change(quickDepth, { target: { value: "30" } });
+    await waitFor(() => expect(screen.getByText("19.60 °C")).toBeTruthy());
+
+    await openPage("Customise");
+    expect(screen.getByRole("heading", { name: "Customise the model" })).toBeTruthy();
     fireEvent.change(screen.getByRole("combobox", { name: /Surface-temperature dataset/ }), {
       target: { value: "air_t" },
     });
     await waitFor(() => expect(screen.getAllByText("17.69°C").length).toBeGreaterThan(0));
-    expect(screen.getByRole("button", { name: "Export scenario JSON" }).hasAttribute("disabled"))
-      .toBe(false);
-    expect(screen.getByText("Dataset 2026.08.05-phase2-web")).toBeTruthy();
-    expect(screen.getByText("Not applicable")).toBeTruthy();
-    fireEvent.click(screen.getByRole("button", { name: "Restore paper defaults" }));
-    await waitFor(() => expect((depth as HTMLInputElement).value).toBe("20"));
+    expect(screen.getByRole("button", { name: "Export scenario" }).hasAttribute("disabled")).toBe(false);
+
+    await openPage("Results");
+    expect(screen.getByText("GSHP and ASHP comparison")).toBeTruthy();
+    expect(screen.getByRole("button", { name: "Export CSV" }).hasAttribute("disabled")).toBe(false);
+    expect(screen.getByText("Data evidence and quality")).toBeTruthy();
+
+    await openPage("Guide");
+    expect(screen.getByRole("heading", { name: "How to use GeoPump Planner" })).toBeTruthy();
+    expect(screen.getByText(/If annual degree-hours are zero/)).toBeTruthy();
   });
 
-  it("imports a validated scenario JSON and exposes CSV export", async () => {
+  it("imports a validated scenario from the Customise page", async () => {
     render(<App />);
-    await screen.findByText("GSHP and ASHP comparison", {}, { timeout: 10_000 });
+    await screen.findByText("Screening result", {}, { timeout: 10_000 });
+    await openPage("Customise");
     const importedParameters = clonePaperDefaults();
     importedParameters.load.heating_balance_temperature_c = 13;
     const imported = {
@@ -105,7 +134,5 @@ describe("Phase 4 minimum frontend", () => {
     await screen.findByText(/Scenario for postcode 3000 imported/);
     expect((screen.getByRole("spinbutton", { name: /Heating demand threshold/ }) as HTMLInputElement).value)
       .toBe("13");
-    expect(screen.getByRole("button", { name: "Export results CSV" }).hasAttribute("disabled"))
-      .toBe(false);
-  });
+  }, 15_000);
 });

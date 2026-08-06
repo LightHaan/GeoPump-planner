@@ -12,6 +12,10 @@ loads prepared postcode data and runs the calculation models only.
 
 ## Features
 
+- Explore all 2,641 spatial postcodes on a free Leaflet map, colour the map by
+  13 ground, load, borehole and evidence metrics, and click a postcode to model it.
+- Use a concise Planner home page, with full results, model customisation and the
+  user guide kept on separate pages.
 - Search 2,641 spatial postcodes and load climate files only when selected.
 - Choose either the Geoscience Australia Surface T chain or CSIRO Air T chain.
 - Calculate ground temperature from surface temperature and gradient, interpolate
@@ -79,6 +83,14 @@ total ground-temperature uncertainty.
 
 See [the user guide](docs/user-guide.md), [the frozen data manifest](public/data/manifest.json),
 [the data dictionary](public/data/data-dictionary.md) and [third-party notices](THIRD_PARTY_NOTICES.md).
+
+## Map
+
+The map uses Leaflet with Canvas rendering and the prepared postcode GeoJSON in
+`public/data/postcode-boundaries.geojson`. It has no commercial basemap, API key
+or ArcGIS runtime dependency. Map features are joined in the browser to the
+published postcode attribute index; climate calculation files are still loaded
+only for the selected postcode.
 
 ## Scope and disclaimer
 

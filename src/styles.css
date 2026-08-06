@@ -270,3 +270,180 @@ footer { display: flex; justify-content: space-between; gap: 20px; padding: 28px
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+
+/* Multi-page planner shell */
+.site-header { grid-template-columns: 1fr auto; min-height: 64px; }
+.brand strong { font-size: 17px; }
+.page-nav { justify-self: end; gap: 6px !important; }
+.page-nav a { padding: 8px 12px; border-radius: 9px; color: var(--muted); font-weight: 650; }
+.page-nav a:hover, .page-nav a.active { color: var(--green-dark); background: var(--green-soft); }
+
+.planner-page, .results-page, .customise-page, .guide-page { min-height: calc(100vh - 122px); }
+.planner-page { padding: 48px 5vw 76px; }
+.home-intro {
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+  align-items: end;
+  max-width: 1320px;
+  margin: 0 auto 28px;
+}
+.home-intro h1, .page-heading h1 {
+  margin: 0;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(38px, 4.8vw, 64px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+.home-intro p, .page-heading p { margin: 13px 0 0; color: var(--muted); font-size: 16px; line-height: 1.55; }
+.home-help { display: grid; gap: 7px; padding: 14px 17px; border: 1px solid var(--line); border-radius: 13px; background: rgba(255,255,255,0.55); color: var(--muted); font-size: 12px; }
+.home-help a, .text-link { color: var(--green); font-weight: 750; text-decoration: none; }
+.home-help a:hover, .text-link:hover { text-decoration: underline; }
+
+.planner-workspace {
+  display: grid;
+  grid-template-columns: minmax(270px, 340px) minmax(0, 1fr);
+  gap: 18px;
+  max-width: 1320px;
+  margin: 0 auto;
+  align-items: start;
+}
+.quick-card, .postcode-map-card, .quick-results {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--paper);
+  box-shadow: 0 10px 35px rgba(29, 58, 54, 0.055);
+}
+.quick-card { display: grid; gap: 20px; padding: 22px; }
+.quick-card form > label { display: block; margin-bottom: 9px; font-size: 13px; font-weight: 750; }
+.quick-fields { display: grid; gap: 14px; padding-top: 2px; border-top: 1px solid var(--line); }
+.quick-fields > label { display: grid; gap: 7px; color: var(--ink); font-size: 12px; font-weight: 700; }
+.quick-fields select, .quick-fields input {
+  width: 100%;
+  height: 42px;
+  padding: 8px 10px;
+  border: 1px solid #c8d1cd;
+  border-radius: 9px;
+  background: white;
+  outline: none;
+}
+.quick-fields select:focus, .quick-fields input:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(41, 111, 103, 0.1); }
+.compact-input-with-unit { position: relative; display: block; }
+.compact-input-with-unit input { padding-right: 74px; }
+.compact-input-with-unit small { position: absolute; right: 10px; top: 50%; color: var(--muted); font-size: 9px; transform: translateY(-50%); }
+.selected-postcode-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; overflow: hidden; border: 1px solid var(--line); border-radius: 11px; background: var(--line); }
+.selected-postcode-summary div { display: grid; gap: 4px; padding: 11px 8px; background: #f9faf7; }
+.selected-postcode-summary span { color: var(--muted); font-size: 9px; text-transform: uppercase; letter-spacing: 0.05em; }
+.selected-postcode-summary strong { font-size: 12px; }
+
+.postcode-map-card { min-width: 0; overflow: hidden; }
+.map-toolbar { display: flex; justify-content: space-between; align-items: end; gap: 24px; padding: 18px 20px; }
+.map-toolbar h2 { margin: 0; font-family: Georgia, serif; font-size: 24px; font-weight: 500; }
+.map-toolbar p { margin: 4px 0 0; color: var(--muted); font-size: 11px; }
+.map-metric-select { display: grid; gap: 5px; min-width: min(340px, 48%); }
+.map-metric-select span { color: var(--muted); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+.map-metric-select select { width: 100%; height: 38px; padding: 7px 10px; border: 1px solid #c8d1cd; border-radius: 8px; background: white; font-size: 12px; }
+.map-frame { position: relative; min-height: 520px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: #eef2ee; }
+.postcode-map { position: absolute; inset: 0; }
+.postcode-map.leaflet-container { background: #eef2ee; }
+.postcode-map .leaflet-control-zoom { overflow: hidden; border: 0; border-radius: 9px; box-shadow: 0 2px 10px rgba(24,48,45,0.18); }
+.postcode-map .leaflet-control-zoom a { color: var(--ink); border-color: var(--line); }
+.map-loading { position: absolute; inset: 0; z-index: 3; display: grid; place-items: center; color: var(--muted); background: #eef2ee; font-size: 13px; }
+.map-loading.map-error { color: var(--red); }
+.map-hover-card { position: absolute; z-index: 4; left: 14px; top: 14px; display: grid; gap: 3px; min-width: 170px; padding: 11px 13px; border: 1px solid rgba(24,48,45,0.12); border-radius: 10px; background: rgba(255,255,255,0.94); box-shadow: 0 5px 18px rgba(24,48,45,0.12); pointer-events: none; }
+.map-hover-card strong { font-family: Georgia, serif; font-size: 20px; }
+.map-hover-card span { color: var(--green-dark); font-size: 12px; font-weight: 750; }
+.map-hover-card small { color: var(--muted); font-size: 9px; }
+.map-legend { position: absolute; z-index: 4; left: 14px; bottom: 14px; display: flex; gap: 5px; align-items: center; padding: 7px 9px; border-radius: 8px; background: rgba(255,255,255,0.92); box-shadow: 0 3px 12px rgba(24,48,45,0.12); color: var(--muted); font-size: 9px; }
+.map-legend i { display: block; width: 52px; height: 8px; background: linear-gradient(90deg, #3f77a8, #73aaa4, #d8d790, #e29a50, #ad4f43); }
+.postcode-data-drawer { padding: 13px 18px; }
+.postcode-data-drawer summary { color: var(--green-dark); cursor: pointer; font-size: 12px; font-weight: 750; }
+.postcode-data-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-top: 13px; }
+.postcode-data-grid div { display: grid; gap: 3px; padding: 10px; border-radius: 8px; background: #f4f6f2; }
+.postcode-data-grid span { color: var(--muted); font-size: 9px; }
+.postcode-data-grid strong { font-size: 11px; }
+
+.quick-results { max-width: 1320px; margin: 18px auto 0; padding: 22px; }
+.quick-results-empty { display: grid; place-items: center; min-height: 130px; color: var(--muted); text-align: center; }
+.quick-results-heading { display: flex; justify-content: space-between; gap: 18px; align-items: center; margin-bottom: 16px; }
+.quick-results-heading span { color: var(--green); font-size: 10px; font-weight: 750; text-transform: uppercase; letter-spacing: 0.07em; }
+.quick-results-heading h2 { margin: 3px 0 0; font-family: Georgia, serif; font-size: 25px; font-weight: 500; }
+.decision-pill { padding: 7px 11px; border-radius: 999px; font-size: 10px; }
+.decision-pill.decision-recommended { color: #27633f; background: #dcecdf; }
+.decision-pill.decision-conditional { color: #7a591c; background: #f5e7c7; }
+.decision-pill.decision-not_recommended { color: #853c33; background: #f3ddd8; }
+.decision-pill.decision-not_assessed { color: var(--muted); background: #eceeea; }
+.quick-result-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 9px; margin-bottom: 15px; }
+.quick-result-grid article { display: grid; gap: 6px; min-height: 105px; padding: 14px; border-radius: 11px; background: #f5f6f2; }
+.quick-result-grid span { color: var(--muted); font-size: 10px; }
+.quick-result-grid strong { align-self: end; font-family: Georgia, serif; font-size: 19px; font-weight: 500; }
+.quick-result-grid small { color: var(--muted); font-size: 9px; }
+
+.content-page-header, .guide-page > .page-heading { display: flex; justify-content: space-between; align-items: end; gap: 32px; padding: 58px 6vw 36px; }
+.page-heading { max-width: 850px; }
+.page-heading h1 { font-size: clamp(36px, 4.2vw, 58px); }
+.page-actions { display: flex; gap: 9px; flex-wrap: wrap; justify-content: flex-end; }
+.page-actions button { min-height: 42px; padding: 0 16px; border-radius: 10px; font-size: 12px; font-weight: 750; }
+.results-page .results-section { padding-top: 55px; }
+.results-page .action-message, .customise-page .action-message { margin: -20px 6vw 24px; }
+.customise-page .settings-stack { padding-top: 4px; }
+.data-evidence-drawer { margin: 26px 6vw 70px; overflow: hidden; border: 1px solid var(--line); border-radius: 16px; background: var(--paper); }
+.data-evidence-drawer > summary { padding: 17px 20px; color: var(--green-dark); cursor: pointer; font-size: 13px; font-weight: 750; }
+.data-evidence-drawer[open] > summary { border-bottom: 1px solid var(--line); }
+.data-evidence-drawer .quality-section { padding: 45px 4vw; }
+
+.guide-page { max-width: 1320px; margin: 0 auto; padding-bottom: 76px; }
+.guide-page > .page-heading { display: block; padding-left: 5vw; padding-right: 5vw; }
+.guide-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; padding: 0 5vw 54px; }
+.guide-steps article { padding: 20px; border: 1px solid var(--line); border-radius: 15px; background: var(--paper); }
+.guide-steps article > span { color: var(--green); font-family: Georgia, serif; font-size: 24px; }
+.guide-steps h2 { margin: 15px 0 8px; font-family: Georgia, serif; font-size: 20px; font-weight: 500; }
+.guide-steps p, .guide-grid p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
+.guide-section { margin: 0 5vw; padding: 44px 0; border-top: 1px solid var(--line); }
+.guide-section > h2 { margin: 0 0 24px; font-family: Georgia, serif; font-size: 32px; font-weight: 500; }
+.guide-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.guide-grid article { padding: 18px; border-radius: 12px; background: #eef3ef; }
+.guide-grid h3 { margin: 0 0 7px; font-size: 14px; }
+.guide-notes ul { margin: 0 0 22px; padding-left: 22px; color: var(--muted); line-height: 1.7; }
+.guide-notes li { margin-bottom: 6px; }
+.guide-notes code { color: var(--green-dark); }
+footer a { color: #bdccc8; text-decoration: none; }
+footer a:hover { color: white; }
+
+@media (max-width: 1050px) {
+  .planner-workspace { grid-template-columns: 1fr; }
+  .quick-card { grid-template-columns: minmax(230px, 0.8fr) minmax(0, 1.2fr); align-items: start; }
+  .quick-card .selected-postcode-summary, .quick-card .inline-error, .quick-card .postcode-suggestions { grid-column: 1 / -1; }
+  .quick-fields { grid-template-columns: repeat(3, 1fr); padding-top: 0; border-top: 0; }
+  .postcode-data-grid, .quick-result-grid, .guide-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 720px) {
+  .site-header { display: flex; min-height: 58px; padding: 0 14px; overflow-x: auto; }
+  .brand { flex: 0 0 auto; }
+  .brand-mark { width: 33px; height: 33px; }
+  .brand strong { font-size: 14px; }
+  .site-header .page-nav { display: flex; flex: 0 0 auto; margin-left: auto; }
+  .page-nav a { padding: 7px 9px; font-size: 11px !important; }
+  .planner-page { padding: 34px 16px 58px; }
+  .home-intro, .content-page-header { align-items: flex-start; flex-direction: column; }
+  .home-help { width: 100%; }
+  .quick-card { display: grid; grid-template-columns: 1fr; padding: 18px; }
+  .quick-card .selected-postcode-summary, .quick-card .inline-error, .quick-card .postcode-suggestions { grid-column: auto; }
+  .quick-fields { grid-template-columns: 1fr; }
+  .map-toolbar { align-items: stretch; flex-direction: column; gap: 13px; }
+  .map-metric-select { min-width: 0; width: 100%; }
+  .map-frame { min-height: 450px; }
+  .map-legend { right: 10px; left: 10px; justify-content: center; }
+  .map-legend i { width: 35px; }
+  .postcode-data-grid, .quick-result-grid, .guide-steps, .guide-grid { grid-template-columns: 1fr; }
+  .quick-results-heading { align-items: flex-start; flex-direction: column; }
+  .content-page-header, .guide-page > .page-heading { padding: 40px 20px 28px; }
+  .page-actions { justify-content: flex-start; width: 100%; }
+  .page-actions button { flex: 1 1 auto; }
+  .data-evidence-drawer { margin: 20px 20px 55px; }
+  .guide-steps { padding: 0 20px 42px; }
+  .guide-section { margin: 0 20px; }
+}

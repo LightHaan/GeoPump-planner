@@ -11,8 +11,8 @@ export interface OptionalPostcodeMapAdapter {
 }
 
 /**
- * The Phase 4 application does not instantiate a map. A later MapLibre,
- * Leaflet, ArcGIS JS, or other adapter can implement this contract without
- * changing postcode loading or calculation code.
+ * The public app currently uses a Leaflet Canvas map. This small contract is
+ * retained so a future ArcGIS, vector-tile, or other map can replace the view
+ * without changing postcode loading or calculation code.
  */
 export type PostcodeMapAdapterFactory = () => OptionalPostcodeMapAdapter;
