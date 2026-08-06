@@ -37,15 +37,13 @@ loads prepared postcode data and runs the calculation models only.
 
 ## Live site
 
-The verified static build is published from the `gh-pages` branch at:
+GitHub Actions verifies every push to `main` and publishes the static build at:
 
 <https://lighthaan.github.io/GeoPump-planner/>
 
-The first release was published only after the TypeScript, Python regression,
-data-package and browser checks passed. An optional GitHub Actions template is
-kept at `docs/pages-workflow.yml.example`; copy it to
-`.github/workflows/pages.yml` when using a GitHub credential with `workflow`
-permission.
+The initial release was published only after the TypeScript, Python regression,
+data-package and browser checks passed. The active workflow is defined in
+`.github/workflows/pages.yml`; contributors only need to work with `main`.
 
 ## Local development
 

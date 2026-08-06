@@ -52,10 +52,9 @@ pnpm preview
 ## GitHub Pages
 
 `vite.config.ts` derives the project base path from `GITHUB_REPOSITORY` during
-the production build. The verified static site is published from the
-`gh-pages` branch. `docs/pages-workflow.yml.example` is an optional pinned
-GitHub Actions template that can run the tests, build `dist` and deploy on pushes
-to `main`; activating it requires a GitHub credential with `workflow` permission.
+the production build. `.github/workflows/pages.yml` runs the test suite, builds
+`dist` and deploys the verified static site on every push to `main`. Pull requests
+run the same verification without publishing a site.
 
 ## Postcode map
 
