@@ -128,6 +128,18 @@ export function ResultsPanel({ outcome, calculationError, loading, currency }: R
         />
       </div>
 
+      <details className="result-method-note">
+        <summary>How the headline indicators are calculated</summary>
+        <div className="result-method-grid">
+          <p><strong>Allocated load</strong><span>Certificate load is scaled by area, building count and factors, then distributed in proportion to weighted degree-hours.</span></p>
+          <p><strong>System electricity</strong><span>Allocated thermal load ÷ COP, plus the configured proportional and fixed auxiliaries.</span></p>
+          <p><strong>APF</strong><span>Total allocated heating + cooling load ÷ total system electricity.</span></p>
+          <p><strong>Relative saving</strong><span>(ASHP electricity − GSHP electricity) ÷ ASHP electricity.</span></p>
+          <p><strong>Annual cost</strong><span>Energy charge plus daily and annual fixed charges under the selected tariff.</span></p>
+          <p><strong>NPV of choosing GSHP</strong><span>ASHP lifecycle cost − GSHP lifecycle cost; a positive value favours GSHP.</span></p>
+        </div>
+      </details>
+
       {(allWarnings.length > 0 || decision.reasons.length > 0) && (
         <details className="warning-list" open={allWarnings.some((item) => item.includes("degree-hours are zero"))}>
           <summary>Assumptions, warnings and decision notes ({allWarnings.length + decision.reasons.length})</summary>

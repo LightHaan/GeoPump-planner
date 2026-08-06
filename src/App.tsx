@@ -526,6 +526,62 @@ export default function App() {
               </div>
             </section>
 
+            <section className="guide-section core-equations">
+              <div className="guide-section-heading">
+                <div>
+                  <p className="eyebrow">Calculation reference</p>
+                  <h2>Core equations</h2>
+                </div>
+                <p>Every term shown here can be entered or changed on the Customise page. GSHP uses the calculated ground temperature; ASHP uses each record's outdoor air temperature.</p>
+              </div>
+              <div className="equation-grid">
+                <article>
+                  <span>01 · Ground temperature</span>
+                  <h3>Surface temperature and gradient</h3>
+                  <pre><code>T_ground(z) = T_surface + gradient × depth</code></pre>
+                  <p>Borehole mode instead uses <code>T_surface + (T_borehole - T_surface) × depth / borehole_depth</code>. Direct mode uses the entered ground temperature without a depth equation.</p>
+                </article>
+                <article>
+                  <span>02 · Demand</span>
+                  <h3>Weighted degree-hours</h3>
+                  <pre><code>{`HDH_t = max(0, T_heat - T_air,t) × weight_t
+CDH_t = max(0, T_air,t - T_cool) × weight_t`}</code></pre>
+                  <p>The editable paper defaults are 12 °C and 24 °C. Degree-hours identify when demand exists; they do not create extra annual load.</p>
+                </article>
+                <article>
+                  <span>03 · Load</span>
+                  <h3>Scale and allocate certificate load</h3>
+                  <pre><code>{`requested_load = load_per_m² × area × buildings
+                 × scale_factor × occupancy_factor
+load_t = requested_load × DH_t / sum(DH)`}</code></pre>
+                  <p>Under the default policy, if <code>sum(DH) = 0</code>, allocated load is zero even when the certificate input is positive. The unallocated amount remains visible in the calculation trace.</p>
+                </article>
+                <article>
+                  <span>04 · COP</span>
+                  <h3>Selected COP model</h3>
+                  <pre><code>{`Heating: COP = η × T_cond,K / (T_cond,K - T_evap,K)
+Cooling: COP = η × T_evap,K / (T_cond,K - T_evap,K)`}</code></pre>
+                  <p>These are the scaled-Carnot defaults. Constant and linear source-temperature models can be selected independently for GSHP and ASHP, with editable bounds and invalid-value handling.</p>
+                </article>
+                <article>
+                  <span>05 · Electricity</span>
+                  <h3>Compressor, auxiliaries and APF</h3>
+                  <pre><code>{`compressor_electricity_t = thermal_load_t / COP_t
+APF = total_allocated_thermal_load / system_electricity`}</code></pre>
+                  <p>System electricity adds editable pump, fan and miscellaneous fractions plus fixed annual auxiliary electricity.</p>
+                </article>
+                <article>
+                  <span>06 · Comparison</span>
+                  <h3>Saving, cost and NPV</h3>
+                  <pre><code>{`saving = ASHP_electricity - GSHP_electricity
+relative_saving = saving / ASHP_electricity
+NPV_GSHP = ASHP_lifecycle_cost - GSHP_lifecycle_cost`}</code></pre>
+                  <p>Positive saving and positive NPV favour GSHP. The decision label also applies the editable technical, payback, NPV and evidence-quality thresholds.</p>
+                </article>
+              </div>
+              <p className="reference-link-note">For tariff equations, lifecycle discounting, solar-time equations, decision rules, validation and all 109 parameter defaults, see the <a className="text-link" href="https://github.com/LightHaan/GeoPump-planner/blob/main/docs/calculation-reference.md" target="_blank" rel="noreferrer">complete calculation and parameter reference →</a></p>
+            </section>
+
             <section className="guide-section guide-notes">
               <h2>Important notes</h2>
               <ul>
@@ -535,7 +591,7 @@ export default function App() {
                 <li>The default selected time period is two hours before sunset to two hours after sunrise, but any start and end time can be entered.</li>
                 <li>This is a postcode screening tool, not a borehole design, thermal-response test or engineering quotation.</li>
               </ul>
-              <a className="text-link" href="https://github.com/LightHaan/GeoPump-planner#readme" target="_blank" rel="noreferrer">Read the project documentation →</a>
+              <a className="text-link" href="https://github.com/LightHaan/GeoPump-planner#readme" target="_blank" rel="noreferrer">Read the project overview →</a>
             </section>
           </div>
         )}

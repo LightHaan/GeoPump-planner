@@ -74,6 +74,12 @@ function CopQuickPanel({ title, system, parameters, onChange }: CopQuickPanelPro
           <NumberField id={`${system}-linear-cool-slope`} label="Cooling slope" value={parameters.linear_cooling_slope_per_c} onChange={(value) => onChange(`${prefix}.linear_cooling_slope_per_c`, value)} />
         </div>
       )}
+      <p className="formula-inline">
+        <strong>Formula:</strong>{" "}
+        {parameters.model_id === "scaled_carnot" && "scaled Carnot COP using supply temperature, source temperature, approach and empirical efficiency"}
+        {parameters.model_id === "constant" && "COP = the entered heating or cooling constant"}
+        {parameters.model_id === "linear_source_temperature" && "COP = intercept + slope × source temperature"}
+      </p>
     </section>
   );
 }
@@ -147,6 +153,12 @@ export function SettingsPanel({
           <span>Ground temperature used in the current calculation</span>
           <strong>{calculatedGroundTemperatureC === null ? "Waiting for valid input" : `${calculatedGroundTemperatureC.toFixed(2)}°C`}</strong>
         </div>
+        <p className="formula-inline">
+          <strong>Current method:</strong>{" "}
+          {parameters.ground.mode === "surface_gradient" && "T_ground = T_surface + gradient × target depth"}
+          {parameters.ground.mode === "surface_borehole_interpolation" && "T_ground = T_surface + (T_borehole - T_surface) × target depth / borehole depth"}
+          {parameters.ground.mode === "direct" && "T_ground = direct user input"}
+        </p>
       </section>
 
       <section className="settings-card" id="load-settings">
@@ -163,6 +175,11 @@ export function SettingsPanel({
           <NumberField id="building-count" label="Number of modelled buildings" value={parameters.load.building_count} step={1} onChange={(value) => onParameterChange("load.building_count", value)} help="Independent of the certificate record count." />
           <NumberField id="load-scale" label="Load scaling factor" value={parameters.load.load_scaling_factor} step={0.01} onChange={(value) => onParameterChange("load.load_scaling_factor", value)} />
           <NumberField id="occupancy-factor" label="Occupancy/use factor" value={parameters.load.occupancy_use_factor} step={0.01} onChange={(value) => onParameterChange("load.occupancy_use_factor", value)} />
+        </div>
+        <div className="formula-note">
+          <code>HDH = max(0, heating threshold - outdoor temperature) × record weight</code>
+          <code>CDH = max(0, outdoor temperature - cooling threshold) × record weight</code>
+          <code>allocated load = requested annual load × record degree-hours / annual degree-hours</code>
         </div>
         <p className="rule-note"><strong>Important:</strong> if annual degree-hours are zero for a demand type, its allocated load and electricity use are zero even when the certificate load is non-zero.</p>
       </section>
@@ -208,6 +225,7 @@ export function SettingsPanel({
           <CopQuickPanel title="Ground-source heat pump · GSHP" system="gshp" parameters={parameters.cop.gshp} onChange={onParameterChange} />
           <CopQuickPanel title="Air-source heat pump · ASHP" system="ashp" parameters={parameters.cop.ashp} onChange={onParameterChange} />
         </div>
+        <p className="formula-inline"><strong>Electricity:</strong> compressor electricity = allocated thermal load / COP. Pump, fan, miscellaneous and fixed annual auxiliary electricity are editable below under Advanced model parameters.</p>
       </section>
 
       <section className="settings-card" id="cost-settings">
@@ -231,6 +249,10 @@ export function SettingsPanel({
           )}
           <NumberField id="gshp-installed-cost" label="Total GSHP installed cost" value={parameters.economics.gshp_installed_cost} unit={parameters.tariff.currency} step={100} onChange={(value) => onParameterChange("economics.gshp_installed_cost", value)} />
           <NumberField id="ashp-installed-cost" label="Total ASHP installed cost" value={parameters.economics.ashp_installed_cost} unit={parameters.tariff.currency} step={100} onChange={(value) => onParameterChange("economics.ashp_installed_cost", value)} />
+        </div>
+        <div className="formula-note compact-formula-note">
+          <code>single-rate cost = annual electricity × price + fixed charges</code>
+          <code>NPV of choosing GSHP = ASHP lifecycle cost - GSHP lifecycle cost</code>
         </div>
       </section>
 

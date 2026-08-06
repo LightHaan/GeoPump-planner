@@ -1,4 +1,9 @@
-# User guide: demand detection and certificate-load allocation
+# User guide
+
+This guide explains the normal app workflow and the assumptions that most often
+change a result. For every equation, output definition, validation rule and
+default value, see the [complete calculation and parameter
+reference](calculation-reference.md).
 
 ## App pages
 
@@ -17,6 +22,49 @@ shows both *Australian mean land-surface temperature* (Geoscience Australia) and
 climatology)* (CSIRO), ground temperature at 20 m, gradients, annual
 heating/cooling loads, certificate count, borehole evidence, climate records and
 the applicable ΔT20 prediction standard error.
+
+## Recommended workflow
+
+1. Select a postcode by search or by clicking its map boundary.
+2. Review the prepared surface temperature, gradient, certificate loads and data
+   evidence shown for that postcode.
+3. Choose one of the two fully named temperature datasets and enter a target
+   depth. The prepared 20 m data are starting values, not a site measurement.
+4. Enter conditioned area and the number of buildings being modelled. These
+   values convert the certificate load intensity into an annual thermal-load
+   total.
+5. Enter an electricity tariff for annual cost, and installed costs for payback
+   and lifecycle results. Blank prices or installed costs deliberately produce
+   “Not assessed” economic outputs.
+6. Read warnings and evidence quality on Results. Export scenario JSON when an
+   auditable record of all inputs, parameters and outputs is required.
+7. Use Customise only for assumptions you understand. Restore defaults is always
+   available.
+
+## Ground temperature used by the GSHP
+
+The default method uses the selected prepared surface temperature and gradient:
+
+```text
+ground_temperature_at_depth = surface_temperature + gradient × target_depth
+```
+
+Customise also provides:
+
+```text
+surface/borehole method:
+ground_temperature = surface_temperature
+                     + (borehole_temperature - surface_temperature)
+                       × target_depth / borehole_depth
+
+direct method:
+ground_temperature = user_input
+```
+
+The calculated value is used as a constant GSHP source/sink temperature for all
+representative hours. The ASHP instead uses each record's outdoor air
+temperature. The app does not simulate ground-loop sizing, seasonal ground drift
+or long-term extraction limits.
 
 ## How the model interprets certificate load
 
@@ -47,6 +95,18 @@ default weight of five hours, so the annual total is 8,760 represented hours. A
 future true 8,760-hour dataset should use a weight of one hour per record.
 
 ## Step 2: allocate annual certificate load
+
+First, certificate intensity is converted to the requested system load:
+
+```text
+requested_annual_load = certificate_load_per_m²
+                        × conditioned_floor_area
+                        × building_count
+                        × load_scaling_factor
+                        × occupancy_use_factor
+```
+
+Certificate count does not appear in this formula.
 
 When annual degree-hours for a demand type are greater than zero:
 
@@ -81,6 +141,25 @@ GSHP uses the selected-depth ground temperature as its source/sink temperature;
 ASHP uses each record's outdoor air temperature. Pump, fan, miscellaneous and
 fixed annual auxiliary electricity are independent editable parameters.
 
+The paper-default scaled-Carnot equations are:
+
+```text
+heating COP = efficiency × condenser_temperature_K
+              / (condenser_temperature_K - evaporator_temperature_K)
+
+cooling COP = efficiency × evaporator_temperature_K
+              / (condenser_temperature_K - evaporator_temperature_K)
+```
+
+Supply temperature, heat-exchanger approach, empirical efficiency, Kelvin
+offset, COP bounds and invalid-COP handling are editable. Constant-COP and
+linear source-temperature models can be selected independently for GSHP and
+ASHP. The annual performance factor is:
+
+```text
+APF = total allocated heating and cooling load / total system electricity
+```
+
 ## Custom analysis period
 
 The paper describes two hours before sunset to two hours after sunrise as a
@@ -96,6 +175,28 @@ field. Users can rename the period and choose:
 Single-rate or selected-period/other-period tariffs can then be entered. The
 same mechanism supports off-peak, peak or any user-defined continuous period.
 
+## Cost, comparison and decision outputs
+
+```text
+GSHP electricity saving = ASHP annual electricity - GSHP annual electricity
+relative saving = electricity saving / ASHP annual electricity
+
+annual tariff cost = energy charge + daily fixed charges + annual fixed charge
+NPV of choosing GSHP = ASHP lifecycle cost - GSHP lifecycle cost
+```
+
+Positive electricity saving and positive NPV favour GSHP. Lifecycle cost adds
+installed cost, discounted annual tariff cost, annual maintenance and scheduled
+replacements, then subtracts discounted residual value. Electricity price can
+escalate annually; maintenance does not escalate in the current formula.
+
+The headline recommendation is not based on saving alone. The app separately
+checks the editable minimum technical saving, maximum payback and NPV threshold,
+then reports the worst applicable evidence quality from interpolation standard
+error, nearest-borehole distance and certificate count. A result proceeds to
+“recommended” only when both technical and economic checks pass and evidence is
+good; other non-failing combinations are conditional.
+
 ## Imports, exports and data quality
 
 Scenario JSON contains model parameters, manual inputs, the frozen source
@@ -108,3 +209,7 @@ invalid or unrepresented records, borehole evidence, certificate count and all
 manual overrides. ΔT20 EBK prediction standard error is shown only for the
 *Australian mean land-surface temperature* chain and is explicitly described as
 partial interpolation uncertainty.
+
+The JSON parameter identifiers `surface_t` and `air_t` are internal compatibility
+codes for the Geoscience Australia and CSIRO datasets respectively. User-facing
+choices use the full dataset names.

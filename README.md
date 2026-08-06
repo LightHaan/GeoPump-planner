@@ -73,6 +73,35 @@ contain 1,752 records per available postcode, each representing five hours, for
 only where climate-derived demand exists; it is not treated as demand in every
 hour.
 
+The calculation sequence is:
+
+```text
+ground temperature = surface temperature + gradient × target depth
+
+heating degree-hours_t = max(0, heating threshold - outdoor temperature_t) × weight_t
+cooling degree-hours_t = max(0, outdoor temperature_t - cooling threshold) × weight_t
+
+requested annual load = certificate load intensity × conditioned area
+                        × building count × scaling factor × occupancy factor
+allocated load_t = requested annual load × degree-hours_t / annual degree-hours
+
+compressor electricity_t = allocated thermal load_t / COP_t
+relative GSHP saving = (ASHP electricity - GSHP electricity) / ASHP electricity
+NPV of choosing GSHP = ASHP lifecycle cost - GSHP lifecycle cost
+```
+
+The ground equation can be replaced by surface-to-borehole interpolation or a
+direct temperature input. GSHP and ASHP can independently use scaled-Carnot,
+constant or linear source-temperature COP models. System electricity adds
+editable pump, fan, miscellaneous and fixed annual auxiliaries; tariffs and
+lifecycle economics are then applied using the user's assumptions.
+
+If the annual heating or cooling degree-hour denominator is zero, the default
+policy allocates zero load for that demand type even when its certificate input
+is positive. The requested amount is retained as unallocated load in the
+calculation trace. Alternative error and uniform-allocation policies are
+available on the Customise page.
+
 `Dwelling_Count` is published as `certificate_count`: the number of certificates
 with records, not the number of dwellings in the postcode. Building count and
 conditioned area are separate editable scenario inputs.
@@ -83,8 +112,18 @@ land-surface temperature* + ΔT20 interpolation chain. It is not applied to the
 climatology)* + ΔT20New chain and is not presented as total ground-temperature
 uncertainty.
 
-See [the user guide](docs/user-guide.md), [the frozen data manifest](public/data/manifest.json),
-[the data dictionary](public/data/data-dictionary.md) and [third-party notices](THIRD_PARTY_NOTICES.md).
+## Documentation
+
+- [User guide](docs/user-guide.md): page-by-page workflow, demand interpretation
+  and the most important cautions.
+- [Calculation and parameter reference](docs/calculation-reference.md): complete
+  equations, output definitions, decision logic, validation behaviour and all
+  109 editable parameter defaults.
+- [Frozen data dictionary](public/data/data-dictionary.md): prepared postcode
+  field definitions and units.
+- [Frozen data manifest](public/data/manifest.json): data version, source URLs,
+  coverage and file checksums.
+- [Third-party notices](THIRD_PARTY_NOTICES.md): source attribution and terms.
 
 ## Map
 
