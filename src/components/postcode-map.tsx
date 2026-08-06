@@ -7,6 +7,7 @@ import {
   type PostcodeAttributeIndex,
   type PostcodeIndexEntry,
 } from "../data/postcode";
+import { TEMPERATURE_DATASET_LABELS } from "../data/temperature-datasets";
 import {
   createMetricScale,
   formatMetricValue,
@@ -235,11 +236,12 @@ export function PostcodeMap({
         {!mapReady && mapError === null && <div className="map-loading">Loading postcode boundaries…</div>}
         {mapError !== null && <div className="map-loading map-error" role="alert">Map unavailable: {mapError}</div>}
         <div className="map-legend" aria-label={`${metric.label} legend`}>
-          <span>{number(scale.lower, metric.id.includes("gradient") ? 3 : 1)}</span>
-          <i />
-          <span>{number(scale.middle, metric.id.includes("gradient") ? 3 : 1)}</span>
-          <i />
-          <span>{number(scale.upper, metric.id.includes("gradient") ? 3 : 1)} {metric.unit}</span>
+          <i aria-hidden="true" />
+          <div className="map-legend-values">
+            <span>{number(scale.lower, metric.id.includes("gradient") ? 3 : 1)}</span>
+            <span>{number(scale.middle, metric.id.includes("gradient") ? 3 : 1)}</span>
+            <span>{number(scale.upper, metric.id.includes("gradient") ? 3 : 1)} {metric.unit}</span>
+          </div>
         </div>
         {hoveredPostcode !== null && (
           <div className="map-hover-card" aria-live="polite">
@@ -254,12 +256,12 @@ export function PostcodeMap({
         <details className="postcode-data-drawer">
           <summary>All mapped data for postcode {selectedPostcode}</summary>
           <div className="postcode-data-grid">
-            <div><span>Surface T</span><strong>{number(selectedAttributes.ground.surface_t.surface_temp_c, 2)} °C</strong></div>
-            <div><span>Air T</span><strong>{number(selectedAttributes.ground.air_t.surface_temp_c, 2)} °C</strong></div>
-            <div><span>Ground at 20 m · Surface T</span><strong>{number(selectedAttributes.ground.surface_t.ground_temp_at_reference_depth_c, 2)} °C</strong></div>
-            <div><span>Ground at 20 m · Air T</span><strong>{number(selectedAttributes.ground.air_t.ground_temp_at_reference_depth_c, 2)} °C</strong></div>
-            <div><span>Gradient · Surface T</span><strong>{number(selectedAttributes.ground.surface_t.gradient_c_per_m, 4)} °C/m</strong></div>
-            <div><span>Gradient · Air T</span><strong>{number(selectedAttributes.ground.air_t.gradient_c_per_m, 4)} °C/m</strong></div>
+            <div><span>Surface temperature — {TEMPERATURE_DATASET_LABELS.surface_t}</span><strong>{number(selectedAttributes.ground.surface_t.surface_temp_c, 2)} °C</strong></div>
+            <div><span>Surface temperature — {TEMPERATURE_DATASET_LABELS.air_t}</span><strong>{number(selectedAttributes.ground.air_t.surface_temp_c, 2)} °C</strong></div>
+            <div><span>Ground at 20 m — {TEMPERATURE_DATASET_LABELS.surface_t}</span><strong>{number(selectedAttributes.ground.surface_t.ground_temp_at_reference_depth_c, 2)} °C</strong></div>
+            <div><span>Ground at 20 m — {TEMPERATURE_DATASET_LABELS.air_t}</span><strong>{number(selectedAttributes.ground.air_t.ground_temp_at_reference_depth_c, 2)} °C</strong></div>
+            <div><span>Gradient — {TEMPERATURE_DATASET_LABELS.surface_t}</span><strong>{number(selectedAttributes.ground.surface_t.gradient_c_per_m, 4)} °C/m</strong></div>
+            <div><span>Gradient — {TEMPERATURE_DATASET_LABELS.air_t}</span><strong>{number(selectedAttributes.ground.air_t.gradient_c_per_m, 4)} °C/m</strong></div>
             <div><span>Heating load</span><strong>{number(selectedAttributes.load.annual_heating_kwh_m2, 1)} kWh/m²/year</strong></div>
             <div><span>Cooling load</span><strong>{number(selectedAttributes.load.annual_cooling_kwh_m2, 1)} kWh/m²/year</strong></div>
             <div><span>Certificate records</span><strong>{number(selectedAttributes.load.certificate_count, 0)}</strong></div>

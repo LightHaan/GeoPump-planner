@@ -1,4 +1,5 @@
 import type { PostcodeAttributeIndex, PostcodeAttributes } from "../data/postcode";
+import { TEMPERATURE_DATASET_LABELS } from "../data/temperature-datasets";
 
 export type MapMetricId =
   | "ground_surface_20"
@@ -49,56 +50,56 @@ const nullable = (value: number | null | undefined): number | null => (
 export const MAP_METRICS: readonly MapMetricDefinition[] = [
   {
     id: "ground_surface_20",
-    label: "Ground temperature at 20 m · Surface T",
+    label: `Ground temperature at 20 m — ${TEMPERATURE_DATASET_LABELS.surface_t}`,
     property: "map_ground_surface_20",
     unit: "°C",
     value: (item) => nullable(item.ground.surface_t.ground_temp_at_reference_depth_c),
   },
   {
     id: "ground_air_20",
-    label: "Ground temperature at 20 m · Air T",
+    label: `Ground temperature at 20 m — ${TEMPERATURE_DATASET_LABELS.air_t}`,
     property: "map_ground_air_20",
     unit: "°C",
     value: (item) => nullable(item.ground.air_t.ground_temp_at_reference_depth_c),
   },
   {
     id: "surface_temperature",
-    label: "Surface temperature · Surface T",
+    label: `Surface temperature — ${TEMPERATURE_DATASET_LABELS.surface_t}`,
     property: "map_surface_temperature",
     unit: "°C",
     value: (item) => nullable(item.ground.surface_t.surface_temp_c),
   },
   {
     id: "air_temperature",
-    label: "Surface temperature · Air T",
+    label: `Surface temperature — ${TEMPERATURE_DATASET_LABELS.air_t}`,
     property: "map_air_temperature",
     unit: "°C",
     value: (item) => nullable(item.ground.air_t.surface_temp_c),
   },
   {
     id: "surface_gradient",
-    label: "Ground gradient · Surface T",
+    label: `Ground gradient — ${TEMPERATURE_DATASET_LABELS.surface_t}`,
     property: "map_surface_gradient",
     unit: "°C/m",
     value: (item) => nullable(item.ground.surface_t.gradient_c_per_m),
   },
   {
     id: "air_gradient",
-    label: "Ground gradient · Air T",
+    label: `Ground gradient — ${TEMPERATURE_DATASET_LABELS.air_t}`,
     property: "map_air_gradient",
     unit: "°C/m",
     value: (item) => nullable(item.ground.air_t.gradient_c_per_m),
   },
   {
     id: "surface_delta_t20",
-    label: "Temperature difference at 20 m · Surface T",
+    label: `Temperature difference at 20 m — ${TEMPERATURE_DATASET_LABELS.surface_t}`,
     property: "map_surface_delta_t20",
     unit: "°C",
     value: (item) => nullable(item.ground.surface_t.delta_temp_at_reference_depth_c),
   },
   {
     id: "air_delta_t20",
-    label: "Temperature difference at 20 m · Air T",
+    label: `Temperature difference at 20 m — ${TEMPERATURE_DATASET_LABELS.air_t}`,
     property: "map_air_delta_t20",
     unit: "°C",
     value: (item) => nullable(item.ground.air_t.delta_temp_at_reference_depth_c),

@@ -352,12 +352,14 @@ footer { display: flex; justify-content: space-between; gap: 20px; padding: 28px
 .postcode-map .leaflet-control-zoom a { color: var(--ink); border-color: var(--line); }
 .map-loading { position: absolute; inset: 0; z-index: 3; display: grid; place-items: center; color: var(--muted); background: #eef2ee; font-size: 13px; }
 .map-loading.map-error { color: var(--red); }
-.map-hover-card { position: absolute; z-index: 4; left: 14px; top: 14px; display: grid; gap: 3px; min-width: 170px; padding: 11px 13px; border: 1px solid rgba(24,48,45,0.12); border-radius: 10px; background: rgba(255,255,255,0.94); box-shadow: 0 5px 18px rgba(24,48,45,0.12); pointer-events: none; }
+.map-hover-card { position: absolute; z-index: 4; top: 14px; right: 14px; display: grid; gap: 3px; min-width: 170px; max-width: min(320px, calc(100% - 76px)); padding: 11px 13px; border: 1px solid rgba(24,48,45,0.12); border-radius: 10px; background: rgba(255,255,255,0.94); box-shadow: 0 5px 18px rgba(24,48,45,0.12); pointer-events: none; }
 .map-hover-card strong { font-family: Georgia, serif; font-size: 20px; }
 .map-hover-card span { color: var(--green-dark); font-size: 12px; font-weight: 750; }
 .map-hover-card small { color: var(--muted); font-size: 9px; }
-.map-legend { position: absolute; z-index: 4; left: 14px; bottom: 14px; display: flex; gap: 5px; align-items: center; padding: 7px 9px; border-radius: 8px; background: rgba(255,255,255,0.92); box-shadow: 0 3px 12px rgba(24,48,45,0.12); color: var(--muted); font-size: 9px; }
-.map-legend i { display: block; width: 52px; height: 8px; background: linear-gradient(90deg, #3f77a8, #73aaa4, #d8d790, #e29a50, #ad4f43); }
+.map-legend { position: absolute; z-index: 4; left: 14px; bottom: 14px; display: grid; gap: 4px; width: 210px; padding: 8px 10px; border-radius: 8px; background: rgba(255,255,255,0.92); box-shadow: 0 3px 12px rgba(24,48,45,0.12); color: var(--muted); font-size: 9px; }
+.map-legend > i { display: block; width: 100%; height: 9px; border-radius: 3px; background: linear-gradient(90deg, #3f77a8 0%, #73aaa4 25%, #d8d790 50%, #e29a50 75%, #ad4f43 100%); }
+.map-legend-values { display: flex; justify-content: space-between; gap: 8px; }
+.map-legend-values span:last-child { text-align: right; }
 .postcode-data-drawer { padding: 13px 18px; }
 .postcode-data-drawer summary { color: var(--green-dark); cursor: pointer; font-size: 12px; font-weight: 750; }
 .postcode-data-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-top: 13px; }
@@ -370,7 +372,10 @@ footer { display: flex; justify-content: space-between; gap: 20px; padding: 28px
 .quick-results-heading { display: flex; justify-content: space-between; gap: 18px; align-items: center; margin-bottom: 16px; }
 .quick-results-heading span { color: var(--green); font-size: 10px; font-weight: 750; text-transform: uppercase; letter-spacing: 0.07em; }
 .quick-results-heading h2 { margin: 3px 0 0; font-family: Georgia, serif; font-size: 25px; font-weight: 500; }
-.decision-pill { padding: 7px 11px; border-radius: 999px; font-size: 10px; }
+.decision-summary { display: grid; justify-items: end; gap: 4px; }
+.decision-kicker { color: var(--muted) !important; font-size: 8px !important; letter-spacing: 0.08em !important; }
+.decision-pill { padding: 6px 9px; border-radius: 6px; font-size: 10px; cursor: default; }
+.decision-action { color: var(--green-dark); font-size: 10px; font-weight: 750; text-decoration-thickness: 1px; text-underline-offset: 3px; }
 .decision-pill.decision-recommended { color: #27633f; background: #dcecdf; }
 .decision-pill.decision-conditional { color: #7a591c; background: #f5e7c7; }
 .decision-pill.decision-not_recommended { color: #853c33; background: #f3ddd8; }
@@ -416,7 +421,8 @@ footer a:hover { color: white; }
   .planner-workspace { grid-template-columns: 1fr; }
   .quick-card { grid-template-columns: minmax(230px, 0.8fr) minmax(0, 1.2fr); align-items: start; }
   .quick-card .selected-postcode-summary, .quick-card .inline-error, .quick-card .postcode-suggestions { grid-column: 1 / -1; }
-  .quick-fields { grid-template-columns: repeat(3, 1fr); padding-top: 0; border-top: 0; }
+  .quick-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); padding-top: 0; border-top: 0; }
+  .quick-fields .dataset-field { grid-column: 1 / -1; }
   .postcode-data-grid, .quick-result-grid, .guide-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
@@ -436,10 +442,10 @@ footer a:hover { color: white; }
   .map-toolbar { align-items: stretch; flex-direction: column; gap: 13px; }
   .map-metric-select { min-width: 0; width: 100%; }
   .map-frame { min-height: 450px; }
-  .map-legend { right: 10px; left: 10px; justify-content: center; }
-  .map-legend i { width: 35px; }
+  .map-legend { right: 10px; left: 10px; width: auto; }
   .postcode-data-grid, .quick-result-grid, .guide-steps, .guide-grid { grid-template-columns: 1fr; }
   .quick-results-heading { align-items: flex-start; flex-direction: column; }
+  .decision-summary { justify-items: start; }
   .content-page-header, .guide-page > .page-heading { padding: 40px 20px 28px; }
   .page-actions { justify-content: flex-start; width: 100%; }
   .page-actions button { flex: 1 1 auto; }

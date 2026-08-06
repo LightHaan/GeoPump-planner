@@ -14,7 +14,7 @@ function number(value: number | null, digits = 1): string {
 
 const decisionLabels = {
   recommended: "Proceed to detailed assessment",
-  conditional: "Review the assumptions",
+  conditional: "Conditional result",
   not_recommended: "Not recommended with current inputs",
   not_assessed: "Not assessed",
 } as const;
@@ -37,9 +37,15 @@ export function QuickResults({ outcome, loading, error, currency }: QuickResults
           <span>Postcode {scenario.postcode}</span>
           <h2>Screening result</h2>
         </div>
-        <strong className={`decision-pill decision-${decision.overall}`}>
-          {decisionLabels[decision.overall]}
-        </strong>
+        <div className="decision-summary" role="status">
+          <span className="decision-kicker">Decision status</span>
+          <strong className={`decision-pill decision-${decision.overall}`}>
+            {decisionLabels[decision.overall]}
+          </strong>
+          {decision.overall === "conditional" && (
+            <a className="decision-action" href="#customise">Review assumptions →</a>
+          )}
+        </div>
       </div>
       <div className="quick-result-grid">
         <article>

@@ -17,7 +17,9 @@ loads prepared postcode data and runs the calculation models only.
 - Use a concise Planner home page, with full results, model customisation and the
   user guide kept on separate pages.
 - Search 2,641 spatial postcodes and load climate files only when selected.
-- Choose either the Geoscience Australia Surface T chain or CSIRO Air T chain.
+- Choose either *Australian mean land-surface temperature* from Geoscience
+  Australia or *Hourly near-surface air temperature grids for Australia
+  (long-term climatology)* from CSIRO.
 - Calculate ground temperature from surface temperature and gradient, interpolate
   a user-supplied borehole measurement, or enter ground temperature directly.
 - Allocate certificate annual loads using editable hourly heating and cooling
@@ -75,9 +77,11 @@ hour.
 with records, not the number of dwellings in the postcode. Building count and
 conditioned area are separate editable scenario inputs.
 
-The ΔT20 EBK prediction standard error applies only to the Surface T + ΔT20
-interpolation chain. It is not applied to Air T + ΔT20New and is not presented as
-total ground-temperature uncertainty.
+The ΔT20 EBK prediction standard error applies only to the *Australian mean
+land-surface temperature* + ΔT20 interpolation chain. It is not applied to the
+*Hourly near-surface air temperature grids for Australia (long-term
+climatology)* + ΔT20New chain and is not presented as total ground-temperature
+uncertainty.
 
 See [the user guide](docs/user-guide.md), [the frozen data manifest](public/data/manifest.json),
 [the data dictionary](public/data/data-dictionary.md) and [third-party notices](THIRD_PARTY_NOTICES.md).

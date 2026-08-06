@@ -12,9 +12,11 @@
 - **Guide** provides the short in-app instructions and model cautions.
 
 The map shows 13 selectable metrics. Expanding **All mapped data for postcode**
-shows both Surface T and Air T chains, ground temperature at 20 m, gradients,
-annual heating/cooling loads, certificate count, borehole evidence, climate
-records and the Surface T ΔT20 prediction standard error.
+shows both *Australian mean land-surface temperature* (Geoscience Australia) and
+*Hourly near-surface air temperature grids for Australia (long-term
+climatology)* (CSIRO), ground temperature at 20 m, gradients, annual
+heating/cooling loads, certificate count, borehole evidence, climate records and
+the applicable ΔT20 prediction standard error.
 
 ## How the model interprets certificate load
 
@@ -104,4 +106,5 @@ CSV export provides annual summary, economics and monthly load/electricity rows.
 The collapsible data-evidence section on the Results page shows the active dataset version, climate coverage,
 invalid or unrepresented records, borehole evidence, certificate count and all
 manual overrides. ΔT20 EBK prediction standard error is shown only for the
-Surface T chain and is explicitly described as partial interpolation uncertainty.
+*Australian mean land-surface temperature* chain and is explicitly described as
+partial interpolation uncertainty.

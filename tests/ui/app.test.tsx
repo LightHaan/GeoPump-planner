@@ -80,6 +80,10 @@ describe("GeoPump Planner pages", () => {
     expect(screen.queryByText("GSHP and ASHP comparison")).toBeNull();
     expect(screen.getByRole("link", { name: "Read the guide" })).toBeTruthy();
     expect(screen.getByRole("link", { name: "Customise the model" })).toBeTruthy();
+    expect(screen.getByRole("option", { name: "Geoscience Australia — Australian mean land-surface temperature" })).toBeTruthy();
+    expect(screen.getByRole("option", { name: "CSIRO — Hourly near-surface air temperature grids for Australia (long-term climatology)" })).toBeTruthy();
+    expect(screen.getByText("Conditional result")).toBeTruthy();
+    expect(screen.getByRole("link", { name: "Review assumptions →" }).getAttribute("href")).toBe("#customise");
 
     const quickDepth = screen.getByRole("spinbutton", { name: "Target depth" });
     fireEvent.change(quickDepth, { target: { value: "30" } });

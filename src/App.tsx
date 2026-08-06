@@ -24,6 +24,7 @@ import {
   type PostcodeIndexEntry,
   type SurfaceDatasetId,
 } from "./data/postcode";
+import { TEMPERATURE_DATASET_LABELS } from "./data/temperature-datasets";
 import type { ClimateRecord } from "./engine/types";
 import { clonePaperDefaults } from "./parameters/defaults";
 import { setParameterValue } from "./parameters/definitions";
@@ -352,15 +353,15 @@ export default function App() {
             <small>m</small>
           </span>
         </label>
-        <label>
+        <label className="dataset-field">
           <span>Temperature dataset</span>
           <select
             aria-label="Temperature dataset"
             value={parameters.ground.surface_dataset_id}
             onChange={(event) => onParameterChange("ground.surface_dataset_id", event.target.value)}
           >
-            <option value="surface_t">Surface T</option>
-            <option value="air_t">Air T</option>
+            <option value="surface_t">{TEMPERATURE_DATASET_LABELS.surface_t}</option>
+            <option value="air_t">{TEMPERATURE_DATASET_LABELS.air_t}</option>
           </select>
         </label>
         <label>
@@ -530,7 +531,7 @@ export default function App() {
               <ul>
                 <li>Spatial processing is completed before publication; the browser runs the calculation formulas using preprocessed postcode data.</li>
                 <li><code>Dwelling_Count</code> is the number of certificate records, not the postcode dwelling population.</li>
-                <li>The ΔT20 EBK prediction standard error applies to the Surface T chain only and is not total ground-temperature uncertainty.</li>
+                <li>The ΔT20 EBK prediction standard error applies only to the Australian mean land-surface temperature dataset from Geoscience Australia and is not total ground-temperature uncertainty.</li>
                 <li>The default selected time period is two hours before sunset to two hours after sunrise, but any start and end time can be entered.</li>
                 <li>This is a postcode screening tool, not a borehole design, thermal-response test or engineering quotation.</li>
               </ul>

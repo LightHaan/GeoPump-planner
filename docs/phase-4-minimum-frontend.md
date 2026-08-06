@@ -12,7 +12,9 @@ or results. It includes:
 - a Leaflet postcode map with click selection, zoom controls, robust colour
   scales, 13 selectable metrics and an all-data drawer for the selected postcode;
 - independently loaded climate JSON for the selected postcode;
-- Surface T/Air T switching and three ground-temperature input methods;
+- switching between *Australian mean land-surface temperature* (Geoscience
+  Australia) and *Hourly near-surface air temperature grids for Australia
+  (long-term climatology)* (CSIRO), with three ground-temperature input methods;
 - editable depth, temperature, gradient, annual loads, balance temperatures,
   building scale, selected period, COP, tariffs and installed cost;
 - automatically generated advanced and equation-constant controls for every

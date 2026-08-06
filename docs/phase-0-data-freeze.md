@@ -5,8 +5,10 @@
 The current ArcGIS project contains two postcode-level surface baselines and
 two paired interpolated temperature increments. They are frozen as:
 
-- `air_t`: `AirT + deltaT20New`
-- `surface_t`: `surfaceT + deltaT20`
+- *Hourly near-surface air temperature grids for Australia (long-term
+  climatology)* from CSIRO (`air_t`): raw ArcGIS fields `AirT + deltaT20New`
+- *Australian mean land-surface temperature* from Geoscience Australia
+  (`surface_t`): raw ArcGIS fields `surfaceT + deltaT20`
 
 For either chain at reference depth `z_ref`:
 
@@ -15,8 +17,9 @@ gradient = delta_temperature / z_ref
 ground_temperature(z) = surface_temperature + gradient * z
 ```
 
-The default `z_ref` is 20 m and is recorded in the manifest. Dataset labels are
-metadata and can be renamed later without changing the numeric data.
+The default `z_ref` is 20 m and is recorded in the manifest. Internal identifiers
+and raw ArcGIS field names are retained for data compatibility; public interfaces
+use the formal dataset titles above.
 
 ## Climate records
 

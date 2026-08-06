@@ -1,4 +1,5 @@
 import type { DataManifest, PostcodeAttributes, SurfaceDatasetId } from "../data/postcode";
+import { TEMPERATURE_DATASET_LABELS } from "../data/temperature-datasets";
 import type { ClimateRecord } from "../engine/types";
 
 interface DataQualityPanelProps {
@@ -54,8 +55,8 @@ export function DataQualityPanel({
       <div className="quality-grid">
         <article>
           <span>Surface-temperature source</span>
-          <strong>{source?.provider ?? datasetId}</strong>
-          <small>{source?.temporal_coverage ?? "Coverage not recorded"}</small>
+          <strong>{source?.label ?? TEMPERATURE_DATASET_LABELS[datasetId]}</strong>
+          <small>{source === undefined ? "Coverage not recorded" : `${source.provider} · ${source.temporal_coverage}`}</small>
           {source !== undefined && <a href={source.source_url} target="_blank" rel="noreferrer">Open source record</a>}
         </article>
         <article>
@@ -64,7 +65,7 @@ export function DataQualityPanel({
           <small>
             {standardErrorApplicable
               ? "Interpolation standard error for ΔT20 only; it is not total ground-temperature uncertainty."
-              : "This statistic belongs to the Surface T + ΔT20 dataset and is not applied to Air T + ΔT20New."}
+              : `This statistic belongs to the ${TEMPERATURE_DATASET_LABELS.surface_t} + ΔT20 chain and is not applied to the ${TEMPERATURE_DATASET_LABELS.air_t} + ΔT20New chain.`}
           </small>
         </article>
         <article>

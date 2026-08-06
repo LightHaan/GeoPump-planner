@@ -1,4 +1,5 @@
 import type { PostcodeModelInputs } from "../app/model";
+import { TEMPERATURE_DATASET_LABELS } from "../data/temperature-datasets";
 import { ParameterControl, NumberField, SelectField } from "./form-controls";
 import {
   PARAMETER_REGISTRY,
@@ -117,8 +118,8 @@ export function SettingsPanel({
             label="Surface-temperature dataset"
             value={parameters.ground.surface_dataset_id}
             options={[
-              { value: "surface_t", label: "Surface T · Geoscience Australia" },
-              { value: "air_t", label: "Air T · CSIRO" },
+              { value: "surface_t", label: TEMPERATURE_DATASET_LABELS.surface_t },
+              { value: "air_t", label: TEMPERATURE_DATASET_LABELS.air_t },
             ]}
             onChange={(value) => onParameterChange("ground.surface_dataset_id", value)}
             help="Switching datasets loads the corresponding preprocessed postcode values."
