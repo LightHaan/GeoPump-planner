@@ -51,8 +51,8 @@ function scenarioBasis(parameters: LoadParameters): string {
   const area = number(parameters.conditioned_floor_area_m2);
   const buildings = number(parameters.building_count);
   return parameters.building_count === 1
-    ? `${area} m² heated/cooled floor area in one modelled building`
-    : `${area} m² heated/cooled floor area per building across ${buildings} modelled buildings`;
+    ? `${area} m² of heated/cooled floor area`
+    : `${area} m² of heated/cooled floor area in each of ${buildings} modelled buildings`;
 }
 
 function percentageComparison(savingFraction: number | null): string {
@@ -119,9 +119,11 @@ export function ResultsPanel({
         )}
       </header>
 
-      <p className="result-scale-note dark-scale-note">
-        Annual kWh and cost figures are current-scenario totals for {scenarioBasis(loadParameters)}; they are not per-square-metre values.
-        {customLoadAdjustment && " Custom load adjustment factors are also applied."} Change the area on the <a href="#planner">Planner</a> or use <a href="#customise">Customise</a> for other load settings.
+      <p className={`result-scale-note dark-scale-note${loadParameters.conditioned_floor_area_m2 === 1 ? " normalised-scale-note" : ""}`}>
+        {loadParameters.conditioned_floor_area_m2 === 1
+          ? <>The current calculation still uses the default <strong>1 m² normalised area</strong>. Enter the floor area you actually heat or cool on the <a href="#planner">Planner</a> before treating the electricity and cost as a whole-home estimate.</>
+          : <>These annual heat-pump electricity and running-cost figures are totals for {scenarioBasis(loadParameters)}.</>}
+        {customLoadAdjustment && " Custom load adjustment factors are also applied."} They cover modelled heating and cooling only, not the property&apos;s total electricity use or full electricity bill. Use <a href="#customise">Customise</a> for other load settings.
       </p>
 
       <div className="metric-grid">
@@ -151,7 +153,7 @@ export function ResultsPanel({
           <small>{number(Math.abs(scenario.comparison.annualElectricitySavingKwh))} kWh/year {scenario.comparison.annualElectricitySavingKwh >= 0 ? "less" : "more"} than air-source</small>
         </article>
         <article className="metric-card">
-          <span>Estimated annual running cost</span>
+          <span>Estimated heat-pump annual running cost</span>
           <strong>{annualCostSaving === null ? "Add electricity price" : `Ground-source: ${number(scenario.comparison.gshpAnnualEnergyCost)} ${currency}/year`}</strong>
           <small>{annualCostSaving === null
             ? "Enter an electricity price on Planner or Customise"

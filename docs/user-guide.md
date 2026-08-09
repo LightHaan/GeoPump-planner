@@ -126,11 +126,17 @@ requested_annual_load = certificate_load_per_m²
 
 Certificate count does not appear in this formula.
 
-Annual heating/cooling, electricity and running-cost figures displayed by the
-app are totals for this current modelled scale. They are not per-square-metre
-outputs. With the paper default of 1 m² and one building, the numeric load and
-electricity values represent a one-square-metre normalisation until the user
-enters a realistic heated/cooled floor area.
+The default floor area is 1 m² so the first result is a normalised comparison.
+Because the certificate input is also expressed per square metre, the default
+numeric result is equivalent to a per-square-metre result. It should not be read
+as a whole-home estimate. After the user enters the floor area actually heated
+or cooled, the app displays annual totals for that modelled area (and for the
+selected number of buildings and load adjustments).
+
+Displayed system electricity and running cost cover the modelled heat-pump
+heating and cooling only. They are not total property electricity use or a full
+electricity bill. Other appliances are excluded; tariff fixed charges are added
+only if the user enters them.
 
 When annual degree-hours for a demand type are greater than zero:
 

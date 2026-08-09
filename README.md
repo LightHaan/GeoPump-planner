@@ -99,6 +99,13 @@ constant or linear source-temperature COP models. System electricity adds
 editable pump, fan, miscellaneous and fixed annual auxiliaries; tariffs and
 lifecycle economics are then applied using the user's assumptions.
 
+The default 1 m² heated/cooled floor area produces a normalised comparison that
+is numerically equivalent to a per-square-metre result. Users should enter the
+actual floor area they heat or cool before interpreting the output as a
+whole-home estimate. Annual system electricity and running cost cover the
+modelled heat-pump heating and cooling only, not all property electricity use or
+the full electricity bill.
+
 The warming rate starts with borehole observations. The measured underground
 temperature is compared with the selected surface temperature, and the
 difference is divided by the borehole measurement depth to estimate temperature

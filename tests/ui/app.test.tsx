@@ -86,14 +86,15 @@ describe("GeoPump Planner pages", () => {
     expect(screen.getByText("Potentially suitable — review inputs")).toBeTruthy();
     expect(screen.getByRole("link", { name: "Review assumptions →" }).getAttribute("href")).toBe("#customise");
     expect(screen.getByText("Ground-source annual electricity")).toBeTruthy();
-    expect(screen.getByText(/not per-square-metre values/)).toBeTruthy();
+    expect(screen.getByText(/1 m² area is only a normalised comparison/)).toBeTruthy();
+    expect(screen.getByText(/not the property's total electricity use or full electricity bill/)).toBeTruthy();
 
     const floorArea = screen.getByRole("spinbutton", { name: "Heated/cooled floor area" });
     const electricityPrice = screen.getByRole("spinbutton", { name: "Electricity price" });
     expect((floorArea as HTMLInputElement).value).toBe("1");
     fireEvent.change(floorArea, { target: { value: "100" } });
     fireEvent.change(electricityPrice, { target: { value: "0.3" } });
-    await waitFor(() => expect(screen.getByText(/100 m² heated\/cooled floor area/)).toBeTruthy());
+    await waitFor(() => expect(screen.getByText(/totals for 100 m² of heated\/cooled floor area/)).toBeTruthy());
     expect(screen.queryByText("Add electricity price")).toBeNull();
     expect(screen.getByText(/Air-source:.*Saving:/)).toBeTruthy();
 
@@ -117,7 +118,7 @@ describe("GeoPump Planner pages", () => {
 
     await openPage("Results");
     expect(screen.getByText("Ground-source and air-source comparison")).toBeTruthy();
-    expect(screen.getByText("Estimated annual running cost")).toBeTruthy();
+    expect(screen.getByText("Estimated heat-pump annual running cost")).toBeTruthy();
     expect(screen.getByText("Long-term financial comparison")).toBeTruthy();
     expect(screen.getByRole("link", { name: "Potentially suitable — review inputs →" }).getAttribute("href")).toBe("#customise");
     expect(screen.getByRole("button", { name: "Export CSV" }).hasAttribute("disabled")).toBe(false);

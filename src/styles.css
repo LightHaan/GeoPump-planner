@@ -391,9 +391,12 @@ footer { display: flex; justify-content: space-between; gap: 20px; padding: 28px
 .quick-result-grid span { color: var(--muted); font-size: 10px; }
 .quick-result-grid strong { align-self: end; font-family: Georgia, serif; font-size: 19px; font-weight: 500; }
 .quick-result-grid small { color: var(--muted); font-size: 9px; }
-.result-scale-note { margin: 0 0 13px; color: var(--muted); font-size: 10px; line-height: 1.55; }
+.result-scale-note { margin: 0 0 13px; color: var(--muted); font-size: 13px; line-height: 1.6; }
+.result-scale-note strong { color: var(--ink); }
+.normalised-scale-note { padding: 11px 13px; border-radius: 10px; background: #f5efe0; }
 .result-scale-note a { color: var(--green-dark); font-weight: 750; text-decoration: underline; text-underline-offset: 2px; }
 .dark-scale-note { margin: -12px 0 24px; padding: 11px 13px; border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; color: #b9cbc6; background: rgba(255,255,255,0.045); }
+.dark-scale-note strong { color: #f2f7f5; }
 .dark-scale-note a { color: #9bd1c5; }
 
 .term-marker { margin-left: 2px; font-size: 0.68em; font-weight: 800; vertical-align: super; }

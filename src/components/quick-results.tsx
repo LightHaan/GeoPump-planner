@@ -25,8 +25,8 @@ function scenarioBasis(parameters: LoadParameters): string {
   const area = number(parameters.conditioned_floor_area_m2);
   const buildings = number(parameters.building_count);
   return parameters.building_count === 1
-    ? `${area} m² heated/cooled floor area in one modelled building`
-    : `${area} m² heated/cooled floor area per building across ${buildings} modelled buildings`;
+    ? `${area} m² of heated/cooled floor area`
+    : `${area} m² of heated/cooled floor area in each of ${buildings} modelled buildings`;
 }
 
 function percentageComparison(savingFraction: number | null): string {
@@ -85,7 +85,7 @@ export function QuickResults({ outcome, loading, error, currency, loadParameters
           <small>Ground-source compared with air-source</small>
         </article>
         <article>
-          <span>Ground-source annual running cost</span>
+          <span>Ground-source heat-pump annual running cost</span>
           <strong>{annualCostSaving === null ? "Add electricity price" : `${number(scenario.comparison.gshpAnnualEnergyCost)} ${currency}/year`}</strong>
           <small>
             {annualCostSaving === null
@@ -94,9 +94,11 @@ export function QuickResults({ outcome, loading, error, currency, loadParameters
           </small>
         </article>
       </div>
-      <p className="result-scale-note">
-        Annual electricity and cost figures are current-scenario totals for {scenarioBasis(loadParameters)}, not per-square-metre values.
-        {customLoadAdjustment && " Custom load adjustment factors are also applied."} Change the floor area above or use <a href="#customise">Customise</a> for other load settings.
+      <p className={`result-scale-note${loadParameters.conditioned_floor_area_m2 === 1 ? " normalised-scale-note" : ""}`}>
+        {loadParameters.conditioned_floor_area_m2 === 1
+          ? <>The default <strong>1 m² area is only a normalised comparison</strong>. Enter the floor area you actually heat or cool above before treating the electricity and cost as a whole-home estimate.</>
+          : <>These annual heat-pump electricity and running-cost figures are totals for {scenarioBasis(loadParameters)}.</>}
+        {customLoadAdjustment && " Custom load adjustment factors are also applied."} These figures cover modelled heating and cooling only, not the property&apos;s total electricity use or full electricity bill. Use <a href="#customise">Customise</a> for other load settings.
       </p>
       <a className="text-link" href="#results">View the full comparison →</a>
     </section>

@@ -36,7 +36,7 @@ const glossarySections: readonly GlossarySection[] = [
       },
       {
         term: "System electricity",
-        definition: "The modelled electricity used by the compressor plus the configured pump, fan, miscellaneous and fixed auxiliary electricity. Annual figures shown in kWh/year are totals for the current scenario's floor area, building count and load adjustments; they are not automatically per-square-metre values.",
+        definition: "The modelled electricity used by the heat-pump compressor plus the configured pump, fan, miscellaneous and fixed auxiliary electricity. It covers heating and cooling equipment, not other household electricity. With the default 1 m² floor area it is a normalised comparison; after the user enters an actual heated/cooled area, it becomes the total for that modelled scenario.",
       },
       {
         term: "Auxiliary electricity",
@@ -158,7 +158,7 @@ const glossarySections: readonly GlossarySection[] = [
       },
       {
         term: "Annual running cost",
-        definition: "The estimated yearly electricity cost for one system under the entered electricity pricing and the current modelled floor area, building count and load adjustments. It is shown separately for ground-source and air-source systems.",
+        definition: "The estimated yearly electricity cost of the modelled heat-pump heating and cooling under the entered tariff, floor area, building count and load adjustments. It is shown separately for ground-source and air-source systems. It is not the property's full electricity bill: other household electricity is excluded, while tariff fixed charges are included only when the user enters them.",
       },
       {
         term: "Annual cost saving",
