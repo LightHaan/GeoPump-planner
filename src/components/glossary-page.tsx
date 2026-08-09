@@ -36,7 +36,7 @@ const glossarySections: readonly GlossarySection[] = [
       },
       {
         term: "System electricity",
-        definition: "The modelled electricity used by the compressor plus the configured pump, fan, miscellaneous and fixed auxiliary electricity.",
+        definition: "The modelled electricity used by the compressor plus the configured pump, fan, miscellaneous and fixed auxiliary electricity. Annual figures shown in kWh/year are totals for the current scenario's floor area, building count and load adjustments; they are not automatically per-square-metre values.",
       },
       {
         term: "Auxiliary electricity",
@@ -140,7 +140,7 @@ const glossarySections: readonly GlossarySection[] = [
       },
       {
         term: "Conditioned floor area",
-        definition: "The floor area assumed to be heated or cooled. It scales the certificate load intensity into a total building load.",
+        definition: "The floor area assumed to be heated or cooled, called heated/cooled floor area in the main controls. It converts the postcode's per-square-metre heating and cooling estimate into a total for the modelled building or buildings.",
       },
       {
         term: "Representative hour and record weight",
@@ -155,6 +155,10 @@ const glossarySections: readonly GlossarySection[] = [
       {
         term: "Electricity tariff",
         definition: "The price structure used to calculate electricity cost. The app supports one energy price or separate prices for a selected period and all other hours, plus optional fixed charges.",
+      },
+      {
+        term: "Annual running cost",
+        definition: "The estimated yearly electricity cost for one system under the entered electricity pricing and the current modelled floor area, building count and load adjustments. It is shown separately for ground-source and air-source systems.",
       },
       {
         term: "Annual cost saving",

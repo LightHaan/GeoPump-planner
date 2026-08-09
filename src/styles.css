@@ -173,14 +173,14 @@ main { width: min(1480px, 100%); margin: 0 auto; }
 .results-header { display: flex; justify-content: space-between; align-items: end; gap: 25px; margin-bottom: 28px; }
 .results-header .eyebrow { color: #94c7bb; }
 .results-header h2 { margin: 0; color: white; font-family: Georgia, serif; font-size: clamp(32px, 4vw, 52px); font-weight: 500; }
-.decision-badge { padding: 9px 14px; border: 1px solid rgba(255,255,255,0.25); border-radius: 999px; font-size: 12px; font-weight: 800; }
+.decision-badge { padding: 9px 14px; border: 1px solid rgba(255,255,255,0.25); border-radius: 999px; font-size: 12px; font-weight: 800; text-decoration: none; }
 .decision-recommended { color: #baf0cf; background: rgba(61, 148, 98, 0.2); }
 .decision-conditional { color: #ffdda0; background: rgba(216, 163, 75, 0.18); }
 .decision-not_recommended { color: #ffc1b6; background: rgba(164, 67, 55, 0.2); }
 .metric-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
 .metric-card { display: grid; gap: 8px; min-height: 148px; padding: 20px; border: 1px solid rgba(255,255,255,0.11); border-radius: 16px; background: rgba(255,255,255,0.045); }
 .metric-card span { color: #a9bbb6; font-size: 11px; letter-spacing: 0.04em; }
-.metric-card strong { align-self: end; color: white; font-family: Georgia, serif; font-size: clamp(20px, 2vw, 28px); font-weight: 500; }
+.metric-card strong { align-self: end; color: white; font-family: Georgia, serif; font-size: clamp(20px, 2vw, 28px); font-weight: 500; line-height: 1.15; }
 .metric-card small { color: #93a9a3; line-height: 1.45; }
 .metric-card.highlight { border-color: rgba(216, 163, 75, 0.5); background: rgba(216, 163, 75, 0.1); }
 .gshp-card { border-top: 3px solid #63b5a7; }
@@ -391,6 +391,10 @@ footer { display: flex; justify-content: space-between; gap: 20px; padding: 28px
 .quick-result-grid span { color: var(--muted); font-size: 10px; }
 .quick-result-grid strong { align-self: end; font-family: Georgia, serif; font-size: 19px; font-weight: 500; }
 .quick-result-grid small { color: var(--muted); font-size: 9px; }
+.result-scale-note { margin: 0 0 13px; color: var(--muted); font-size: 10px; line-height: 1.55; }
+.result-scale-note a { color: var(--green-dark); font-weight: 750; text-decoration: underline; text-underline-offset: 2px; }
+.dark-scale-note { margin: -12px 0 24px; padding: 11px 13px; border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; color: #b9cbc6; background: rgba(255,255,255,0.045); }
+.dark-scale-note a { color: #9bd1c5; }
 
 .term-marker { margin-left: 2px; font-size: 0.68em; font-weight: 800; vertical-align: super; }
 .term-marker a { color: var(--green); text-decoration: none; }

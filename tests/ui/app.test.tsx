@@ -85,6 +85,17 @@ describe("GeoPump Planner pages", () => {
     expect(screen.getByRole("option", { name: "CSIRO — Hourly near-surface air temperature grids for Australia (long-term climatology)" })).toBeTruthy();
     expect(screen.getByText("Potentially suitable — review inputs")).toBeTruthy();
     expect(screen.getByRole("link", { name: "Review assumptions →" }).getAttribute("href")).toBe("#customise");
+    expect(screen.getByText("Ground-source annual electricity")).toBeTruthy();
+    expect(screen.getByText(/not per-square-metre values/)).toBeTruthy();
+
+    const floorArea = screen.getByRole("spinbutton", { name: "Heated/cooled floor area" });
+    const electricityPrice = screen.getByRole("spinbutton", { name: "Electricity price" });
+    expect((floorArea as HTMLInputElement).value).toBe("1");
+    fireEvent.change(floorArea, { target: { value: "100" } });
+    fireEvent.change(electricityPrice, { target: { value: "0.3" } });
+    await waitFor(() => expect(screen.getByText(/100 m² heated\/cooled floor area/)).toBeTruthy());
+    expect(screen.queryByText("Add electricity price")).toBeNull();
+    expect(screen.getByText(/Air-source:.*Saving:/)).toBeTruthy();
 
     expect(screen.queryByText("Climate records")).toBeNull();
     expect(screen.queryByText("ΔT20 prediction SE")).toBeNull();
@@ -96,6 +107,8 @@ describe("GeoPump Planner pages", () => {
 
     await openPage("Customise");
     expect(screen.getByRole("heading", { name: "Customise the model" })).toBeTruthy();
+    expect((screen.getByRole("spinbutton", { name: /Surface temperature/ }) as HTMLInputElement).value).toBe("18.16");
+    expect((screen.getByRole("spinbutton", { name: /Postcode heating need/ }) as HTMLInputElement).value).toBe("22.22");
     fireEvent.change(screen.getByRole("combobox", { name: /Surface-temperature dataset/ }), {
       target: { value: "air_t" },
     });
@@ -104,6 +117,9 @@ describe("GeoPump Planner pages", () => {
 
     await openPage("Results");
     expect(screen.getByText("Ground-source and air-source comparison")).toBeTruthy();
+    expect(screen.getByText("Estimated annual running cost")).toBeTruthy();
+    expect(screen.getByText("Long-term financial comparison")).toBeTruthy();
+    expect(screen.getByRole("link", { name: "Potentially suitable — review inputs →" }).getAttribute("href")).toBe("#customise");
     expect(screen.getByRole("button", { name: "Export CSV" }).hasAttribute("disabled")).toBe(false);
     expect(screen.getByText("Data evidence and quality")).toBeTruthy();
 

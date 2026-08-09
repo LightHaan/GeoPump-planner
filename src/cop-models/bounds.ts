@@ -2,6 +2,10 @@ import { CopError } from "../engine/errors";
 import type { CopResult } from "../engine/types";
 import type { InvalidCopPolicy } from "../parameters/types";
 
+function display(value: number): string {
+  return Number(value.toFixed(2)).toString();
+}
+
 export function applyCopBounds(
   rawValue: number,
   minimumCop: number,
@@ -14,7 +18,7 @@ export function applyCopBounds(
     return { value: rawValue, rawValue, valid: true, clipped: false, warnings: [] };
   }
   const warnings = validNumber
-    ? [`COP ${rawValue} is outside configured bounds [${minimumCop}, ${maximumCop}].`]
+    ? [`COP ${display(rawValue)} is outside configured bounds [${display(minimumCop)}, ${display(maximumCop)}].`]
     : ["COP is zero, negative, NaN, or infinite."];
   if (invalidCopPolicy === "clip" && validNumber) {
     return {

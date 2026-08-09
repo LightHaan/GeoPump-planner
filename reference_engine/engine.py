@@ -23,6 +23,10 @@ from .models import ClimateRecord
 from .tariff import annual_tariff_cost
 
 
+def _display_number(value: float) -> str:
+    return f"{value:.2f}".rstrip("0").rstrip(".")
+
+
 def _cop_series(
     mode: str,
     sources_c: list[float],
@@ -250,17 +254,26 @@ def run_scenario(
     )
     allocated_heating = sum(heating_loads)
     allocated_cooling = sum(cooling_loads)
+    relative_tolerance = float(config["numerical"]["relative_tolerance"])
     unallocated_heating = annual_heating - allocated_heating
     unallocated_cooling = annual_cooling - allocated_cooling
+    if abs(unallocated_heating) <= max(
+        tolerance, abs(annual_heating) * relative_tolerance
+    ):
+        unallocated_heating = 0.0
+    if abs(unallocated_cooling) <= max(
+        tolerance, abs(annual_cooling) * relative_tolerance
+    ):
+        unallocated_cooling = 0.0
     if unallocated_heating > tolerance:
         warnings.append(
             f"Annual heating degree-hours are zero, so the model-allocated heating "
-            f"load is 0 kWh despite a {annual_heating:g} kWh certificate-load input."
+            f"load is 0 kWh despite a {_display_number(annual_heating)} kWh certificate-load input."
         )
     if unallocated_cooling > tolerance:
         warnings.append(
             f"Annual cooling degree-hours are zero, so the model-allocated cooling "
-            f"load is 0 kWh despite a {annual_cooling:g} kWh certificate-load input."
+            f"load is 0 kWh despite a {_display_number(annual_cooling)} kWh certificate-load input."
         )
     loads = {
         "heating": aggregate_values(records, heating_loads, selected_period),

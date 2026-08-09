@@ -57,7 +57,7 @@ export function evaluateDecision(
     : relativeElectricitySavingFraction >= parameters.minimum_technical_saving_fraction
       ? "recommended"
       : "not_recommended";
-  if (technical === "not_assessed") reasons.push("Air-source reference electricity is zero, so relative technical saving is not defined.");
+  if (technical === "not_assessed") reasons.push("Air-source electricity is zero, so a percentage comparison cannot be calculated.");
   if (technical === "not_recommended") reasons.push("Electricity saving is below the configured technical threshold.");
 
   const economic = economics.npvOfGshpChoice === null || economics.simplePaybackYears === null
@@ -66,8 +66,8 @@ export function evaluateDecision(
         economics.simplePaybackYears <= parameters.maximum_acceptable_payback_years
       ? "recommended"
       : "not_recommended";
-  if (economic === "not_assessed") reasons.push("Economic inputs are incomplete or the simple payback is not finite.");
-  if (economic === "not_recommended") reasons.push("NPV or simple payback does not meet the configured economic threshold.");
+  if (economic === "not_assessed") reasons.push("The financial comparison needs an electricity price and installed costs; simple payback also requires a positive annual saving.");
+  if (economic === "not_recommended") reasons.push("The long-term value or payback does not meet the financial limits set on Customise.");
 
   const deltaT20Applicable = evidence.surfaceDatasetId === "surface_t";
   const deltaT20Quality = deltaT20Applicable
@@ -94,7 +94,7 @@ export function evaluateDecision(
   if (deltaT20Quality !== "not_applicable") applicableQualities.push(deltaT20Quality);
   const evidenceQuality = worstQuality(applicableQualities);
   if (evidenceQuality === "limited" || evidenceQuality === "unavailable") {
-    reasons.push("Input evidence quality requires caution under the configured thresholds.");
+    reasons.push("Some postcode data checks have limited or unavailable supporting evidence, so interpret this result with caution.");
   }
 
   let overall: DecisionResult["overall"];

@@ -1,10 +1,12 @@
 import type { PostcodeScenarioOutcome } from "../app/model";
+import type { LoadParameters } from "../parameters/types";
 
 interface QuickResultsProps {
   outcome: PostcodeScenarioOutcome | null;
   loading: boolean;
   error: string | null;
   currency: string;
+  loadParameters: LoadParameters;
 }
 
 function number(value: number | null, digits = 1): string {
@@ -19,7 +21,22 @@ const decisionLabels = {
   not_assessed: "More information needed",
 } as const;
 
-export function QuickResults({ outcome, loading, error, currency }: QuickResultsProps) {
+function scenarioBasis(parameters: LoadParameters): string {
+  const area = number(parameters.conditioned_floor_area_m2);
+  const buildings = number(parameters.building_count);
+  return parameters.building_count === 1
+    ? `${area} m² heated/cooled floor area in one modelled building`
+    : `${area} m² heated/cooled floor area per building across ${buildings} modelled buildings`;
+}
+
+function percentageComparison(savingFraction: number | null): string {
+  if (savingFraction === null) return "Not available";
+  return savingFraction >= 0
+    ? `${number(savingFraction * 100)}% less`
+    : `${number(Math.abs(savingFraction) * 100)}% more`;
+}
+
+export function QuickResults({ outcome, loading, error, currency, loadParameters }: QuickResultsProps) {
   if (loading) return <section className="quick-results quick-results-empty">Calculating…</section>;
   if (outcome === null) {
     return (
@@ -33,6 +50,7 @@ export function QuickResults({ outcome, loading, error, currency }: QuickResults
   const annualCostSaving = scenario.comparison.gshpAnnualEnergyCost === null || scenario.comparison.ashpAnnualEnergyCost === null
     ? null
     : scenario.comparison.ashpAnnualEnergyCost - scenario.comparison.gshpAnnualEnergyCost;
+  const customLoadAdjustment = loadParameters.load_scaling_factor !== 1 || loadParameters.occupancy_use_factor !== 1;
   return (
     <section className="quick-results" aria-live="polite">
       <div className="quick-results-heading">
@@ -57,25 +75,29 @@ export function QuickResults({ outcome, loading, error, currency }: QuickResults
           <small>At the selected depth</small>
         </article>
         <article>
-          <span>Estimated annual electricity</span>
+          <span>Ground-source annual electricity</span>
           <strong>{number(scenario.gshp.systemElectricity.annual)} kWh/year</strong>
-          <small>Ground-source above · Air-source: {number(scenario.ashp.systemElectricity.annual)} kWh/year</small>
+          <small>Air-source: {number(scenario.ashp.systemElectricity.annual)} kWh/year</small>
         </article>
         <article>
-          <span>Estimated electricity reduction</span>
-          <strong>{saving === null ? "Undefined" : `${number(saving * 100)}%`}</strong>
+          <span>Ground-source electricity use</span>
+          <strong>{percentageComparison(saving)}</strong>
           <small>Ground-source compared with air-source</small>
         </article>
         <article>
-          <span>Estimated annual cost saving</span>
-          <strong>{annualCostSaving === null ? "Add electricity price" : `${number(annualCostSaving)} ${currency}/year`}</strong>
+          <span>Ground-source annual running cost</span>
+          <strong>{annualCostSaving === null ? "Add electricity price" : `${number(scenario.comparison.gshpAnnualEnergyCost)} ${currency}/year`}</strong>
           <small>
             {annualCostSaving === null
               ? "Enter your electricity price above"
-              : `Ground-source: ${number(scenario.comparison.gshpAnnualEnergyCost)} · Air-source: ${number(scenario.comparison.ashpAnnualEnergyCost)} ${currency}`}
+              : `Air-source: ${number(scenario.comparison.ashpAnnualEnergyCost)} ${currency}/year · ${annualCostSaving >= 0 ? "Saving" : "Extra cost"}: ${number(Math.abs(annualCostSaving))} ${currency}/year`}
           </small>
         </article>
       </div>
+      <p className="result-scale-note">
+        Annual electricity and cost figures are current-scenario totals for {scenarioBasis(loadParameters)}, not per-square-metre values.
+        {customLoadAdjustment && " Custom load adjustment factors are also applied."} Change the floor area above or use <a href="#customise">Customise</a> for other load settings.
+      </p>
       <a className="text-link" href="#results">View the full comparison →</a>
     </section>
   );

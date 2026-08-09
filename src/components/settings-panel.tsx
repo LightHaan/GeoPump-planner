@@ -134,19 +134,19 @@ export function SettingsPanel({
             <NumberField id="target-depth" label="Target depth" value={parameters.ground.target_depth_m} unit="m" onChange={(value) => onParameterChange("ground.target_depth_m", value)} required />
           )}
           {parameters.ground.mode !== "direct" && (
-            <NumberField id="surface-temperature" label="Surface temperature" value={inputs.surfaceTemperatureC} unit="°C" onChange={(value) => onInputChange("surfaceTemperatureC", value)} required />
+            <NumberField id="surface-temperature" label="Surface temperature" value={inputs.surfaceTemperatureC} unit="°C" displayDigits={2} onChange={(value) => onInputChange("surfaceTemperatureC", value)} required />
           )}
           {parameters.ground.mode === "surface_gradient" && (
-            <NumberField id="ground-gradient" label="Estimated underground warming rate" value={inputs.gradientCPerM} unit="°C/m" step={0.001} onChange={(value) => onInputChange("gradientCPerM", value)} help="Estimated from the difference between borehole and surface temperatures divided by measurement depth. See the Glossary." required />
+            <NumberField id="ground-gradient" label="Estimated underground warming rate" value={inputs.gradientCPerM} unit="°C/m" step={0.001} displayDigits={3} onChange={(value) => onInputChange("gradientCPerM", value)} help="Estimated from the difference between borehole and surface temperatures divided by measurement depth. See the Glossary." required />
           )}
           {parameters.ground.mode === "surface_borehole_interpolation" && (
             <>
-              <NumberField id="borehole-temperature" label="Borehole temperature" value={inputs.boreholeTemperatureC} unit="°C" onChange={(value) => onInputChange("boreholeTemperatureC", value)} required />
-              <NumberField id="borehole-depth" label="Borehole measurement depth" value={inputs.boreholeDepthM} unit="m" onChange={(value) => onInputChange("boreholeDepthM", value)} required />
+              <NumberField id="borehole-temperature" label="Borehole temperature" value={inputs.boreholeTemperatureC} unit="°C" displayDigits={2} onChange={(value) => onInputChange("boreholeTemperatureC", value)} required />
+              <NumberField id="borehole-depth" label="Borehole measurement depth" value={inputs.boreholeDepthM} unit="m" displayDigits={2} onChange={(value) => onInputChange("boreholeDepthM", value)} required />
             </>
           )}
           {parameters.ground.mode === "direct" && (
-            <NumberField id="direct-ground-temperature" label="Ground temperature (direct input)" value={inputs.directGroundTemperatureC} unit="°C" onChange={(value) => onInputChange("directGroundTemperatureC", value)} required />
+            <NumberField id="direct-ground-temperature" label="Ground temperature (direct input)" value={inputs.directGroundTemperatureC} unit="°C" displayDigits={2} onChange={(value) => onInputChange("directGroundTemperatureC", value)} required />
           )}
         </div>
         <div className="live-calculation">
@@ -167,11 +167,11 @@ export function SettingsPanel({
           <p>Hourly degree-hours identify demand before certificate annual loads are allocated to that demand.</p>
         </div>
         <div className="field-grid">
-          <NumberField id="annual-heating" label="Certificate annual heating load" value={inputs.annualHeatingKwhM2} unit="kWh/m²/year" onChange={(value) => onInputChange("annualHeatingKwhM2", value)} required />
-          <NumberField id="annual-cooling" label="Certificate annual cooling load" value={inputs.annualCoolingKwhM2} unit="kWh/m²/year" onChange={(value) => onInputChange("annualCoolingKwhM2", value)} required />
+          <NumberField id="annual-heating" label="Postcode heating need (certificate estimate)" value={inputs.annualHeatingKwhM2} unit="kWh/m²/year" displayDigits={2} onChange={(value) => onInputChange("annualHeatingKwhM2", value)} help="Prepared annual estimate per square metre; override it here if you have a better value." required />
+          <NumberField id="annual-cooling" label="Postcode cooling need (certificate estimate)" value={inputs.annualCoolingKwhM2} unit="kWh/m²/year" displayDigits={2} onChange={(value) => onInputChange("annualCoolingKwhM2", value)} help="Prepared annual estimate per square metre; override it here if you have a better value." required />
           <NumberField id="heating-threshold" label="Heating demand threshold" value={parameters.load.heating_balance_temperature_c} unit="°C" onChange={(value) => onParameterChange("load.heating_balance_temperature_c", value)} />
           <NumberField id="cooling-threshold" label="Cooling demand threshold" value={parameters.load.cooling_balance_temperature_c} unit="°C" onChange={(value) => onParameterChange("load.cooling_balance_temperature_c", value)} />
-          <NumberField id="floor-area" label="Conditioned area per building" value={parameters.load.conditioned_floor_area_m2} unit="m²" onChange={(value) => onParameterChange("load.conditioned_floor_area_m2", value)} />
+          <NumberField id="floor-area" label="Heated/cooled floor area per building" value={parameters.load.conditioned_floor_area_m2} unit="m²" onChange={(value) => onParameterChange("load.conditioned_floor_area_m2", value)} help="Annual kWh and cost results are totals for this area after the building count and load factors are applied." />
           <NumberField id="building-count" label="Number of modelled buildings" value={parameters.load.building_count} step={1} onChange={(value) => onParameterChange("load.building_count", value)} help="Independent of the certificate record count." />
           <NumberField id="load-scale" label="Load scaling factor" value={parameters.load.load_scaling_factor} step={0.01} onChange={(value) => onParameterChange("load.load_scaling_factor", value)} />
           <NumberField id="occupancy-factor" label="Occupancy/use factor" value={parameters.load.occupancy_use_factor} step={0.01} onChange={(value) => onParameterChange("load.occupancy_use_factor", value)} />

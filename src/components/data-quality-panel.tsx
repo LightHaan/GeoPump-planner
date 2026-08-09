@@ -12,7 +12,9 @@ interface DataQualityPanelProps {
 }
 
 function display(value: number | null, digits = 1): string {
-  return value === null || !Number.isFinite(value) ? "Not available" : value.toFixed(digits);
+  return value === null || !Number.isFinite(value)
+    ? "Not available"
+    : value.toLocaleString(undefined, { maximumFractionDigits: digits });
 }
 
 export function DataQualityPanel({

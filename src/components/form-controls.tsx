@@ -12,6 +12,7 @@ interface NumberFieldProps {
   unit?: string;
   help?: string;
   required?: boolean;
+  displayDigits?: number;
 }
 
 export function NumberField({
@@ -23,7 +24,14 @@ export function NumberField({
   unit,
   help,
   required = false,
+  displayDigits,
 }: NumberFieldProps) {
+  const [focused, setFocused] = useState(false);
+  const displayValue = value === null
+    ? ""
+    : displayDigits === undefined || focused
+      ? value
+      : Number(value.toFixed(displayDigits));
   return (
     <label className="field" htmlFor={id}>
       <span className="field-label">{label}</span>
@@ -32,8 +40,10 @@ export function NumberField({
           id={id}
           type="number"
           step={step}
-          value={value ?? ""}
+          value={displayValue}
           required={required}
+          onFocus={() => setFocused(true)}
+          onBlur={() => setFocused(false)}
           onChange={(event) => {
             const raw = event.target.value;
             onChange(raw === "" ? null : Number(raw));

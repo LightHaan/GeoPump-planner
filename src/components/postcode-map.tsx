@@ -309,7 +309,7 @@ export function PostcodeMap({
             <div><span>Temperature source</span><strong>{TEMPERATURE_DATASET_LABELS[surfaceDatasetId]}</strong></div>
             <div><span>{surfaceDatasetId === "air_t" ? "Near-surface air temperature" : "Land-surface temperature"}</span><strong>{number(selectedAttributes.ground[surfaceDatasetId].surface_temp_c, 2)} °C</strong></div>
             <div><span>Estimated ground temperature at 20 m</span><strong>{number(selectedAttributes.ground[surfaceDatasetId].ground_temp_at_reference_depth_c, 2)} °C</strong></div>
-            <div><span>Estimated underground warming rate<sup className="term-marker"><a href="#home-note-warming" aria-label="Read note 1 about estimated underground warming rate">1</a></sup></span><strong>{number(selectedAttributes.ground[surfaceDatasetId].gradient_c_per_m, 4)} °C/m</strong></div>
+            <div><span>Estimated underground warming rate<sup className="term-marker"><a href="#home-note-warming" aria-label="Read note 1 about estimated underground warming rate">1</a></sup></span><strong>{number(selectedAttributes.ground[surfaceDatasetId].gradient_c_per_m, 3)} °C/m</strong></div>
             <div><span>Typical annual heating need</span><strong>{number(selectedAttributes.load.annual_heating_kwh_m2, 1)} kWh/m²/year</strong></div>
             <div><span>Typical annual cooling need</span><strong>{number(selectedAttributes.load.annual_cooling_kwh_m2, 1)} kWh/m²/year</strong></div>
           </div>

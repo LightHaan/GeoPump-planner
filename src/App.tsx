@@ -375,6 +375,20 @@ export default function App() {
           </select>
         </label>
         <label>
+          <span>Heated/cooled floor area</span>
+          <span className="compact-input-with-unit">
+            <input
+              aria-label="Heated/cooled floor area"
+              type="number"
+              min="0"
+              step="1"
+              value={parameters.load.conditioned_floor_area_m2}
+              onChange={(event) => onParameterChange("load.conditioned_floor_area_m2", Number(event.target.value))}
+            />
+            <small>m²</small>
+          </span>
+        </label>
+        <label>
           <span>Electricity price</span>
           <span className="compact-input-with-unit">
             <input
@@ -448,6 +462,7 @@ export default function App() {
               loading={catalogLoading || climateLoading}
               error={calculation.error}
               currency={parameters.tariff.currency}
+              loadParameters={parameters.load}
             />
             <aside className="page-footnotes" aria-label="Key term note">
               <ol>
@@ -472,6 +487,8 @@ export default function App() {
               calculationError={calculation.error}
               loading={catalogLoading || climateLoading}
               currency={parameters.tariff.currency}
+              loadParameters={parameters.load}
+              analysisPeriodYears={parameters.economics.analysis_period_years}
             />
             {selectedAttributes !== null && climate !== null && manifest !== null && (
               <details className="data-evidence-drawer">
@@ -528,7 +545,7 @@ export default function App() {
             <PageHeading title="How to use GeoPump Planner">A short guide to the map, calculation and editable assumptions.</PageHeading>
             <section className="guide-steps">
               <article><span>1</span><h2>Select a postcode</h2><p>Type a postcode or click it on the map. The colour setting lets you compare useful local temperature and heating or cooling indicators.</p></article>
-              <article><span>2</span><h2>Set the essentials</h2><p>Choose an estimate depth and temperature source. Add your electricity price to see annual running-cost estimates.</p></article>
+              <article><span>2</span><h2>Set the essentials</h2><p>Choose an estimate depth and temperature source. Enter the floor area you heat or cool, then add your electricity price to see home-scale annual electricity and running-cost estimates.</p></article>
               <article><span>3</span><h2>Read the result</h2><p>The home page shows the headline comparison. The Results page contains monthly values, decision evidence and downloads.</p></article>
               <article><span>4</span><h2>Customise if needed</h2><p>The Customise page exposes every model input, constant, time window, electricity-price setting and performance formula. The <a className="text-link" href="#glossary">glossary</a> explains unfamiliar terms.</p></article>
             </section>
@@ -539,7 +556,7 @@ export default function App() {
                 <article><h3>Demand from temperature</h3><p>Hourly air temperature is converted to heating and cooling degree-hours using editable thresholds. The defaults are 12 °C and 24 °C.</p></article>
                 <article><h3>Load follows demand</h3><p>Certificate annual loads are allocated across hours in proportion to degree-hours. If annual degree-hours are zero, allocated demand and load are zero.</p></article>
                 <article><h3>Ground meets climate</h3><p>Estimated ground temperature and hourly outdoor temperature feed the selected heat-pump performance formulas to estimate electricity use.</p></article>
-                <article><h3>Costs use your assumptions</h3><p>Electricity prices, conditioned area, building count, installed costs and lifecycle parameters are editable rather than fixed.</p></article>
+                <article><h3>Results use your home scale</h3><p>The postcode heating and cooling estimates start per square metre. The app uses your heated/cooled floor area and other load settings to produce annual electricity and cost totals for the current scenario.</p></article>
               </div>
             </section>
 

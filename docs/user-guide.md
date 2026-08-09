@@ -34,12 +34,12 @@ evidence panel.
    typical heating and cooling need shown for that postcode.
 3. Choose one of the two fully named temperature datasets and enter a target
    depth. The prepared 20 m data are starting values, not a site measurement.
-4. Enter conditioned area and the number of buildings being modelled. These
-   values convert the certificate load intensity into an annual thermal-load
-   total.
+4. Enter the heated/cooled floor area on Planner. If modelling more than one
+   building, change the building count on Customise. These values convert the
+   certificate load intensity into an annual thermal-load total.
 5. Enter an electricity tariff for annual cost, and installed costs for payback
-   and lifecycle results. Blank prices or installed costs deliberately produce
-   “Not assessed” economic outputs.
+   and lifecycle results. When these inputs are blank, the app prompts for them
+   instead of attaching a currency unit to an unavailable result.
 6. Read warnings and evidence quality on Results. Export scenario JSON when an
    auditable record of all inputs, parameters and outputs is required.
 7. Use Customise only for assumptions you understand. Restore defaults is always
@@ -126,6 +126,12 @@ requested_annual_load = certificate_load_per_m²
 
 Certificate count does not appear in this formula.
 
+Annual heating/cooling, electricity and running-cost figures displayed by the
+app are totals for this current modelled scale. They are not per-square-metre
+outputs. With the paper default of 1 m² and one building, the numeric load and
+electricity values represent a one-square-metre normalisation until the user
+enters a realistic heated/cooled floor area.
+
 When annual degree-hours for a demand type are greater than zero:
 
 ```text
@@ -208,6 +214,11 @@ installed cost, discounted annual tariff cost, annual maintenance and scheduled
 replacements, then subtracts discounted residual value. Electricity price can
 escalate annually; maintenance does not escalate in the current formula.
 
+The Planner and Results pages show the estimated ground-source running cost and
+the air-source comparison cost before reporting the saving. If ground-source is
+more expensive under the current inputs, the interface describes the difference
+as an extra cost rather than as a negative saving.
+
 The headline recommendation is not based on saving alone. The app separately
 checks the editable minimum technical saving, maximum payback and NPV threshold,
 then reports the worst applicable evidence quality from interpolation standard
@@ -221,6 +232,10 @@ Scenario JSON contains model parameters, manual inputs, the frozen source
 snapshot and calculated outcome. Import validates the schema and parameters,
 then recalculates using the current published climate and frozen dataset version.
 CSV export provides annual summary, economics and monthly load/electricity rows.
+The interface normally rounds household-facing values to no more than two
+decimal places (usually fewer). Very small rates or uncertainty indicators may
+use an extra decimal place so they do not appear as zero. Calculations and
+exports retain the underlying numeric precision.
 
 The collapsible data-evidence section on the Results page shows the active dataset version, climate coverage,
 invalid or unrepresented records, borehole evidence, certificate count and all

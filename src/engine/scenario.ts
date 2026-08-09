@@ -68,6 +68,24 @@ function seasonalAmount(
   return months.reduce((sum, month) => sum + (values[String(month)] ?? 0), 0);
 }
 
+function normaliseAllocationResidual(
+  requested: number,
+  allocated: number,
+  absoluteTolerance: number,
+  relativeTolerance: number,
+): number {
+  const residual = requested - allocated;
+  const tolerance = Math.max(
+    absoluteTolerance,
+    Math.abs(requested) * relativeTolerance,
+  );
+  return Math.abs(residual) <= tolerance ? 0 : residual;
+}
+
+function displayNumber(value: number): string {
+  return Number(value.toFixed(2)).toString();
+}
+
 function seasonalLoads(
   heating: ValueAggregate,
   cooling: ValueAggregate,
@@ -256,16 +274,26 @@ export function runScenario(
   );
   const allocatedHeating = heatingLoads.reduce((sum, value) => sum + value, 0);
   const allocatedCooling = coolingLoads.reduce((sum, value) => sum + value, 0);
-  const unallocatedHeating = annualHeating - allocatedHeating;
-  const unallocatedCooling = annualCooling - allocatedCooling;
+  const unallocatedHeating = normaliseAllocationResidual(
+    annualHeating,
+    allocatedHeating,
+    tolerance,
+    config.numerical.relative_tolerance,
+  );
+  const unallocatedCooling = normaliseAllocationResidual(
+    annualCooling,
+    allocatedCooling,
+    tolerance,
+    config.numerical.relative_tolerance,
+  );
   if (unallocatedHeating > tolerance) {
     warnings.push(
-      `Annual heating degree-hours are zero, so the model-allocated heating load is 0 kWh despite a ${annualHeating} kWh certificate-load input.`,
+      `Annual heating degree-hours are zero, so the model-allocated heating load is 0 kWh despite a ${displayNumber(annualHeating)} kWh certificate-load input.`,
     );
   }
   if (unallocatedCooling > tolerance) {
     warnings.push(
-      `Annual cooling degree-hours are zero, so the model-allocated cooling load is 0 kWh despite a ${annualCooling} kWh certificate-load input.`,
+      `Annual cooling degree-hours are zero, so the model-allocated cooling load is 0 kWh despite a ${displayNumber(annualCooling)} kWh certificate-load input.`,
     );
   }
   const heatingAggregate = aggregateValues(input.records, heatingLoads, selectedPeriod);

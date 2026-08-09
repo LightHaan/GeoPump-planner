@@ -125,6 +125,11 @@ available on the Customise page.
 with records, not the number of dwellings in the postcode. Building count and
 conditioned area are separate editable scenario inputs.
 
+Annual kWh and cost outputs are totals for the current scenario's heated/cooled
+floor area, building count and load factors. The paper default uses 1 m² and one
+building as a normalised starting point; users should enter their actual area
+for a home-scale estimate.
+
 The ΔT20 EBK prediction standard error applies only to the *Australian mean
 land-surface temperature* + ΔT20 interpolation chain. It is not applied to the
 *Hourly near-surface air temperature grids for Australia (long-term

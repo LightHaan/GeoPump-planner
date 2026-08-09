@@ -10,7 +10,20 @@ interface MonthlyChartProps {
   series: ChartSeries[];
 }
 
-const MONTHS = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
+const MONTHS = [
+  { key: "1", short: "Jan", long: "January" },
+  { key: "2", short: "Feb", long: "February" },
+  { key: "3", short: "Mar", long: "March" },
+  { key: "4", short: "Apr", long: "April" },
+  { key: "5", short: "May", long: "May" },
+  { key: "6", short: "Jun", long: "June" },
+  { key: "7", short: "Jul", long: "July" },
+  { key: "8", short: "Aug", long: "August" },
+  { key: "9", short: "Sep", long: "September" },
+  { key: "10", short: "Oct", long: "October" },
+  { key: "11", short: "Nov", long: "November" },
+  { key: "12", short: "Dec", long: "December" },
+] as const;
 
 export function MonthlyChart({ title, unit, series }: MonthlyChartProps) {
   const maximum = Math.max(0, ...series.flatMap((item) => item.values));
@@ -45,7 +58,7 @@ export function MonthlyChart({ title, unit, series }: MonthlyChartProps) {
         {MONTHS.map((month, monthIndex) => {
           const center = startX + monthIndex * groupWidth + groupWidth / 2;
           return (
-            <g key={month}>
+            <g key={month.key}>
               {series.map((item, seriesIndex) => {
                 const value = item.values[monthIndex] ?? 0;
                 const barHeight = value / safeMaximum * plotHeight;
@@ -60,11 +73,11 @@ export function MonthlyChart({ title, unit, series }: MonthlyChartProps) {
                     rx="2"
                     fill={item.color}
                   >
-                    <title>{`Month ${month} ${item.label}: ${value.toFixed(2)} ${unit}`}</title>
+                    <title>{`${month.long} ${item.label}: ${value.toFixed(2)} ${unit}`}</title>
                   </rect>
                 );
               })}
-              <text x={center} y="251" textAnchor="middle" className="chart-month">{month}</text>
+              <text x={center} y="251" textAnchor="middle" className="chart-month">{month.short}</text>
             </g>
           );
         })}
