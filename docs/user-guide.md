@@ -67,13 +67,17 @@ direct method:
 ground_temperature = user_input
 ```
 
-The prepared warming rate is the borehole-informed, spatially interpolated
-temperature difference between the chosen surface baseline and 20 m divided by
-20 m. The app assumes that rate continues in a straight line to the selected
-depth. It is only an approximation for postcode screening, not a measured
-geothermal gradient. Determining a true geothermal gradient generally requires
-quality-controlled downhole temperatures at suitable depths and corrections or
-interpretation for drilling disturbance, groundwater, terrain and local geology.
+The warming rate begins with borehole observations. At each observation, the
+measured underground temperature is compared with the chosen surface
+temperature, and the difference is divided by the measurement depth to estimate
+the temperature change per metre. Borehole-based estimates are then used to
+produce the postcode value. The app assumes that rate continues in a straight
+line to the selected depth. The 20 m temperature difference and 20 m ground
+temperature are derived from the rate. It is only an approximation for postcode
+screening, not a measured geothermal gradient. Determining a true geothermal
+gradient generally requires quality-controlled downhole temperatures at suitable
+depths and corrections or interpretation for drilling disturbance, groundwater,
+terrain and local geology.
 
 The calculated value is used as a constant GSHP source/sink temperature for all
 representative hours. The ASHP instead uses each record's outdoor air

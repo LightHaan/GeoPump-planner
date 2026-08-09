@@ -74,7 +74,7 @@ const glossarySections: readonly GlossarySection[] = [
       },
       {
         term: "Estimated underground warming rate",
-        definition: "The app's simple postcode-scale rate of temperature change with depth. A borehole-informed estimate of the temperature difference between the selected surface baseline and 20 m depth was spatially interpolated; the app divides that prepared difference by 20 m and assumes the same straight-line rate at the chosen depth. This is only an approximation to geothermal gradient. Measuring a true geothermal gradient requires quality-controlled downhole temperatures at suitable depths and may require corrections for drilling disturbance, groundwater flow, terrain and local geology.",
+        definition: "The app's simple postcode-scale rate of temperature change with depth. For a borehole observation, the measured underground temperature is compared with the selected surface temperature and that difference is divided by the measurement depth to estimate the change per metre. Borehole-based estimates are then used to produce the postcode value. The app assumes the rate continues in a straight line and calculates temperature at a chosen depth as surface temperature + rate × depth. The 20 m temperature difference and 20 m ground temperature are results of this rate. This remains an approximation to geothermal gradient; measuring a true geothermal gradient requires quality-controlled downhole temperatures and may require corrections for drilling disturbance, groundwater flow, terrain and local geology.",
       },
       {
         term: "Geothermal gradient",
@@ -90,7 +90,7 @@ const glossarySections: readonly GlossarySection[] = [
       },
       {
         term: "ΔT20",
-        definition: "The prepared, spatially interpolated difference between the selected surface-temperature baseline and estimated ground temperature at 20 m. It is an internal evidence value, not the total uncertainty and not itself a measured geothermal gradient.",
+        definition: "The estimated underground warming rate multiplied by 20 m. It is the prepared temperature difference between the selected surface-temperature baseline and estimated ground temperature at 20 m. This derived internal evidence value represents the estimated change over 20 m; it does not describe total ground-temperature uncertainty.",
       },
       {
         term: "Borehole",
@@ -200,7 +200,7 @@ const glossarySections: readonly GlossarySection[] = [
     entries: [
       {
         term: "Empirical Bayesian kriging (EBK)",
-        definition: "A geostatistical method used before publication to interpolate the borehole-informed 20 m temperature difference between observation locations. The browser does not run this spatial processing.",
+        definition: "A geostatistical method used before publication to carry the borehole-derived temperature-change information between observation locations and produce postcode estimates. The browser does not run this spatial processing.",
       },
       {
         term: "Prediction standard error",

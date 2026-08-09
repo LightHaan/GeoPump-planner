@@ -99,11 +99,21 @@ constant or linear source-temperature COP models. System electricity adds
 editable pump, fan, miscellaneous and fixed annual auxiliaries; tariffs and
 lifecycle economics are then applied using the user's assumptions.
 
-The default warming rate is the prepared, borehole-informed 20 m temperature
-difference divided by 20 m. Applying that constant rate to another depth is a
-linear screening assumption. It is not a site-measured geothermal gradient;
-establishing a physical geothermal gradient requires more complete,
-quality-controlled downhole measurements and site interpretation.
+The warming rate starts with borehole observations. The measured underground
+temperature is compared with the selected surface temperature, and the
+difference is divided by the borehole measurement depth to estimate temperature
+change per metre. Borehole-based estimates are spatially prepared for each
+postcode. The app then applies the rate linearly:
+
+```text
+ground temperature at depth = surface temperature + warming rate × depth
+```
+
+The 20 m temperature difference and 20 m ground temperature are derived from
+this rate. The rate remains a screening approximation rather than a site-
+measured geothermal gradient; establishing a physical geothermal gradient
+requires more complete, quality-controlled downhole measurements and site
+interpretation.
 
 If the annual heating or cooling degree-hour denominator is zero, the default
 policy allocates zero load for that demand type even when its certificate input

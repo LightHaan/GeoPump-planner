@@ -451,7 +451,7 @@ export default function App() {
             />
             <aside className="page-footnotes" aria-label="Key term note">
               <ol>
-                <li id="home-note-warming"><strong>Estimated underground warming rate:</strong> a postcode-scale, borehole-informed straight-line estimate used to project temperature with depth. It is not a site-measured geothermal gradient. <a href="#glossary">Full explanation →</a></li>
+                <li id="home-note-warming"><strong>Estimated underground warming rate:</strong> the app takes the difference between a measured borehole temperature and the corresponding surface temperature, then divides it by the measurement depth to estimate the change per metre. Temperature at a chosen depth is then estimated as surface temperature + this rate × depth. <a href="#glossary">Full explanation →</a></li>
               </ol>
             </aside>
           </div>

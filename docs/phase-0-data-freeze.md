@@ -10,16 +10,22 @@ two paired interpolated temperature increments. They are frozen as:
 - *Australian mean land-surface temperature* from Geoscience Australia
   (`surface_t`): raw ArcGIS fields `surfaceT + deltaT20`
 
-For either chain at reference depth `z_ref`:
+The scientific preparation starts with the borehole observations. A simple
+per-metre rate is estimated from each usable measurement, and the borehole-based
+information is then spatially prepared for the postcode layer:
 
 ```text
-gradient = delta_temperature / z_ref
-ground_temperature(z) = surface_temperature + gradient * z
+borehole_warming_rate = (borehole_temperature - surface_temperature)
+                        / borehole_measurement_depth
+delta_temperature_at_reference_depth = postcode_warming_rate * z_ref
+ground_temperature(z) = surface_temperature + postcode_warming_rate * z
 ```
 
-The default `z_ref` is 20 m and is recorded in the manifest. Internal identifiers
-and raw ArcGIS field names are retained for data compatibility; public interfaces
-use the formal dataset titles above.
+The default `z_ref` is 20 m and is recorded in the manifest. The frozen ArcGIS
+products store the derived 20 m temperature increments. The freeze script also
+publishes the equivalent per-metre rate so the browser can evaluate other
+depths. Internal identifiers and raw ArcGIS field names are retained for data
+compatibility; public interfaces use the formal dataset titles above.
 
 ## Climate records
 

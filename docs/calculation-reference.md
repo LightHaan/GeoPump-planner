@@ -48,21 +48,32 @@ stored internally in a legacy `gradient` field, but the public interface does
 not describe it as a measured geothermal gradient. It does not change the
 hourly climate sequence used to identify demand.
 
-For the frozen 20 m postcode attributes:
+The scientific preparation starts with the borehole observations. For each
+usable observation, the measured underground temperature is compared with the
+selected surface-temperature baseline at that location, and the difference is
+spread over the measurement depth:
 
 ```text
-prepared_warming_rate = prepared_temperature_difference_at_20_m / 20 m
+borehole_warming_rate = (borehole_temperature - surface_temperature)
+                        / borehole_measurement_depth
+
+estimated_temperature_at_depth = surface_temperature
+                                 + postcode_warming_rate * target_depth
+
+prepared_temperature_difference_at_20_m = postcode_warming_rate * 20 m
 prepared_ground_temperature_at_20_m = prepared_surface_temperature
-                                      + prepared_temperature_difference_at_20_m
+                                      + postcode_warming_rate * 20 m
 ```
 
-These are publication-time calculations. The map displays the frozen values;
-scenario changes do not recolour or recalculate the map.
+The borehole-based rates are spatially prepared to produce postcode estimates.
+The published 20 m temperature difference and 20 m ground temperature are
+reference-depth results calculated from that postcode rate. These are
+publication-time calculations: the map displays the frozen values, and scenario
+changes do not recolour or recalculate it.
 
-The prepared 20 m difference is borehole-informed and spatially interpolated.
-Dividing it by 20 m and applying it linearly at another depth is a screening
-approximation. A physical geothermal gradient requires suitable quality-
-controlled downhole measurements and more complete site interpretation.
+Applying the postcode rate linearly at another depth is a screening
+approximation. A physical geothermal gradient requires suitable
+quality-controlled downhole measurements and more complete site interpretation.
 
 ### 2.2 Editable postcode inputs outside the 109-parameter registry
 
@@ -480,13 +491,14 @@ Results page's collapsed data-evidence panel and in the published data files.
 
 | Home-page map indicator | Source/calculation |
 |---|---|
-| Estimated ground temperature at 20 m | Prepared temperature-source value plus the paired 20 m temperature difference. |
+| Estimated ground temperature at 20 m | Prepared surface-temperature value plus the postcode estimated underground warming rate multiplied by 20 m. |
 | Land-surface or near-surface air temperature | Prepared postcode zonal statistic from the active named source dataset. |
-| Estimated underground warming rate | Paired prepared 20 m temperature difference divided by 20 m; a linear approximation, not a site-measured geothermal gradient. |
+| Estimated underground warming rate | Borehole temperature minus the selected surface temperature, divided by borehole measurement depth, then spatially prepared as a postcode estimate; a linear approximation, not a site-measured geothermal gradient. |
 | Typical annual heating need | Frozen certificate-based intensity, converted to kWh/m&sup2;/year during data preparation. |
 | Typical annual cooling need | Frozen certificate-based intensity, converted to kWh/m&sup2;/year during data preparation. |
 
-The prepared 20 m temperature difference, certificate count, nearest-borehole
+The prepared 20 m temperature difference (warming rate multiplied by 20 m),
+certificate count, nearest-borehole
 distance, nearby-borehole count, climate-record checks and applicable ΔT20 EBK
 prediction standard error are not shown on the home page. They remain technical
 evidence rather than household decision outputs.

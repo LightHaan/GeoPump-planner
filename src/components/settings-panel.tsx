@@ -137,7 +137,7 @@ export function SettingsPanel({
             <NumberField id="surface-temperature" label="Surface temperature" value={inputs.surfaceTemperatureC} unit="°C" onChange={(value) => onInputChange("surfaceTemperatureC", value)} required />
           )}
           {parameters.ground.mode === "surface_gradient" && (
-            <NumberField id="ground-gradient" label="Estimated underground warming rate" value={inputs.gradientCPerM} unit="°C/m" step={0.001} onChange={(value) => onInputChange("gradientCPerM", value)} help="A postcode-scale straight-line estimate, not a site-measured geothermal gradient. See the Glossary." required />
+            <NumberField id="ground-gradient" label="Estimated underground warming rate" value={inputs.gradientCPerM} unit="°C/m" step={0.001} onChange={(value) => onInputChange("gradientCPerM", value)} help="Estimated from the difference between borehole and surface temperatures divided by measurement depth. See the Glossary." required />
           )}
           {parameters.ground.mode === "surface_borehole_interpolation" && (
             <>
