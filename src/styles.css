@@ -284,7 +284,7 @@ footer { display: flex; justify-content: space-between; gap: 20px; padding: 28px
 .page-nav a { padding: 8px 12px; border-radius: 9px; color: var(--muted); font-weight: 650; }
 .page-nav a:hover, .page-nav a.active { color: var(--green-dark); background: var(--green-soft); }
 
-.planner-page, .results-page, .customise-page, .guide-page { min-height: calc(100vh - 122px); }
+.planner-page, .results-page, .customise-page, .guide-page, .glossary-page { min-height: calc(100vh - 122px); }
 .planner-page { padding: 48px 5vw 76px; }
 .home-intro {
   display: flex;
@@ -339,7 +339,7 @@ footer { display: flex; justify-content: space-between; gap: 20px; padding: 28px
 .compact-input-with-unit { position: relative; display: block; }
 .compact-input-with-unit input { padding-right: 74px; }
 .compact-input-with-unit small { position: absolute; right: 10px; top: 50%; color: var(--muted); font-size: 9px; transform: translateY(-50%); }
-.selected-postcode-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; overflow: hidden; border: 1px solid var(--line); border-radius: 11px; background: var(--line); }
+.selected-postcode-summary { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; overflow: hidden; border: 1px solid var(--line); border-radius: 11px; background: var(--line); }
 .selected-postcode-summary div { display: grid; gap: 4px; padding: 11px 8px; background: #f9faf7; }
 .selected-postcode-summary span { color: var(--muted); font-size: 9px; text-transform: uppercase; letter-spacing: 0.05em; }
 .selected-postcode-summary strong { font-size: 12px; }
@@ -392,6 +392,16 @@ footer { display: flex; justify-content: space-between; gap: 20px; padding: 28px
 .quick-result-grid strong { align-self: end; font-family: Georgia, serif; font-size: 19px; font-weight: 500; }
 .quick-result-grid small { color: var(--muted); font-size: 9px; }
 
+.term-marker { margin-left: 2px; font-size: 0.68em; font-weight: 800; vertical-align: super; }
+.term-marker a { color: var(--green); text-decoration: none; }
+.term-marker a:hover { text-decoration: underline; }
+.page-footnotes { max-width: 1320px; margin: 16px auto 0; padding: 13px 17px; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; line-height: 1.6; }
+.page-footnotes ol { margin: 0; padding-left: 22px; }
+.page-footnotes li { padding-left: 4px; }
+.page-footnotes a, .section-term-note a { color: var(--green); font-weight: 750; text-decoration: none; }
+.page-footnotes a:hover, .section-term-note a:hover { text-decoration: underline; }
+.section-term-note { margin: 18px 0 0; padding: 13px 15px; border-radius: 10px; background: #eef3ef; color: var(--muted); font-size: 11px; line-height: 1.6; }
+
 .content-page-header, .guide-page > .page-heading { display: flex; justify-content: space-between; align-items: end; gap: 32px; padding: 58px 6vw 36px; }
 .page-heading { max-width: 850px; }
 .page-heading h1 { font-size: clamp(36px, 4.2vw, 58px); }
@@ -404,6 +414,12 @@ footer { display: flex; justify-content: space-between; gap: 20px; padding: 28px
 .data-evidence-drawer > summary { padding: 17px 20px; color: var(--green-dark); cursor: pointer; font-size: 13px; font-weight: 750; }
 .data-evidence-drawer[open] > summary { border-bottom: 1px solid var(--line); }
 .data-evidence-drawer .quality-section { padding: 45px 4vw; }
+
+.calculation-checks { margin-top: 18px; padding: 13px 16px; border: 1px solid rgba(255,255,255,0.13); border-radius: 13px; color: #c5d3cf; }
+.calculation-checks summary { cursor: pointer; color: #d8e3df; font-size: 11px; font-weight: 700; }
+.calculation-checks .trace-strip { margin-top: 12px; }
+.dark-footnotes { border-top-color: rgba(255,255,255,0.16); color: #a9bbb6; }
+.dark-footnotes .term-marker a, .dark-footnotes a { color: #9bd1c5; }
 
 .guide-page { max-width: 1320px; margin: 0 auto; padding-bottom: 76px; }
 .guide-page > .page-heading { display: block; padding-left: 5vw; padding-right: 5vw; }
@@ -431,6 +447,21 @@ footer { display: flex; justify-content: space-between; gap: 20px; padding: 28px
 .guide-notes ul { margin: 0 0 22px; padding-left: 22px; color: var(--muted); line-height: 1.7; }
 .guide-notes li { margin-bottom: 6px; }
 .guide-notes code { color: var(--green-dark); }
+
+.glossary-page > .page-heading { padding: 58px 6vw 36px; }
+.glossary-content { max-width: 1320px; margin: 0 auto; padding: 0 5vw 80px; }
+.glossary-jump { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 42px; padding: 16px; border: 1px solid var(--line); border-radius: 14px; background: var(--paper); }
+.glossary-jump a { padding: 7px 10px; border-radius: 8px; color: var(--green-dark); background: var(--green-soft); font-size: 11px; font-weight: 700; text-decoration: none; }
+.glossary-jump a:hover { background: #cce2da; }
+.glossary-section { scroll-margin-top: 82px; padding: 42px 0; border-top: 1px solid var(--line); }
+.glossary-section:first-of-type { border-top: 0; }
+.glossary-section > header { display: grid; grid-template-columns: minmax(250px, 0.75fr) minmax(300px, 1fr); gap: 40px; align-items: end; margin-bottom: 24px; }
+.glossary-section h2 { margin: 0; font-family: Georgia, serif; font-size: clamp(27px, 3vw, 40px); font-weight: 500; }
+.glossary-section header p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.65; }
+.glossary-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 0; }
+.glossary-list > div { padding: 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); }
+.glossary-list dt { color: var(--green-dark); font-size: 13px; font-weight: 800; }
+.glossary-list dd { margin: 8px 0 0; color: var(--muted); font-size: 12px; line-height: 1.65; }
 .formula-inline { margin: 14px 0 0; color: var(--muted); font-size: 11px; line-height: 1.55; }
 .formula-inline strong { color: var(--ink); }
 .formula-note { display: grid; gap: 6px; margin-top: 15px; padding: 13px 15px; border-left: 3px solid var(--green); border-radius: 0 9px 9px 0; background: #eef3ef; }
@@ -450,12 +481,12 @@ footer a:hover { color: white; }
 }
 
 @media (max-width: 720px) {
-  .site-header { display: flex; min-height: 58px; padding: 0 14px; overflow-x: auto; }
-  .brand { flex: 0 0 auto; }
-  .brand-mark { width: 33px; height: 33px; }
+  .site-header { display: grid; grid-template-columns: 1fr; gap: 5px; min-height: 0; padding: 8px 12px; overflow: visible; }
+  .brand { justify-self: center; }
+  .brand-mark { width: 30px; height: 30px; }
   .brand strong { font-size: 14px; }
-  .site-header .page-nav { display: flex; flex: 0 0 auto; margin-left: auto; }
-  .page-nav a { padding: 7px 9px; font-size: 11px !important; }
+  .site-header .page-nav { display: flex; justify-content: center; gap: 2px !important; width: 100%; margin: 0; }
+  .page-nav a { padding: 6px 7px; font-size: 10px !important; }
   .planner-page { padding: 34px 16px 58px; }
   .home-intro, .content-page-header { align-items: flex-start; flex-direction: column; }
   .home-help { width: 100%; }
@@ -476,4 +507,9 @@ footer a:hover { color: white; }
   .guide-steps { padding: 0 20px 42px; }
   .guide-section { margin: 0 20px; }
   .guide-section-heading { align-items: flex-start; flex-direction: column; gap: 12px; }
+  .glossary-page > .page-heading { padding: 40px 20px 28px; }
+  .glossary-content { padding: 0 20px 58px; }
+  .glossary-jump { margin-bottom: 24px; }
+  .glossary-section > header { grid-template-columns: 1fr; gap: 10px; }
+  .glossary-list { grid-template-columns: 1fr; }
 }

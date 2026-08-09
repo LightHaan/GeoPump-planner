@@ -46,49 +46,50 @@ export function DataQualityPanel({
     <section className="quality-section" id="data-quality">
       <div className="quality-heading">
         <div>
-          <p className="eyebrow">Data provenance and quality</p>
-          <h2>Evidence used by this postcode calculation</h2>
+          <p className="eyebrow">Data sources and confidence</p>
+          <h2>Technical evidence behind this result</h2>
+          <a className="text-link" href="#glossary">Explain these terms in the Glossary →</a>
         </div>
         <span className="dataset-version">Dataset {manifest.dataset_version}</span>
       </div>
 
       <div className="quality-grid">
         <article>
-          <span>Surface-temperature source</span>
+          <span>Temperature source</span>
           <strong>{source?.label ?? TEMPERATURE_DATASET_LABELS[datasetId]}</strong>
           <small>{source === undefined ? "Coverage not recorded" : `${source.provider} · ${source.temporal_coverage}`}</small>
           {source !== undefined && <a href={source.source_url} target="_blank" rel="noreferrer">Open source record</a>}
         </article>
         <article>
-          <span>ΔT20 EBK prediction standard error</span>
+          <span>ΔT20 interpolation uncertainty</span>
           <strong>{standardErrorApplicable ? `${display(uncertainty.delta_t20_ebk_prediction_se_c, 3)}°C` : "Not applicable"}</strong>
           <small>
             {standardErrorApplicable
-              ? "Interpolation standard error for ΔT20 only; it is not total ground-temperature uncertainty."
+              ? "Prediction standard error for the ΔT20 interpolation only; it is not total ground-temperature uncertainty."
               : `This statistic belongs to the ${TEMPERATURE_DATASET_LABELS.surface_t} + ΔT20 chain and is not applied to the ${TEMPERATURE_DATASET_LABELS.air_t} + ΔT20New chain.`}
           </small>
         </article>
         <article>
-          <span>Borehole evidence</span>
+          <span>Supporting borehole observations</span>
           <strong>{display(attributes.ground.nearest_borehole_km)} km nearest</strong>
           <small>
             {attributes.ground.nearby_borehole_count ?? "Not available"} boreholes within {display(attributes.ground.nearby_radius_km, 0)} km
           </small>
         </article>
         <article>
-          <span>Certificate sample</span>
+          <span>Certificate records used</span>
           <strong>{attributes.load.certificate_count ?? "Not available"} records</strong>
           <small>Dwelling_Count is the number of recorded certificates, not the postcode dwelling population.</small>
         </article>
         <article>
-          <span>Climate time resolution</span>
+          <span>Climate records used</span>
           <strong>{attributes.climate.record_count ?? climate.length} representative hours</strong>
           <small>
             {attributes.climate.record_type ?? manifest.climate.record_type}; each record represents {display(attributes.climate.weight_hours, 1)} h
           </small>
         </article>
         <article>
-          <span>Climate coverage check</span>
+          <span>Annual climate coverage</span>
           <strong>{display(representedHours, 0)} / {display(expectedAnnualHours, 0)} h</strong>
           <small>{invalidRecords} invalid records · {display(unrepresentedHours, 0)} unrepresented hours · {display(excessHours, 0)} excess hours</small>
         </article>

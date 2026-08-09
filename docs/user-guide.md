@@ -8,26 +8,30 @@ reference](calculation-reference.md).
 ## App pages
 
 - **Planner** contains the postcode search, essential inputs, interactive map and
-  headline result only. Change the map metric to inspect local ground, load,
-  borehole and evidence data; click a boundary to select that postcode.
+  headline result only. Change the map colour setting to inspect the five useful
+  local temperature or demand indicators; click a boundary to select that postcode.
 - **Results** contains the full GSHP/ASHP comparison, monthly charts, exports and
   a collapsible data-evidence section.
 - **Customise** contains all editable inputs, formula parameters, COP settings,
   time periods, tariffs and investment assumptions, plus scenario import/export.
 - **Guide** provides the short in-app instructions and model cautions.
+- **Glossary** provides plain-English definitions for the technical terms used
+  throughout the app.
 
-The map shows 13 selectable metrics. Expanding **All mapped data for postcode**
-shows both *Australian mean land-surface temperature* (Geoscience Australia) and
-*Hourly near-surface air temperature grids for Australia (long-term
-climatology)* (CSIRO), ground temperature at 20 m, gradients, annual
-heating/cooling loads, certificate count, borehole evidence, climate records and
-the applicable ΔT20 prediction standard error.
+The map shows five selectable indicators for the active temperature source:
+estimated ground temperature at 20 m, the selected surface or near-surface air
+temperature, estimated underground warming rate, typical annual heating need
+and typical annual cooling need. Expanding **Local estimates for postcode** shows
+the same decision-oriented values. Certificate counts, borehole evidence,
+climate-record checks and ΔT20 interpolation uncertainty are intentionally kept
+off the home page and remain available in the Results page's optional data-
+evidence panel.
 
 ## Recommended workflow
 
 1. Select a postcode by search or by clicking its map boundary.
-2. Review the prepared surface temperature, gradient, certificate loads and data
-   evidence shown for that postcode.
+2. Review the prepared temperature, estimated underground warming rate and
+   typical heating and cooling need shown for that postcode.
 3. Choose one of the two fully named temperature datasets and enter a target
    depth. The prepared 20 m data are starting values, not a site measurement.
 4. Enter conditioned area and the number of buildings being modelled. These
@@ -43,10 +47,12 @@ the applicable ΔT20 prediction standard error.
 
 ## Ground temperature used by the GSHP
 
-The default method uses the selected prepared surface temperature and gradient:
+The default method uses the selected prepared surface temperature and estimated
+underground warming rate:
 
 ```text
-ground_temperature_at_depth = surface_temperature + gradient × target_depth
+ground_temperature_at_depth = surface_temperature
+                              + estimated_warming_rate × target_depth
 ```
 
 Customise also provides:
@@ -60,6 +66,14 @@ ground_temperature = surface_temperature
 direct method:
 ground_temperature = user_input
 ```
+
+The prepared warming rate is the borehole-informed, spatially interpolated
+temperature difference between the chosen surface baseline and 20 m divided by
+20 m. The app assumes that rate continues in a straight line to the selected
+depth. It is only an approximation for postcode screening, not a measured
+geothermal gradient. Determining a true geothermal gradient generally requires
+quality-controlled downhole temperatures at suitable depths and corrections or
+interpretation for drilling disturbance, groundwater, terrain and local geology.
 
 The calculated value is used as a constant GSHP source/sink temperature for all
 representative hours. The ASHP instead uses each record's outdoor air

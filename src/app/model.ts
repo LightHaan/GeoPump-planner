@@ -98,7 +98,7 @@ export function calculateGroundTemperature(
   }
   return groundTemperatureFromSurfaceGradient(
     required(inputs.surfaceTemperatureC, "surface temperature"),
-    required(inputs.gradientCPerM, "ground-temperature gradient"),
+    required(inputs.gradientCPerM, "estimated underground warming rate"),
     ground.target_depth_m,
     ground.minimum_depth_m,
     ground.shallow_warning_depth_m,
@@ -330,7 +330,7 @@ export function listScenarioOverrides(
   const defaultInputs = inputsFromAttributes(attributes, parameters.ground.surface_dataset_id);
   const inputLabels: Record<keyof PostcodeModelInputs, string> = {
     surfaceTemperatureC: "Surface temperature",
-    gradientCPerM: "Ground-temperature gradient",
+    gradientCPerM: "Estimated underground warming rate",
     boreholeTemperatureC: "Borehole temperature",
     boreholeDepthM: "Borehole measurement depth",
     directGroundTemperatureC: "Direct ground temperature",

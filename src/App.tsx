@@ -12,6 +12,7 @@ import {
   type PostcodeModelInputs,
 } from "./app/model";
 import { DataQualityPanel } from "./components/data-quality-panel";
+import { GlossaryPage } from "./components/glossary-page";
 import { PostcodeMap } from "./components/postcode-map";
 import { QuickResults } from "./components/quick-results";
 import { ResultsPanel } from "./components/results-panel";
@@ -31,7 +32,7 @@ import { setParameterValue } from "./parameters/definitions";
 import type { ScenarioParameters } from "./parameters/types";
 import { validateScenarioParameters } from "./parameters/validation";
 
-type PageId = "planner" | "results" | "customise" | "guide";
+type PageId = "planner" | "results" | "customise" | "guide" | "glossary";
 
 const EMPTY_INPUTS: PostcodeModelInputs = {
   surfaceTemperatureC: null,
@@ -45,7 +46,11 @@ const EMPTY_INPUTS: PostcodeModelInputs = {
 
 function pageFromHash(): PageId {
   const hash = window.location.hash.replace(/^#/, "");
-  return hash === "results" || hash === "customise" || hash === "guide" ? hash : "planner";
+  if (hash === "results" || hash.startsWith("results-note-")) return "results";
+  if (hash === "customise" || hash.startsWith("custom-note-")) return "customise";
+  if (hash === "guide" || hash.startsWith("guide-")) return "guide";
+  if (hash === "glossary" || hash.startsWith("glossary-section-")) return "glossary";
+  return "planner";
 }
 
 function downloadBlob(filename: string, blob: Blob): void {
@@ -98,8 +103,13 @@ export default function App() {
 
   useEffect(() => {
     const onHashChange = () => {
+      const hash = window.location.hash.replace(/^#/, "");
       setPage(pageFromHash());
-      window.scrollTo({ top: 0, behavior: "instant" });
+      if (hash === "" || hash === "planner" || hash === "results" || hash === "customise" || hash === "guide" || hash === "glossary") {
+        window.scrollTo({ top: 0, behavior: "instant" });
+      } else {
+        window.setTimeout(() => document.getElementById(hash)?.scrollIntoView?.({ block: "start" }), 0);
+      }
     };
     window.addEventListener("hashchange", onHashChange);
     return () => window.removeEventListener("hashchange", onHashChange);
@@ -342,10 +352,10 @@ export default function App() {
       )}
       <div className="quick-fields">
         <label>
-          <span>Target depth</span>
+          <span>Depth to estimate</span>
           <span className="compact-input-with-unit">
             <input
-              aria-label="Target depth"
+              aria-label="Depth to estimate"
               type="number"
               value={parameters.ground.target_depth_m}
               onChange={(event) => onParameterChange("ground.target_depth_m", Number(event.target.value))}
@@ -354,13 +364,13 @@ export default function App() {
           </span>
         </label>
         <label className="dataset-field">
-          <span>Temperature dataset</span>
+          <span>Temperature source</span>
           <select
-            aria-label="Temperature dataset"
+            aria-label="Temperature source"
             value={parameters.ground.surface_dataset_id}
             onChange={(event) => onParameterChange("ground.surface_dataset_id", event.target.value)}
           >
-            <option value="surface_t">{TEMPERATURE_DATASET_LABELS.surface_t}</option>
+            <option value="surface_t">{TEMPERATURE_DATASET_LABELS.surface_t} (recommended)</option>
             <option value="air_t">{TEMPERATURE_DATASET_LABELS.air_t}</option>
           </select>
         </label>
@@ -386,8 +396,7 @@ export default function App() {
       {selectedEntry !== null && selectedAttributes !== null && (
         <div className="selected-postcode-summary">
           <div><span>Selected</span><strong>{selectedEntry.postcode}</strong></div>
-          <div><span>Ground at depth</span><strong>{groundPreview === null ? "—" : `${groundPreview.toFixed(2)} °C`}</strong></div>
-          <div><span>Certificates</span><strong>{selectedAttributes.load.certificate_count ?? "—"}</strong></div>
+          <div><span>Estimated ground temperature</span><strong>{groundPreview === null ? "—" : `${groundPreview.toFixed(2)} °C`}</strong></div>
         </div>
       )}
       {dataError !== null && <p className="inline-error" role="alert">{dataError}</p>}
@@ -406,6 +415,7 @@ export default function App() {
           <a className={page === "results" ? "active" : ""} href="#results" aria-current={page === "results" ? "page" : undefined}>Results</a>
           <a className={page === "customise" ? "active" : ""} href="#customise" aria-current={page === "customise" ? "page" : undefined}>Customise</a>
           <a className={page === "guide" ? "active" : ""} href="#guide" aria-current={page === "guide" ? "page" : undefined}>Guide</a>
+          <a className={page === "glossary" ? "active" : ""} href="#glossary" aria-current={page === "glossary" ? "page" : undefined}>Glossary</a>
         </nav>
       </header>
 
@@ -415,11 +425,12 @@ export default function App() {
             <section className="home-intro">
               <div>
                 <h1>Plan by postcode.</h1>
-                <p>Compare ground- and air-source heat pumps using local ground and climate data.</p>
+                <p>See whether a ground-source heat pump may suit your area, how much electricity it could use and what it could save.</p>
               </div>
               <div className="home-help">
                 <span>First visit? <a href="#guide">Read the guide</a>.</span>
                 <span>Need different assumptions? <a href="#customise">Customise the model</a>.</span>
+                <span>Unfamiliar term? <a href="#glossary">Open the plain-English glossary</a>.</span>
               </div>
             </section>
             <div className="planner-workspace">
@@ -438,6 +449,11 @@ export default function App() {
               error={calculation.error}
               currency={parameters.tariff.currency}
             />
+            <aside className="page-footnotes" aria-label="Key term note">
+              <ol>
+                <li id="home-note-warming"><strong>Estimated underground warming rate:</strong> a postcode-scale, borehole-informed straight-line estimate used to project temperature with depth. It is not a site-measured geothermal gradient. <a href="#glossary">Full explanation →</a></li>
+              </ol>
+            </aside>
           </div>
         )}
 
@@ -476,7 +492,7 @@ export default function App() {
         {page === "customise" && (
           <div className="customise-page">
             <div className="content-page-header">
-              <PageHeading title="Customise the model">Adjust inputs, formula parameters, COP settings, time periods, tariffs and investment assumptions.</PageHeading>
+              <PageHeading title="Customise the model">Adjust inputs, performance formulas, time periods, electricity prices and investment assumptions.</PageHeading>
               <div className="page-actions">
                 <button type="button" className="button-secondary" onClick={reset}>Restore defaults</button>
                 <button type="button" className="button-secondary" onClick={() => importInputRef.current?.click()}>Import scenario</button>
@@ -511,10 +527,10 @@ export default function App() {
           <div className="guide-page">
             <PageHeading title="How to use GeoPump Planner">A short guide to the map, calculation and editable assumptions.</PageHeading>
             <section className="guide-steps">
-              <article><span>1</span><h2>Select a postcode</h2><p>Type a postcode or click it on the map. Change the map metric to inspect local ground, load and evidence data.</p></article>
-              <article><span>2</span><h2>Set the essentials</h2><p>Choose a depth and temperature dataset. Add an electricity price if you want annual cost estimates.</p></article>
+              <article><span>1</span><h2>Select a postcode</h2><p>Type a postcode or click it on the map. The colour setting lets you compare useful local temperature and heating or cooling indicators.</p></article>
+              <article><span>2</span><h2>Set the essentials</h2><p>Choose an estimate depth and temperature source. Add your electricity price to see annual running-cost estimates.</p></article>
               <article><span>3</span><h2>Read the result</h2><p>The home page shows the headline comparison. The Results page contains monthly values, decision evidence and downloads.</p></article>
-              <article><span>4</span><h2>Customise if needed</h2><p>The Customise page exposes every registered model parameter, constant, time window, tariff and COP setting.</p></article>
+              <article><span>4</span><h2>Customise if needed</h2><p>The Customise page exposes every model input, constant, time window, electricity-price setting and performance formula. The <a className="text-link" href="#glossary">glossary</a> explains unfamiliar terms.</p></article>
             </section>
 
             <section className="guide-section">
@@ -522,7 +538,7 @@ export default function App() {
               <div className="guide-grid">
                 <article><h3>Demand from temperature</h3><p>Hourly air temperature is converted to heating and cooling degree-hours using editable thresholds. The defaults are 12 °C and 24 °C.</p></article>
                 <article><h3>Load follows demand</h3><p>Certificate annual loads are allocated across hours in proportion to degree-hours. If annual degree-hours are zero, allocated demand and load are zero.</p></article>
-                <article><h3>Ground meets climate</h3><p>Ground temperature and hourly air temperature feed the selected COP formulas for GSHP and ASHP electricity estimates.</p></article>
+                <article><h3>Ground meets climate</h3><p>Estimated ground temperature and hourly outdoor temperature feed the selected heat-pump performance formulas to estimate electricity use.</p></article>
                 <article><h3>Costs use your assumptions</h3><p>Electricity prices, conditioned area, building count, installed costs and lifecycle parameters are editable rather than fixed.</p></article>
               </div>
             </section>
@@ -533,13 +549,13 @@ export default function App() {
                   <p className="eyebrow">Calculation reference</p>
                   <h2>Core equations</h2>
                 </div>
-                <p>Every term shown here can be entered or changed on the Customise page. GSHP uses the calculated ground temperature; ASHP uses each record's outdoor air temperature.</p>
+                <p>Every term shown here can be entered or changed on the Customise page. The ground-source system uses estimated ground temperature; the air-source comparison uses each record's outdoor air temperature.</p>
               </div>
               <div className="equation-grid">
                 <article>
                   <span>01 · Ground temperature</span>
-                  <h3>Surface temperature and gradient</h3>
-                  <pre><code>T_ground(z) = T_surface + gradient × depth</code></pre>
+                  <h3>Surface temperature and estimated warming with depth</h3>
+                  <pre><code>T_ground(z) = T_surface + estimated_warming_rate × depth</code></pre>
                   <p>Borehole mode instead uses <code>T_surface + (T_borehole - T_surface) × depth / borehole_depth</code>. Direct mode uses the entered ground temperature without a depth equation.</p>
                 </article>
                 <article>
@@ -580,7 +596,7 @@ NPV_GSHP = ASHP_lifecycle_cost - GSHP_lifecycle_cost`}</code></pre>
                   <p>Positive saving and positive NPV favour GSHP. The decision label also applies the editable technical, payback, NPV and evidence-quality thresholds.</p>
                 </article>
               </div>
-              <p className="reference-link-note">For tariff equations, lifecycle discounting, solar-time equations, decision rules, validation and all 109 parameter defaults, see the <a className="text-link" href="https://github.com/LightHaan/GeoPump-planner/blob/main/docs/calculation-reference.md" target="_blank" rel="noreferrer">complete calculation and parameter reference →</a></p>
+              <p className="reference-link-note">For tariff equations, lifecycle discounting, solar-time equations, decision rules, validation and all 109 parameter defaults, see the <a className="text-link" href="https://github.com/LightHaan/GeoPump-planner/blob/main/docs/calculation-reference.md" target="_blank" rel="noreferrer">complete calculation and parameter reference →</a>. For plain-language definitions, use the <a className="text-link" href="#glossary">glossary →</a></p>
             </section>
 
             <section className="guide-section guide-notes">
@@ -596,11 +612,18 @@ NPV_GSHP = ASHP_lifecycle_cost - GSHP_lifecycle_cost`}</code></pre>
             </section>
           </div>
         )}
+
+        {page === "glossary" && (
+          <div className="glossary-page">
+            <PageHeading title="Plain-English glossary">Simple explanations of the ground, climate, performance, cost and data-quality terms used by GeoPump Planner.</PageHeading>
+            <GlossaryPage />
+          </div>
+        )}
       </main>
 
       <footer>
         <span>GeoPump Planner</span>
-        <a href="https://github.com/LightHaan/GeoPump-planner" target="_blank" rel="noreferrer">GitHub</a>
+        <span><a href="#glossary">Glossary</a> · <a href="https://github.com/LightHaan/GeoPump-planner" target="_blank" rel="noreferrer">GitHub</a></span>
       </footer>
     </div>
   );

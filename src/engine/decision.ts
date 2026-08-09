@@ -57,7 +57,7 @@ export function evaluateDecision(
     : relativeElectricitySavingFraction >= parameters.minimum_technical_saving_fraction
       ? "recommended"
       : "not_recommended";
-  if (technical === "not_assessed") reasons.push("ASHP reference electricity is zero, so relative technical saving is not defined.");
+  if (technical === "not_assessed") reasons.push("Air-source reference electricity is zero, so relative technical saving is not defined.");
   if (technical === "not_recommended") reasons.push("Electricity saving is below the configured technical threshold.");
 
   const economic = economics.npvOfGshpChoice === null || economics.simplePaybackYears === null

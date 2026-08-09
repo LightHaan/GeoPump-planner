@@ -3,7 +3,7 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
-import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 vi.mock("../../src/components/postcode-map", () => ({
@@ -35,9 +35,10 @@ function response(value: unknown) {
   } as Response;
 }
 
-async function openPage(name: "Planner" | "Results" | "Customise" | "Guide") {
-  fireEvent.click(screen.getByRole("link", { name }));
-  await waitFor(() => expect(screen.getByRole("link", { name }).getAttribute("aria-current")).toBe("page"));
+async function openPage(name: "Planner" | "Results" | "Customise" | "Guide" | "Glossary") {
+  const navigation = screen.getByRole("navigation", { name: "Main navigation" });
+  fireEvent.click(within(navigation).getByRole("link", { name }));
+  await waitFor(() => expect(within(navigation).getByRole("link", { name }).getAttribute("aria-current")).toBe("page"));
 }
 
 describe("GeoPump Planner pages", () => {
@@ -80,12 +81,16 @@ describe("GeoPump Planner pages", () => {
     expect(screen.queryByText("GSHP and ASHP comparison")).toBeNull();
     expect(screen.getByRole("link", { name: "Read the guide" })).toBeTruthy();
     expect(screen.getByRole("link", { name: "Customise the model" })).toBeTruthy();
-    expect(screen.getByRole("option", { name: "Geoscience Australia — Australian mean land-surface temperature" })).toBeTruthy();
+    expect(screen.getByRole("option", { name: "Geoscience Australia — Australian mean land-surface temperature (recommended)" })).toBeTruthy();
     expect(screen.getByRole("option", { name: "CSIRO — Hourly near-surface air temperature grids for Australia (long-term climatology)" })).toBeTruthy();
-    expect(screen.getByText("Conditional result")).toBeTruthy();
+    expect(screen.getByText("Potentially suitable — review inputs")).toBeTruthy();
     expect(screen.getByRole("link", { name: "Review assumptions →" }).getAttribute("href")).toBe("#customise");
 
-    const quickDepth = screen.getByRole("spinbutton", { name: "Target depth" });
+    expect(screen.queryByText("Climate records")).toBeNull();
+    expect(screen.queryByText("ΔT20 prediction SE")).toBeNull();
+    expect(screen.getByText(/Estimated underground warming rate:/)).toBeTruthy();
+
+    const quickDepth = screen.getByRole("spinbutton", { name: "Depth to estimate" });
     fireEvent.change(quickDepth, { target: { value: "30" } });
     await waitFor(() => expect(screen.getByText("19.60 °C")).toBeTruthy());
 
@@ -98,13 +103,20 @@ describe("GeoPump Planner pages", () => {
     expect(screen.getByRole("button", { name: "Export scenario" }).hasAttribute("disabled")).toBe(false);
 
     await openPage("Results");
-    expect(screen.getByText("GSHP and ASHP comparison")).toBeTruthy();
+    expect(screen.getByText("Ground-source and air-source comparison")).toBeTruthy();
     expect(screen.getByRole("button", { name: "Export CSV" }).hasAttribute("disabled")).toBe(false);
     expect(screen.getByText("Data evidence and quality")).toBeTruthy();
 
     await openPage("Guide");
     expect(screen.getByRole("heading", { name: "How to use GeoPump Planner" })).toBeTruthy();
     expect(screen.getByText(/If annual degree-hours are zero/)).toBeTruthy();
+
+    await openPage("Glossary");
+    expect(screen.getByRole("heading", { name: "Plain-English glossary" })).toBeTruthy();
+    expect(screen.getByText("Estimated underground warming rate")).toBeTruthy();
+    expect(screen.getByText("Coefficient of performance (COP)")).toBeTruthy();
+    fireEvent.click(screen.getByRole("link", { name: "Ground-temperature terms" }));
+    await waitFor(() => expect(within(screen.getByRole("navigation", { name: "Main navigation" })).getByRole("link", { name: "Glossary" }).getAttribute("aria-current")).toBe("page"));
   });
 
   it("imports a validated scenario from the Customise page", async () => {

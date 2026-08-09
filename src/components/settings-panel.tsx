@@ -22,7 +22,7 @@ interface SettingsPanelProps {
 }
 
 const groundModes = [
-  { value: "surface_gradient", label: "Surface temperature + ground gradient" },
+  { value: "surface_gradient", label: "Surface temperature + estimated warming with depth" },
   { value: "surface_borehole_interpolation", label: "Surface/borehole interpolation" },
   { value: "direct", label: "Direct ground-temperature input" },
 ];
@@ -137,7 +137,7 @@ export function SettingsPanel({
             <NumberField id="surface-temperature" label="Surface temperature" value={inputs.surfaceTemperatureC} unit="°C" onChange={(value) => onInputChange("surfaceTemperatureC", value)} required />
           )}
           {parameters.ground.mode === "surface_gradient" && (
-            <NumberField id="ground-gradient" label="Ground-temperature gradient" value={inputs.gradientCPerM} unit="°C/m" step={0.001} onChange={(value) => onInputChange("gradientCPerM", value)} required />
+            <NumberField id="ground-gradient" label="Estimated underground warming rate" value={inputs.gradientCPerM} unit="°C/m" step={0.001} onChange={(value) => onInputChange("gradientCPerM", value)} help="A postcode-scale straight-line estimate, not a site-measured geothermal gradient. See the Glossary." required />
           )}
           {parameters.ground.mode === "surface_borehole_interpolation" && (
             <>
@@ -155,7 +155,7 @@ export function SettingsPanel({
         </div>
         <p className="formula-inline">
           <strong>Current method:</strong>{" "}
-          {parameters.ground.mode === "surface_gradient" && "T_ground = T_surface + gradient × target depth"}
+          {parameters.ground.mode === "surface_gradient" && "T_ground = T_surface + estimated warming rate × target depth"}
           {parameters.ground.mode === "surface_borehole_interpolation" && "T_ground = T_surface + (T_borehole - T_surface) × target depth / borehole depth"}
           {parameters.ground.mode === "direct" && "T_ground = direct user input"}
         </p>
@@ -191,7 +191,7 @@ export function SettingsPanel({
         </div>
         <label className="switch-row">
           <input type="checkbox" checked={parameters.analysis_period.enabled} onChange={(event) => onParameterChange("analysis_period.enabled", event.target.checked)} />
-          <span>Enable selected-period analysis and two-rate tariff grouping</span>
+          <span>Enable selected-period analysis and two-rate electricity-price grouping</span>
         </label>
         <div className="field-grid">
           <label className="field" htmlFor="period-label"><span className="field-label">Period label</span><input id="period-label" value={parameters.analysis_period.label} onChange={(event) => onParameterChange("analysis_period.label", event.target.value)} /></label>
@@ -218,23 +218,24 @@ export function SettingsPanel({
 
       <section className="settings-card" id="cop-settings">
         <div className="section-heading">
-          <div><span>04</span><h2>COP models</h2></div>
-          <p>GSHP and ASHP can use independently selected formulas and parameters.</p>
+          <div><span>04</span><h2>Heat-pump performance (COP)<sup className="term-marker"><a href="#custom-note-cop" aria-label="Read note 1 about COP">1</a></sup></h2></div>
+          <p>Ground-source and air-source systems can use independently selected formulas and parameters.</p>
         </div>
         <div className="cop-grid">
-          <CopQuickPanel title="Ground-source heat pump · GSHP" system="gshp" parameters={parameters.cop.gshp} onChange={onParameterChange} />
-          <CopQuickPanel title="Air-source heat pump · ASHP" system="ashp" parameters={parameters.cop.ashp} onChange={onParameterChange} />
+          <CopQuickPanel title="Ground-source heat pump (GSHP)" system="gshp" parameters={parameters.cop.gshp} onChange={onParameterChange} />
+          <CopQuickPanel title="Air-source heat pump (ASHP)" system="ashp" parameters={parameters.cop.ashp} onChange={onParameterChange} />
         </div>
         <p className="formula-inline"><strong>Electricity:</strong> compressor electricity = allocated thermal load / COP. Pump, fan, miscellaneous and fixed annual auxiliary electricity are editable below under Advanced model parameters.</p>
+        <p className="section-term-note" id="custom-note-cop"><strong>1 · Coefficient of performance (COP):</strong> heating or cooling delivered divided by compressor electricity at a particular condition. A COP of 4 means about four units of heating or cooling for one unit of compressor electricity. <a href="#glossary">More in the Glossary →</a></p>
       </section>
 
       <section className="settings-card" id="cost-settings">
         <div className="section-heading">
-          <div><span>05</span><h2>Tariff and investment</h2></div>
+          <div><span>05</span><h2>Electricity price and investment</h2></div>
           <p>Technical results remain available when prices or installed costs are blank, but the economic assessment will be incomplete.</p>
         </div>
         <div className="field-grid">
-          <SelectField id="tariff-mode" label="Tariff mode" value={parameters.tariff.mode} options={[
+          <SelectField id="tariff-mode" label="Electricity pricing method" value={parameters.tariff.mode} options={[
             { value: "single", label: "Single electricity price" },
             { value: "selected_period_two_rate", label: "Selected period / other period rates" },
           ]} onChange={(value) => onParameterChange("tariff.mode", value)} />
@@ -247,12 +248,12 @@ export function SettingsPanel({
               <NumberField id="other-price" label="Other-period price" value={parameters.tariff.other_period_price_per_kwh} unit={`${parameters.tariff.currency}/kWh`} step={0.01} onChange={(value) => onParameterChange("tariff.other_period_price_per_kwh", value)} />
             </>
           )}
-          <NumberField id="gshp-installed-cost" label="Total GSHP installed cost" value={parameters.economics.gshp_installed_cost} unit={parameters.tariff.currency} step={100} onChange={(value) => onParameterChange("economics.gshp_installed_cost", value)} />
-          <NumberField id="ashp-installed-cost" label="Total ASHP installed cost" value={parameters.economics.ashp_installed_cost} unit={parameters.tariff.currency} step={100} onChange={(value) => onParameterChange("economics.ashp_installed_cost", value)} />
+          <NumberField id="gshp-installed-cost" label="Total ground-source installed cost" value={parameters.economics.gshp_installed_cost} unit={parameters.tariff.currency} step={100} onChange={(value) => onParameterChange("economics.gshp_installed_cost", value)} />
+          <NumberField id="ashp-installed-cost" label="Total air-source installed cost" value={parameters.economics.ashp_installed_cost} unit={parameters.tariff.currency} step={100} onChange={(value) => onParameterChange("economics.ashp_installed_cost", value)} />
         </div>
         <div className="formula-note compact-formula-note">
           <code>single-rate cost = annual electricity × price + fixed charges</code>
-          <code>NPV of choosing GSHP = ASHP lifecycle cost - GSHP lifecycle cost</code>
+          <code>NPV of choosing ground-source = air-source lifecycle cost - ground-source lifecycle cost</code>
         </div>
       </section>
 

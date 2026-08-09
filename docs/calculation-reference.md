@@ -42,14 +42,16 @@ The ground-temperature starting value can come from either prepared chain:
 
 The JSON identifiers `surface_t` and `air_t` are retained only for data and
 scenario-file compatibility. They refer to the full dataset names above.
-Changing this choice changes the prepared surface temperature and gradient used
-to initialise the ground calculation. It does not change the hourly climate
-sequence used to identify demand.
+Changing this choice changes the prepared surface temperature and estimated
+underground warming rate used to initialise the ground calculation. The rate is
+stored internally in a legacy `gradient` field, but the public interface does
+not describe it as a measured geothermal gradient. It does not change the
+hourly climate sequence used to identify demand.
 
 For the frozen 20 m postcode attributes:
 
 ```text
-prepared_gradient = prepared_temperature_difference_at_20_m / 20 m
+prepared_warming_rate = prepared_temperature_difference_at_20_m / 20 m
 prepared_ground_temperature_at_20_m = prepared_surface_temperature
                                       + prepared_temperature_difference_at_20_m
 ```
@@ -57,12 +59,17 @@ prepared_ground_temperature_at_20_m = prepared_surface_temperature
 These are publication-time calculations. The map displays the frozen values;
 scenario changes do not recolour or recalculate the map.
 
+The prepared 20 m difference is borehole-informed and spatially interpolated.
+Dividing it by 20 m and applying it linearly at another depth is a screening
+approximation. A physical geothermal gradient requires suitable quality-
+controlled downhole measurements and more complete site interpretation.
+
 ### 2.2 Editable postcode inputs outside the 109-parameter registry
 
 | Input | Unit | Used when | Meaning |
 |---|---:|---|---|
-| Surface temperature | &deg;C | Surface + gradient; borehole interpolation | Prepared value for the selected dataset, or a manual replacement. |
-| Ground-temperature gradient | &deg;C/m | Surface + gradient | Prepared gradient, or a manual replacement. |
+| Surface temperature | &deg;C | Surface + estimated warming rate; borehole interpolation | Prepared value for the selected dataset, or a manual replacement. |
+| Estimated underground warming rate | &deg;C/m | Surface + estimated warming rate | Prepared linear rate, or a manual replacement; not a site-measured geothermal gradient. |
 | Borehole temperature | &deg;C | Borehole interpolation | User-supplied temperature observation. |
 | Borehole measurement depth | m | Borehole interpolation | Depth associated with the user-supplied observation. |
 | Direct ground temperature | &deg;C | Direct mode | User-supplied source/sink temperature; no depth formula is applied. |
@@ -78,12 +85,12 @@ the postcode dwelling population and never multiplies the load.
 Let:
 
 - `T_s` = selected or manually entered surface temperature (&deg;C);
-- `g` = ground-temperature gradient (&deg;C/m);
+- `g` = estimated underground warming rate (&deg;C/m);
 - `z` = target depth (m);
 - `T_b` = manually entered borehole temperature (&deg;C);
 - `z_b` = borehole measurement depth (m).
 
-### 3.1 Surface temperature + gradient
+### 3.1 Surface temperature + estimated warming with depth
 
 ```text
 T_ground(z) = T_s + g * z
@@ -110,7 +117,7 @@ extrapolated.
 T_ground = user_entered_ground_temperature
 ```
 
-Depth, surface temperature and gradient are not used in direct mode.
+Depth, surface temperature and the estimated warming rate are not used in direct mode.
 
 ## 4. Demand detection and annual-load allocation
 
@@ -463,21 +470,26 @@ CSV contains annual summary, economics and monthly load/electricity rows. The
 scenario JSON additionally preserves the full parameter set, source snapshot,
 manual inputs, outcome and calculation trace.
 
-## 12. Map metrics
+## 12. Map indicators
 
-The map contains frozen publication-time indicators. It is an exploration and
-postcode-selection layer, not a scenario-output map.
+The home-page map contains frozen publication-time indicators. It is an
+exploration and postcode-selection layer, not a scenario-output map. To keep the
+home page understandable, only five decision-oriented indicators are selectable
+for the active temperature source. Technical evidence remains available in the
+Results page's collapsed data-evidence panel and in the published data files.
 
-| Map metric | Source/calculation |
+| Home-page map indicator | Source/calculation |
 |---|---|
-| Ground temperature at 20 m, each dataset | Prepared surface temperature plus the paired 20 m temperature difference. |
-| Surface temperature, each dataset | Prepared postcode zonal statistic from the named source dataset. |
-| Ground gradient, each dataset | Paired prepared 20 m temperature difference divided by 20 m. |
-| Temperature difference at 20 m, each dataset | Prepared `deltaT20` or `deltaT20New` postcode value. |
-| Annual heating/cooling load | Frozen certificate-based intensity, converted to kWh/m&sup2;/year during data preparation. |
-| Certificate records | `Dwelling_Count`: number of certificates with records. |
-| Nearest borehole distance | Prepared distance from the postcode internal point to the nearest eligible borehole reference record. |
-| `deltaT20` EBK prediction standard error | Prepared zonal mean of the EBK prediction-standard-error raster; applicable only to the Geoscience Australia + `deltaT20` chain. |
+| Estimated ground temperature at 20 m | Prepared temperature-source value plus the paired 20 m temperature difference. |
+| Land-surface or near-surface air temperature | Prepared postcode zonal statistic from the active named source dataset. |
+| Estimated underground warming rate | Paired prepared 20 m temperature difference divided by 20 m; a linear approximation, not a site-measured geothermal gradient. |
+| Typical annual heating need | Frozen certificate-based intensity, converted to kWh/m&sup2;/year during data preparation. |
+| Typical annual cooling need | Frozen certificate-based intensity, converted to kWh/m&sup2;/year during data preparation. |
+
+The prepared 20 m temperature difference, certificate count, nearest-borehole
+distance, nearby-borehole count, climate-record checks and applicable ΔT20 EBK
+prediction standard error are not shown on the home page. They remain technical
+evidence rather than household decision outputs.
 
 For each selected metric, the colour scale uses the 5th, 27.5th, 50th, 72.5th
 and 95th percentiles across non-missing postcode values. Values outside the
@@ -501,7 +513,7 @@ implemented in the UI.
 
 | Path | Default | Unit | Current role |
 |---|---:|---:|---|
-| `ground.mode` | `surface_gradient` | — | Active; selects surface + gradient, borehole interpolation or direct entry. |
+| `ground.mode` | `surface_gradient` | — | Active; selects surface + estimated warming rate, borehole interpolation or direct entry. The identifier is retained for scenario compatibility. |
 | `ground.surface_dataset_id` | `surface_t` | — | Active data selection; `surface_t` is the Geoscience Australia chain and `air_t` is the CSIRO chain. |
 | `ground.reference_depth_m` | 20 | m | Prepared-data metadata. Changing it does not recalculate frozen 20 m attributes. |
 | `ground.target_depth_m` | 20 | m | Active in both depth-based ground equations. |

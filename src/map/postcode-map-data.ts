@@ -50,14 +50,14 @@ const nullable = (value: number | null | undefined): number | null => (
 export const MAP_METRICS: readonly MapMetricDefinition[] = [
   {
     id: "ground_surface_20",
-    label: `Ground temperature at 20 m — ${TEMPERATURE_DATASET_LABELS.surface_t}`,
+    label: `Estimated ground temperature at 20 m — ${TEMPERATURE_DATASET_LABELS.surface_t}`,
     property: "map_ground_surface_20",
     unit: "°C",
     value: (item) => nullable(item.ground.surface_t.ground_temp_at_reference_depth_c),
   },
   {
     id: "ground_air_20",
-    label: `Ground temperature at 20 m — ${TEMPERATURE_DATASET_LABELS.air_t}`,
+    label: `Estimated ground temperature at 20 m — ${TEMPERATURE_DATASET_LABELS.air_t}`,
     property: "map_ground_air_20",
     unit: "°C",
     value: (item) => nullable(item.ground.air_t.ground_temp_at_reference_depth_c),
@@ -78,14 +78,14 @@ export const MAP_METRICS: readonly MapMetricDefinition[] = [
   },
   {
     id: "surface_gradient",
-    label: `Ground gradient — ${TEMPERATURE_DATASET_LABELS.surface_t}`,
+    label: `Estimated underground warming rate¹ — ${TEMPERATURE_DATASET_LABELS.surface_t}`,
     property: "map_surface_gradient",
     unit: "°C/m",
     value: (item) => nullable(item.ground.surface_t.gradient_c_per_m),
   },
   {
     id: "air_gradient",
-    label: `Ground gradient — ${TEMPERATURE_DATASET_LABELS.air_t}`,
+    label: `Estimated underground warming rate¹ — ${TEMPERATURE_DATASET_LABELS.air_t}`,
     property: "map_air_gradient",
     unit: "°C/m",
     value: (item) => nullable(item.ground.air_t.gradient_c_per_m),
@@ -106,14 +106,14 @@ export const MAP_METRICS: readonly MapMetricDefinition[] = [
   },
   {
     id: "heating_load",
-    label: "Annual heating load",
+    label: "Typical annual heating need",
     property: "map_heating_load",
     unit: "kWh/m²/year",
     value: (item) => nullable(item.load.annual_heating_kwh_m2),
   },
   {
     id: "cooling_load",
-    label: "Annual cooling load",
+    label: "Typical annual cooling need",
     property: "map_cooling_load",
     unit: "kWh/m²/year",
     value: (item) => nullable(item.load.annual_cooling_kwh_m2),

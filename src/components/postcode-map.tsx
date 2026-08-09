@@ -43,6 +43,17 @@ const AIR_DATASET_METRICS = new Set<MapMetricId>([
   "air_delta_t20",
 ]);
 
+const HOME_MAP_METRICS = new Set<MapMetricId>([
+  "ground_surface_20",
+  "ground_air_20",
+  "surface_temperature",
+  "air_temperature",
+  "surface_gradient",
+  "air_gradient",
+  "heating_load",
+  "cooling_load",
+]);
+
 function defaultGroundMetric(datasetId: SurfaceDatasetId): MapMetricId {
   return datasetId === "air_t" ? "ground_air_20" : "ground_surface_20";
 }
@@ -118,7 +129,7 @@ export function PostcodeMap({
   onSelectRef.current = onSelectPostcode;
 
   const availableMetrics = useMemo(
-    () => MAP_METRICS.filter((item) => metricMatchesDataset(item.id, surfaceDatasetId)),
+    () => MAP_METRICS.filter((item) => HOME_MAP_METRICS.has(item.id) && metricMatchesDataset(item.id, surfaceDatasetId)),
     [surfaceDatasetId],
   );
 
@@ -259,11 +270,11 @@ export function PostcodeMap({
     <section className="postcode-map-card" aria-labelledby="postcode-map-title">
       <div className="map-toolbar">
         <div>
-          <h2 id="postcode-map-title">Postcode map</h2>
-          <p>Choose a metric, then click any postcode.</p>
+          <h2 id="postcode-map-title">Explore local conditions</h2>
+          <p>Choose what the colours show, then click a postcode.</p>
         </div>
         <label className="map-metric-select">
-          <span>Map metric</span>
+          <span>Colour map by</span>
           <select value={metricId} onChange={(event) => setMetricId(event.target.value as MapMetricId)}>
             {availableMetrics.map((item) => <option key={item.id} value={item.id}>{item.label}</option>)}
           </select>
@@ -293,22 +304,14 @@ export function PostcodeMap({
 
       {selectedPostcode !== null && selectedAttributes !== null && (
         <details className="postcode-data-drawer">
-          <summary>Mapped data for postcode {selectedPostcode}</summary>
+          <summary>Local estimates for postcode {selectedPostcode}</summary>
           <div className="postcode-data-grid">
-            <div><span>Temperature dataset</span><strong>{TEMPERATURE_DATASET_LABELS[surfaceDatasetId]}</strong></div>
+            <div><span>Temperature source</span><strong>{TEMPERATURE_DATASET_LABELS[surfaceDatasetId]}</strong></div>
             <div><span>{surfaceDatasetId === "air_t" ? "Near-surface air temperature" : "Land-surface temperature"}</span><strong>{number(selectedAttributes.ground[surfaceDatasetId].surface_temp_c, 2)} °C</strong></div>
-            <div><span>Ground at 20 m</span><strong>{number(selectedAttributes.ground[surfaceDatasetId].ground_temp_at_reference_depth_c, 2)} °C</strong></div>
-            <div><span>Gradient</span><strong>{number(selectedAttributes.ground[surfaceDatasetId].gradient_c_per_m, 4)} °C/m</strong></div>
-            <div><span>Heating load</span><strong>{number(selectedAttributes.load.annual_heating_kwh_m2, 1)} kWh/m²/year</strong></div>
-            <div><span>Cooling load</span><strong>{number(selectedAttributes.load.annual_cooling_kwh_m2, 1)} kWh/m²/year</strong></div>
-            <div><span>Certificate records</span><strong>{number(selectedAttributes.load.certificate_count, 0)}</strong></div>
-            <div><span>Nearest borehole</span><strong>{number(selectedAttributes.ground.nearest_borehole_km, 1)} km</strong></div>
-            <div><span>Nearby boreholes</span><strong>{number(selectedAttributes.ground.nearby_borehole_count, 0)}</strong></div>
-            {surfaceDatasetId === "surface_t" && (
-              <div><span>ΔT20 prediction SE</span><strong>{number(selectedAttributes.ground.uncertainty.delta_t20_ebk_prediction_se_c, 3)} °C</strong></div>
-            )}
-            <div><span>Climate records</span><strong>{number(selectedAttributes.climate.record_count, 0)}</strong></div>
-            <div><span>Represented hours</span><strong>{number(selectedAttributes.climate.represented_hours, 0)} h</strong></div>
+            <div><span>Estimated ground temperature at 20 m</span><strong>{number(selectedAttributes.ground[surfaceDatasetId].ground_temp_at_reference_depth_c, 2)} °C</strong></div>
+            <div><span>Estimated underground warming rate<sup className="term-marker"><a href="#home-note-warming" aria-label="Read note 1 about estimated underground warming rate">1</a></sup></span><strong>{number(selectedAttributes.ground[surfaceDatasetId].gradient_c_per_m, 4)} °C/m</strong></div>
+            <div><span>Typical annual heating need</span><strong>{number(selectedAttributes.load.annual_heating_kwh_m2, 1)} kWh/m²/year</strong></div>
+            <div><span>Typical annual cooling need</span><strong>{number(selectedAttributes.load.annual_cooling_kwh_m2, 1)} kWh/m²/year</strong></div>
           </div>
         </details>
       )}

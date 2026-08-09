@@ -13,10 +13,10 @@ function number(value: number | null, digits = 1): string {
 }
 
 const decisionLabels = {
-  recommended: "Proceed to detailed assessment",
-  conditional: "Conditional result",
-  not_recommended: "Not recommended with current inputs",
-  not_assessed: "Not assessed",
+  recommended: "Worth investigating further",
+  conditional: "Potentially suitable — review inputs",
+  not_recommended: "Unlikely to save with current inputs",
+  not_assessed: "More information needed",
 } as const;
 
 export function QuickResults({ outcome, loading, error, currency }: QuickResultsProps) {
@@ -30,6 +30,9 @@ export function QuickResults({ outcome, loading, error, currency }: QuickResults
   }
   const { scenario, ground, decision } = outcome;
   const saving = scenario.comparison.relativeElectricitySavingFraction;
+  const annualCostSaving = scenario.comparison.gshpAnnualEnergyCost === null || scenario.comparison.ashpAnnualEnergyCost === null
+    ? null
+    : scenario.comparison.ashpAnnualEnergyCost - scenario.comparison.gshpAnnualEnergyCost;
   return (
     <section className="quick-results" aria-live="polite">
       <div className="quick-results-heading">
@@ -38,7 +41,7 @@ export function QuickResults({ outcome, loading, error, currency }: QuickResults
           <h2>Screening result</h2>
         </div>
         <div className="decision-summary" role="status">
-          <span className="decision-kicker">Decision status</span>
+          <span className="decision-kicker">Overall indication</span>
           <strong className={`decision-pill decision-${decision.overall}`}>
             {decisionLabels[decision.overall]}
           </strong>
@@ -49,27 +52,27 @@ export function QuickResults({ outcome, loading, error, currency }: QuickResults
       </div>
       <div className="quick-result-grid">
         <article>
-          <span>Ground temperature</span>
+          <span>Estimated ground temperature</span>
           <strong>{number(ground.groundTemperatureC, 2)} °C</strong>
           <small>At the selected depth</small>
         </article>
         <article>
-          <span>GSHP electricity</span>
+          <span>Estimated annual electricity</span>
           <strong>{number(scenario.gshp.systemElectricity.annual)} kWh/year</strong>
-          <small>ASHP: {number(scenario.ashp.systemElectricity.annual)} kWh/year</small>
+          <small>Ground-source above · Air-source: {number(scenario.ashp.systemElectricity.annual)} kWh/year</small>
         </article>
         <article>
-          <span>Electricity saving</span>
+          <span>Estimated electricity reduction</span>
           <strong>{saving === null ? "Undefined" : `${number(saving * 100)}%`}</strong>
-          <small>GSHP compared with ASHP</small>
+          <small>Ground-source compared with air-source</small>
         </article>
         <article>
-          <span>Annual energy cost</span>
-          <strong>{number(scenario.comparison.gshpAnnualEnergyCost)} {currency}</strong>
+          <span>Estimated annual cost saving</span>
+          <strong>{annualCostSaving === null ? "Add electricity price" : `${number(annualCostSaving)} ${currency}/year`}</strong>
           <small>
-            {scenario.comparison.gshpAnnualEnergyCost === null
-              ? "Enter an electricity price to assess"
-              : `ASHP: ${number(scenario.comparison.ashpAnnualEnergyCost)} ${currency}`}
+            {annualCostSaving === null
+              ? "Enter your electricity price above"
+              : `Ground-source: ${number(scenario.comparison.gshpAnnualEnergyCost)} · Air-source: ${number(scenario.comparison.ashpAnnualEnergyCost)} ${currency}`}
           </small>
         </article>
       </div>

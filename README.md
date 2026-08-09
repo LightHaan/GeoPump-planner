@@ -13,15 +13,18 @@ loads prepared postcode data and runs the calculation models only.
 ## Features
 
 - Explore all 2,641 spatial postcodes on a free Leaflet map, colour the map by
-  13 ground, load, borehole and evidence metrics, and click a postcode to model it.
-- Use a concise Planner home page, with full results, model customisation and the
-  user guide kept on separate pages.
+  five decision-oriented local temperature or demand indicators, and click a
+  postcode to model it. Technical evidence is kept off the home page.
+- Use a concise Planner home page, with full results, model customisation, the
+  user guide and a plain-English glossary kept on separate pages.
 - Search 2,641 spatial postcodes and load climate files only when selected.
 - Choose either *Australian mean land-surface temperature* from Geoscience
   Australia or *Hourly near-surface air temperature grids for Australia
   (long-term climatology)* from CSIRO.
-- Calculate ground temperature from surface temperature and gradient, interpolate
-  a user-supplied borehole measurement, or enter ground temperature directly.
+- Calculate ground temperature from surface temperature and an estimated
+  underground warming rate, interpolate a user-supplied borehole measurement,
+  or enter ground temperature directly. The warming rate is explicitly labelled
+  as a postcode-scale approximation rather than a measured geothermal gradient.
 - Allocate certificate annual loads using editable hourly heating and cooling
   degree-hour thresholds (paper defaults: 12°C and 24°C).
 - Return zero allocated load when annual degree-hours are zero, even if the
@@ -76,7 +79,7 @@ hour.
 The calculation sequence is:
 
 ```text
-ground temperature = surface temperature + gradient × target depth
+ground temperature = surface temperature + estimated warming rate × target depth
 
 heating degree-hours_t = max(0, heating threshold - outdoor temperature_t) × weight_t
 cooling degree-hours_t = max(0, outdoor temperature_t - cooling threshold) × weight_t
@@ -95,6 +98,12 @@ direct temperature input. GSHP and ASHP can independently use scaled-Carnot,
 constant or linear source-temperature COP models. System electricity adds
 editable pump, fan, miscellaneous and fixed annual auxiliaries; tariffs and
 lifecycle economics are then applied using the user's assumptions.
+
+The default warming rate is the prepared, borehole-informed 20 m temperature
+difference divided by 20 m. Applying that constant rate to another depth is a
+linear screening assumption. It is not a site-measured geothermal gradient;
+establishing a physical geothermal gradient requires more complete,
+quality-controlled downhole measurements and site interpretation.
 
 If the annual heating or cooling degree-hour denominator is zero, the default
 policy allocates zero load for that demand type even when its certificate input
@@ -116,6 +125,8 @@ uncertainty.
 
 - [User guide](docs/user-guide.md): page-by-page workflow, demand interpretation
   and the most important cautions.
+- **In-app Glossary**: plain-English explanations of heat-pump, ground,
+  climate, performance, cost and data-quality terminology.
 - [Calculation and parameter reference](docs/calculation-reference.md): complete
   equations, output definitions, decision logic, validation behaviour and all
   109 editable parameter defaults.
