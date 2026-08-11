@@ -182,6 +182,44 @@ function quantile(sortedValues: readonly number[], fraction: number): number {
 }
 
 const SCALE_COLORS = ["#3f77a8", "#73aaa4", "#d8d790", "#e29a50", "#ad4f43"] as const;
+export const NO_DATA_COLOUR = "#e2e5e1";
+
+function colourChannels(colour: string): [number, number, number] {
+  const match = /^#([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i.exec(colour);
+  if (match === null) throw new Error(`Unsupported map colour: ${colour}`);
+  return [
+    Number.parseInt(match[1] ?? "00", 16),
+    Number.parseInt(match[2] ?? "00", 16),
+    Number.parseInt(match[3] ?? "00", 16),
+  ];
+}
+
+function interpolateColour(start: string, end: string, fraction: number): string {
+  const startChannels = colourChannels(start);
+  const endChannels = colourChannels(end);
+  const clamped = Math.max(0, Math.min(1, fraction));
+  const channels = startChannels.map((channel, index) => (
+    Math.round(channel + ((endChannels[index] ?? channel) - channel) * clamped)
+  ));
+  return `#${channels.map((channel) => channel.toString(16).padStart(2, "0")).join("")}`;
+}
+
+export function colourForMetricValue(value: unknown, scale: MetricScale): string {
+  if (typeof value !== "number" || !Number.isFinite(value)) return NO_DATA_COLOUR;
+  const first = scale.stops[0];
+  const last = scale.stops.at(-1);
+  if (first === undefined || last === undefined) return NO_DATA_COLOUR;
+  if (value <= first[0]) return first[1];
+  if (value >= last[0]) return last[1];
+
+  for (let index = 1; index < scale.stops.length; index += 1) {
+    const lower = scale.stops[index - 1];
+    const upper = scale.stops[index];
+    if (lower === undefined || upper === undefined || value > upper[0]) continue;
+    return interpolateColour(lower[1], upper[1], (value - lower[0]) / (upper[0] - lower[0]));
+  }
+  return last[1];
+}
 
 export function createMetricScale(
   attributes: PostcodeAttributeIndex,

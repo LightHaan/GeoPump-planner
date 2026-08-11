@@ -5,6 +5,7 @@ import { describe, expect, it } from "vitest";
 
 import type { PostcodeAttributeIndex } from "../../src/data/postcode";
 import {
+  colourForMetricValue,
   createMetricScale,
   mapMetric,
   prepareBoundaryCollection,
@@ -39,5 +40,21 @@ describe("postcode map data", () => {
     expect(scale.lower).toBeLessThanOrEqual(scale.middle);
     expect(scale.middle).toBeLessThanOrEqual(scale.upper);
     expect(mapMetric("heating_load").unit).toBe("kWh/m²/year");
+  });
+
+  it("interpolates continuous colours between scale stops", () => {
+    const scale = createMetricScale(attributes, "cooling_load");
+    const first = scale.stops[0];
+    const second = scale.stops[1];
+    expect(first).toBeDefined();
+    expect(second).toBeDefined();
+    if (first === undefined || second === undefined) return;
+
+    const middleValue = (first[0] + second[0]) / 2;
+    const middleColour = colourForMetricValue(middleValue, scale);
+    expect(middleColour).toMatch(/^#[0-9a-f]{6}$/);
+    expect(middleColour).not.toBe(first[1]);
+    expect(middleColour).not.toBe(second[1]);
+    expect(colourForMetricValue(null, scale)).toBe("#e2e5e1");
   });
 });

@@ -10,6 +10,7 @@ import {
 } from "../data/postcode";
 import { TEMPERATURE_DATASET_LABELS } from "../data/temperature-datasets";
 import {
+  colourForMetricValue,
   createMetricScale,
   formatMetricValue,
   MAP_METRICS,
@@ -78,14 +79,6 @@ function featurePostcode(feature: GeoJSON.Feature | undefined): string | null {
     : null;
 }
 
-function colourForValue(value: unknown, scale: MetricScale): string {
-  if (typeof value !== "number" || !Number.isFinite(value)) return "#e2e5e1";
-  for (const [stop, colour] of scale.stops) {
-    if (value <= stop) return colour;
-  }
-  return scale.stops.at(-1)?.[1] ?? "#ad4f43";
-}
-
 function pathStyle(
   feature: GeoJSON.Feature | undefined,
   metricId: MapMetricId,
@@ -96,7 +89,7 @@ function pathStyle(
   const property = mapMetric(metricId).property;
   return {
     renderer,
-    fillColor: colourForValue(feature?.properties?.[property], scale),
+    fillColor: colourForMetricValue(feature?.properties?.[property], scale),
     fillOpacity: 0.84,
     color: selected ? "#153b36" : "#ffffff",
     opacity: selected ? 1 : 0.78,
@@ -286,12 +279,14 @@ export function PostcodeMap({
         {!mapReady && mapError === null && <div className="map-loading">Loading postcode boundaries…</div>}
         {mapError !== null && <div className="map-loading map-error" role="alert">Map unavailable: {mapError}</div>}
         <div className="map-legend" aria-label={`${metric.label} legend`}>
+          <span className="map-legend-title">Continuous scale</span>
           <i aria-hidden="true" />
           <div className="map-legend-values">
             <span>{number(scale.lower, metric.id.includes("gradient") ? 3 : 1)}</span>
             <span>{number(scale.middle, metric.id.includes("gradient") ? 3 : 1)}</span>
             <span>{number(scale.upper, metric.id.includes("gradient") ? 3 : 1)} {metric.unit}</span>
           </div>
+          <small className="map-legend-no-data"><i aria-hidden="true" /> No postcode data</small>
         </div>
         {hoveredPostcode !== null && (
           <div className="map-hover-card" aria-live="polite">
