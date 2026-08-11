@@ -181,7 +181,9 @@ function quantile(sortedValues: readonly number[], fraction: number): number {
   return lower + (upper - lower) * (position - lowerIndex);
 }
 
-const SCALE_COLORS = ["#3f77a8", "#73aaa4", "#d8d790", "#e29a50", "#ad4f43"] as const;
+// Five evenly spaced anchors from Cividis: a perceptually uniform blue-to-yellow
+// scale designed to remain interpretable with common colour-vision deficiencies.
+const SCALE_COLORS = ["#00224e", "#434e6c", "#7d7c78", "#bcad6c", "#fee838"] as const;
 export const NO_DATA_COLOUR = "#e2e5e1";
 
 function colourChannels(colour: string): [number, number, number] {

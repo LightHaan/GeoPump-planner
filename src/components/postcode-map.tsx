@@ -279,7 +279,7 @@ export function PostcodeMap({
         {!mapReady && mapError === null && <div className="map-loading">Loading postcode boundaries…</div>}
         {mapError !== null && <div className="map-loading map-error" role="alert">Map unavailable: {mapError}</div>}
         <div className="map-legend" aria-label={`${metric.label} legend`}>
-          <span className="map-legend-title">Continuous scale</span>
+          <span className="map-legend-title">Colour-vision-friendly scale</span>
           <i aria-hidden="true" />
           <div className="map-legend-values">
             <span>{number(scale.lower, metric.id.includes("gradient") ? 3 : 1)}</span>
