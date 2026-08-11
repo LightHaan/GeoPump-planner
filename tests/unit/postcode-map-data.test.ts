@@ -57,4 +57,11 @@ describe("postcode map data", () => {
     expect(middleColour).not.toBe(second[1]);
     expect(colourForMetricValue(null, scale)).toBe("#e2e5e1");
   });
+
+  it("uses distinct palettes for temperature and demand maps", () => {
+    const temperatureColours = createMetricScale(attributes, "ground_surface_20").stops.map(([, colour]) => colour);
+    const demandColours = createMetricScale(attributes, "heating_load").stops.map(([, colour]) => colour);
+    expect(temperatureColours).toEqual(["#00224e", "#434e6c", "#7d7c78", "#bcad6c", "#fee838"]);
+    expect(demandColours).toEqual(["#0d0887", "#6a00a8", "#b12a90", "#e16462", "#fca636"]);
+  });
 });

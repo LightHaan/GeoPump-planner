@@ -72,6 +72,14 @@ function number(value: number | null | undefined, digits = 1): string {
   return value.toLocaleString(undefined, { maximumFractionDigits: digits });
 }
 
+function legendGradient(scale: MetricScale): string {
+  const denominator = Math.max(1, scale.stops.length - 1);
+  const colourStops = scale.stops.map(([, colour], index) => (
+    `${colour} ${(index / denominator) * 100}%`
+  ));
+  return `linear-gradient(90deg, ${colourStops.join(", ")})`;
+}
+
 function featurePostcode(feature: GeoJSON.Feature | undefined): string | null {
   const raw = feature?.properties?.POA_CODE21 ?? feature?.properties?.postcode;
   return typeof raw === "string" || typeof raw === "number"
@@ -279,8 +287,7 @@ export function PostcodeMap({
         {!mapReady && mapError === null && <div className="map-loading">Loading postcode boundaries…</div>}
         {mapError !== null && <div className="map-loading map-error" role="alert">Map unavailable: {mapError}</div>}
         <div className="map-legend" aria-label={`${metric.label} legend`}>
-          <span className="map-legend-title">Colour-vision-friendly scale</span>
-          <i aria-hidden="true" />
+          <i aria-hidden="true" style={{ background: legendGradient(scale) }} />
           <div className="map-legend-values">
             <span>{number(scale.lower, metric.id.includes("gradient") ? 3 : 1)}</span>
             <span>{number(scale.middle, metric.id.includes("gradient") ? 3 : 1)}</span>

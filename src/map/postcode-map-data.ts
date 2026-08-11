@@ -181,9 +181,12 @@ function quantile(sortedValues: readonly number[], fraction: number): number {
   return lower + (upper - lower) * (position - lowerIndex);
 }
 
-// Five evenly spaced anchors from Cividis: a perceptually uniform blue-to-yellow
-// scale designed to remain interpretable with common colour-vision deficiencies.
-const SCALE_COLORS = ["#00224e", "#434e6c", "#7d7c78", "#bcad6c", "#fee838"] as const;
+// Temperature-related maps use Cividis anchors. Heating and cooling demand use
+// a separate truncated Plasma-style sequence so identical colours do not imply
+// comparable quantities across those two groups of maps.
+const TEMPERATURE_SCALE_COLORS = ["#00224e", "#434e6c", "#7d7c78", "#bcad6c", "#fee838"] as const;
+const DEMAND_SCALE_COLORS = ["#0d0887", "#6a00a8", "#b12a90", "#e16462", "#fca636"] as const;
+const DEMAND_METRICS = new Set<MapMetricId>(["heating_load", "cooling_load"]);
 export const NO_DATA_COLOUR = "#e2e5e1";
 
 function colourChannels(colour: string): [number, number, number] {
@@ -228,6 +231,7 @@ export function createMetricScale(
   metricId: MapMetricId,
 ): MetricScale {
   const metric = mapMetric(metricId);
+  const scaleColors = DEMAND_METRICS.has(metricId) ? DEMAND_SCALE_COLORS : TEMPERATURE_SCALE_COLORS;
   const values = Object.values(attributes)
     .map((item) => metric.value(item))
     .filter((value): value is number => value !== null)
@@ -241,7 +245,7 @@ export function createMetricScale(
     }
   }
   return {
-    stops: numericStops.map((value, index) => [value, SCALE_COLORS[index] ?? SCALE_COLORS[0]]),
+    stops: numericStops.map((value, index) => [value, scaleColors[index] ?? scaleColors[0]]),
     lower: quantile(values, 0.05),
     middle: quantile(values, 0.5),
     upper: quantile(values, 0.95),
