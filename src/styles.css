@@ -203,11 +203,14 @@ main { width: min(1480px, 100%); margin: 0 auto; }
 .warning-list summary { cursor: pointer; color: #f2d59a; font-weight: 700; }
 .warning-list li { margin: 8px 0; font-size: 12px; line-height: 1.5; }
 .result-method-note { margin-top: 24px; padding: 16px 18px; border: 1px solid rgba(255,255,255,0.13); border-radius: 13px; color: #c5d3cf; }
-.result-method-note summary { cursor: pointer; color: #f4f7f6; font-weight: 700; }
+.result-method-heading h3 { margin: 0; color: #f4f7f6; font-family: Georgia, serif; font-size: 22px; font-weight: 500; }
+.result-method-heading p { margin: 7px 0 0; color: #a9bbb6; font-size: 12px; line-height: 1.55; }
 .result-method-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 16px; }
 .result-method-grid p { display: grid; gap: 5px; margin: 0; padding: 12px; border-radius: 9px; background: rgba(255,255,255,0.06); }
 .result-method-grid strong { color: white; font-size: 12px; }
 .result-method-grid span { font-size: 11px; line-height: 1.5; }
+.result-method-guide { margin: 14px 0 0; color: #b9cbc6; font-size: 12px; line-height: 1.55; }
+.result-method-guide a { color: #9bd1c5; font-weight: 750; }
 .screening-note { margin: 24px 0 0; color: #91a8a2; font-size: 11px; text-align: center; }
 .results-placeholder { margin: 0 6vw 70px; padding: 45px; border: 1px dashed #a8b8b3; border-radius: 22px; color: var(--muted); text-align: center; }
 .results-placeholder strong { color: var(--red); font-size: 20px; }
@@ -322,6 +325,12 @@ footer { display: flex; justify-content: space-between; gap: 20px; padding: 28px
   background: var(--paper);
   box-shadow: 0 10px 35px rgba(29, 58, 54, 0.055);
 }
+.postcode-availability-notice { max-width: 1320px; margin: 18px auto 0; padding: 17px 20px; border: 1px solid #d5b66f; border-radius: 14px; color: #5e4b25; background: #fff8e8; }
+.postcode-availability-notice h2 { margin: 0; font-family: Georgia, serif; font-size: 20px; font-weight: 500; }
+.postcode-availability-notice > div { display: grid; gap: 7px; margin-top: 10px; }
+.postcode-availability-notice p { margin: 0; font-size: 12px; line-height: 1.6; }
+.postcode-availability-notice > p:last-child { margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(123, 91, 29, 0.18); }
+.postcode-availability-notice a { color: #5b6731; font-weight: 750; }
 .quick-card { display: grid; gap: 20px; padding: 22px; }
 .quick-card form > label { display: block; margin-bottom: 9px; font-size: 13px; font-weight: 750; }
 .quick-fields { display: grid; gap: 14px; padding-top: 2px; border-top: 1px solid var(--line); }

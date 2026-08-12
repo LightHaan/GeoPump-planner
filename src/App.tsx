@@ -22,6 +22,7 @@ import {
   loadPostcodeClimate,
   type DataManifest,
   type PostcodeAttributeIndex,
+  type PostcodeAttributes,
   type PostcodeIndexEntry,
   type SurfaceDatasetId,
 } from "./data/postcode";
@@ -83,6 +84,45 @@ function PageHeading({ title, children }: { title: string; children: string }) {
       <p>{children}</p>
     </header>
   );
+}
+
+interface PostcodeDataIssue {
+  title: string;
+  explanation: string;
+}
+
+function postcodeDataIssues(
+  entry: PostcodeIndexEntry | null,
+  attributes: PostcodeAttributes | null,
+  datasetId: SurfaceDatasetId,
+): PostcodeDataIssue[] {
+  if (entry === null || attributes === null) return [];
+  const issues: PostcodeDataIssue[] = [];
+  const missingLoads = [
+    attributes.load.annual_heating_kwh_m2 === null ? "heating" : null,
+    attributes.load.annual_cooling_kwh_m2 === null ? "cooling" : null,
+  ].filter((value): value is string => value !== null);
+  if (!entry.has_load_data || missingLoads.length > 0) {
+    const demandNames = missingLoads.length === 2 ? "heating and cooling" : missingLoads.join(" and ");
+    issues.push({
+      title: `${demandNames[0]?.toUpperCase() ?? "H"}${demandNames.slice(1)} results are unavailable`,
+      explanation: `No usable postcode-level annual ${demandNames} need is available from the prepared residential energy-certificate data for this area. These demand values are the starting point for estimating heat-pump electricity, running cost and savings.`,
+    });
+  }
+  if (!entry.has_climate_data) {
+    issues.push({
+      title: "Hourly demand timing is unavailable",
+      explanation: "The prepared hourly outdoor-air temperature series is missing. It is needed to identify heating and cooling hours and calculate heat-pump performance through the year.",
+    });
+  }
+  const ground = attributes.ground[datasetId];
+  if (!entry.has_ground_data || ground.surface_temp_c === null || ground.gradient_c_per_m === null) {
+    issues.push({
+      title: "Ground-temperature results are unavailable",
+      explanation: "The selected temperature dataset does not contain both the postcode surface temperature and estimated underground warming rate needed to estimate temperature at depth.",
+    });
+  }
+  return issues;
 }
 
 export default function App() {
@@ -150,6 +190,10 @@ export default function App() {
   const selectedAttributes = selectedPostcode === null
     ? null
     : (attributeIndex[selectedPostcode] ?? null);
+  const selectedDataIssues = useMemo(
+    () => postcodeDataIssues(selectedEntry, selectedAttributes, parameters.ground.surface_dataset_id),
+    [parameters.ground.surface_dataset_id, selectedAttributes, selectedEntry],
+  );
 
   useEffect(() => {
     if (selectedPostcode === null || selectedAttributes === null) return;
@@ -187,9 +231,21 @@ export default function App() {
   }, [inputs, parameters]);
 
   const calculation = useMemo(() => {
-    if (selectedPostcode === null || selectedAttributes === null || climate === null) {
+    if (selectedPostcode === null || selectedAttributes === null) {
       return { outcome: null, error: dataError };
     }
+    const missingDemandInputs = [
+      inputs.annualHeatingKwhM2 === null ? "heating" : null,
+      inputs.annualCoolingKwhM2 === null ? "cooling" : null,
+    ].filter((value): value is string => value !== null);
+    if (missingDemandInputs.length > 0) {
+      const demandNames = missingDemandInputs.length === 2 ? "heating and cooling" : missingDemandInputs.join(" and ");
+      return {
+        outcome: null,
+        error: `Postcode ${selectedPostcode} has no published annual ${demandNames} demand value. Without it, electricity, running cost and savings cannot be estimated. Enter the missing demand value in Customise or select another postcode.`,
+      };
+    }
+    if (climate === null) return { outcome: null, error: dataError };
     if (validationErrors.length > 0) {
       return { outcome: null, error: "Correct the parameter validation errors before calculating." };
     }
@@ -457,6 +513,17 @@ export default function App() {
                 onSelectPostcode={choosePostcode}
               />
             </div>
+            {selectedPostcode !== null && selectedDataIssues.length > 0 && (
+              <aside className="postcode-availability-notice" role="status" aria-label={`Missing data for postcode ${selectedPostcode}`}>
+                <h2>Why some results are unavailable for postcode {selectedPostcode}</h2>
+                <div>
+                  {selectedDataIssues.map((issue) => (
+                    <p key={issue.title}><strong>{issue.title}.</strong> {issue.explanation}</p>
+                  ))}
+                </div>
+                <p>Available map and ground information can still be viewed. To run a full estimate, choose a postcode with complete data or enter the missing values in <a href="#customise">Customise</a>.</p>
+              </aside>
+            )}
             <QuickResults
               outcome={calculation.outcome}
               loading={catalogLoading || climateLoading}

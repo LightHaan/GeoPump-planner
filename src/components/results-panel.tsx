@@ -85,7 +85,7 @@ export function ResultsPanel({
       <section className="results-placeholder error-panel" role="alert">
         <strong>Calculation unavailable</strong>
         <p>{calculationError}</p>
-        <p>Complete the missing inputs or select another postcode with climate data.</p>
+        <p>Follow the message above, enter missing values in <a href="#customise">Customise</a>, or select another postcode with complete data.</p>
       </section>
     );
   }
@@ -202,18 +202,6 @@ export function ResultsPanel({
         />
       </div>
 
-      <details className="result-method-note">
-        <summary>How the headline indicators are calculated</summary>
-        <div className="result-method-grid">
-          <p><strong>Allocated load</strong><span>Certificate load is scaled by area, building count and factors, then distributed in proportion to weighted degree-hours.</span></p>
-          <p><strong>System electricity</strong><span>Allocated heating or cooling need ÷ COP<sup className="term-marker"><a href="#results-note-cop" aria-label="Read note 2 about COP">2</a></sup>, plus the configured supporting pump, fan and other electricity.</span></p>
-          <p><strong>Annual performance factor</strong><span>Total allocated heating + cooling need ÷ total system electricity.</span></p>
-          <p><strong>Relative saving</strong><span>(air-source electricity − ground-source electricity) ÷ air-source electricity.</span></p>
-          <p><strong>Annual cost</strong><span>Energy charge plus daily and annual fixed charges under the selected electricity pricing.</span></p>
-          <p><strong>Long-term value (NPV)</strong><span>Air-source lifecycle cost − ground-source lifecycle cost; a positive value favours ground-source.</span></p>
-        </div>
-      </details>
-
       {(allWarnings.length > 0 || decision.reasons.length > 0) && (
         <details className="warning-list" open={allWarnings.some((item) => item.includes("degree-hours are zero"))}>
           <summary>Assumptions, warnings and decision notes ({allWarnings.length + decision.reasons.length})</summary>
@@ -228,6 +216,23 @@ export function ResultsPanel({
           <li id="results-note-cop"><strong>Coefficient of performance (COP):</strong> heating or cooling delivered divided by compressor electricity at a particular operating condition. <a href="#glossary">See the full glossary →</a></li>
         </ol>
       </aside>
+      <section className="result-method-note" aria-labelledby="plain-result-method-title">
+        <div className="result-method-heading">
+          <h3 id="plain-result-method-title">How these results are estimated</h3>
+          <p>The app links local ground conditions with the heating and cooling expected from local outdoor temperatures.</p>
+        </div>
+        <div className="result-method-grid">
+          <p><strong>Ground temperature</strong><span>The selected surface temperature is adjusted by the estimated change with depth. A directly entered ground temperature is used instead when selected.</span></p>
+          <p><strong>Heating and cooling needed</strong><span>The postcode&apos;s published need per square metre is multiplied by the floor area and other load settings, then assigned to the hours when outdoor air is cold or hot enough to create demand. The monthly chart groups those hourly estimates.</span></p>
+          <p><strong>Heat-pump electricity</strong><span>For each modelled hour, the heating or cooling needed is divided by the heat pump&apos;s COP. Any pump, fan and other supporting electricity entered by the user is then added.</span></p>
+          <p><strong>Annual performance factor</strong><span>The total heating and cooling delivered over the year is compared with the total modelled system electricity. A higher value means more useful heating or cooling per unit of electricity.</span></p>
+          <p><strong>Ground-source versus air-source</strong><span>Both systems are asked to meet the same heating and cooling need. Their modelled electricity totals are compared to show whether ground-source uses less or more.</span></p>
+          <p><strong>Running cost and saving</strong><span>Electricity use is priced with the entered tariff. Ground-source saving is the air-source estimate minus the ground-source estimate.</span></p>
+          <p><strong>Long-term comparison</strong><span>When installed and future costs are entered, the app compares both systems over the chosen number of years in today&apos;s money.</span></p>
+          <p><strong>Confidence in postcode data</strong><span>This reflects whether the prepared ground, demand and hourly temperature inputs are available and whether the calculation raised important warnings. It is not a guarantee of site suitability.</span></p>
+        </div>
+        <p className="result-method-guide">These are simplified explanations. For the formulas, default assumptions and every adjustable parameter, <a href="#guide">read the user guide →</a></p>
+      </section>
       <p className="screening-note">This postcode-level screening result is not a borehole design, thermal-response test or engineering quotation.</p>
     </section>
   );

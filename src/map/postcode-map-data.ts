@@ -181,10 +181,10 @@ function quantile(sortedValues: readonly number[], fraction: number): number {
   return lower + (upper - lower) * (position - lowerIndex);
 }
 
-// Temperature-related maps use Cividis anchors. Heating and cooling demand use
-// a separate truncated Plasma-style sequence so identical colours do not imply
-// comparable quantities across those two groups of maps.
-const TEMPERATURE_SCALE_COLORS = ["#00224e", "#434e6c", "#7d7c78", "#bcad6c", "#fee838"] as const;
+// Temperature-related maps use a cool-to-warm blue/red sequence. Heating and
+// cooling demand use a separate truncated Plasma-style sequence so identical
+// colours do not imply comparable quantities across those two groups of maps.
+const TEMPERATURE_SCALE_COLORS = ["#053061", "#4393c3", "#f7f7f7", "#d6604d", "#67001f"] as const;
 const DEMAND_SCALE_COLORS = ["#0d0887", "#6a00a8", "#b12a90", "#e16462", "#fca636"] as const;
 const DEMAND_METRICS = new Set<MapMetricId>(["heating_load", "cooling_load"]);
 export const NO_DATA_COLOUR = "#e2e5e1";

@@ -23,6 +23,10 @@ const attributes = JSON.parse(
 const climate = JSON.parse(
   readFileSync(join(process.cwd(), "public/data/climate/3000.json"), "utf8"),
 ) as unknown;
+const missingLoadClimate = {
+  ...(climate as Record<string, unknown>),
+  postcode: "6646",
+};
 const manifest = JSON.parse(
   readFileSync(join(process.cwd(), "public/data/manifest.json"), "utf8"),
 ) as unknown;
@@ -48,21 +52,34 @@ describe("GeoPump Planner pages", () => {
     vi.stubGlobal("fetch", vi.fn(async (input: string | URL | Request) => {
       const url = String(input);
       if (url.includes("postcode-index.json")) {
-        return response([{
-          postcode: "3000",
-          locality_hint: "3000",
-          state: null,
-          lat: -37.81315551,
-          lon: 144.962375,
-          has_ground_data: true,
-          has_load_data: true,
-          has_climate_data: true,
-        }]);
+        return response([
+          {
+            postcode: "3000",
+            locality_hint: "3000",
+            state: null,
+            lat: -37.81315551,
+            lon: 144.962375,
+            has_ground_data: true,
+            has_load_data: true,
+            has_climate_data: true,
+          },
+          {
+            postcode: "6646",
+            locality_hint: "6646",
+            state: null,
+            lat: -25.3120282,
+            lon: 122.24507953,
+            has_ground_data: true,
+            has_load_data: false,
+            has_climate_data: true,
+          },
+        ]);
       }
       if (url.includes("postcode-attributes.json")) {
-        return response({ "3000": attributes["3000"] });
+        return response({ "3000": attributes["3000"], "6646": attributes["6646"] });
       }
       if (url.includes("manifest.json")) return response(manifest);
+      if (url.includes("climate/6646.json")) return response(missingLoadClimate);
       if (url.includes("climate/3000.json")) return response(climate);
       throw new Error(`Unexpected URL: ${url}`);
     }));
@@ -120,6 +137,8 @@ describe("GeoPump Planner pages", () => {
     expect(screen.getByText("Ground-source and air-source comparison")).toBeTruthy();
     expect(screen.getByText("Estimated heat-pump annual running cost")).toBeTruthy();
     expect(screen.getByText("Long-term financial comparison")).toBeTruthy();
+    expect(screen.getByRole("heading", { name: "How these results are estimated" })).toBeTruthy();
+    expect(screen.getByRole("link", { name: "read the user guide →" }).getAttribute("href")).toBe("#guide");
     expect(screen.getByRole("link", { name: "Potentially suitable — review inputs →" }).getAttribute("href")).toBe("#customise");
     expect(screen.getByRole("button", { name: "Export CSV" }).hasAttribute("disabled")).toBe(false);
     expect(screen.getByText("Data evidence and quality")).toBeTruthy();
@@ -134,6 +153,22 @@ describe("GeoPump Planner pages", () => {
     expect(screen.getByText("Coefficient of performance (COP)")).toBeTruthy();
     fireEvent.click(screen.getByRole("link", { name: "Ground-temperature terms" }));
     await waitFor(() => expect(within(screen.getByRole("navigation", { name: "Main navigation" })).getByRole("link", { name: "Glossary" }).getAttribute("aria-current")).toBe("page"));
+  });
+
+  it("explains why a selected postcode has no demand results", async () => {
+    render(<App />);
+    await screen.findByText("Screening result", {}, { timeout: 10_000 });
+    const postcode = screen.getByRole("combobox", { name: "Australian postcode" });
+    fireEvent.change(postcode, { target: { value: "6646" } });
+    fireEvent.click(screen.getByRole("button", { name: "Select" }));
+
+    expect(await screen.findByRole("heading", { name: "Why some results are unavailable for postcode 6646" })).toBeTruthy();
+    expect(screen.getByText(/No usable postcode-level annual heating and cooling need is available/)).toBeTruthy();
+    expect(await screen.findByText(/Without it, electricity, running cost and savings cannot be estimated/)).toBeTruthy();
+
+    await openPage("Results");
+    expect(screen.getByText("Calculation unavailable")).toBeTruthy();
+    expect(screen.getByText(/Postcode 6646 has no published annual heating and cooling demand value/)).toBeTruthy();
   });
 
   it("imports a validated scenario from the Customise page", async () => {
