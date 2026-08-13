@@ -160,11 +160,14 @@ uncertainty.
 
 ## Map
 
-The map uses Leaflet with Canvas rendering and the prepared postcode GeoJSON in
-`public/data/postcode-boundaries.geojson`. It has no commercial basemap, API key
-or ArcGIS runtime dependency. Map features are joined in the browser to the
-published postcode attribute index; climate calculation files are still loaded
-only for the selected postcode.
+The map uses Leaflet with Canvas rendering and the prepared ABS 2021 Postal
+Areas vector boundaries in `public/data/postcode-boundaries.geojson`. The
+topology-preserving display simplification is about 200 m, so the map follows
+the published postcode shapes without shipping the full 80 MB shapefile.
+Postcode labels appear as the user zooms in. The map has no commercial basemap,
+API key or ArcGIS runtime dependency. Map features are joined in the browser to
+the published postcode attribute index; climate calculation files are still
+loaded only for the selected postcode.
 
 ## Scope and disclaimer
 

@@ -65,7 +65,13 @@ function metricMatchesDataset(metricId: MapMetricId, datasetId: SurfaceDatasetId
   return true;
 }
 
-type PostcodePath = L.Path & { feature?: GeoJSON.Feature };
+type PostcodePath = L.Path & {
+  feature?: GeoJSON.Feature;
+  getBounds: () => L.LatLngBounds;
+  getCenter: () => L.LatLng;
+};
+
+const POSTCODE_LABEL_MIN_ZOOM = 9;
 
 function number(value: number | null | undefined, digits = 1): string {
   if (value === null || value === undefined || !Number.isFinite(value)) return "No data";
@@ -117,6 +123,7 @@ export function PostcodeMap({
   const layerGroupRef = useRef<L.GeoJSON | null>(null);
   const rendererRef = useRef<L.Renderer | null>(null);
   const pathsRef = useRef(new Map<string, PostcodePath>());
+  const labelledPostcodesRef = useRef(new Set<string>());
   const onSelectRef = useRef(onSelectPostcode);
   const previousSelectionRef = useRef<string | null>(null);
   const metricIdRef = useRef<MapMetricId>(defaultGroundMetric(surfaceDatasetId));
@@ -172,6 +179,54 @@ export function PostcodeMap({
     mapRef.current = map;
     rendererRef.current = renderer;
 
+    const syncPostcodeLabels = () => {
+      const labels = labelledPostcodesRef.current;
+      const showLabels = map.getZoom() >= POSTCODE_LABEL_MIN_ZOOM;
+      const visibleBounds = map.getBounds().pad(0.12);
+      const wantedLabels = new Set<string>();
+      const occupiedCells = new Set<string>();
+      if (showLabels) {
+        const zoom = map.getZoom();
+        const [cellWidth, cellHeight] = zoom >= 11
+          ? [48, 20]
+          : zoom === 10
+            ? [80, 32]
+            : [120, 48];
+        const candidates = [...pathsRef.current.entries()]
+          .filter(([, path]) => visibleBounds.contains(path.getCenter()))
+          .sort(([left], [right]) => (
+            Number(right === selectedPostcodeRef.current)
+            - Number(left === selectedPostcodeRef.current)
+          ));
+        for (const [postcode, path] of candidates) {
+          const point = map.latLngToContainerPoint(path.getCenter());
+          const cell = `${Math.floor(point.x / cellWidth)}:${Math.floor(point.y / cellHeight)}`;
+          if (postcode !== selectedPostcodeRef.current && occupiedCells.has(cell)) continue;
+          wantedLabels.add(postcode);
+          occupiedCells.add(cell);
+        }
+      }
+      if (containerRef.current !== null) {
+        containerRef.current.dataset.visibleLabelCount = String(wantedLabels.size);
+      }
+      for (const [postcode, path] of pathsRef.current) {
+        const shouldShow = wantedLabels.has(postcode);
+        if (shouldShow && !labels.has(postcode)) {
+          path.bindTooltip(postcode, {
+            className: "postcode-label",
+            direction: "center",
+            interactive: false,
+            permanent: true,
+            opacity: 0.92,
+          });
+          labels.add(postcode);
+        } else if (!shouldShow && labels.has(postcode)) {
+          path.unbindTooltip();
+          labels.delete(postcode);
+        }
+      }
+    };
+
     const initialise = async () => {
       try {
         const response = await fetch(postcodeBoundaryUrl(), { signal: controller.signal });
@@ -209,6 +264,8 @@ export function PostcodeMap({
           },
         }).addTo(map);
         layerGroupRef.current = group;
+        map.on("zoomend moveend", syncPostcodeLabels);
+        syncPostcodeLabels();
         if (containerRef.current !== null) {
           containerRef.current.dataset.rawFeatureCount = String(prepared.features.length);
           containerRef.current.dataset.renderedFeatureCount = String(pathsRef.current.size);
@@ -226,11 +283,13 @@ export function PostcodeMap({
     return () => {
       active = false;
       controller.abort();
+      map.off("zoomend moveend", syncPostcodeLabels);
       map.remove();
       mapRef.current = null;
       layerGroupRef.current = null;
       rendererRef.current = null;
       pathsRef.current.clear();
+      labelledPostcodesRef.current.clear();
       setMapReady(false);
     };
   }, [attributeIndex]);

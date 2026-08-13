@@ -16,7 +16,27 @@ const attributes = JSON.parse(
   readFileSync(join(process.cwd(), "public/data/postcode-attributes.json"), "utf8"),
 ) as PostcodeAttributeIndex;
 
+const boundaries = JSON.parse(
+  readFileSync(join(process.cwd(), "public/data/postcode-boundaries.geojson"), "utf8"),
+) as BoundaryFeatureCollection;
+
 describe("postcode map data", () => {
+  it("ships exactly one geometry per existing postcode and no embedded metric values", () => {
+    const expectedCodes = Object.keys(attributes).sort();
+    const boundaryCodes = boundaries.features.map((feature) => (
+      String(feature.properties?.POA_CODE21 ?? "").padStart(4, "0")
+    )).sort();
+
+    expect(boundaryCodes).toEqual(expectedCodes);
+    expect(new Set(boundaryCodes).size).toBe(expectedCodes.length);
+    expect(boundaries.features.every((feature) => (
+      ["Polygon", "MultiPolygon"].includes((feature.geometry as { type?: string })?.type ?? "")
+    ))).toBe(true);
+    expect(boundaries.features.every((feature) => (
+      Object.keys(feature.properties ?? {}).sort().join(",") === "POA_CODE21,POA_NAME21"
+    ))).toBe(true);
+  });
+
   it("joins postcode attributes to map features without changing geometry", () => {
     const collection: BoundaryFeatureCollection = {
       type: "FeatureCollection",

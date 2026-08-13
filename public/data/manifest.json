@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
-  "dataset_version": "2026.08.05-phase2-web",
-  "generated_at": "2026-08-05T11:21:10.671112+00:00",
-  "parent_dataset_version": "2026.08.05-phase0",
-  "parent_manifest_sha256": "ffa3c13acf18e2a3933e982ccdad95f5a069d57c717f752bfa701070f97fafcf",
+  "dataset_version": "2026.08.14-phase2-web-boundary-refresh",
+  "generated_at": "2026-08-13T15:23:22.614453+00:00",
+  "parent_dataset_version": "2026.08.14-phase0-boundary-refresh",
+  "parent_manifest_sha256": "95af9f57e05f4cc17a3fc00954f88725641b6b2f66324bbcc938bfd18a13df05",
   "country": "Australia",
   "analysis_unit": "postcode",
   "runtime_spatial_processing": false,
@@ -64,13 +64,13 @@
     "climate-checksums.sha256": "3e126c444b0cb1915c99f5f264d9a05fdca7bfc18bdd1eadb41dfa07107d684f",
     "data-dictionary.md": "52ac61493e45228bb22ed51744d5a7d8409877028a25e8026b0dc38abd956909",
     "postcode-attributes.json": "1c18020bbefca2c3a368fe2c595ad2594715180683c838e6d57f37cffc8d865e",
-    "postcode-boundaries.geojson": "65c2f8019e08677d6872c96fdcf95f0e856e9ed14010784a3148aff68b1dab5a",
+    "postcode-boundaries.geojson": "e250b0559f729a650e04c6c4ed80aaac5159d63b19902671d92a929e48ba28e7",
     "postcode-index.json": "fb983213c18230d92c4474aa232f0d3d9968ae38b6019c3de10abf6c2a470f78",
     "presets/paper-default.json": "96ae9613fcdbfdd4f243d32517c3581036a66284efa6d44287c174f744941e6d",
     "schemas/climate.schema.json": "94934947eea9eeb16caf1db9f7a04d85ed36ac2663e3e67f3009466d58c79aab",
     "schemas/manifest.schema.json": "bbf9fe42fb2d7ef37cbc1775f27be889cb19c10c5dc791937a0b32d8a4bede65",
     "schemas/postcode-attributes.schema.json": "fba4ab95ccaf639be1ecaa81b20f06554ee715a73ce1c39eba04646c24102f9e",
     "schemas/postcode-index.schema.json": "261e514c5f211c7dc6041f52432b288ef552d3b782b300214ce813f9ef20e0dc",
-    "source-notes.md": "95a5af177e15c10f66d07955a3f79c671507bb9e53608b3e6fb203cb0a14b7b1"
+    "source-notes.md": "8c5822fe22c5143434c878e3a445f12c8369899abce8a9db8112ae77ac7d8d27"
   }
 }

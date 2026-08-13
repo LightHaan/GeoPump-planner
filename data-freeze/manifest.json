@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
-  "dataset_version": "2026.08.05-phase0",
-  "generated_at": "2026-08-05T10:43:14.478412+00:00",
+  "dataset_version": "2026.08.14-phase0-boundary-refresh",
+  "generated_at": "2026-08-13T15:23:22.614453+00:00",
   "country": "Australia",
   "analysis_unit": "postcode",
   "temperature_unit": "degC",
@@ -41,10 +41,10 @@
     "postcode-attributes.json": "1c18020bbefca2c3a368fe2c595ad2594715180683c838e6d57f37cffc8d865e",
     "postcode-index.json": "fb983213c18230d92c4474aa232f0d3d9968ae38b6019c3de10abf6c2a470f78",
     "climate-inventory.csv": "5eb40199391e4b2267e44096654584406cfab2430718072ee750dd3d8fbaac60",
-    "postcode-boundaries.geojson": "65c2f8019e08677d6872c96fdcf95f0e856e9ed14010784a3148aff68b1dab5a",
+    "postcode-boundaries.geojson": "e250b0559f729a650e04c6c4ed80aaac5159d63b19902671d92a929e48ba28e7",
     "data-dictionary.md": "36e9b67ea9730a63d3db0eb4a0a35e66344eda872b957c2c962d8eb8f9cd4963",
     "validation-report.json": "355a5df98095ffe0963a2ae86ccf65c6b16c83d58c0ef75daea8337995331a46",
-    "source-notes.md": "95a5af177e15c10f66d07955a3f79c671507bb9e53608b3e6fb203cb0a14b7b1"
+    "source-notes.md": "8c5822fe22c5143434c878e3a445f12c8369899abce8a9db8112ae77ac7d8d27"
   },
   "warnings": [
     "The ArcGIS `standerd_error` raster represents ΔT20 EBK prediction standard error for the `surface_t` chain only. It is a partial uncertainty indicator and must not be described as total ground-temperature uncertainty.",
