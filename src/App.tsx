@@ -694,6 +694,12 @@ NPV_GSHP = ASHP_lifecycle_cost - GSHP_lifecycle_cost`}</code></pre>
               </ul>
               <a className="text-link" href="https://github.com/LightHaan/GeoPump-planner#readme" target="_blank" rel="noreferrer">Read the project overview →</a>
             </section>
+
+            <section className="guide-section">
+              <h2>Declaration of AI use</h2>
+              <p>ChatGPT (OpenAI) was used to assist with the design and generation of this project's front-end webpages. AI use was limited to webpage creation; it was not used to generate data or develop calculation logic. The project's data and calculation logic are derived from Han (2026), cited below. The author reviewed the AI-generated webpages and takes full responsibility for the project.</p>
+              <p>Han (2026). <cite>Assessing the potential of shallow geothermal systems in Australian sedimentary basins</cite>. PhD thesis, University of Wollongong.</p>
+            </section>
           </div>
         )}
 
