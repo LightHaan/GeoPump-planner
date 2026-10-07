@@ -98,8 +98,8 @@ describe("GeoPump Planner pages", () => {
     expect(screen.queryByText("GSHP and ASHP comparison")).toBeNull();
     expect(screen.getByRole("link", { name: "Read the guide" })).toBeTruthy();
     expect(screen.getByRole("link", { name: "Customise the model" })).toBeTruthy();
-    expect(screen.getByRole("option", { name: "Geoscience Australia — Australian mean land-surface temperature (recommended)" })).toBeTruthy();
-    expect(screen.getByRole("option", { name: "CSIRO — Hourly near-surface air temperature grids for Australia (long-term climatology)" })).toBeTruthy();
+    expect(screen.getByRole("option", { name: "Geoscience Australia² — Australian mean land-surface temperature (recommended)" })).toBeTruthy();
+    expect(screen.getByRole("option", { name: "CSIRO³ — Hourly near-surface air temperature grids for Australia (long-term climatology)" })).toBeTruthy();
     expect(screen.getByText("Potentially suitable — review inputs")).toBeTruthy();
     expect(screen.getByRole("link", { name: "Review assumptions →" }).getAttribute("href")).toBe("#customise");
     expect(screen.getByText("Ground-source annual electricity")).toBeTruthy();

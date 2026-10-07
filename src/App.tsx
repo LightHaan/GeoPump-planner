@@ -420,14 +420,14 @@ export default function App() {
           </span>
         </label>
         <label className="dataset-field">
-          <span>Temperature source<sup className="term-marker"><a href="#home-note-surface-temperature" aria-label="Read reference 2 for Australian mean land-surface temperature">2</a>,<a href="#home-note-air-temperature" aria-label="Read reference 3 for hourly near-surface air temperature grids for Australia">3</a></sup></span>
+          <span>Temperature source</span>
           <select
             aria-label="Temperature source"
             value={parameters.ground.surface_dataset_id}
             onChange={(event) => onParameterChange("ground.surface_dataset_id", event.target.value)}
           >
-            <option value="surface_t">{TEMPERATURE_DATASET_LABELS.surface_t} (recommended)</option>
-            <option value="air_t">{TEMPERATURE_DATASET_LABELS.air_t}</option>
+            <option value="surface_t">{TEMPERATURE_DATASET_LABELS.surface_t.replace(" — ", "² — ")} (recommended)</option>
+            <option value="air_t">{TEMPERATURE_DATASET_LABELS.air_t.replace(" — ", "³ — ")}</option>
           </select>
         </label>
         <label>
