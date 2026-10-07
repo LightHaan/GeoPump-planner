@@ -420,7 +420,7 @@ export default function App() {
           </span>
         </label>
         <label className="dataset-field">
-          <span>Temperature source</span>
+          <span>Temperature source<sup className="term-marker"><a href="#home-note-surface-temperature" aria-label="Read reference 2 for Australian mean land-surface temperature">2</a>,<a href="#home-note-air-temperature" aria-label="Read reference 3 for hourly near-surface air temperature grids for Australia">3</a></sup></span>
           <select
             aria-label="Temperature source"
             value={parameters.ground.surface_dataset_id}
@@ -531,9 +531,11 @@ export default function App() {
               currency={parameters.tariff.currency}
               loadParameters={parameters.load}
             />
-            <aside className="page-footnotes" aria-label="Key term note">
+            <aside className="page-footnotes" aria-label="Notes and references">
               <ol>
                 <li id="home-note-warming"><strong>Estimated underground warming rate:</strong> the app takes the difference between a measured borehole temperature and the corresponding surface temperature, then divides it by the measurement depth to estimate the change per metre. Temperature at a chosen depth is then estimated as surface temperature + this rate × depth. <a href="#glossary">Full explanation →</a></li>
+                <li id="home-note-surface-temperature">Haynes, M. W., Horowitz, F. G., Sambridge, M., Gerner, E. J., &amp; Beardsmore, G. R. (2018). Australian mean land-surface temperature. <em>Geothermics, 72</em>, 156–162. <a href="https://doi.org/10.1016/j.geothermics.2017.10.008" target="_blank" rel="noreferrer">https://doi.org/10.1016/j.geothermics.2017.10.008</a></li>
+                <li id="home-note-air-temperature">Stewart, S. B., Cai, D., McVicar, T. R., &amp; Van Niel, T. G. (2023). <cite>Hourly near-surface air temperature grids for Australia</cite> (Version 4) [Data collection]. CSIRO. <a href="https://doi.org/10.25919/1sgg-b556" target="_blank" rel="noreferrer">https://doi.org/10.25919/1sgg-b556</a></li>
               </ol>
             </aside>
           </div>
