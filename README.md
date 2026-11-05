@@ -50,6 +50,10 @@ The initial release was published only after the TypeScript, Python regression,
 data-package and browser checks passed. The active workflow is defined in
 `.github/workflows/pages.yml`; contributors only need to work with `main`.
 
+## How to cite
+
+See [the recommended citation](CITATION.md) for the GeoPump Planner web application.
+
 ## Local development
 
 Requirements: Node.js 24 and pnpm 11.9 or compatible versions.
