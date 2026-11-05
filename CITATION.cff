@@ -1,0 +1,9 @@
+cff-version: "1.2.0"
+message: "If you use GeoPump Planner in your research, please cite it as shown below."
+type: software
+title: "GeoPump Planner"
+authors:
+  - given-names: "Yangguang"
+    family-names: "Han"
+repository-code: "https://github.com/LightHaan/GeoPump-planner"
+url: "https://lighthaan.github.io/GeoPump-planner/"
