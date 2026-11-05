@@ -1,9 +1,12 @@
 # GeoPump Planner
 
-GeoPump Planner is an open-source, postcode-scale screening app that matches
-shallow ground temperature with local heating and cooling demand across
-Australia. It compares ground-source heat pumps (GSHP) with air-source heat
-pumps (ASHP), including electricity use, tariffs and lifecycle economics.
+GeoPump Planner is an open-source web application for comparing ground-source
+and air-source heat pumps by Australian postcode. It matches shallow ground
+temperature with local heating and cooling demand and compares electricity use,
+tariffs and lifecycle costs.
+
+[Open GeoPump Planner](https://lighthaan.github.io/GeoPump-planner/) in your
+browser. No installation is required.
 
 The app is entirely static. It has no account system, backend, database,
 ArcGIS runtime dependency or browser-side spatial processing. All raster,
@@ -54,7 +57,9 @@ data-package and browser checks passed. The active workflow is defined in
 
 Han, Y. (n.d.). *GeoPump Planner* [Web application]. <https://lighthaan.github.io/GeoPump-planner/>
 
-## Local development
+## Development setup for contributors
+
+Use these steps to run a local copy when developing or testing changes.
 
 Requirements: Node.js 24 and pnpm 11.9 or compatible versions.
 
