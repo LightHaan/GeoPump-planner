@@ -52,7 +52,7 @@ data-package and browser checks passed. The active workflow is defined in
 
 ## How to cite
 
-See [the recommended citation](CITATION.md) for the GeoPump Planner web application.
+Han, Y. (n.d.). *GeoPump Planner* [Web application]. <https://lighthaan.github.io/GeoPump-planner/>
 
 ## Local development
 
